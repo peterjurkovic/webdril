@@ -1,8 +1,58 @@
+body{
+  background: url(../images/bg.png);
+}
 .dril-dark-bg{background-color: #202829 }
-
+.dril-logo span{color: #fff !important;}
 .dril-wrapp{
   max-width: 980px;
   margin: auto;
 }
 
-.header nav{border-top: 4px solid #6bba70;}
+.header nav{border-top: 4px solid #6bba70;border-bottom: 4px solid #ccc;margin:0}
+.header li > a{color:#ddd !important;}
+.header li.active > a{color:#fff !important;background: url(../images/nav-hover.png)}
+
+.dril-border{ height: 5px;  background: #D5D7D8;}
+
+.content-box{padding: 0 10px;}
+.well{
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  background: none;
+  border: 0;
+  box-shadow :0;
+  min-height: 80px;
+}
+.well:before, .well:after {
+  z-index: -1;
+  position: absolute;
+  content:"";
+  bottom: 20px;
+  left: 5px;
+  width: 50%;
+  top: 50%;
+  max-width: 400px;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.well:after {
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 5px;
+  left: auto;
+}
+
+/* DRIL PAGE */
+.box{margin: 20px 0;background: #fff;padding:10px 20px;position: relative;}
+.answer-wrapp{background-color: #f4ffea !important;}
+
+.button-group{text-align:center;}
+.button-group button{width:100%;font-size:15px;padding:20px 0}
+
+.get-answer-btn{width:100%;padding: 20px;font-size: 1.8em;margin: 15px 0}
+
+/* FOOTER */
+.footer{border-top:8px solid #fff; background: #6bba70;margin-top:40px;min-width:100px;bottom:0;}
+.footer .container{padding:20px;color:#fff;}

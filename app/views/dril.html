@@ -1,0 +1,58 @@
+
+<h2>Dril</h2>
+<div class="row span9">
+    <div class="span6 content-box">
+
+      <div class="question-wrapp box">
+          <div class="well">
+            text asdf as How do I set the active
+          </div>
+      </div>
+
+      <div class="input-wrapp">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">Answer:</span>
+          <input type="text" class="form-control" placeholder="Write answer..." aria-describedby="sizing-addon1">
+        </div>
+      </div>
+
+      <div class="answer-wrapp box" ng-show="shouldShowAnwer">
+        <div class="well">
+          text asdf as How do I set the active
+        </div>
+      </div>
+
+      <button ng-click="showAnswer()" class="btn get-answer-btn btn-primary" ng-hide="shouldShowAnwer">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          Get an answer
+      </button>
+
+      <div class="row button-group" ng-show="shouldShowAnwer">
+        <div class="col-xs-4">
+          <button class="btn btn-success">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            I knew it!</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-warning">
+            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            Not yet
+          </button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-danger">
+            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            Never seen it
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="span3 meta-info-box">
+      <ul>
+        <li>Viewed: 8x</li>
+        <li>Avg rating: 2.5</li>
+        <li>Learned cards: 25</li>
+      </ul>
+    </div>
+</div>
