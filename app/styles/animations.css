@@ -1,0 +1,54 @@
+
+
+.get-answer-btn.ng-hide {
+  opacity:0;
+}
+
+.dril-buttons.ng-show{
+  opacity:1;
+}
+
+.get-answer-btn,
+.dril-buttons{
+  -webkit-transition:all linear 0.3s;
+  transition:all linear 0.3s;
+}
+
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+@keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+.bounceInLeft {
+  animation-name: bounceInLeft;
+}

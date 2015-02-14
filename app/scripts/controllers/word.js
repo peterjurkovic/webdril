@@ -4,5 +4,5 @@
 angular.module('webdrilApp')
   .controller('WordCtrl', function ($scope) {
 
-    
+
   });
