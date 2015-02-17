@@ -1,20 +1,26 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name webdrilApp.controller:DrilCtrl
- * @description
- * # DrilCtrl
- * Controller of the webdrilApp
- */
+
 angular.module('webdrilApp')
-  .controller('DrilCtrl', function ($scope) {
+  .controller('DrilCtrl', ['$scope', 'drilService',
+    function ($scope, drilService) {
 
-    $scope.shouldShowAnwer = false;
 
+      $scope.currentWord = drilService.getNext();
 
-    $scope.showAnswer = function (){
-      $scope.shouldShowAnwer = true;
+      $scope.shouldShowAnwer = false;
+
+      $scope.showAnswer = function () {
+        $scope.shouldShowAnwer = true;
+      }
+
+      $scope.rateWord = function (word, rating){
+        $scope.currentWord = drilService.processRatingAndGetNext(word, rating);
+      }
+
+      $scope.isFinished = function(){
+        return $scope.currentWord !== null;
+      }
+
     }
-
-  });
+  ]);

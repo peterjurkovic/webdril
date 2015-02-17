@@ -1,9 +1,8 @@
 'use strict';
 
 
-var drilStorageModule = angular.module('drilStorageModule', []);
-
-drilStorageModule.constant('storageSettings', {
+var app = angular.module('webdrilApp');
+app.constant('storageSettings', {
 
     // Set a prefix that will be used for all storage data (defaults to the empty string.)
     // Use prefix() to modify this prefix.
@@ -13,8 +12,7 @@ drilStorageModule.constant('storageSettings', {
     // Use errorName() to modify this value.
     errorName: 'drilStorage.error'
 });
-
-drilStorageModule.factory('drilStorage', [ '$rootScope', 'storageSettings',
+app.factory('drilStorage', [ '$rootScope', 'storageSettings',
     function ($rootScope, storageSettings) {
 
 

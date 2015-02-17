@@ -3,7 +3,7 @@
 describe('Factory drilStorage ', function () {
 
 
-  beforeEach(module('drilStorageModule'));
+  beforeEach(module('webdrilApp'));
 
 
   var drilStorage;

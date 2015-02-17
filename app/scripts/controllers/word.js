@@ -2,7 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('WordCtrl', function ($scope) {
+  .controller('WordCtrl', ['$scope',
+    function ($scope) {
 
 
-  });
+  }]);

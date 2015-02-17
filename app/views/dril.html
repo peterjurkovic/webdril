@@ -11,7 +11,7 @@
 
       <div class="question-wrapp box">
           <div class="well">
-            text asdf as How do I set the active
+            {{currentWord.question}}
           </div>
       </div>
 
@@ -24,7 +24,7 @@
 
       <div class="answer-wrapp box" ng-show="shouldShowAnwer">
         <div class="well">
-          text asdf as How do I set the active
+          {{currentWord.answer}}
         </div>
       </div>
 
@@ -35,18 +35,18 @@
 
       <div class="row button-group dril-buttons" ng-show="shouldShowAnwer">
         <div class="col-xs-4">
-          <button class="btn btn-success">
+          <button class="btn btn-success" ng-click="rateWord(currentWord, 1)">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             I knew it!</button>
         </div>
         <div class="col-xs-4">
-          <button class="btn btn-warning">
+          <button class="btn btn-warning" ng-click="rateWord(currentWord, 3)">
             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             Not yet
           </button>
         </div>
         <div class="col-xs-4">
-          <button class="btn btn-danger">
+          <button class="btn btn-danger" ng-click="rateWord(currentWord, 5)">
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
             Never seen it
           </button>

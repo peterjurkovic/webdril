@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name webdrilApp
- * @description
- * # webdrilApp
- *
- * Main module of the application.
- */
 angular
   .module('webdrilApp', [
     'ngAnimate',
