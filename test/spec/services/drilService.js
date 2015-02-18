@@ -46,6 +46,16 @@ describe('Factory DrilService', function () {
     expect(drilService.getStatistics().count).toBe(1);
   });
 
+  it('should be deactivated', function () {
+    var beforeCount = drilService.getCountOfActivated();
+    var word = drilService.getNext();
+    expect(drilService.getStatistics().count).toBe(0);
+    drilService.rateAndGetNext(word, 1);
+    expect(drilService.getStatistics().count).toBe(0);
+    drilService.rateAndGetNext(word, 1);
+    expect(drilService.getCountOfActivated()).toBe( beforeCount - 1 );
+  });
+
 
 
 });
