@@ -7,8 +7,9 @@ describe('Factory DrilService', function () {
 
   // instantiate service
   var drilService;
-  beforeEach(inject(function (_drilService_) {
+  beforeEach(inject(function (_drilService_, _drilStorage_) {
     drilService = _drilService_;
+    _drilStorage_.clear();
   }));
 
   it('should be defined', function () {
@@ -24,12 +25,25 @@ describe('Factory DrilService', function () {
   });
 
 
-  it('should process rating', function () {
+  it('should be next word', function () {
     var word = drilService.getNext();
-    var nextWord = drilService.processRatingAndGetNext(word, 1);
+    expect(word.id).toBe(1);
+    var nextWord = drilService.rateAndGetNext(word, 1);
     expect(nextWord.id).toBe(2);
-    nextWord = drilService.processRatingAndGetNext(nextWord, 1);
+    nextWord = drilService.rateAndGetNext(nextWord, 1);
     expect(nextWord.id).toBe(3);
+  });
+
+
+
+  it('should be learned', function () {
+    expect(drilService.getStatistics().count).toBe(0);
+    var word = drilService.getNext();
+    expect(drilService.getStatistics().count).toBe(0);
+    drilService.rateAndGetNext(word, 1);
+    expect(drilService.getStatistics().count).toBe(0);
+    drilService.rateAndGetNext(word, 1);
+    expect(drilService.getStatistics().count).toBe(1);
   });
 
 

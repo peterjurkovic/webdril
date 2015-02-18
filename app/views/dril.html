@@ -1,12 +1,13 @@
 
 <h2>Dril</h2>
-<div class="row span3 meta-info-box">
-  <div class="col-xs-2 col-xs-offset-1">Activated cards 2</div>
-  <div class="col-xs-2 col-xs-offset-1">Learned card 2</div>
-  <div class="col-xs-2 col-xs-offset-1">Shown 2x</div>
+
+<div class="row span3 meta-info-box" ng-if="isNotFinished()">
+  <div class="col-xs-2 col-xs-offset-1">Activated cards {{getCountOfActivated()}}</div>
+  <div class="col-xs-2 col-xs-offset-1">Learned card {{getStatistics().count}}</div>
+  <div class="col-xs-2 col-xs-offset-1">Shown {{currentWord.viewed}}x</div>
   <div class="col-xs-2 col-xs-offset-1">4</div>
 </div>
-<div class="row">
+<div class="row" ng-if="isNotFinished()">
     <div class="span6 content-box animated bounceInLeft">
 
       <div class="question-wrapp box">
@@ -54,5 +55,7 @@
       </div>
 
     </div>
-
+    <div ng-if="!isNotFinished()">
+        You just extended you vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
+    </div>
 </div>

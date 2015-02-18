@@ -16,11 +16,14 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
     function ($rootScope, storageSettings) {
 
 
+      var LOCAL_STORAGE = 1,
+          SESSION_STORAGE = 2;
+
       /**
        * Boolean flag indicating client support for local storage.
        * @private
        */
-      var isSupported = isLocalStorageSupported();
+      var isLocalStorageSupported = isLocalStorageSupported();
 
 
       /**
@@ -53,7 +56,7 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
 
 
       /**
-       * Add or update value under given key
+       * Add or update value  under given key in Local Storage
        *
        * @param key - value will be saved under concatenated prefix and given key
        * @param value - value to store
@@ -61,35 +64,42 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
        * @public
        */
       function setItem(key, value){
-        if(isSupported){
-            try {
-                localStorage.setItem(storageSettings.prefix + key, JSON.stringify(value));
-                return true;
-            } catch (e) {
-              triggerError(e);
-            }
-
-          }
-        return false;
+        return setItemIn(LOCAL_STORAGE, key, value);
       }
 
 
       /**
-       * Retrieve value under given key
+       * Add or update value  under given key in Session Storage
+       *
+       * @param key - value will be saved under concatenated prefix and given key
+       * @param value - value to store
+       * @returns {boolean} - true on success, false otherwise
+       * @public
+       */
+      function setItemInSession(key, value){
+        return setItemIn(SESSION_STORAGE, key, value);
+      }
+
+
+      /**
+       * Retrieve value from Local Storage under given key
        *
        * @param key
        * @returns object or null if under the given key nothing exists
        */
-      function getItem(key) {
-        if (isSupported) {
-          try {
-            var value = localStorage.getItem(storageSettings.prefix + key);
-            return value && JSON.parse(value);
-          } catch (e) {
-            triggerError(e);
-          }
-        }
-        return null;
+      function getItem( key ) {
+        return getItemFrom(LOCAL_STORAGE, key);
+      }
+
+
+      /**
+       * Retrieve value from Session Storage under given key
+       *
+       * @param key
+       * @returns object or null if under the given key nothing exists
+       */
+      function getItemFromSession( key) {
+        return getItemFrom(SESSION_STORAGE, key);
       }
 
 
@@ -100,9 +110,9 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
        * @returns true if was item successfully removed.
        */
       function removeItem(key) {
-        if (isSupported) {
+        if (isLocalStorageSupported) {
           try {
-              localStorage.removeItem(storageSettings.prefix + key);
+              localStorage.removeItem(getKey(key));
               return true;
           } catch (e) {
             croak(e);
@@ -111,11 +121,57 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
         return false;
       }
 
+      function setItemIn(storageType, key, value){
+        if(isLocalStorageSupported){
+          try {
+            if(storageType === LOCAL_STORAGE){
+              localStorage.setItem( getKey(key), JSON.stringify(value));
+            }else{
+              sessionStorage.setItem( getKey(key), JSON.stringify(value));
+            }
+            return true;
+          } catch (e) {
+            triggerError(e);
+          }
 
+        }
+        return false;
+      }
+
+      function getItemFrom(storageType, key){
+        if (isLocalStorageSupported) {
+          try {
+            if(storageType === LOCAL_STORAGE){
+              var value = localStorage.getItem( getKey(key) );
+            }else{
+              var value = sessionStorage.getItem( getKey(key) );
+            }
+            return value && JSON.parse(value);
+          } catch (e) {
+            triggerError(e);
+          }
+        }
+        return null;
+      }
+
+      function getKey(key){
+        return storageSettings.prefix + key;
+      }
+
+      function clear(){
+        localStorage.clear();
+        sessionStorage.clear();
+      }
       return {
-        isSupported : isSupported,
+        isSupported : isLocalStorageSupported,
+
         setItem : setItem,
         getItem : getItem,
-        removeItem : removeItem
+        removeItem : removeItem,
+
+        getItemFromSession : getItemFromSession,
+        setItemInSession : setItemInSession,
+
+        clear : clear
       }
 }]);

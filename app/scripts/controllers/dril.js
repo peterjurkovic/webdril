@@ -15,12 +15,19 @@ angular.module('webdrilApp')
       }
 
       $scope.rateWord = function (word, rating){
-        $scope.currentWord = drilService.processRatingAndGetNext(word, rating);
+        $scope.currentWord = drilService.rateAndGetNext(word, rating);
       }
 
-      $scope.isFinished = function(){
+      $scope.isNotFinished = function(){
         return $scope.currentWord !== null;
       }
 
+      $scope.getCountOfActivated = function(){
+        return drilService.getCountOfActivated();
+      }
+
+      $scope.getStatistics = function(){
+        return drilService.getStatistics();
+      }
     }
   ]);
