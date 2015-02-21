@@ -44,6 +44,9 @@ body{
   left: auto;
 }
 
+.wrapp{position:relative;min-height:180px;}
+.get-answer-btn{position:absolute;top:20px}
+
 /* DRIL PAGE */
 .box{margin: 20px 0;background: #fff;padding:10px 20px;position: relative;}
 .answer-wrapp{background-color: #f4ffea !important;}
@@ -51,7 +54,9 @@ body{
 .button-group{text-align:center;}
 .button-group button{width:100%;font-size:15px;padding:20px 0}
 
-.get-answer-btn{width:100%;padding: 20px;font-size: 1.8em;margin: 15px 0}
+.get-answer-btn{width:100%;padding: 20px;font-size: 1.8em;}
+
+.meta-info-box{background:#6bba70;padding:3px;margin: -5px;color:#fff;border-top:3px solid #D5D7D8;border-bottom:3px solid #D5D7D8;}
 
 /* FOOTER */
 .footer{border-top:8px solid #fff; background: #6bba70;margin-top:40px;min-width:100px;bottom:0;}

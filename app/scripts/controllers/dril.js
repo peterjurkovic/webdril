@@ -8,14 +8,17 @@ angular.module('webdrilApp')
 
       $scope.currentWord = drilService.getNext();
 
-      $scope.shouldShowAnwer = false;
+      $scope.isAnswerShown = false;
+
 
       $scope.showAnswer = function () {
-        $scope.shouldShowAnwer = true;
+        $scope.isAnswerShown = true;
+        console.log('$scope.isAnswerShown ' + $scope.isAnswerShown);
       }
 
-      $scope.rateWord = function (word, rating){
-        $scope.currentWord = drilService.rateAndGetNext(word, rating);
+      $scope.rateWord = function (rating){
+        $scope.currentWord = drilService.rateAndGetNext($scope.currentWord, rating);
+        $scope.isAnswerShown = false;
       }
 
       $scope.isNotFinished = function(){

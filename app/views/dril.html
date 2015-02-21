@@ -8,7 +8,7 @@
   <div class="col-xs-2 col-xs-offset-1">4</div>
 </div>
 <div class="row" ng-if="isNotFinished()">
-    <div class="span6 content-box animated bounceInLeft">
+    <div slide-animation class="span6 content-box animated bounceInLeft">
 
       <div class="question-wrapp box">
           <div class="well">
@@ -23,37 +23,38 @@
         </div>
       </div>
 
-      <div class="answer-wrapp box" ng-show="shouldShowAnwer">
-        <div class="well">
-          {{currentWord.answer}}
+      <div class="wrapp">
+
+        <div class="answer-wrapp box" ng-show="isAnswerShown">
+          <div class="well">
+            {{currentWord.answer}}
+          </div>
+        </div>
+
+
+        <show-answer-button></show-answer-button>
+
+        <div class="row button-group dril-buttons" ng-show="isAnswerShown">
+          <div class="col-xs-4">
+              <button  class="btn btn-success" ng-click="rateWord(currentWord, 1)" >
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                I knew it!
+              </button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-warning" ng-click="rateWord(currentWord, 3)">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+              Not yet
+            </button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-danger" ng-click="rateWord(currentWord, 5)">
+              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+              Never seen it
+            </button>
+          </div>
         </div>
       </div>
-
-      <button ng-click="showAnswer()" class="btn get-answer-btn btn-primary" ng-hide="shouldShowAnwer">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          Get an answer
-      </button>
-
-      <div class="row button-group dril-buttons" ng-show="shouldShowAnwer">
-        <div class="col-xs-4">
-          <button class="btn btn-success" ng-click="rateWord(currentWord, 1)">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            I knew it!</button>
-        </div>
-        <div class="col-xs-4">
-          <button class="btn btn-warning" ng-click="rateWord(currentWord, 3)">
-            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            Not yet
-          </button>
-        </div>
-        <div class="col-xs-4">
-          <button class="btn btn-danger" ng-click="rateWord(currentWord, 5)">
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-            Never seen it
-          </button>
-        </div>
-      </div>
-
     </div>
     <div ng-if="!isNotFinished()">
         You just extended you vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
