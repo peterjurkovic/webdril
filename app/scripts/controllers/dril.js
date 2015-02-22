@@ -10,7 +10,6 @@ angular.module('webdrilApp')
 
       $scope.isAnswerShown = false;
 
-
       $scope.showAnswer = function () {
         $scope.isAnswerShown = true;
       }
