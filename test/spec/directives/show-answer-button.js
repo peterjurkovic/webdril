@@ -12,9 +12,5 @@ describe('Directive: showAnswerButton', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<show-answer-button></show-answer-button>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the showAnswerButton directive');
-  }));
+
 });

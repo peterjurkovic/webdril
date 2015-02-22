@@ -2,7 +2,7 @@
 
 
 angular.module('webdrilApp')
-  .factory('drilService', ['drilStorage', '$filter',
+  .factory('DrilService', ['DrilStorage', '$filter',
       function (drilStorage, $filter) {
 
 

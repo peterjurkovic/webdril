@@ -13,8 +13,6 @@ describe('Directive: slideAnimation', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<slide-animation></slide-animation>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the slideAnimation directive');
+
   }));
 });

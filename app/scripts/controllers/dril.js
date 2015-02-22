@@ -2,22 +2,21 @@
 
 
 angular.module('webdrilApp')
-  .controller('DrilCtrl', ['$scope', 'drilService',
-    function ($scope, drilService) {
+  .controller('DrilCtrl', ['$scope', 'DrilService',
+    function ($scope, DrilService) {
 
 
-      $scope.currentWord = drilService.getNext();
+      $scope.currentWord = DrilService.getNext();
 
       $scope.isAnswerShown = false;
 
 
       $scope.showAnswer = function () {
         $scope.isAnswerShown = true;
-        console.log('$scope.isAnswerShown ' + $scope.isAnswerShown);
       }
 
       $scope.rateWord = function (rating){
-        $scope.currentWord = drilService.rateAndGetNext($scope.currentWord, rating);
+        $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
         $scope.isAnswerShown = false;
       }
 
@@ -26,11 +25,11 @@ angular.module('webdrilApp')
       }
 
       $scope.getCountOfActivated = function(){
-        return drilService.getCountOfActivated();
+        return DrilService.getCountOfActivated();
       }
 
       $scope.getStatistics = function(){
-        return drilService.getStatistics();
+        return DrilService.getStatistics();
       }
     }
   ]);

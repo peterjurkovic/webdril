@@ -7,9 +7,9 @@ describe('Factory DrilService', function () {
 
   // instantiate service
   var drilService;
-  beforeEach(inject(function (_drilService_, _drilStorage_) {
-    drilService = _drilService_;
-    _drilStorage_.clear();
+  beforeEach(inject(function (_DrilService_, _DrilStorage_) {
+    drilService = _DrilService_;
+    _DrilStorage_.clear();
   }));
 
   it('should be defined', function () {

@@ -12,8 +12,8 @@ app.constant('storageSettings', {
     // Use errorName() to modify this value.
     errorName: 'drilStorage.error'
 });
-app.factory('drilStorage', [ '$rootScope', 'storageSettings',
-    function ($rootScope, storageSettings) {
+app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
+    function ($rootScope, storageSettings, $window) {
 
 
       var LOCAL_STORAGE = 1,
@@ -34,8 +34,8 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
        */
       function isLocalStorageSupported(){
           try {
-            localStorage.setItem( 'key-test', true);
-            localStorage.removeItem( 'key-test');
+            $window.localStorage.setItem( 'key-test', true);
+            $window.localStorage.removeItem( 'key-test');
             return true;
           } catch (e) {
             return false;
@@ -112,7 +112,7 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
       function removeItem(key) {
         if (isLocalStorageSupported) {
           try {
-              localStorage.removeItem(getKey(key));
+              $window.localStorage.removeItem(getKey(key));
               return true;
           } catch (e) {
             croak(e);
@@ -125,9 +125,9 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
         if(isLocalStorageSupported){
           try {
             if(storageType === LOCAL_STORAGE){
-              localStorage.setItem( getKey(key), JSON.stringify(value));
+              $window.localStorage.setItem( getKey(key), JSON.stringify(value));
             }else{
-              sessionStorage.setItem( getKey(key), JSON.stringify(value));
+              $window.sessionStorage.setItem( getKey(key), JSON.stringify(value));
             }
             return true;
           } catch (e) {
@@ -142,9 +142,9 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
         if (isLocalStorageSupported) {
           try {
             if(storageType === LOCAL_STORAGE){
-              var value = localStorage.getItem( getKey(key) );
+              var value = $window.localStorage.getItem( getKey(key) );
             }else{
-              var value = sessionStorage.getItem( getKey(key) );
+              var value = $window.sessionStorage.getItem( getKey(key) );
             }
             return value && JSON.parse(value);
           } catch (e) {
@@ -159,8 +159,8 @@ app.factory('drilStorage', [ '$rootScope', 'storageSettings',
       }
 
       function clear(){
-        localStorage.clear();
-        sessionStorage.clear();
+        $window.localStorage.clear();
+        $window.sessionStorage.clear();
       }
       return {
         isSupported : isLocalStorageSupported,

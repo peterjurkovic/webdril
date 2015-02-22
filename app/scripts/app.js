@@ -2,6 +2,7 @@
 
 angular
   .module('webdrilApp', [
+    'config',
     'ngAnimate',
     'ngRoute'
   ])
@@ -22,4 +23,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+
   });

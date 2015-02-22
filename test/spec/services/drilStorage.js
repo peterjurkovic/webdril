@@ -7,8 +7,8 @@ describe('Factory drilStorage ', function () {
 
 
   var drilStorage;
-  beforeEach(inject(function (_drilStorage_) {
-    drilStorage = _drilStorage_;
+  beforeEach(inject(function (_DrilStorage_) {
+    drilStorage = _DrilStorage_;
   }));
 
   it('should be defined', function () {
