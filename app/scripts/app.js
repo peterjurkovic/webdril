@@ -6,7 +6,7 @@ angular
     'ngAnimate',
     'ngRoute'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',
@@ -16,13 +16,15 @@ angular
         templateUrl: 'views/word.html',
         controller: 'WordCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
-
-
+    console.log($httpProvider);
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });

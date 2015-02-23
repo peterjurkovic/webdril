@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'development',apiEndpoint:'http://your-development.api.endpoint:3000'})
+.constant('ENV', {name:'development',api:'http://localhost/drilapp.com/api'})
 
 ;

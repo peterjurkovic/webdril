@@ -104,16 +104,34 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
 
 
       /**
-       * Remove item under given key
+       * Remove item under given key from Local Storage
        *
        * @param key
        * @returns true if was item successfully removed.
        */
       function removeItem(key) {
+        remove(LOCAL_STORAGE, key);
+      }
+
+      /**
+       * Remove item under given key from Session Storage
+       *
+       * @param key
+       * @returns true if was item successfully removed.
+       */
+      function removeItemFromSession(key) {
+        remove(SESSION_STORAGE, key);
+      }
+
+      function remove(storageType, key) {
         if (isLocalStorageSupported) {
           try {
+            if(storageType == LOCAL_STORAGE){
               $window.localStorage.removeItem(getKey(key));
-              return true;
+            }else{
+              $window.sessionStorage.removeItem(getKey(key));
+            }
+            return true;
           } catch (e) {
             croak(e);
           }
@@ -171,6 +189,7 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
 
         getItemFromSession : getItemFromSession,
         setItemInSession : setItemInSession,
+        removeItemFromSession : removeItemFromSession,
 
         clear : clear
       }

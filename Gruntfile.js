@@ -406,7 +406,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            apiEndpoint: 'http://your-development.api.endpoint:3000'
+            api: 'http://localhost/drilapp.com/api'
           }
         }
       },
@@ -417,7 +417,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            apiEndpoint: 'http://api.livesite.com'
+            api: 'http://www.drilapp.com/api'
           }
         }
       }
