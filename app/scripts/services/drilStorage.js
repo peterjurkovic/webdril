@@ -110,7 +110,7 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
        * @returns true if was item successfully removed.
        */
       function removeItem(key) {
-        remove(LOCAL_STORAGE, key);
+        return remove(LOCAL_STORAGE, key);
       }
 
       /**
@@ -120,7 +120,7 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
        * @returns true if was item successfully removed.
        */
       function removeItemFromSession(key) {
-        remove(SESSION_STORAGE, key);
+        return remove(SESSION_STORAGE, key);
       }
 
       function remove(storageType, key) {

@@ -17,8 +17,9 @@ angular.module('webdrilApp')
     };
 
     $scope.login = function (credentials) {
+      console.log(credentials);
       UserFactory.login(credentials).then(function success(response) {
-        $scope.user = response.user;
+        $scope.user = response.data.user;
       }, handleError);
 
       function handleError(response) {

@@ -7,15 +7,23 @@ angular
     'ngRoute'
   ])
   .config(function ($routeProvider, $httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',
         controller: 'DrilCtrl'
       })
+
+      .when('/books', {
+        templateUrl: 'views/public-book.html',
+        controller: 'PublicBookCtrl'
+      })
+
       .when('/words', {
         templateUrl: 'views/word.html',
         controller: 'WordCtrl'
       })
+
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -23,8 +31,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-    console.log($httpProvider);
-    $httpProvider.defaults.withCredentials = true;
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });

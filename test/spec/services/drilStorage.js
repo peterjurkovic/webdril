@@ -25,4 +25,22 @@ describe('Factory drilStorage ', function () {
     expect( drilStorage.getItem("test") ).toBe(null);
   });
 
+
+  it('should  save retrieve update and remove item', function () {
+
+    expect( drilStorage.setItemInSession("test", "test") ).toBe(true);
+    expect( drilStorage.getItemFromSession("test") ).toBe("test");
+    expect( drilStorage.setItemInSession("test", "test-2") ).toBe(true);
+    expect( drilStorage.removeItemFromSession("test") ).toBe(true);
+    expect( drilStorage.getItemFromSession("test") ).toBe(null);
+
+    expect( drilStorage.setItemInSession("test", "test-2") ).toBe(true);
+    expect( drilStorage.setItemInSession("test2", "test-2") ).toBe(true);
+
+    drilStorage.clear()
+
+    expect( drilStorage.getItemFromSession("test") ).toBeNull();
+    expect( drilStorage.getItemFromSession("test2") ).toBeNull();
+  });
+
 });
