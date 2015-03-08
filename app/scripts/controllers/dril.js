@@ -7,28 +7,34 @@ angular.module('webdrilApp')
 
 
       $scope.currentWord = DrilService.getNext();
-
       $scope.isAnswerShown = false;
+      $scope.showAnswer = showAnswer;
+      $scope.rateWord = rateWord;
+      $scope.isNotFinished = isNotFinished;
+      $scope.getCountOfActivated = getCountOfActivated;
+      $scope.getStatistics =  getStatistics;
 
-      $scope.showAnswer = function () {
-        $scope.isAnswerShown = true;
+      ///////////////////////////////
+
+      function getStatistics(){
+        return DrilService.getStatistics();
       }
 
-      $scope.rateWord = function (rating){
-        $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
-        $scope.isAnswerShown = false;
-      }
-
-      $scope.isNotFinished = function(){
-        return $scope.currentWord !== null;
-      }
-
-      $scope.getCountOfActivated = function(){
+      function getCountOfActivated(){
         return DrilService.getCountOfActivated();
       }
 
-      $scope.getStatistics = function(){
-        return DrilService.getStatistics();
+      function isNotFinished(){
+        return $scope.currentWord !== null;
+      }
+
+      function showAnswer() {
+        $scope.isAnswerShown = true;
+      }
+
+      function rateWord(rating){
+        $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
+        $scope.isAnswerShown = false;
       }
     }
   ]);

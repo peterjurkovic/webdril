@@ -1,30 +1,29 @@
-<h2>Shared textbooks</h2>
-<table class="table" st-pipe="books.callServer" st-table="books.displayed">
-  <thead>
-  <tr>
-    <th st-sort="id">id</th>
-    <th st-sort="name">name</th>
-    <th st-sort="age">age</th>
-    <th st-sort="saved">saved people</th>
-  </tr>
-  </thead>
-  <tbody ng-show="!books.isLoading">
-  <tr ng-repeat="row in books.displayed">
-    <td>{{row.id}}</td>
-    <td>{{row.name}}</td>
-    <td>{{row.age}}</td>
-    <td>{{row.saved}}</td>
-  </tr>
-  </tbody>
-  <tbody ng-show="books.isLoading">
-  <tr>
-    <td colspan="4" class="text-center">Loading ... </td>
-  </tr>
-  </tbody>
-  <tfoot>
-  <tr>
-    <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4">
-    </td>
-  </tr>
-  </tfoot>
-</table>
+
+  <h2>Shared textbooks</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th st-sort="name">Name</th>
+      <th st-sort="age">age</th>
+      <th st-sort="saved">saved people</th>
+    </tr>
+    </thead>
+    <tbody ng-show="!book.isLoading">
+    <tr ng-repeat="row in book.items">
+      <td>{{row.name}}</td>
+      <td>{{row.age}}</td>
+      <td>{{row.saved}}</td>
+    </tr>
+    </tbody>
+    <tbody ng-show="book.isLoading">
+    <tr>
+      <td colspan="4" class="text-center">Loading ...</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4">
+      </td>
+    </tr>
+    </tfoot>
+  </table>

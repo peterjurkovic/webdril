@@ -4,8 +4,7 @@ angular
   .module('webdrilApp', [
     'config',
     'ngAnimate',
-    'ngRoute',
-    'smart-table'
+    'ngRoute'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
@@ -18,7 +17,7 @@ angular
       .when('/books', {
         templateUrl: 'views/public-book.html',
         controller: 'PublicBookCtrl',
-        controllerAs: 'books'
+        controllerAs: 'book'
       })
 
       .when('/words', {
