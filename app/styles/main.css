@@ -63,4 +63,15 @@ body{
 .footer{border-top:8px solid #fff; background: #6bba70;margin-top:40px;min-width:100px;bottom:0;}
 .footer .container{padding:20px;color:#fff;}
 
-.pj-bg{background:url(../images/bg-wrapp.png);margin-top:20px;}
+.pj-content{background:url(../images/bg-wrapp.png);margin-top:20px;}
+.pj-content h2{background:#5dae62;font-size:23px;color:#fff;padding:10px 20px;margin-top:10px;}
+.pj-content th{background:#576173;color:#fff;font-weight:normal;}
+
+.books{background:#fff;}
+.books .book-name{background:url(../images/book.png) no-repeat 8px center;padding:15px 0 15px 45px;font-size:16px;min-width:200px;}
+
+
+.books .lang-a,
+.books .lang-q{display:block;text-align:center;font-size:.9em;}
+.books .lang-q{border-bottom:1px dotted #ddd;}
+.books .lang-q{}

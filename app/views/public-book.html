@@ -1,18 +1,37 @@
 
-  <h2>Shared textbooks</h2>
-  <table class="table table-striped">
+  <h2 class="">Shared textbooks</h2>
+  <table class="table table-striped books">
     <thead>
     <tr>
       <th st-sort="name">Name</th>
-      <th st-sort="age">age</th>
-      <th st-sort="saved">saved people</th>
+      <th st-sort="lang">Languages</th>
+      <th st-sort="level">Level</th>
+      <th st-sort="added">Added</th>
+      <th st-sort="author">Lectures (words)</th>
     </tr>
     </thead>
     <tbody ng-show="!book.isLoading">
     <tr ng-repeat="row in book.items">
-      <td>{{row.name}}</td>
-      <td>{{row.age}}</td>
-      <td>{{row.saved}}</td>
+      <td class="book-name">
+        {{row.name}}</td>
+      <td>
+        <span class="lang-q">
+          {{row.aquestion_lang_name}}
+        </span>
+        <span class="lang-a">
+          {{row.answer_lang_name}}
+        </span>
+      </td>
+      <td>{{row.level_name}}</td>
+      <td>{{row.created | date:'dd-M-yyyy H:mm'}} by {{row.login}}</td>
+      <td>
+        <span class="lang-q">
+         {{row.no_of_words}} words
+        </span>
+        <span class="lang-a">
+          {{row.no_of_lectures}} lecture
+        </span>
+      </td>
     </tr>
     </tbody>
     <tbody ng-show="book.isLoading">
