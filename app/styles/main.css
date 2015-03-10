@@ -67,11 +67,11 @@ body{
 .pj-content h2{background:#5dae62;font-size:23px;color:#fff;padding:10px 20px;margin-top:10px;}
 .pj-content th{background:#576173;color:#fff;font-weight:normal;}
 
-.books{background:#fff;}
-.books .book-name{background:url(../images/book.png) no-repeat 8px center;padding:15px 0 15px 45px;font-size:16px;min-width:200px;}
+.pj-books{background:#fff;}
+.pj-books .pj-book-name{background:url(../images/book.png) no-repeat 8px center;padding:15px 0 15px 45px;font-size:16px;min-width:200px;}
 
 
-.books .lang-a,
-.books .lang-q{display:block;text-align:center;font-size:.9em;}
-.books .lang-q{border-bottom:1px dotted #ddd;}
-.books .lang-q{}
+.pj-coll-top,
+.pj-coll-bottom{display:block;text-align:center;font-size:.9em;}
+.pj-coll-bottom{border-bottom:1px dotted #ddd;}
+.pj-level{text-align: center}

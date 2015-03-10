@@ -1,6 +1,6 @@
 
   <h2 class="">Shared textbooks</h2>
-  <table class="table table-striped books">
+  <table class="table table-striped pj-books">
     <thead>
     <tr>
       <th st-sort="name">Name</th>
@@ -12,23 +12,23 @@
     </thead>
     <tbody ng-show="!book.isLoading">
     <tr ng-repeat="row in book.items">
-      <td class="book-name">
+      <td class="pj-book-name">
         {{row.name}}</td>
       <td>
-        <span class="lang-q">
-          {{row.aquestion_lang_name}}
+        <span class="pj-coll-top">
+          {{row.question_lang_name}}
         </span>
-        <span class="lang-a">
+        <span class="pj-coll-bottom">
           {{row.answer_lang_name}}
         </span>
       </td>
-      <td>{{row.level_name}}</td>
-      <td>{{row.created | date:'dd-M-yyyy H:mm'}} by {{row.login}}</td>
+      <td class="pj-level" >{{row.level_name}}</td>
+      <td>{{row.created_timestamp | drilDate}} by {{row.login}}</td>
       <td>
-        <span class="lang-q">
+        <span class="pj-coll-top">
          {{row.no_of_words}} words
         </span>
-        <span class="lang-a">
+        <span class="pj-coll-bottom">
           {{row.no_of_lectures}} lecture
         </span>
       </td>

@@ -14,7 +14,7 @@ angular.module('webdrilApp')
           mv.isLoading = true;
           BookService.getPage(0, 20).then(function (result) {
           console.log('success');
-          mv.items = result.books;
+          mv.items = result.data.books;
           mv.isLoading = false;
         });
     }
