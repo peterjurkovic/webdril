@@ -2,21 +2,33 @@
 
 
 angular.module('webdrilApp')
-  .controller('PublicBookCtrl', ['BookService',
-    function (BookService) {
+  .controller('PublicBookCtrl', ['$scope','BookService', 'ENV',
+    function ($scope, BookService, ENV) {
       console.log('PublicBookCtrl');
+      $scope.totalItems = 0;
+      $scope.state = {
+        currentPage : 1,
+        peerPage : ENV.itemsPeerPage
+      };
 
-      var mv = this;
 
-      mv.items = [];
-      mv.loadBooks = function () {
+
+      $scope.items = [];
+      var loadBooks = function () {
           console.log('Loading books..');
-          mv.isLoading = true;
-          BookService.getPage(0, 20).then(function (result) {
+          $scope.isLoading = true;
+          BookService.getPage($scope.state).then(function (result) {
           console.log('success');
-          mv.items = result.data.books;
-          mv.isLoading = false;
+            $scope.items = result.data.books;
+            $scope.totalItems = result.data.count;
+            $scope.isLoading = false;
         });
-    }
-      mv.loadBooks();
+      };
+
+      $scope.changePage = function(page) {
+        $scope.state.currentPage = page;
+        loadBooks();
+      };
+
+    loadBooks();
 }]);

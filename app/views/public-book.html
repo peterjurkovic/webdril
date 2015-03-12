@@ -1,5 +1,7 @@
 
   <h2 class="">Shared textbooks</h2>
+
+
   <table class="table table-striped pj-books">
     <thead>
     <tr>
@@ -10,8 +12,8 @@
       <th st-sort="author">Lectures (words)</th>
     </tr>
     </thead>
-    <tbody ng-show="!book.isLoading">
-    <tr ng-repeat="row in book.items">
+    <tbody ng-show="!isLoading">
+    <tr ng-repeat="row in items">
       <td class="pj-book-name">
         {{row.name}}</td>
       <td>
@@ -46,3 +48,5 @@
     </tr>
     </tfoot>
   </table>
+
+  <pj-pagination ng-if="!isLoading"></pj-pagination>

@@ -5,14 +5,11 @@ angular.module('webdrilApp')
     getPage: getPage
   };
 
-  function getPage(start, number) {
+  function getPage(params) {
     return $http({
       url: ENV.api+ '/books',
       method: "GET",
-      params : {
-        start: start,
-        number : number
-      }
+      params : params
     });
   }
 

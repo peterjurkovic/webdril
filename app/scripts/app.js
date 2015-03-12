@@ -16,8 +16,7 @@ angular
 
       .when('/books', {
         templateUrl: 'views/public-book.html',
-        controller: 'PublicBookCtrl',
-        controllerAs: 'book'
+        controller: 'PublicBookCtrl'
       })
 
       .when('/words', {
