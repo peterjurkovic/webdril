@@ -24,7 +24,7 @@ angular.module('webdrilApp')
 
       function handleError(response) {
         alert('Error: ' + response.data);
-      }
+      };
 
       //AuthService.login(credentials).then(function (user) {
       //  $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('webdrilApp')
   .filter('drilDate', ['$filter', function($filter) {
 

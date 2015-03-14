@@ -32,6 +32,9 @@ angular.module('webdrilApp')
           for(pageNumber = scope.state.currentPage +1; pageNumber < stop; pageNumber++  ){
             scope.pages.push(pageNumber);
           }
+          if(scope.pages[scope.pages.length - 1] !== totalPages){
+            scope.pages.push(totalPages);
+          }
         }
 
       }

@@ -14,7 +14,7 @@ angular.module('webdrilApp')
 
 
       $scope.items = [];
-      var loadBooks = function () {
+      var renderBooks = function () {
           console.log('Loading books..');
           $scope.isLoading = true;
           BookService.getPage($scope.state).then(function (result) {
@@ -27,8 +27,8 @@ angular.module('webdrilApp')
 
       $scope.changePage = function(page) {
         $scope.state.currentPage = page;
-        loadBooks();
+        renderBooks();
       };
 
-    loadBooks();
+    renderBooks();
 }]);

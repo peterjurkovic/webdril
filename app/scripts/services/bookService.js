@@ -1,3 +1,6 @@
+'use strict';
+
+
 angular.module('webdrilApp')
 .factory('BookService', ['$http', 'ENV', function ($http, ENV) {
 
