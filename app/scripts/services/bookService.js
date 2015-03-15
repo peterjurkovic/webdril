@@ -5,7 +5,8 @@ angular.module('webdrilApp')
 .factory('BookService', ['$http', 'ENV', function ($http, ENV) {
 
   return {
-    getPage: getPage
+    getPage: getPage,
+    getLanguagesAndLevels :  getLanguagesAndLevels
   };
 
   function getPage(params) {
@@ -13,6 +14,13 @@ angular.module('webdrilApp')
       url: ENV.api+ '/books',
       method: "GET",
       params : params
+    });
+  }
+
+  function getLanguagesAndLevels(){
+    return $http({
+      url: ENV.api+ '/filter',
+      method: "GET"
     });
   }
 

@@ -1,26 +1,34 @@
 
 <h2 class="">Shared textbooks</h2>
-
 <form>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <div class="row">
+      <div class="col-md-3">
+        <select class="form-control"
+                ng-model="state.langAnswer"
+                ng-change="renderBooks()"
+                ng-options="language.id as language.name for language in languages">
+          <option value="">Choose your language</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control"
+                ng-model="state.langQuestion"
+                ng-change="renderBooks()"
+                ng-options="language.id as language.name for language in languages">
+          <option value="">Choose your language</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control"
+                ng-model="state.level"
+                ng-change="renderBooks()"
+                ng-options="level.id as level.name for level in levels" >
+          <option value="">Choose level</option>
+        </select>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 
@@ -32,11 +40,11 @@
   <table class="table table-striped pj-books">
     <thead>
     <tr>
-      <th st-sort="name">Name</th>
-      <th st-sort="lang">Languages</th>
-      <th st-sort="level">Level</th>
-      <th st-sort="added">Added</th>
-      <th st-sort="author">Lectures (words)</th>
+      <th pj-sort="name">Name</th>
+      <th pj-sort="lang">Languages</th>
+      <th pj-sort="level">Level</th>
+      <th pj-sort="date">Added</th>
+      <th pj-sort="author">Content</th>
     </tr>
     </thead>
     <tbody ng-show="!isLoading">

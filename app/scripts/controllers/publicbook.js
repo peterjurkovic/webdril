@@ -4,7 +4,7 @@
 angular.module('webdrilApp')
   .controller('PublicBookCtrl', ['$scope','BookService', 'ENV',
     function ($scope, BookService, ENV) {
-      console.log('PublicBookCtrl');
+
       $scope.totalItems = 0;
       $scope.state = {
         currentPage : 1,
@@ -15,14 +15,17 @@ angular.module('webdrilApp')
 
       $scope.items = [];
       var renderBooks = function () {
-          console.log('Loading books..');
-          $scope.isLoading = true;
-          BookService.getPage($scope.state).then(function (result) {
-          console.log('success');
-            $scope.items = result.data.books;
-            $scope.totalItems = result.data.count;
-            $scope.isLoading = false;
+        $scope.isLoading = true;
+        BookService.getLanguagesAndLevels().then(function (res) {
+          $scope.levels = res.data.levels;
+          $scope.languages = res.data.languages;
         });
+        BookService.getPage($scope.state).then(function (res) {
+          $scope.items = res.data.books;
+          $scope.totalItems = res.data.count;
+          $scope.isLoading = false;
+        });
+
       };
 
       $scope.changePage = function(page) {
@@ -30,5 +33,6 @@ angular.module('webdrilApp')
         renderBooks();
       };
 
+    $scope.renderBooks = renderBooks;
     renderBooks();
 }]);

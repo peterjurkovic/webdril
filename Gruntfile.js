@@ -407,7 +407,7 @@ module.exports = function (grunt) {
           ENV: {
             itemsPeerPage : 15,
             name: 'development',
-            api: 'http://drilapp.dev/api'
+            api: 'http://drilapp.dev/api/v1'
           }
         }
       },
@@ -419,7 +419,7 @@ module.exports = function (grunt) {
           ENV: {
             itemsPeerPage : 15,
             name: 'production',
-            api: 'http://www.drilapp.com/api'
+            api: 'http://www.drilapp.com/api/v1'
           }
         }
       }

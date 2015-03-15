@@ -10,7 +10,6 @@ angular.module('webdrilApp')
       templateUrl: 'views/pagination.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-        console.log(scope);
         var totalPages = Math.ceil(scope.totalItems / ENV.itemsPeerPage),
           maxNeighbor= 5;
 
@@ -37,6 +36,25 @@ angular.module('webdrilApp')
           }
         }
 
+      }
+    };
+  }])
+  .directive('pjSort', [function(){
+    return {
+      template : '<span class="pj-ico-wrapp"><span class="glyphicon glyphicon-triangle-top"></span>'+
+                  '<span class="glyphicon glyphicon-triangle-bottom"></span></span><span class="pj-text" ng-transclude></span>',
+      restrict: 'A',
+      transclude: true,
+      scope : {
+        orderBy : '='
+      },
+      link : function (scope, element, attrs){
+        element.bind('click', function($event) {
+          element.parent().find('.active').removeClass('active');
+          element.addClass('active');
+          console.log(scope);
+          scope.state.orderBy = orderBy;
+        });
       }
     };
   }]);
