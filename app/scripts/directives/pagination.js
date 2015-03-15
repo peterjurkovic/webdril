@@ -45,15 +45,19 @@ angular.module('webdrilApp')
                   '<span class="glyphicon glyphicon-triangle-bottom"></span></span><span class="pj-text" ng-transclude></span>',
       restrict: 'A',
       transclude: true,
-      scope : {
-        orderBy : '='
-      },
+      scope : { },
       link : function (scope, element, attrs){
-        element.bind('click', function($event) {
-          element.parent().find('.active').removeClass('active');
-          element.addClass('active');
-          console.log(scope);
-          scope.state.orderBy = orderBy;
+        var pjActiveClass = 'pj-sort-active',
+            pjReverseClass = 'pj-sort-asc';
+        element.bind('click', function() {
+          element.parent().find('.'+pjActiveClass).removeClass(pjActiveClass);
+          element.addClass(pjActiveClass);
+          element.toggleClass(pjReverseClass);
+          console.log(element.hasClass(pjReverseClass));
+          scope.$parent.state.orderBy = attrs.pjSort;
+          scope.$parent.state.orderType = element.hasClass(pjReverseClass) ? 0 : 1;
+          scope.$parent.state.currentPage = 1;
+          scope.$parent.renderBooks();
         });
       }
     };

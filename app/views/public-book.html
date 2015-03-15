@@ -3,15 +3,15 @@
 <form>
   <div class="form-group">
     <div class="row">
-      <div class="col-md-3">
-        <select class="form-control"
+      <div class="col-md-4">
+        <select chosen class="form-control"
                 ng-model="state.langAnswer"
                 ng-change="renderBooks()"
                 ng-options="language.id as language.name for language in languages">
           <option value="">Choose your language</option>
         </select>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <select class="form-control"
                 ng-model="state.langQuestion"
                 ng-change="renderBooks()"
@@ -19,7 +19,7 @@
           <option value="">Choose your language</option>
         </select>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <select class="form-control"
                 ng-model="state.level"
                 ng-change="renderBooks()"
@@ -29,14 +29,28 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <select chosen class="form-control"
+              ng-model="state.category"
+              ng-change="renderBooks()">
+        <option value="">Choose category</option>
+        <optgroup ng-repeat="category in categories" label="{{category.name}}">
+          <option ng-repeat='subCategory in category.subCategories' value="{{subCategory.id}}">{{subCategory.name}}</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
 </form>
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
   <span class="pj-loader">Loading...</span>
 </div>
-<div ng-if="!isLoading">
-  <pj-pagination></pj-pagination>
+
+<pj-pagination ng-if="!isLoading"></pj-pagination>
+
+<div ng-hide="isLoading">
   <table class="table table-striped pj-books">
     <thead>
     <tr>
@@ -49,9 +63,9 @@
     </thead>
     <tbody ng-show="!isLoading">
     <tr ng-repeat="row in items">
-      <td class="pj-book-name">
+      <td class="pj-book-name col-md-5">
         {{row.name}}</td>
-      <td>
+      <td col-md-1>
         <span class="pj-coll-top">
           {{row.question_lang_name}}
         </span>
@@ -59,9 +73,9 @@
           {{row.answer_lang_name}}
         </span>
       </td>
-      <td class="pj-level" >{{row.level_name}}</td>
-      <td>{{row.created_timestamp | drilDate}} by {{row.login}}</td>
-      <td>
+      <td class="pj-level col-md-2" >{{row.level_name}}</td>
+      <td class="col-md-2">{{row.created_timestamp | drilDate}} by {{row.login}}</td>
+      <td class="col-md-2">
         <span class="pj-coll-top">
          {{row.no_of_words}} words
         </span>
@@ -72,5 +86,4 @@
     </tr>
     </tbody>
   </table>
-  <pj-pagination></pj-pagination>
 </div>
