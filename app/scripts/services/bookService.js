@@ -6,8 +6,11 @@ angular.module('webdrilApp')
 
   return {
     getPage: getPage,
-    loadFilterOptions :  loadFilterOptions
+    loadFilterOptions :  loadFilterOptions,
+    getBookLectures : getBookLectures
   };
+
+  ///////////////////////////////////////////////
 
   function getPage(params) {
     return $http({
@@ -18,10 +21,12 @@ angular.module('webdrilApp')
   }
 
   function loadFilterOptions(){
-    return $http({
-      url: ENV.api+ '/filter',
-      method: "GET"
-    });
+    return $http.get(ENV.api+ '/filter');
+  }
+
+
+  function getBookLectures(id){
+    return $http.get(ENV.api+ '/book/' + id);
   }
 
 }]);

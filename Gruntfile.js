@@ -1,4 +1,4 @@
-// Generated on 2015-02-21 using generator-angular 0.11.1
+// Generated on 2015-03-15 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -247,19 +247,17 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    cssmin: {
-      options: {
-        rebase: false
-      },
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css'
-          ]
-        }
-      }
-    },
+     cssmin: {
+       dist: {
+         files: {
+           '<%= yeoman.dist %>/styles/main.css': [
+             '.tmp/styles/{,*/}*.css'
+           ]
+         }
+       }
+     },
      uglify: {
+       options:{mangle:false},
        dist: {
          files: {
            '<%= yeoman.dist %>/scripts/scripts.js': [
@@ -268,9 +266,9 @@ module.exports = function (grunt) {
          }
        }
      },
-    // concat: {
-    //   dist: {}
-    // },
+     concat: {
+       dist: {}
+     },
 
     imagemin: {
       dist: {
@@ -426,7 +424,6 @@ module.exports = function (grunt) {
     }
   });
 
-
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -466,7 +463,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
-    'filerev',
+    //'filerev',
     'usemin',
     'htmlmin'
   ]);

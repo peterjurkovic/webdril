@@ -89,7 +89,7 @@ pj-pagination{text-align:center;}
 .footer{border-top:8px solid #fff; background: #6bba70;margin-top:40px;min-width:100px;bottom:0;}
 .footer .container{padding:20px;color:#fff;}
 
-.pj-content{background:url(../images/bg-wrapp.png);margin-top:20px;}
+.pj-content{background:url(../images/bg-wrapp.png);margin-top:20px;min-height:400px;}
 .pj-content h2{font-size:23px;color:#fff;padding:10px 20px;margin-top:10px;}
 .pj-content th{text-align:center;color:#eee;font-weight:normal;font-size:.9em;padding:15px 20px 15px 10px !important;border-left:1px solid #69768C;cursor:pointer;}
 .pj-content .pj-sort-active{background-color:#606A7D;}
@@ -110,6 +110,7 @@ pj-pagination{text-align:center;}
 .pj-books{background:#fff;}
 .pj-books .pj-book-name{background:url(../images/book.png) no-repeat 8px center;padding:15px 0 15px 45px;font-size:16px;min-width:200px;}
 .pj-books .pj-loader{min-height:100px;padding:50px;}
+.pj-books tr:hover{background:#eee !important;cursor:pointer;}
 
 
 .pj-coll-top,
@@ -125,3 +126,8 @@ pj-pagination{text-align:center;}
   }
   .pj-filter .col-md-3{margin:5px 0}
 }
+
+
+/* FOOTER */
+.footer p,
+.footer a{color: #fff;font-size:.9em;}

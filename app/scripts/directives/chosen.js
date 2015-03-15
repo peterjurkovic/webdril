@@ -5,7 +5,7 @@
  */
 (function (angular) {
   var AngularChosen = angular.module('webdrilApp');
-  AngularChosen.directive('chosen', function () {
+  AngularChosen.directive('chosen', ['$timeout', function ($timeout) {
     var EVENTS, scope, linker, watchCollection;
     /*
      * List of events and the alias used for binding with angularJS
@@ -67,7 +67,7 @@
         iElm.trigger('chosen:updated');
       });
       $scope.$watchGroup(watchCollection, function () {
-        setTimeout(function () {
+        $timeout(function () {
           iElm.trigger('chosen:updated');
         }, 100);
       });
@@ -90,5 +90,5 @@
       restrict: 'A',
       link: linker
     };
-  });
+  }]);
 }(angular));

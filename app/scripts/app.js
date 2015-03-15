@@ -19,6 +19,11 @@ angular
         controller: 'PublicBookCtrl'
       })
 
+      .when('/books/:bookId', {
+        templateUrl: 'views/public-lecture.html',
+        controller: 'PublicLectureCtrl'
+      })
+
       .when('/words', {
         templateUrl: 'views/word.html',
         controller: 'WordCtrl'
@@ -27,6 +32,10 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
