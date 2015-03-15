@@ -3,7 +3,7 @@
 
 angular.module('webdrilApp')
   .factory('DrilService', ['DrilStorage', '$filter',
-      function (drilStorage, $filter) {
+      function (DrilStorage, $filter) {
 
 
     var activatedWords = [
@@ -57,7 +57,7 @@ angular.module('webdrilApp')
     };
 
     function persistChanges(){
-      drilStorage.setItem("activatedWords",activatedWords);
+      DrilStorage.setItem("activatedWords",activatedWords);
     };
 
 
@@ -66,7 +66,7 @@ angular.module('webdrilApp')
     }
 
     function getStatistics(){
-      var stats = drilStorage.getItemFromSession("stats");
+      var stats = DrilStorage.getItemFromSession("stats");
       if(stats === null){
         stats = {
           count : 0
@@ -78,7 +78,7 @@ angular.module('webdrilApp')
     function updateStats(){
       var stats = getStatistics();
       stats.count++;
-      drilStorage.setItemInSession("stats", stats);
+      DrilStorage.setItemInSession("stats", stats);
     }
 
     function rateAndGetNext(word, rating){

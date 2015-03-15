@@ -53,7 +53,6 @@ angular.module('webdrilApp')
           element.parent().find('.'+pjActiveClass).removeClass(pjActiveClass);
           element.addClass(pjActiveClass);
           element.toggleClass(pjReverseClass);
-          console.log(element.hasClass(pjReverseClass));
           scope.$parent.state.orderBy = attrs.pjSort;
           scope.$parent.state.orderType = element.hasClass(pjReverseClass) ? 0 : 1;
           scope.$parent.state.currentPage = 1;

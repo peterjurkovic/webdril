@@ -2,14 +2,29 @@ body{
   background: url(../images/bg.png);
 }
 
+.pj-filter{background:#fff;padding:10px;margin-bottom: 10px;}
+.pj-filter-head{padding-top:2px;padding-bottom:2px;font-size:.85em;background:#f4f4f4;margin:0}
+.pj-filter .pj-text-input{border-radius:0;background:#f4f4f4;border:1px solid #f4f4f4;border-bottom:1px solid #ddd;}
 
+.pj-filter .pj-text-input.ng-touched{border-bottom:1px solid #ccc;}
+.pj-filter *{box-shadow:none !important}
+
+.chosen-single{height:auto !important;line-height:30px !important;border-radius:0 !important;border:3px solid #f5f5f5 !important;background:#f3f3f3 !important;}
+.group-result{background:#eee;}
 .pagination{margin:10px 0;}
 .pagination a{cursor:pointer}
 
-.pj-content h2,
-.pagination .active *{
+.pj-content h2{
   background-color:#5dae62 !important;
   border-color: #5dae62 !important;
+}
+
+pj-pagination{text-align:center;}
+.pagination *{border:none !important;}
+
+.pagination .active *,
+.pj-content th{
+  background:#576173 !important;
 }
 
 .dril-dark-bg{background-color: #202829 }
@@ -76,7 +91,7 @@ body{
 
 .pj-content{background:url(../images/bg-wrapp.png);margin-top:20px;}
 .pj-content h2{font-size:23px;color:#fff;padding:10px 20px;margin-top:10px;}
-.pj-content th{background-color:#576173;text-align:center;color:#eee;font-weight:normal;font-size:.9em;padding:15px 20px 15px 10px !important;border-left:1px solid #69768C;cursor:pointer;}
+.pj-content th{text-align:center;color:#eee;font-weight:normal;font-size:.9em;padding:15px 20px 15px 10px !important;border-left:1px solid #69768C;cursor:pointer;}
 .pj-content .pj-sort-active{background-color:#606A7D;}
 
 .pj-content .pj-sort-active.pj-sort-asc .glyphicon-triangle-top,
@@ -99,7 +114,6 @@ body{
 
 .pj-coll-top,
 .pj-coll-bottom{display:block;text-align:center;font-size:.9em;}
-.pj-coll-bottom{border-bottom:1px dotted #ddd;}
 .pj-level{text-align: center}
 
 .pj-loader-wrapp{text-align:center;min-height:500px;padding:40px}
@@ -109,4 +123,5 @@ body{
   .pj-content th {
     text-align:left;padding-left:10px !important;
   }
+  .pj-filter .col-md-3{margin:5px 0}
 }

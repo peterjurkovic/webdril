@@ -6,7 +6,7 @@ angular.module('webdrilApp')
 
   return {
     getPage: getPage,
-    getLanguagesAndLevels :  getLanguagesAndLevels
+    loadFilterOptions :  loadFilterOptions
   };
 
   function getPage(params) {
@@ -17,7 +17,7 @@ angular.module('webdrilApp')
     });
   }
 
-  function getLanguagesAndLevels(){
+  function loadFilterOptions(){
     return $http({
       url: ENV.api+ '/filter',
       method: "GET"
