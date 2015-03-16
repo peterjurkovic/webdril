@@ -2,28 +2,24 @@
 
 
 angular.module('webdrilApp')
-  .controller('PublicBookCtrl', ['$scope','BookService', 'ENV',
-    function ($scope, BookService, ENV) {
+  .controller('PublicBookCtrl', ['$scope','BookService', '$location',
+    function ($scope, BookService, $location) {
 
+      $scope.isLoading = false;
       $scope.totalItems = 0;
       $scope.state = {
         orderBy : "date",
         orderType : 1,
-        currentPage : 1,
-        peerPage : ENV.itemsPeerPage
+        currentPage : 1
       };
 
-
-
       $scope.items = [];
+      BookService.loadFilterOptions().then(function (res) {
+        $scope.levels = res.data.levels;
+        $scope.languages = res.data.languages;
+        $scope.categories = res.data.categories;
+      });
 
-      function loadFilterOptions(){
-        BookService.loadFilterOptions().then(function (res) {
-          $scope.levels = res.data.levels;
-          $scope.languages = res.data.languages;
-          $scope.categories = res.data.categories;
-        });
-      }
 
       var renderBooks = function () {
         $scope.isLoading = true;
@@ -45,7 +41,11 @@ angular.module('webdrilApp')
         renderBooks();
       };
 
+      $scope.goToBook = function(id) {
+        console.log(id);
+        $location.path('/book/' + id);
+      };
+
     $scope.renderBooks = renderBooks;
-    loadFilterOptions();
     renderBooks();
 }]);

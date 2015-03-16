@@ -1,4 +1,4 @@
-<h2 class="">Shared textbooks</h2>
+<h2>Shared textbooks</h2>
 <div class="row text-center hidden-xs hidden-ms pj-filter-head"><span class="col-md-12">Filter</span></div>
 <form class="pj-filter">
   <div class="form-group">
@@ -53,14 +53,15 @@
   </div>
 </form>
 
-<pj-pagination ng-if="!isLoading"></pj-pagination>
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
   <span class="pj-loader">Loading...</span>
 </div>
 
 <div ng-hide="isLoading">
-  <table class="table table-striped pj-books">
+  <pj-pagination ng-if="!isLoading"></pj-pagination>
+
+  <table class="table table-striped pj-books" ng-if="items.length">
     <thead>
     <tr>
       <th pj-sort="name">Name</th>
@@ -71,7 +72,7 @@
     </tr>
     </thead>
     <tbody ng-show="!isLoading">
-    <tr ng-repeat="row in items">
+    <tr ng-repeat="row in items" ng-click="goToBook(row.id)">
       <td class="pj-book-name col-md-5">
         {{row.name}}</td>
       <td col-md-1>
@@ -96,4 +97,9 @@
     </tbody>
   </table>
   <pj-pagination ng-if="!isLoading"></pj-pagination>
+
+  <div ng-if="!items.length" class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-alert"></span>
+    No book found
+  </div>
 </div>

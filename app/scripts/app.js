@@ -19,7 +19,7 @@ angular
         controller: 'PublicBookCtrl'
       })
 
-      .when('/books/:bookId', {
+      .when('/book/:bookId', {
         templateUrl: 'views/public-lecture.html',
         controller: 'PublicLectureCtrl'
       })
