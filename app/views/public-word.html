@@ -3,11 +3,17 @@
 <div ng-if="isLoading" class="pj-loader-wrapp">
   <span class="pj-loader">Loading...</span>
 </div>
-<div ng-if="book" class="pj-book-">
+<div ng-if="book" class="pj-word-detail">
   <h2>
-    <span class="glyphicon glyphicon-book"></span>
-    &nbsp; {{book.name}}
+    <a ng-href="#/book/{{book.id}}" >
+      <span class="glyphicon glyphicon-book"></span>
+      &nbsp; {{book.name}}
+    </a>
   </h2>
+  <h3>
+    <span class="glyphicon glyphicon-menu-right"></span>
+    &nbsp; {{book.lecture.name}}
+  </h3>
 
   <div class="pj-meta">
     <div class="row">
@@ -30,7 +36,7 @@
 
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Added:</span>
-        <span class="pj-val">{{book.created_timestamp | drilDate}}</span>
+        <span class="pj-val">{{book.lecture.created_timestamp | drilDate}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Downloaded:</span>
@@ -42,7 +48,7 @@
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Number of words:</span>
-        <span class="pj-val">{{book.no_of_words}}</span>
+        <span class="pj-val">{{book.lecture.words.length}}</span>
       </div>
     </div>
 
@@ -58,33 +64,28 @@
 
   </div>
 
-  <h4>Lecutres ({{book.lectures.length}})</h4>
-
-  <table class="table table-striped pj-lectures">
-    <tbody ng-show="!isLoading">
-    <tr ng-repeat="lecture in book.lectures">
-      <td class="pj-lecture-name col-md-6" ng-click="goToLecture(lecture.id)">
-        <span class="glyphicon glyphicon-menu-right"></span>
-        {{lecture.name}}
+  <table class="table table-striped pj-words">
+    <thead>
+      <tr>
+        <th>Question in {{book.question_lang_name}}</th>
+        <th>Anser in {{book.answer_lang_name}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="word in book.lecture.words">
+      <td>
+        {{word.question}}
       </td>
-      <td class="pj-count col-md-3" ng-click="goToLecture(lecture.id)" >
-        {{lecture.no_of_words}} words
-      </td>
-      <td class="pj-added col-md-3" ng-click="goToLecture(lecture.id)">
-        {{lecture.created_timestamp | drilDate}} added
-      </td>
-      <td class="col-md-2 pj-options">
-            <span class="pj-coll-top">
-              Activate lecture
-            </span>
+      <td>
+        {{word.answer}}
       </td>
     </tr>
     </tbody>
   </table>
 
-  <div ng-if="!book.lectures.length" class="alert alert-warning" role="alert">
+  <div ng-if="!book.lecture.words.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
-    The textbook does not contain any lecture.
+    The lecture does not contain any word.
   </div>
 
 </div>

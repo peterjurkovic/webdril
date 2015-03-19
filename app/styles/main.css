@@ -14,6 +14,7 @@ body{
 .pagination{margin:10px 0;}
 .pagination a{cursor:pointer}
 
+.pj-content h2 a{color:#fff;}
 .pj-content h2,
 .pj-tags li{
   background-color:#5dae62 !important;
@@ -111,8 +112,11 @@ pj-pagination{text-align:center;}
 .pj-books{background:#fff;}
 .pj-books .pj-book-name{background:url(../images/book.png) no-repeat 8px center;padding:15px 0 15px 45px;font-size:16px;min-width:200px;}
 .pj-books .pj-loader{min-height:100px;padding:50px;}
-.pj-books tr:hover{background:#eee !important;cursor:pointer;}
+.pj-books tr:hover,
+.pj-lectures tr:hover,
+.pj-words tr:hover{background:#eee !important;cursor:pointer;}
 
+.pj-lectures .pj-options:hover{cursor:default}
 
 .pj-coll-top,
 .pj-coll-bottom{display:block;text-align:center;font-size:.9em;}
@@ -128,7 +132,21 @@ pj-pagination{text-align:center;}
 .pj-tags li{list-style:none;display:inline-block;padding:5px 10px;margin:5px;color:#fff;}
 .pj-tags li span{margin:3px 5px 0 0;}
 
-h4{background:#202829;color:#eee;padding:8px 20px;margin:20px 0}
+
+h4{padding:8px 20px;margin:20px 0}
+
+.pj-words{background:#fff;}
+.pj-words th{background:#202829 !important;color:#eee;}
+.pj-words th{padding:8px !important;}
+
+.pj-lectures{font-size:1.2em;background:#fff;}
+.pj-lectures td{vertical-align:middle !important;}
+.pj-lectures .pj-lecture-name{font-weight:bold; }
+.pj-lectures .pj-lecture-name span{padding:0 5px;}
+
+/* FOOTER */
+.footer p,
+.footer a{color: #fff;font-size:.9em;}
 
 @media (max-width: 992px) {
   .pj-content th {
@@ -136,8 +154,3 @@ h4{background:#202829;color:#eee;padding:8px 20px;margin:20px 0}
   }
   .pj-filter .col-md-3{margin:5px 0}
 }
-
-
-/* FOOTER */
-.footer p,
-.footer a{color: #fff;font-size:.9em;}

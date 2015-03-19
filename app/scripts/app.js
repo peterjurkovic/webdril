@@ -18,12 +18,14 @@ angular
         templateUrl: 'views/public-book.html',
         controller: 'PublicBookCtrl'
       })
-
       .when('/book/:bookId', {
         templateUrl: 'views/public-lecture.html',
         controller: 'PublicLectureCtrl'
       })
-
+      .when('/book/:bookId/lecture/:lectureId', {
+        templateUrl: 'views/public-word.html',
+        controller: 'PublicWordCtrl'
+      })
       .when('/words', {
         templateUrl: 'views/word.html',
         controller: 'WordCtrl'

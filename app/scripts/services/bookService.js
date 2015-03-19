@@ -7,7 +7,8 @@ angular.module('webdrilApp')
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
-    getBookLectures : getBookLectures
+    getBookLectures : getBookLectures,
+    getLecture : getLecture
   };
 
   ///////////////////////////////////////////////
@@ -25,8 +26,13 @@ angular.module('webdrilApp')
   }
 
 
-  function getBookLectures(id){
-    return $http.get(ENV.api+ '/book/' + id);
+  function getBookLectures(bookId){
+    return $http.get(ENV.api+ '/book/' + bookId);
+  }
+
+
+  function getLecture(bookId, lectureId){
+    return $http.get(ENV.api+ '/book/' + bookId +'/lecture/' + lectureId);
   }
 
 }]);
