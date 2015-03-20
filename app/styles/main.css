@@ -139,11 +139,15 @@ h4{padding:8px 20px;margin:20px 0}
 .pj-words th{background:#202829 !important;color:#eee;}
 .pj-words th{padding:8px !important;}
 
+h3.pj-lecture-name{background:#43A349;}
+
 .pj-lectures{font-size:1.2em;background:#fff;}
 .pj-lectures td{vertical-align:middle !important;}
 .pj-lectures .pj-lecture-name{font-weight:bold; }
 .pj-lectures .pj-lecture-name span{padding:0 5px;}
 
+h3.pj-lecture-name{font-size:1.4em;margin:-9px 4px 0 4px;padding:5px;color:#fff;}
+h3.pj-lecture-name span{margin:5px 0 0 50px;font-size:.8em;}
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}
