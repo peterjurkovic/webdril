@@ -1,9 +1,31 @@
-<form name="loginForm" ng-submit="login(credentials)" novalidate>
+<h1 class="text-center">Sign In</h1>
+<h6 class="text-center">Enter your login details</h6>
 
-  <label for="username">Username:</label>
-  <input type="text" id="username" ng-model="credentials.username">
+<form class="pj-login" name="loginForm" ng-submit="login(credentials)" novalidate>
+  <div ng-show="loginForm.$submitted && !loginForm.$valid"  class="alert alert-danger">
+    <span class="glyphicon glyphicon-remove"></span>
+    Please, fill all required fields.
+  </div>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input class="form-control"
+           type="text"
+           id="username"
+           ng-model="credentials.username"
+           ng-minlength="5"
+           required
+           ng-trim="true">
+  </div>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" ng-model="credentials.password">
-  <button type="submit">Login</button>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input class="form-control"
+           type="password"
+           id="password"
+           ng-model="credentials.password"
+           ng-minlength="5"
+           required
+           ng-trim="true">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
 </form>

@@ -4,9 +4,10 @@ angular.module('webdrilApp')
   .controller('PublicLectureCtrl', ['$scope','BookService', '$location', '$routeParams',
   function ($scope, BookService, $location, $routeParams) {
 
-    $scope.isLoading = false;
+    $scope.isLoading = true;
     $scope.book = null;
     BookService.getBookLectures($routeParams.bookId).then(function (res) {
+      $scope.isLoading = false;
       $scope.book = res.data;
     });
 

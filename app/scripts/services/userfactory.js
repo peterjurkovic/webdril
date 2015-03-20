@@ -6,8 +6,7 @@ angular.module('webdrilApp')
     function ($http, ENV, AuthTokenFactory, $q) {
 
     function login(credentials) {
-      return $http.post(ENV.api + '/user/login', credentials )
-               .then(function success(response) {
+      return $http.post(ENV.api + '/user/login', credentials ).then(function success(response) {
         AuthTokenFactory.setToken(response.data.token);
         return response;
       });

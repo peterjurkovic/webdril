@@ -10,8 +10,9 @@
 angular.module('webdrilApp')
   .controller('LoginCtrl', [ '$scope', 'UserFactory',
     function ($scope, UserFactory) {
-    $scope.user = null;
-    $scope.credentials = {
+      $scope.user = null;
+
+      $scope.credentials = {
       username: '',
       password: ''
     };

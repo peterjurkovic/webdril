@@ -6,7 +6,7 @@ angular
     'ngAnimate',
     'ngRoute'
   ])
-  .config(function ($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $httpProvider, ENV) {
     $httpProvider.interceptors.push('AuthInterceptor');
     $routeProvider
       .when('/', {
@@ -35,11 +35,14 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });
+    if(ENV.name === 'development'){
+      console.log('disabling default headers..');
+      $httpProvider.defaults.headers.common = {};
+      $httpProvider.defaults.headers.post = {};
+      $httpProvider.defaults.headers.put = {};
+      $httpProvider.defaults.headers.patch = {};
+    }
   });
