@@ -8,24 +8,42 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('LoginCtrl', [ '$scope', 'UserFactory',
-    function ($scope, UserFactory) {
-      $scope.user = null;
-
-      $scope.credentials = {
+  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope',
+    function ($scope, UserFactory, AUTH_EVENTS, $rootScope) {
+    $scope.user = null;
+    $scope.credentials = {
       username: '',
       password: ''
     };
 
-    $scope.login = function (credentials) {
-      console.log(credentials);
-      UserFactory.login(credentials).then(function success(response) {
-        $scope.user = response.data.user;
-      }, handleError);
+    $scope.login = function (isValid, credentials) {
+      $scope.badCredentials = false;
+      if(!isValid || $scope.isLoading){
+        return false;
+      }
+      showLoader();
 
-      function handleError(response) {
-        alert('Error: ' + response.data);
-      };
+      UserFactory.login(credentials).then(handleSuccess, handleError);
+
+      function handleSuccess(res){
+        $scope.user = res.data.user;
+        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+        hideLoader();
+      }
+
+      function handleError(){
+          $scope.badCredentials = true;
+          $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        hideLoader();
+      }
+
+      function showLoader(){
+        $scope.isLoading = true;
+      }
+
+      function hideLoader(){
+        $scope.isLoading = false;
+      }
 
       //AuthService.login(credentials).then(function (user) {
       //  $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

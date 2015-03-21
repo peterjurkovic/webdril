@@ -9,7 +9,9 @@ angular.module('webdrilApp')
     BookService.getBookLectures($routeParams.bookId).then(function (res) {
       $scope.isLoading = false;
       $scope.book = res.data;
-    });
+    }).error(function(data, status, headers, config) {
+
+    });;
 
 
     $scope.goToLecture = function(id) {
