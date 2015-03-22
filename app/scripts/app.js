@@ -45,4 +45,5 @@ angular
       $httpProvider.defaults.headers.put = {};
       $httpProvider.defaults.headers.patch = {};
     }
+
   });

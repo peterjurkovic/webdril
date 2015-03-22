@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['wiredep', 'ngconstant:development']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -439,6 +439,16 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });
+
+  grunt.registerTask('dev', [
+    'clean:server',
+    'ngconstant:development',
+    'wiredep',
+    'concurrent:server',
+    'autoprefixer:server',
+    'connect:livereload',
+    'watch'
+  ]);
 
   grunt.registerTask('test', [
     'clean:server',

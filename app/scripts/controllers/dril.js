@@ -5,7 +5,6 @@ angular.module('webdrilApp')
   .controller('DrilCtrl', ['$scope', 'DrilService',
     function ($scope, DrilService) {
 
-
       $scope.currentWord = DrilService.getNext();
       $scope.isAnswerShown = false;
       $scope.showAnswer = showAnswer;

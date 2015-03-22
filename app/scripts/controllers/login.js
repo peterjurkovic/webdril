@@ -24,7 +24,6 @@ angular.module('webdrilApp')
       showLoader();
 
       UserFactory.login(credentials).then(handleSuccess, handleError);
-
       function handleSuccess(res){
         $scope.user = res.data.user;
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

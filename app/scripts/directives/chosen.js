@@ -4,6 +4,7 @@
  * http://adityasharat.github.io/angular-chosen/
  */
 (function (angular) {
+  'use strict';
   var AngularChosen = angular.module('webdrilApp');
   AngularChosen.directive('chosen', ['$timeout', function ($timeout) {
     var EVENTS, scope, linker, watchCollection;

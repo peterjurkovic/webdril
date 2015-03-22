@@ -2,26 +2,26 @@
 
 
 angular.module('webdrilApp')
-  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', '$q',
-    function ($http, ENV, AuthTokenFactory, $q) {
+  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilService', 'DrilStorage',
+    function ($http, ENV, AuthTokenFactory, DrilService, DrilStorage) {
+
+      var userSessionKey = "loggedUser";
 
     function login(credentials) {
       return $http.post(ENV.api + '/user/login', credentials ).then(function success(response) {
         AuthTokenFactory.setToken(response.data.token);
+        DrilService.setActivatedWords(response.data.actiavtedWords);
+        DrilStorage.setItemInSession(userSessionKey, response.data.user);
         return response;
       });
     }
     function logout() {
-      AuthTokenFactory.setToken();
+      DrilStorage.clear();
     }
 
 
     function getUser() {
-      if (AuthTokenFactory.getToken()) {
-        return $http.get(API_URL + '/me');
-      } else {
-        return $q.reject({ data: 'client has no auth token' });
-      }
+      return DrilStorage.getItemFromSession(userSessionKey);
     }
 
     return {

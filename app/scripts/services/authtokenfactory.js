@@ -12,7 +12,7 @@ angular.module('webdrilApp')
 
     function setToken(token) {
       if (token) {
-        $log.info("Saving token into session storage: "+ token);
+        $log.info("Saving token into session storage: ");
         DrilStorage.setItemInSession(key, token);
       } else {
         $log.info("Removing token from session storage");
