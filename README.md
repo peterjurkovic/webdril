@@ -1,12 +1,11 @@
-# webdril
+# Web dril
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+This is AngularJS based application for managing and learning not only english vocabulary. 
 
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
+## Contribution
 
-Running `grunt test` will run the unit tests with karma.
+Any contribution is welcome
