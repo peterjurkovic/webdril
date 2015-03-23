@@ -15,4 +15,9 @@ describe('Service: AuthTokenFactory', function () {
     expect(!!AuthTokenFactory).toBe(true);
   });
 
+
+  it('should do something', function () {
+    expect(!!AuthTokenFactory).toBe(true);
+  });
+
 });

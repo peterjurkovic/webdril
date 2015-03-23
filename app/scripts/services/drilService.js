@@ -7,61 +7,45 @@ angular.module('webdrilApp')
 
 
     var storageKey = "activatedWords",
-        countOfActivatedWords = 0;
+        countOfWords = 0;
 
-
-    function getNext() {
-      console.log(arguments);
-      if(arguments.length){
-        var list = arguments[0];
-      }else{
-        list = getActivatedWords();
-      }
-
-      if(_.isEmpty(list)){
-        return null;
-      }
-      return getNextWord( list );
-    };
 
     function getNextWord( list ){
-      var nextWord =  _.min( list, function(o) {return o.lastView; });
-      if(typeof nextWord === 'number'){
-        $log.info('Next word is the first form collection.');
-        return list[0];
+      if(!list) {
+        list = loadWords();
       }
-      $log.info('Next word is [id='+nextWord.id+']');
-      return nextWord;
+      if(list.length){
+        var nextWord =  _.min( list, function(o) {return o.lastView; });
+        if(typeof nextWord === 'number'){
+          return list[0];
+        }
+        $log.info('Next word is [id='+nextWord.id+']');
+        return nextWord;
+      }
+      return null;
     };
 
-    function getCountOfActivated(){
-      return countOfActivatedWords;
+    function getCountOfWords(){
+      return countOfWords;
     }
 
 
-    function updateRating(list, word, rating){
-      for(var i = 0; i < list.length; i++){
-        if(list[i].id === word.id){
-          list[i].learned = list[i].lastRating === 1 && rating === 1;
-          list[i].viewed++;
-          list[i].lastViewed = _.now();
-          list[i].lastRating = rating;
-          if(list[i].learned){
-            updateStats();
-            removeLearnedWords( list );
-          }
-          $log.info('Updating word: ');
-          $log.info(list[i]);
-          persistChanges( list );
-          return false;
+    function rateWord(list, word, rating){
+      var index = _.findIndex(list, {'id' :word.id});
+      if(index !== -1){
+        list[index].learned = list[index].lastRating === 1 && rating === 1;
+        list[index].viewed++;
+        list[index].lastViewed = _.now();
+        list[index].lastRating = rating;
+        if(list[index].learned){
+          removeLearnedWords( list );
         }
+        $log.info('Updating word: ');
+        $log.info(list[index]);
+        saveList( list );
+      }else{
+        $log.error('Can not update rating. Word ['+word.id+'] was not found');
       }
-      $log.error('Can not update rating. Word ['+word.id+'] was not found');
-      return false;
-    };
-
-    function persistChanges( list ){
-      DrilStorage.setItem(storageKey, list);
     };
 
 
@@ -69,62 +53,49 @@ angular.module('webdrilApp')
       _.remove(list, function(word) { return word.learned; });
     }
 
-    function getStatistics(){
-      var stats = DrilStorage.getItemFromSession("stats");
-      if(stats === null){
-        stats = {
-          count : 0
-        };
-      }
-      return stats;
-    }
 
-    function updateStats(){
-      var stats = getStatistics();
-      stats.count++;
-      DrilStorage.setItemInSession("stats", stats);
-    }
-
-    function rateAndGetNext(word, rating){
-      var list = getActivatedWords();
-      updateRating(list, word, rating);
-      persistChanges();
-      return getNext( list );
+    function rateAndGetNextWord(word, rating){
+      var list = loadWords();
+      rateWord(list, word, rating);
+      return getNextWord( list );
     };
 
-    function removeAllActivatedWords(){
+    function clearWords(){
       DrilStorage.removeItem(storageKey);
-      persistChanges();
     }
 
 
-    function setActivatedWords(list){
+    function saveList(list){
       DrilStorage.setItem(storageKey, list );
     }
 
-    function getActivatedWords(){
+    function loadWords(){
       $log.info('Loading activated words from storage.');
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
-        list = [
-          { id : 1, question: 'question', answer : ' answer', viewed : 0, lastView : 1424210734010, lastRating : null, langQuestion: 'en', langAnswer: 'sk', learned : false },
-          { id : 12, question: 'question12', answer : ' answer12', viewed : 5, lastView : 1424210734960, lastRating : null, learned : false }
-        ]
+        if(list === null){
+          list = [
+            { id : 1, question: 'question', answer : ' answer', viewed : 0, lastView : 1424210734010, lastRating : null, langQuestion: 'en', langAnswer: 'sk', learned : false },
+            { id : 2, question: 'question 2', answer : ' answer 3', viewed : 0, lastView : 1424210734012, lastRating : null, langQuestion: 'en', langAnswer: 'sk', learned : false },
+            { id : 12, question: 'question12', answer : ' answer12', viewed : 5, lastView : 1424210734960, lastRating : null, learned : false }
+          ]
+        }
       }
-      countOfActivatedWords = list.length;
-      $log.info('Loaded activated words: ' + countOfActivatedWords);
+      countOfWords = list.length;
+      $log.info('Loaded activated words: ' + countOfWords);
       return list;
     }
 
-
+    function getStatistics(){
+      return {};
+    }
 
     return {
-      removeAllActivatedWords: removeAllActivatedWords,
-      setActivatedWords: setActivatedWords,
-      getCountOfActivated : getCountOfActivated,
-      getStatistics : getStatistics,
-      rateAndGetNext : rateAndGetNext,
-      getNext : getNext,
-      init : getActivatedWords
+      saveList : saveList,
+      clearWords: clearWords,
+      getNextWord : getNextWord,
+      rateAndGetNext : rateAndGetNextWord,
+      getCountOfWords : getCountOfWords,
+      getStatistics : getStatistics
     };
   }]);

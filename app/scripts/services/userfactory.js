@@ -10,7 +10,7 @@ angular.module('webdrilApp')
     function login(credentials) {
       return $http.post(ENV.api + '/user/login', credentials ).then(function success(response) {
         AuthTokenFactory.setToken(response.data.token);
-        DrilService.setActivatedWords(response.data.actiavtedWords);
+        DrilService.saveList(response.data.actiavtedWords);
         DrilStorage.setItemInSession(userSessionKey, response.data.user);
         return response;
       });

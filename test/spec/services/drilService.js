@@ -7,54 +7,11 @@ describe('Factory DrilService', function () {
 
   // instantiate service
   var drilService;
-  beforeEach(inject(function (_DrilService_, _DrilStorage_) {
+
+  beforeEach(inject(function (_DrilService_) {
     drilService = _DrilService_;
-    _DrilStorage_.clear();
   }));
 
-  it('should be defined', function () {
-    expect(drilService).toBeDefined();
-  });
-
-
-  it('should be return 1 ', function () {
-    var word = drilService.getNext();
-    expect(word).toBeDefined();
-    expect(word).not.toBeNull();
-    expect(word.id).toBe(1);
-  });
-
-
-  it('should be next word', function () {
-    var word = drilService.getNext();
-    expect(word.id).toBe(1);
-    var nextWord = drilService.rateAndGetNext(word, 1);
-    expect(nextWord.id).toBe(2);
-    nextWord = drilService.rateAndGetNext(nextWord, 1);
-    expect(nextWord.id).toBe(3);
-  });
-
-
-
-  it('should be learned', function () {
-    expect(drilService.getStatistics().count).toBe(0);
-    var word = drilService.getNext();
-    expect(drilService.getStatistics().count).toBe(0);
-    drilService.rateAndGetNext(word, 1);
-    expect(drilService.getStatistics().count).toBe(0);
-    drilService.rateAndGetNext(word, 1);
-    expect(drilService.getStatistics().count).toBe(1);
-  });
-
-  it('should be deactivated', function () {
-    var beforeCount = drilService.getCountOfActivated();
-    var word = drilService.getNext();
-    expect(drilService.getStatistics().count).toBe(0);
-    drilService.rateAndGetNext(word, 1);
-    expect(drilService.getStatistics().count).toBe(0);
-    drilService.rateAndGetNext(word, 1);
-    expect(drilService.getCountOfActivated()).toBe( beforeCount - 1 );
-  });
 
 
 
