@@ -40,10 +40,8 @@ angular
       });
     if(ENV.name === 'development'){
       console.log('disabling default headers..');
-      $httpProvider.defaults.headers.common = {};
-      $httpProvider.defaults.headers.post = {};
-      $httpProvider.defaults.headers.put = {};
-      $httpProvider.defaults.headers.patch = {};
+      //console.log($httpProvider);
+      //$httpProvider.defaults.withCredentials = true;
     }
 
   });

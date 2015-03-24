@@ -9,7 +9,7 @@ angular.module('webdrilApp')
       var token = AuthTokenFactory.getToken();
       if (token) {
         config.headers = config.headers || {};
-        config.headers.Authorization = 'Bearer ' + token;
+        config.headers.Token = 'Bearer ' + token;
       }
       return config;
     }

@@ -7,7 +7,28 @@ angular.module('webdrilApp')
 
 
     var storageKey = "activatedWords",
-        countOfWords = 0;
+        countOfWords = 0,
+        strategy = {
+
+          selectLatest : function (list){
+              var now = _.now(),
+                  index = -1;
+              for(var i = 0; list.length; i++){
+                if(list[i].lastViewed === null){
+                  return list[i]
+                }
+                if(now > list[i].lastViewed ){
+                  now = list[i].lastViewed;
+                  index = i;
+                }
+              }
+              if(index !== -1){
+                return list[index];
+              }
+             $log.warn("Something is wrong..");
+          }
+
+        }
 
 
     function getNextWord( list ){
@@ -15,10 +36,7 @@ angular.module('webdrilApp')
         list = loadWords();
       }
       if(list.length){
-        var nextWord =  _.min( list, function(o) {return o.lastView; });
-        if(typeof nextWord === 'number'){
-          return list[0];
-        }
+        var nextWord =  strategy.selectLatest( list );
         $log.info('Next word is [id='+nextWord.id+']');
         return nextWord;
       }
@@ -49,8 +67,8 @@ angular.module('webdrilApp')
     };
 
 
-    function removeLearnedWords(list ){
-      _.remove(list, function(word) { return word.learned; });
+    function removeLearnedWords(list , index ){
+        list.splice(index, 1);
     }
 
 
@@ -66,6 +84,7 @@ angular.module('webdrilApp')
 
 
     function saveList(list){
+      $log.info('Saving list: ' + list.length);
       DrilStorage.setItem(storageKey, list );
     }
 
