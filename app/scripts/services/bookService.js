@@ -8,10 +8,19 @@ angular.module('webdrilApp')
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
     getBookLectures : getBookLectures,
-    getLecture : getLecture
+    getLecture : getLecture,
+    getUserBookPage : getUserBookPage
   };
 
   ///////////////////////////////////////////////
+
+  function getUserBookPage(params) {
+      return $http({
+        url: ENV.api+ '/user/books',
+        method: "GET",
+        params : params
+      });
+  }
 
   function getPage(params) {
     return $http({

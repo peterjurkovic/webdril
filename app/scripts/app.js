@@ -6,14 +6,13 @@ angular
     'ngAnimate',
     'ngRoute'
   ])
-  .config(function ($routeProvider, $httpProvider, ENV) {
+  .config(function ($routeProvider, $httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',
         controller: 'DrilCtrl'
       })
-
       .when('/books', {
         templateUrl: 'views/public-book.html',
         controller: 'PublicBookCtrl'
@@ -35,13 +34,15 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+
+      // auth
+      .when('/manage/books', {
+        templateUrl: 'views/user-books.html',
+        controller: 'UserBookCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
-    if(ENV.name === 'development'){
-      console.log('disabling default headers..');
-      //console.log($httpProvider);
-      //$httpProvider.defaults.withCredentials = true;
-    }
 
   });

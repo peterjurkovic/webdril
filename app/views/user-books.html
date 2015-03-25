@@ -1,0 +1,59 @@
+<h2>textbooks</h2>
+
+
+
+<div ng-if="isLoading" class="pj-loader-wrapp">
+  <span class="pj-loader">Loading...</span>
+</div>
+
+<div ng-hide="isLoading">
+  <pj-pagination ng-if="!isLoading"></pj-pagination>
+
+  <table class="table table-striped pj-books" ng-if="items.length">
+    <thead>
+    <tr>
+      <th pj-sort="name">Name</th>
+      <th pj-sort="lang">Languages</th>
+      <th pj-sort="level">Level</th>
+      <th pj-sort="date">Added</th>
+      <th pj-sort="author">Content</th>
+      <th>Manage</th>
+    </tr>
+    </thead>
+    <tbody ng-show="!isLoading">
+    <tr ng-repeat="row in items" ng-click="goToBook(row.id)">
+      <td class="pj-book-name col-md-5">
+        {{row.name}}</td>
+      <td class="col-md-1">
+        <span class="pj-coll-top">
+          {{row.question_lang_name}}
+        </span>
+        <span class="pj-coll-bottom">
+          {{row.answer_lang_name}}
+        </span>
+      </td>
+      <td class="pj-level col-md-2" >{{row.level_name}}</td>
+      <td class="col-md-2">{{row.created_timestamp | drilDate}} by {{row.login}}</td>
+      <td class="col-md-2">
+        <span class="pj-coll-top">
+         {{row.no_of_words}} words
+        </span>
+        <span class="pj-coll-bottom">
+          {{row.no_of_lectures}} lecture
+        </span>
+      </td>
+      <td class="text-center">
+        <button class="btn">
+          <span class="glyphicon glyphicon-cog"></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <pj-pagination ng-if="!isLoading"></pj-pagination>
+
+  <div ng-if="!items.length" class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-alert"></span>
+    No book found
+  </div>
+</div>

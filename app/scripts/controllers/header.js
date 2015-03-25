@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('HeaderCtrl', ['$scope', '$location', 'AUTH_EVENTS', 'UserFactory',
-    function ($scope, $location, AUTH_EVENTS, UserFactory) {
+  .controller('HeaderCtrl', ['$scope', '$location', 'AUTH_EVENTS', 'UserFactory', '$rootScope',
+    function ($scope, $location, AUTH_EVENTS, UserFactory, $rootScope) {
 
-    $scope.loggedIn = UserFactory.getUser() !== null;
+    $rootScope.user = UserFactory.getUser();
 
     $scope.isActive = function (url) {
       return url === $location.path();
@@ -12,11 +12,12 @@ angular.module('webdrilApp')
 
     $scope.logout = function () {
       UserFactory.logout();
-      $scope.loggedIn = false;
+      $scope.user = false;
+      $location.path('/login');1
     };
 
     $scope.$on(AUTH_EVENTS.loginSuccess, function(){
-      $scope.loggedIn = true;
+      $rootScope.user = UserFactory.getUser();
     });
 
 

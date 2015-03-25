@@ -8,8 +8,8 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope',
-    function ($scope, UserFactory, AUTH_EVENTS, $rootScope) {
+  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location',
+    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location) {
     $scope.user = null;
     $scope.credentials = {
       username: '',
@@ -27,7 +27,7 @@ angular.module('webdrilApp')
       function handleSuccess(res){
         $scope.user = res.data.user;
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-        hideLoader();
+        $location.path('/manage/books');
       }
 
       function handleError(){
