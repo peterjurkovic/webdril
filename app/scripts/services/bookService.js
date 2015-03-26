@@ -9,7 +9,8 @@ angular.module('webdrilApp')
     loadFilterOptions :  loadFilterOptions,
     getBookLectures : getBookLectures,
     getLecture : getLecture,
-    getUserBookPage : getUserBookPage
+    getUserBookPage : getUserBookPage,
+    updateBook : updateBook
   };
 
   ///////////////////////////////////////////////
@@ -42,6 +43,10 @@ angular.module('webdrilApp')
 
   function getLecture(bookId, lectureId){
     return $http.get(ENV.api+ '/book/' + bookId +'/lecture/' + lectureId);
+  }
+
+  function updateBook(book){
+    return $http.put(ENV.api+ '/book/' + book.id  , book);
   }
 
 }]);

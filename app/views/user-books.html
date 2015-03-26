@@ -1,4 +1,4 @@
-<h2>textbooks</h2>
+<h2>{{user.firstName}} {{user.lastName}}'s textbooks</h2>
 
 
 
@@ -17,32 +17,37 @@
       <th pj-sort="level">Level</th>
       <th pj-sort="date">Added</th>
       <th pj-sort="author">Content</th>
-      <th>Manage</th>
+      <th class="text-center">Shared</th>
+      <th class="text-center">Manage</th>
     </tr>
     </thead>
     <tbody ng-show="!isLoading">
-    <tr ng-repeat="row in items" ng-click="goToBook(row.id)">
-      <td class="pj-book-name col-md-5">
-        {{row.name}}</td>
-      <td class="col-md-1">
+    <tr ng-repeat="book in items">
+      <td class="pj-book-name col-md-5" ng-click="goToBook(book.id)">
+        {{book.name}}</td>
+      <td class="col-md-1" ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
-          {{row.question_lang_name}}
+          {{book.question_lang_name}}
         </span>
         <span class="pj-coll-bottom">
-          {{row.answer_lang_name}}
+          {{book.answer_lang_name}}
         </span>
       </td>
-      <td class="pj-level col-md-2" >{{row.level_name}}</td>
-      <td class="col-md-2">{{row.created_timestamp | drilDate}} by {{row.login}}</td>
-      <td class="col-md-2">
+      <td class="pj-level col-md-2" ng-click="goToBook(book.id)" >{{book.level_name}}</td>
+      <td class="col-md-2 text-center">{{book.created_timestamp | drilDate}}</td>
+      <td class="col-md-2" ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
-         {{row.no_of_words}} words
+         {{book.no_of_words}} words
         </span>
         <span class="pj-coll-bottom">
-          {{row.no_of_lectures}} lecture
+          {{book.no_of_lectures}} lecture
         </span>
       </td>
-      <td class="text-center">
+      <td class="pj-is-shared text-center" ng-click="toggleActivation( book )">
+        <span ng-if="book.is_shared" class="glyphicon glyphicon-ok-sign" title="The other people can see this book"></span>
+        <span ng-if="!book.is_shared" class="glyphicon glyphicon-remove-sign" title="Only you have access to this book"></span>
+      </td>
+      <td class="text-center" ng-click="goToBook(book.id)">
         <button class="btn">
           <span class="glyphicon glyphicon-cog"></span>
         </button>

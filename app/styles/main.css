@@ -153,6 +153,10 @@ h3.pj-lecture-name span{margin:5px 0 0 50px;font-size:.8em;}
 .pj-login{max-width:400px;margin:auto;background:#fafafa;padding:40px;margin-bottom:40px;}
 .pj-login .btn{font-size:1.3em;font-weight:bold;padding:8px 20px;}
 
+.pj-is-shared{font-size: 1.4em;vertical-align:middle;}
+.pj-is-shared .glyphicon-ok-sign{color:#43A349}
+
+
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}
