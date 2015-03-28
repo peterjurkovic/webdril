@@ -140,8 +140,15 @@ h4{padding:8px 20px;margin:20px 0}
 h4{background:#202829 !important;color:#eee;}
 .pj-words th{padding:8px !important;}
 
-h3.pj-lecture-name{background:#43A349;}
-h2 .pj-edit{float:right;background:red;padding:5px 15px;margin-top:-5px;margin-right:-10px;}
+h2 .pj-edit,
+h3.pj-lecture-name{background:#00695c;}
+h2 .pj-edit{float:right;padding:6px 15px;margin-top:-7px;margin-right:-10px;font-size: .8em;}
+h2.pj-form{padding: 10px 5px}
+h2.pj-form *{margin:0}
+h2.pj-form input{margin-top: 2px;opacity: .9 }
+h2.pj-form .pj-nav{text-align: right}
+h2.pj-form .pj-nav button{margin:-5px 0px 0px 8px;padding: 8px 15px;font-size: .8em;background: blue}
+
 
 .pj-lectures{font-size:1.2em;background:#fff;}
 .pj-lectures td{vertical-align:middle !important;}
@@ -157,7 +164,7 @@ h3.pj-lecture-name span{margin:5px 0 0 50px;font-size:.8em;}
 .pj-is-shared{font-size: 1.4em;vertical-align:middle;}
 .pj-is-shared .glyphicon-ok-sign{color:#43A349}
 
-
+.no-radius{border-radius: 0 !important;}
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}

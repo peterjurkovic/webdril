@@ -5,20 +5,40 @@ angular.module('webdrilApp')
     function ($scope, BookService, $location, $routeParams) {
 
       $scope.isLoading = true;
-      $scope.book = null;
-      $scope.isEditing = false;
+      $scope.book = false;
+      $scope.editBook = false;
 
-      BookService.getBookLectures($routeParams.bookId).then(function (res) {
-        $scope.isLoading = false;
-        $scope.book = res.data;
-      });
+      $scope.onEditBook = onEditBook;
+      $scope.cancelEditing = cancelEditing;
+      $scope.goToLecture = goToLecture;
 
-      $scope.editBook = function(){
-        $scope.isEditing = true;
+      loadLectures();
+
+      // ---------------------------------------------------------
+
+      function goToLecture(id){
+        $location.path('/manage/book/' + $scope.book.id + '/lecture/' + id);
+      }
+
+      function onEditBook(){
+        BookService.loadFilterOptions().then(function (res) {
+          $scope.levels = res.data.levels;
+          $scope.languages = res.data.languages;
+          $scope.categories = res.data.categories;
+        });
+        $scope.editBook = angular.copy($scope.book);
+      }
+
+      function cancelEditing(){
+        $scope.editBook = false;
       }
 
 
-      $scope.goToLecture = function(id) {
-        $location.path('/manage/book/' + $scope.book.id + '/lecture/' + id);
-      };
+      function loadLectures(){
+        BookService.getBookLectures($routeParams.bookId).then(function (res) {
+          $scope.isLoading = false;
+          $scope.book = res.data;
+        });
+      }
+
     }]);

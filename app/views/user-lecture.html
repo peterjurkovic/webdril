@@ -4,25 +4,63 @@
   <span class="pj-loader">Loading...</span>
 </div>
 <div ng-if="book" class="pj-book-detail">
-  <h2>
+  <h2 ng-if="!editBook" >
     <span class="glyphicon glyphicon-book"></span>
     &nbsp;
     <a href="#/manage/books">
      {{book.name}}
     </a>
-
-    <button class="pj-edit btn glyphicon glyphicon-pencil"
-            ng-click="editBook()" ></button>
-
+    <button class="pj-edit btn glyphicon glyphicon-pencil no-radius" ng-click="onEditBook()" ></button>
+  </h2>
+  <h2 ng-if="editBook" class="pj-form">
+    <span class="row">
+        <span class="col-md-8 col-sm-9 col-xs-7">
+        <input type="text" ng-model="editBook.name" class="form-control no-radius" />
+      </span>
+      <span class="col-md-4 col-sm-3 col-xs-5 pj-nav">
+        <button title="Cancel"
+                class="btn no-radius glyphicon glyphicon-remove"
+                ng-click="cancelEditing()"></button>
+        <button title="Save" class="btn no-radius glyphicon glyphicon-floppy-disk"></button>
+      </span>
+    </span>
   </h2>
 
-  <div class="pj-meta" ng-if="isEditing">
-    <div>
-      editing
+  <div class="pj-meta" ng-if="!!editBook">
+    <div class="col-md-3 col-sm-4 col-xs-6">
+      <label>Language of question</label>
+      <select chosen
+              ng-model="editBook.question_lang_id"
+              ng-options="language.id as language.name for language in languages">
+      </select>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-6">
+      <label>Language of answer</label>
+      <select chosen
+              ng-model="editBook.answer_lang_id"
+              ng-options="language.id as language.name for language in languages">
+      </select>
+    </div>
+
+    <div class="col-md-3 col-sm-4 col-xs-6">
+      <label>Level</label>
+      <select chosen
+              ng-model="editBook.level_id"
+              ng-options="level.id as level.name for level in levels" >
+      </select>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-6">
+      <label>Category</label>
+      <select chosen
+              ng-model="editBook.dril_category_id">
+        <optgroup ng-repeat="category in categories" label="{{category.name}}">
+          <option ng-repeat='subCategory in category.subCategories' value="{{subCategory.id}}">{{subCategory.name}}</option>
+        </optgroup>
+      </select>
     </div>
 
   </div>
-  <div class="pj-meta" ng-if="!isEditing">
+  <div class="pj-meta" ng-if="!editBook">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Language:</span>
