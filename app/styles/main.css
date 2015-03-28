@@ -141,6 +141,7 @@ h4{background:#202829 !important;color:#eee;}
 .pj-words th{padding:8px !important;}
 
 h3.pj-lecture-name{background:#43A349;}
+h2 .pj-edit{float:right;background:red;padding:5px 15px;margin-top:-5px;margin-right:-10px;}
 
 .pj-lectures{font-size:1.2em;background:#fff;}
 .pj-lectures td{vertical-align:middle !important;}

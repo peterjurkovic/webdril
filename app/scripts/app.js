@@ -40,6 +40,10 @@ angular
         templateUrl: 'views/user-books.html',
         controller: 'UserBookCtrl'
       })
+      .when('/manage/book/:bookId', {
+        templateUrl: 'views/user-lecture.html',
+        controller: 'UserLectureCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'

@@ -34,15 +34,17 @@ angular.module('webdrilApp')
       };
 
       $scope.goToBook = function(id) {
-        console.log(id);
-        $location.path('/book/' + id);
+        $location.path('/manage/book/' + id);
       };
 
+      $scope.changeFilter = function() {
+        $scope.state.currentPage = 1;
+        renderBooks();
+      };
 
       $scope.toggleActivation = function( book ){
         var bookToUpdate = angular.copy( book );
-          bookToUpdate.is_shared =  !book.is_shared;
-        console.log('Changing book actiovation to: ' + bookToUpdate.is_shared);
+            bookToUpdate.is_shared =  !book.is_shared;
         BookService.updateBook(bookToUpdate).then(function(){
             book.is_shared = bookToUpdate.is_shared;
         });
