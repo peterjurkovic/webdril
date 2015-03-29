@@ -175,9 +175,14 @@ h3.pj-lecture-name span{margin:5px 0 0 50px;font-size:.8em;}
 
 .no-radius,
 .pj-btn{border-radius: 0 !important;}
+
+
+.pj-lecture-form{background-color: #f5f5f5;margin-top: 15px;padding:20px;border-top:4px solid #ddd;}
+
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}
+
 
 @media (max-width: 992px) {
   .pj-content th {

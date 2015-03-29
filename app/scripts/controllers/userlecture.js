@@ -13,6 +13,8 @@ angular.module('webdrilApp')
       $scope.cancelEditing = cancelEditing;
       $scope.goToLecture = goToLecture;
       $scope.saveBook = saveBook;
+      $scope.showLectureForm = showLectureForm;
+      $scope.saveLecture = saveLecture;
 
       loadLectures();
 
@@ -41,9 +43,11 @@ angular.module('webdrilApp')
           function(response){
             $scope.book = response.data;
             $scope.editBook = false;
-        }, function(){
-            console.log(arguments);
-            $scope.errors = 'An error  has occured';
+            $scope.errors = false;
+        }, function(response){
+            if(response.status === 400){
+              $scope.errors = response.data.error.message;
+            }
         });
 
       }
@@ -53,6 +57,21 @@ angular.module('webdrilApp')
           $scope.isLoading = false;
           $scope.book = res.data;
         });
+      }
+
+      function showLectureForm(){
+        $scope.lecture = {
+          name : "",
+          dril_book_id : $scope.book.id
+        };
+      }
+
+      function saveLecture(lecture){
+        BookService.createLecture(lecture).then(function(res){
+            $scope.book.lectures.push(res.data);
+            $scope.lecture = null;
+          }
+        );
       }
 
     }]);

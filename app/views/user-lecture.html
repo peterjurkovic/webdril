@@ -29,6 +29,7 @@
   </h2>
 
   <div class="alert alert-danger" role="alert" ng-if="errors">
+    <span class="glyphicon glyphicon-remove"></span>
     {{errors}}
   </div>
 
@@ -66,11 +67,13 @@
     </div>
     <div class="row ">
       <div class="col-md-12 col-sm-12 col-xs-12 margin-20">
-      <textarea
+        <h3>Description</h3>
+       <textarea
           class="form-control"
           ng-model="editBook.description"
           placeholder="Write description..."></textarea>
       </div>
+
     </div>
 
 
@@ -142,7 +145,7 @@
         {{lecture.no_of_words}} words
       </td>
       <td class="pj-added col-md-3" ng-click="goToLecture(lecture.id)">
-        {{lecture.created_timestamp | drilDate}} added
+        {{lecture.created_timestamp | drilDate}}
       </td>
       <td class="col-md-2 pj-options">
             <span class="pj-coll-top">
@@ -158,5 +161,37 @@
     The textbook does not contain any lecture.
   </div>
 
+      <div class="row margin-20 no-radius" >
+        <button class="btn btn-warning" ng-click="showLectureForm()" ng-if="!lecture">
+          <span class="glyphicon glyphicon-plus"></span>
+          Add lecture
+        </button>
+      <div>
+      <form ng-submit="saveLecture(lecture)" class="pj-lecture-form" ng-if="lecture" name="lectureForm" novalidate>
+            <div class="alert alert-danger" ng-show="lectureForm.$submitted && !lectureForm.$valid">
+              <span class="glyphicon glyphicon-remove"></span>
+                Name of the lecture is required.
+            </div>
+         <div class="row">
+           <div class="col-md-9 col-sm-9 col-xs-9">
+             <input
+               type="text"
+               ng-model="lecture.name"
+               class="form-control"
+               min="1"
+               required=""
+               placeholder="Write name of the lecture..."
+               max="150" />
+           </div>
+           <div class="col-md-3 col-sm-3 col-xs-3">
+             <button class="btn btn-warning" type="submit">
+               <span class="glyphicon glyphicon-floppy-disk"></span>
+               &nbsp; Save</button>
+           </div>
+         </div>
+
+      </form>
+    </div>
+  </div>
 </div>
 
