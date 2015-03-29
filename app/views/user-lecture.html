@@ -10,7 +10,7 @@
     <a href="#/manage/books">
      {{book.name}}
     </a>
-    <button class="pj-edit btn glyphicon glyphicon-pencil no-radius" ng-click="onEditBook()" ></button>
+    <button title="Edit this book" class="pj-btn btn glyphicon glyphicon-pencil" ng-click="onEditBook()" ></button>
   </h2>
   <h2 ng-if="editBook" class="pj-form">
     <span class="row">
@@ -18,13 +18,19 @@
         <input type="text" ng-model="editBook.name" class="form-control no-radius" />
       </span>
       <span class="col-md-4 col-sm-3 col-xs-5 pj-nav">
+        <button title="Save"
+                ng-click="saveBook()"
+                class="btn glyphicon glyphicon-floppy-disk pj-btn"></button>
         <button title="Cancel"
                 class="btn no-radius glyphicon glyphicon-remove"
                 ng-click="cancelEditing()"></button>
-        <button title="Save" class="btn no-radius glyphicon glyphicon-floppy-disk"></button>
       </span>
     </span>
   </h2>
+
+  <div class="alert alert-danger" role="alert" ng-if="errors">
+    {{errors}}
+  </div>
 
   <div class="pj-meta" ng-if="!!editBook">
     <div class="col-md-3 col-sm-4 col-xs-6">
@@ -58,6 +64,15 @@
         </optgroup>
       </select>
     </div>
+    <div class="row ">
+      <div class="col-md-12 col-sm-12 col-xs-12 margin-20">
+      <textarea
+          class="form-control"
+          ng-model="editBook.description"
+          placeholder="Write description..."></textarea>
+      </div>
+    </div>
+
 
   </div>
   <div class="pj-meta" ng-if="!editBook">
@@ -95,6 +110,11 @@
         <span class="pj-key">Number of words:</span>
         <span class="pj-val">{{book.no_of_words}}</span>
       </div>
+    </div>
+
+    <div class="row align-center" ng-if="book.description">
+      <h3>Description</h3>
+        {{book.description}}
     </div>
 
     <div class="row " ng-if="book.tags.length">

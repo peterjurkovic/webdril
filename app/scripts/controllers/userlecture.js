@@ -7,10 +7,12 @@ angular.module('webdrilApp')
       $scope.isLoading = true;
       $scope.book = false;
       $scope.editBook = false;
+      $scope.errors = false;
 
       $scope.onEditBook = onEditBook;
       $scope.cancelEditing = cancelEditing;
       $scope.goToLecture = goToLecture;
+      $scope.saveBook = saveBook;
 
       loadLectures();
 
@@ -31,8 +33,20 @@ angular.module('webdrilApp')
 
       function cancelEditing(){
         $scope.editBook = false;
+        $scope.errors = false;
       }
 
+      function saveBook(){
+        BookService.updateBook($scope.editBook).then(
+          function(response){
+            $scope.book = response.data;
+            $scope.editBook = false;
+        }, function(){
+            console.log(arguments);
+            $scope.errors = 'An error  has occured';
+        });
+
+      }
 
       function loadLectures(){
         BookService.getBookLectures($routeParams.bookId).then(function (res) {
