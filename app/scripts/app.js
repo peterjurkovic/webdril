@@ -44,9 +44,7 @@ angular
         templateUrl: 'views/user-lecture.html',
         controller: 'UserLectureCtrl'
       })
-
       .otherwise({
         redirectTo: '/'
       });
-
   });

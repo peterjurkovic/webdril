@@ -141,22 +141,20 @@ h4{padding:8px 20px;margin:20px 0}
 .pj-words th,
 h4{background:#202829 !important;color:#eee;}
 
-.pj-btn{background-color:#FF5722;color: #fff}
-.pj-btn:hover{background-color: #e64a19;color: #fff}
+.btn-warning{background-color: #353E45;border-color:#353E45 }
 
 .pj-words th{padding:8px !important;}
 
 h3.pj-lecture-name,
 h2 .glyphicon-remove{background:#37943D;color: #fff}
 
-h2 .glyphicon-remove:hover{background:#2A8530;color: #fff}
+h2 .glyphicon-remove:hover{background:#B1000D;color: #fff}
 
-h2 button{float:right; padding:8px 15px !important;margin-top:-7px;margin-right:-10px;font-size: .7em;}
+h2 button{float:right; padding:8px 15px !important;margin:-7px 0px 0px 12px !important;font-size: .7em;}
 h2.pj-form{padding: 10px 5px}
 h2.pj-form *{margin:0}
 h2.pj-form input{margin-top: 2px;color:#000;}
 h2.pj-form .pj-nav{text-align: right}
-h2.pj-form .pj-nav button{margin:-5px 0px 0px 12px;padding:10px 15px !important;}
 
 
 .pj-lectures{font-size:1.2em;background:#fff;}

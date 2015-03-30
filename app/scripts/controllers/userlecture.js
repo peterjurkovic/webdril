@@ -10,15 +10,31 @@ angular.module('webdrilApp')
       $scope.errors = false;
 
       $scope.onEditBook = onEditBook;
+      $scope.onRemoveBook = onRemoveBook;
       $scope.cancelEditing = cancelEditing;
       $scope.goToLecture = goToLecture;
       $scope.saveBook = saveBook;
       $scope.showLectureForm = showLectureForm;
+      $scope.hideLectureForm = hideLectureForm;
       $scope.saveLecture = saveLecture;
 
       loadLectures();
 
       // ---------------------------------------------------------
+
+      function onRemoveBook(){
+          BookService.removeBook($scope.book).then(
+            function(res){
+              console.log('book deleted');
+              $location.path('/manage/books');
+            },
+            function(res){
+
+            }
+          )
+
+      }
+
 
       function goToLecture(id){
         $location.path('/manage/book/' + $scope.book.id + '/lecture/' + id);
@@ -64,13 +80,23 @@ angular.module('webdrilApp')
           name : "",
           dril_book_id : $scope.book.id
         };
+        $scope.lectureErrors = false;
+      }
+
+      function hideLectureForm(){
+        $scope.lecture = null;
       }
 
       function saveLecture(lecture){
-        BookService.createLecture(lecture).then(function(res){
+        BookService.createLecture(lecture).then(
+          function(res){
             $scope.book.lectures.push(res.data);
             $scope.lecture = null;
+          },
+          function(res){
+            $scope.lectureErrors = res.data.error.message;
           }
+
         );
       }
 

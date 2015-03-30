@@ -11,6 +11,7 @@ angular.module('webdrilApp')
     getLecture : getLecture,
     getUserBookPage : getUserBookPage,
     updateBook : updateBook,
+    removeBook : removeBook,
     updateLecture : updateLecture,
     createLecture : createLecture
   };
@@ -58,6 +59,9 @@ angular.module('webdrilApp')
     return $http.post(ENV.api+ '/lectures'  , lecture);
   }
 
+  function removeBook(book){
+    return $http.delete(ENV.api+ '/book/' + book.id );
+  }
 
 
 }]);
