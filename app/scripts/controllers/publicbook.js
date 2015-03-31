@@ -2,7 +2,7 @@
 
 
 angular.module('webdrilApp')
-  .controller('PublicBookCtrl', ['$scope','BookService', '$location',
+  .controller('BookCtrl', ['$scope','BookService', '$location',
     function ($scope, BookService, $location) {
 
       $scope.isLoading = false;

@@ -15,21 +15,20 @@ angular
       })
       .when('/books', {
         templateUrl: 'views/public-book.html',
-        controller: 'PublicBookCtrl'
+        controller: 'BookCtrl'
       })
       .when('/book/:bookId', {
         templateUrl: 'views/public-lecture.html',
-        controller: 'PublicLectureCtrl'
+        controller: 'LectureCtrl'
       })
       .when('/book/:bookId/lecture/:lectureId', {
         templateUrl: 'views/public-word.html',
-        controller: 'PublicWordCtrl'
+        controller: 'WordCtrl'
       })
       .when('/words', {
         templateUrl: 'views/word.html',
         controller: 'WordCtrl'
       })
-
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -43,6 +42,10 @@ angular
       .when('/manage/book/:bookId', {
         templateUrl: 'views/user-lecture.html',
         controller: 'UserLectureCtrl'
+      })
+      .when('/manage/book/:bookId/lecture/:lectureId', {
+        templateUrl: 'views/user-word.html',
+        controller: 'UserWordCtrl'
       })
       .otherwise({
         redirectTo: '/'

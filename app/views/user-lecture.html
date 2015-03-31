@@ -10,7 +10,7 @@
     <a href="#/manage/books">
      {{book.name}}
     </a>
-    <button title="Edit this book" class="btn-warning btn no-radius glyphicon glyphicon-pencil" ng-click="onEditBook()" ></button>
+    <button title="Edit this book" class="btn-warning pj-btn btn no-radius glyphicon glyphicon-pencil" ng-click="onEditBook()" ></button>
     <button ng-really-message="Are you sure that you want remove this book?"
             title="Remove this book"
             class="btn-remove btn no-radius glyphicon glyphicon-remove"
@@ -77,7 +77,7 @@
         Cancel</button>
       <button title="Save"
               ng-click="saveBook()"
-              class="btn btn-warning btn-lg">
+              class="btn btn-warning pj-btn btn-lg">
         <span class="glyphicon glyphicon-floppy-disk "></span>
         Save
       </button>
@@ -169,8 +169,8 @@
     The textbook does not contain any lecture.
   </div>
 
-      <div class="row margin-20 no-radius" >
-        <button class="btn btn-warning " ng-click="showLectureForm()" ng-if="!lecture">
+      <div class="row margin-20" >
+        <button class="btn btn-warning pj-btn " ng-click="showLectureForm()" ng-if="!lecture">
           <span class="glyphicon glyphicon-plus"></span>
           Add lecture
         </button>
@@ -189,7 +189,7 @@
              <input
                type="text"
                ng-model="lecture.name"
-               class="form-control no-radius"
+               class="form-control"
                min="1"
                required=""
                placeholder="Write name of the lecture..."
@@ -197,7 +197,7 @@
            </div>
            <div class="col-md-3 col-sm-3 col-xs-3">
              <button ng-click="hideLectureForm()" class="btn btn-default ">Cancel</button>
-             <button class="btn btn-warning" type="submit">
+             <button class="btn btn-warning pj-btn" type="submit">
                <span class="glyphicon glyphicon-floppy-disk"></span>
                &nbsp; Save
              </button>

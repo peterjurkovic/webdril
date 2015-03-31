@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('WordCtrl', ['$scope','BookService', '$location', '$routeParams',
+  .controller('UserWordCtrl', ['$scope','BookService', '$location', '$routeParams',
     function ($scope, BookService, $location, $routeParams) {
 
       $scope.isLoading = true;

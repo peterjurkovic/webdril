@@ -1,0 +1,89 @@
+
+
+<div ng-if="isLoading" class="pj-loader-wrapp">
+  <span class="pj-loader">Loading...</span>
+</div>
+<div ng-if="book" class="pj-word-detail">
+  <h2>
+    <a ng-href="#/book/{{book.id}}" >
+      <span class="glyphicon glyphicon-book"></span>
+      &nbsp; {{book.name}}
+    </a>
+  </h2>
+  <h3 class="pj-lecture-name">
+    <span class="glyphicon glyphicon-menu-right"></span>
+    &nbsp; {{book.lecture.name}}
+  </h3>
+
+  <div class="pj-meta">
+    <div class="row">
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Language:</span>
+        <span class="pj-val">{{book.question_lang_name}} / {{book.answer_lang_name}}</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Level:</span>
+        <span class="pj-val">{{book.level_name}}</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Category:</span>
+        <span class="pj-val">{{book.category_name || 'Not categorized'}}</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Author:</span>
+        <span class="pj-val">{{book.login}}</span>
+      </div>
+
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Added:</span>
+        <span class="pj-val">{{book.lecture.created_timestamp | drilDate}}</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Downloaded:</span>
+        <span class="pj-val">{{book.downloaded}}x</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Marked as favorited:</span>
+        <span class="pj-val">{{book.favorited}}x</span>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Number of words:</span>
+        <span class="pj-val">{{book.lecture.words.length}}</span>
+      </div>
+    </div>
+
+
+  </div>
+
+  <table class="table table-striped pj-words">
+    <thead>
+    <tr>
+      <th>Question in {{book.question_lang_name}}</th>
+      <th>Answer in {{book.answer_lang_name}}</th>
+      <th class="pj-action"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="word in book.lecture.words">
+      <td>
+        {{word.question}}
+      </td>
+      <td>
+        {{word.answer}}
+      </td>
+      <td>
+        <button class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div ng-if="!book.lecture.words.length" class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-alert"></span>
+    The lecture does not contain any word.
+  </div>
+
+</div>
+
