@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('UserLectureCtrl', ['$scope','BookService', '$location', '$routeParams',
-    function ($scope, BookService, $location, $routeParams) {
+  .controller('UserLectureCtrl', ['$scope','BookService', '$location', '$routeParams', 'Toast',
+    function ($scope, BookService, $location, $routeParams, Toast) {
 
       $scope.isLoading = true;
       $scope.book = false;
@@ -25,7 +25,7 @@ angular.module('webdrilApp')
       function onRemoveBook(){
           BookService.removeBook($scope.book).then(
             function(res){
-              console.log('book deleted');
+              Toast.success('Successfully removed.');
               $location.path('/manage/books');
             },
             function(res){
@@ -60,6 +60,7 @@ angular.module('webdrilApp')
             $scope.book = response.data;
             $scope.editBook = false;
             $scope.errors = false;
+            Toast.success('Saved');
         }, function(response){
             if(response.status === 400){
               $scope.errors = response.data.error.message;
@@ -92,6 +93,7 @@ angular.module('webdrilApp')
           function(res){
             $scope.book.lectures.push(res.data);
             $scope.lecture = null;
+            Toast.success('Successfully added');
           },
           function(res){
             $scope.lectureErrors = res.data.error.message;

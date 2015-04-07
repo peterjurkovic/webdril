@@ -4,7 +4,9 @@ angular
   .module('webdrilApp', [
     'config',
     'ngAnimate',
-    'ngRoute'
+    'ngRoute',
+    'pjToast',
+    'angularInlineEdit'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
@@ -51,3 +53,15 @@ angular
         redirectTo: '/'
       });
   });
+
+
+(function(window, angular, undefined) {
+  'use strict';
+
+  angular
+    .module('angularInlineEdit', [
+      'angularInlineEdit.controllers',
+      'angularInlineEdit.directives'
+    ]);
+
+})(window, window.angular);

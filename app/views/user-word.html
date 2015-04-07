@@ -66,8 +66,10 @@
     <tbody>
     <tr ng-repeat="word in book.lecture.words">
       <td>
-        <span pj-editable="word.question"></span>
-        {{word.question}}
+        <span
+          inline-edit="word.question"
+          inline-edit-button-html="Edit"
+          ></span>
       </td>
       <td>
         {{word.answer}}
