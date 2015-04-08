@@ -95,5 +95,38 @@
     The lecture does not contain any word.
   </div>
 
+      <form ng-submit="saveLecture(lecture)" class="pj-lecture-form" ng-if="word" name="lectureForm" novalidate>
+
+
+        <div class="row">
+          <div class="col-md-5 col-sm-5 col-xs-5">
+            <input
+              type="text"
+              ng-model="word.question"
+              class="form-control"
+              min="1"
+              required=""
+              placeholder="Question in {{book.question_lang_name}}"
+            max="200" />
+          </div>
+          <div class="col-md-5 col-sm-5 col-xs-5">
+            <input
+              type="text"
+              ng-model="word.answer"
+              class="form-control"
+              min="1"
+              required=""
+              placeholder="Answer in {{book.answer_lang_name}}"
+              max="200" />
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <button class="btn btn-warning pj-btn" type="submit">
+              <span class="glyphicon glyphicon-floppy-disk"></span>
+              Add
+            </button>
+          </div>
+        </div>
+
+      </form>
 </div>
 

@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {itemsPeerPage:15,name:'development',api:'http://drilapp.dev/api/v1'})
+.constant('ENV', {itemsPeerPage:15,name:'development',api:'http://drilapp.dev/api/v1',gtKey:'AIzaSyDNKMoJgZcVyMpg1tfdo4bpxuroPhakQ7I'})
 
 ;

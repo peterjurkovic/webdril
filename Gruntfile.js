@@ -405,7 +405,8 @@ module.exports = function (grunt) {
           ENV: {
             itemsPeerPage : 15,
             name: 'development',
-            api: 'http://drilapp.dev/api/v1'
+            api: 'http://drilapp.dev/api/v1',
+            gtKey : 'AIzaSyDNKMoJgZcVyMpg1tfdo4bpxuroPhakQ7I'
           }
         }
       },
@@ -417,7 +418,8 @@ module.exports = function (grunt) {
           ENV: {
             itemsPeerPage : 15,
             name: 'production',
-            api: 'http://www.drilapp.com/api/v1'
+            api: 'http://www.drilapp.com/api/v1',
+            gtKey : 'AIzaSyAk3DcvZT8DP36qLTn-mceFNkCJAYVaBSE'
           }
         }
       }
