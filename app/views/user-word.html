@@ -65,19 +65,26 @@
     </thead>
     <tbody>
     <tr ng-repeat="word in book.lecture.words">
-      <td>
+      <td class="col-md-5">
         <span
           inline-edit="word.question"
-          inline-edit-button-html="Edit"
+          inline-edit-callback="saveWord(newValue, word, 'q')"
+          inline-edit-btn-edit="Edit"
+          inline-edit-btn-save="Save"
+          inline-edit-validation="validate(newValue)"
           ></span>
       </td>
-      <td>
-        {{word.answer}}
+      <td class="col-md-5">
+         <span
+           inline-edit="word.answer"
+           inline-edit-callback="saveWord(newValue, word, 'a')"
+           inline-edit-btn-edit="Edit"
+           inline-edit-btn-save="Save"
+           inline-edit-validation="validate(newValue)"
+           ></span>
       </td>
-      <td>
-        <button class="btn btn-xs">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
+      <td class="col-md-1">
+
       </td>
     </tr>
     </tbody>

@@ -13,7 +13,8 @@ angular.module('webdrilApp')
     updateBook : updateBook,
     removeBook : removeBook,
     updateLecture : updateLecture,
-    createLecture : createLecture
+    createLecture : createLecture,
+    updateWord : updateWord
   };
 
   ///////////////////////////////////////////////
@@ -63,5 +64,8 @@ angular.module('webdrilApp')
     return $http.delete(ENV.api+ '/book/' + book.id );
   }
 
+  function updateWord(word){
+    return $http.post(ENV.api+ '/user/words', word );
+  }
 
 }]);

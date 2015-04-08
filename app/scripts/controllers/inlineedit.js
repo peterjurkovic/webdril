@@ -25,7 +25,6 @@
         $scope.applyText = function(cancel, byDOM) {
           var inputValue = $scope.inputValue; // initial input value
           $scope.validationError = false;
-
           function _onSuccess() {
             $scope.model = inputValue;
             $scope.callback({
@@ -64,7 +63,6 @@
             var validationResult = $scope.validate({
               newValue: $scope.inputValue
             });
-
             if (validationResult && validationResult.then) { // promise
               validationResult
                 .then(_onSuccess)

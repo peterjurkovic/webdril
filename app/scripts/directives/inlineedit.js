@@ -27,11 +27,11 @@
               '\'ng-inline-edit--error\': validationError}">');
 
             var input = angular.element(
-              '<input type="text" class="ng-inline-edit__input" ' +
+              '<textarea rows="1" class="form-control ng-inline-edit__input" ' +
               'ng-disabled="validating" ' +
               'ng-show="editMode" ' +
               'ng-keyup="onInputKeyup($event)" ' +
-              'ng-model="inputValue" />');
+              'ng-model="inputValue" ></textarea>');
             var innerContainer = angular.element(
               '<div class="ng-inline-edit__inner-container"></div>');
 
@@ -43,15 +43,23 @@
               'ng-hide="editMode">{{model}}</span>'));
 
             // button
-            if (attrs.inlineEditButtonHtml) {
+            if (attrs.inlineEditBtnEdit) {
               innerContainer.append(angular.element(
-                '<a title='+attrs.inlineEditButtonHtml+' class="btn btn-xs ng-inline-edit__button" ng-show="!editMode"'+
+                '<a title='+attrs.inlineEditButtonHtml+
+                ' class="btn btn-xs ng-inline-edit__button" ng-if="!editMode"'+
                 'ng-click="editText()"><span class="glyphicon glyphicon-pencil"></span>'+
                 '</a>'));
+            }
+            // save button
+            if (attrs.inlineEditBtnSave) {
+              var saveBtn = angular.element(
+                '<a class="ng-inline-save__button btn pj-btn btn-warning" ng-if="editMode && !validating" title="' + attrs.inlineEditBtnSave + '" ' +
+                'ng-click="applyText(false, false)"><span class="glyphicon glyphicon-floppy-disk"></a>');
             }
 
             container
               .append(input)
+              .append(saveBtn || '')
               .append(innerContainer);
 
             element
