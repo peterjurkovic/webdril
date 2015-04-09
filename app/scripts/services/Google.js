@@ -2,20 +2,18 @@
 
 
 angular.module('webdrilApp')
-  .factory('Google', ['$http', 'ENV', function ($http, ENV) {
+  .factory('Translate', ['$http', 'ENV', function ($http, ENV) {
 
     return {
-      translate: translate
+      value: value
     };
 
 
-    function translate(text, source, target) {
+    function value(text, source, target) {
       var url =
-        'https://www.googleapis.com/language/translate/v2?key='+ENV.gtKey+
-        '&source='+source+'&target='+target+'&q='+text;
-      return $http.jsonp(url).success(function(data){
-          console.log(data);
-      });
+        'https://api.datamarket.azure.com/Bing/MicrosoftTranslator/v1/Translate?Text='+
+        encodeURIComponent(text)+'To='+target+'&From='+source + '&appId';
+      return $http.jsonp(url);
     }
 
   }]);

@@ -13,7 +13,7 @@ angular.module('webdrilApp')
     $scope.logout = function () {
       UserFactory.logout();
       $scope.user = false;
-      $location.path('/login');1
+      $location.path('/login');
     };
 
     $scope.$on(AUTH_EVENTS.loginSuccess, function(){

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('UserWordCtrl', ['$scope','BookService', '$location', '$routeParams', 'Toast',
-    function ($scope, BookService, $location, $routeParams, Toast) {
+  .controller('UserWordCtrl', ['$scope','BookService', '$location', '$routeParams', 'Toast', 'Translate',
+    function ($scope, BookService, $location, $routeParams, Toast, Translate) {
 
       $scope.isLoading = true;
       $scope.book = null;
@@ -34,5 +34,13 @@ angular.module('webdrilApp')
         return false;
       };
 
-
+      $scope.translageQuestion = function(){
+        var text = $scope.word.question;
+        if(text.length)
+        Translate.value(text,
+                $scope.book.question_lang_code,
+                $scope.book.answer_lang_code).success(function(data){
+          console.log(data);
+        });
+      }
     }]);
