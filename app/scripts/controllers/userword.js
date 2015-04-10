@@ -37,10 +37,10 @@ angular.module('webdrilApp')
       $scope.translageQuestion = function(){
         var text = $scope.word.question;
         if(text.length)
-        Translate.value(text,
+        BookService.translate(text,
                 $scope.book.question_lang_code,
                 $scope.book.answer_lang_code).success(function(data){
-          console.log(data);
+            $scope.word.answer = data.result;
         });
       }
     }]);

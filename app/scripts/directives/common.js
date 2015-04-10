@@ -73,4 +73,23 @@ angular.module('webdrilApp')
         });
       }
     }
+  }])
+  .directive('translate', ['BookService', function( BookService  ){
+    return {
+      restrict: 'E',
+      template : '<div></div>',
+      scope : {
+        book : '=',
+        type : '@'
+      },
+      link : function(scope, element, attrs){
+
+        scope.$watch('book.'+question+'_lang_code', function(newValue, oldValue) {
+          if (newValue)
+            console.log("I see a data change!");
+        }, true);
+
+        
+      }
+    };
   }]);

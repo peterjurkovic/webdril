@@ -14,7 +14,8 @@ angular.module('webdrilApp')
     removeBook : removeBook,
     updateLecture : updateLecture,
     createLecture : createLecture,
-    updateWord : updateWord
+    updateWord : updateWord,
+    translate : translate
   };
 
   ///////////////////////////////////////////////
@@ -64,8 +65,13 @@ angular.module('webdrilApp')
     return $http.delete(ENV.api+ '/book/' + book.id );
   }
 
-  function updateWord(word){
-    return $http.post(ENV.api+ '/user/words', word );
-  }
+    function updateWord(word){
+      return $http.post(ENV.api+ '/user/words', word );
+    }
+
+    function translate(text, from, to){
+      var params = '?text='+encodeURIComponent(text) + '&from='+from+'&to='+to;
+      return $http.get(ENV.api+ '/translate' + params);
+    }
 
 }]);
