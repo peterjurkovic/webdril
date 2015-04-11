@@ -6,11 +6,13 @@ angular.module('webdrilApp')
 
       $scope.isLoading = true;
       $scope.book = null;
-
+      $scope.word = {
+        answer : "",
+        question : ""
+      };
       BookService.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
         $scope.book = res.data;
         $scope.isLoading = false;
-        $scope.word = {};
       });
 
 
@@ -34,13 +36,5 @@ angular.module('webdrilApp')
         return false;
       };
 
-      $scope.translageQuestion = function(){
-        var text = $scope.word.question;
-        if(text.length)
-        BookService.translate(text,
-                $scope.book.question_lang_code,
-                $scope.book.answer_lang_code).success(function(data){
-            $scope.word.answer = data.result;
-        });
-      }
+
     }]);

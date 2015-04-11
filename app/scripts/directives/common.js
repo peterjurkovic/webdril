@@ -74,22 +74,60 @@ angular.module('webdrilApp')
       }
     }
   }])
-  .directive('translate', ['BookService', function( BookService  ){
+  .directive('translate', ['BookService', '$timeout', function( BookService , $timeout ){
     return {
       restrict: 'E',
-      template : '<div></div>',
+      template :  '<div class="pj-translate" ng-if="showBox()">' +
+                  '<div class="pj-loader-min" ng-if="isTranslating">Translating...</div>' +
+                  '<div ng-if="!isTranslating && translation" ng-click="useTranslation()">{{translation}}</div>' +
+                  '</div>',
       scope : {
-        book : '=',
-        type : '@'
+        from : '@translateFrom',
+        to : '@translateTo',
+        text : '@translateVal',
+        updateModel : '=updateModel'
       },
       link : function(scope, element, attrs){
+        scope.showBox = function () {
+          return scope.isTranslating || scope.translation;
+        };
 
-        scope.$watch('book.'+question+'_lang_code', function(newValue, oldValue) {
-          if (newValue)
-            console.log("I see a data change!");
-        }, true);
+        function hideBox(){
+          scope.isTranslating = false;
+          scope.translation = false;
+        }
+        console.log(attrs);
+        var debounce;
+        scope.$watch('text', function(newValue, oldValue) {
+          if (newValue){
+            $timeout.cancel(debounce);
+            scope.isTranslating = true;
+            debounce = $timeout(function(){
+              BookService.translate( scope.text, scope.from, scope.to).then(function(res){
+                console.log(res);
+                if(res.data.result){
+                    scope.translation = res.data.result;
+                  }else{
+                    hideBox();
+                 }
+              }).finally(function(){
+                scope.isTranslating = false;
+              });
+            }, 800);
+          }else{
+            $timeout.cancel(debounce);
+            hideBox();
+          }
+        });
 
-        
-      }
-    };
+        scope.useTranslation = function(){
+          if(!scope.updateModel.length){
+            scope.updateModel = scope.translation;
+          }
+          hideBox();
+        }
+
+        hideBox();
+        }
+     };
   }]);
