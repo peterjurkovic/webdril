@@ -87,7 +87,7 @@ angular.module('webdrilApp')
         text : '@translateVal',
         updateModel : '=updateModel'
       },
-      link : function(scope, element, attrs){
+      link : function(scope){
         scope.showBox = function () {
           return scope.isTranslating || scope.translation;
         };
@@ -96,15 +96,14 @@ angular.module('webdrilApp')
           scope.isTranslating = false;
           scope.translation = false;
         }
-        console.log(attrs);
+
         var debounce;
         scope.$watch('text', function(newValue, oldValue) {
-          if (newValue){
+          if (newValue !== oldValue && !scope.updateModel.length){
             $timeout.cancel(debounce);
             scope.isTranslating = true;
             debounce = $timeout(function(){
               BookService.translate( scope.text, scope.from, scope.to).then(function(res){
-                console.log(res);
                 if(res.data.result){
                     scope.translation = res.data.result;
                   }else{
@@ -113,7 +112,7 @@ angular.module('webdrilApp')
               }).finally(function(){
                 scope.isTranslating = false;
               });
-            }, 800);
+            }, 1500);
           }else{
             $timeout.cancel(debounce);
             hideBox();
