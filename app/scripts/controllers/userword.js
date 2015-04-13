@@ -6,14 +6,19 @@ angular.module('webdrilApp')
 
       $scope.isLoading = true;
       $scope.book = null;
-      $scope.word = {
-        answer : "",
-        question : ""
-      };
+      initWord();
       BookService.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
         $scope.book = res.data;
         $scope.isLoading = false;
       });
+
+      function initWord(){
+        $scope.word = {
+          answer : "",
+          question : "",
+          dril_lecture_id : $routeParams.lectureId
+        };
+      }
 
 
       $scope.saveWord = function ( newValue, word, type ){
@@ -34,6 +39,23 @@ angular.module('webdrilApp')
         }
         Toast.danger('The word can not be empty.');
         return false;
+      };
+
+      $scope.add = function ( ){
+        if(!$scope.word.answer.trim().length ||
+           !$scope.word.question.trim().length){
+          Toast.danger('All field are required.');
+          return;
+        }
+        $scope.adding = true;
+        BookService.createWord( $scope.word ).then( function( res ){
+          $scope.book.lecture.words.push(res.data);
+          Toast.success("Added");
+          initWord();
+
+        }).finally(function(){
+          $scope.adding = false;
+        });
       };
 
 

@@ -129,9 +129,16 @@
                 max="200" />
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-              <button class="btn btn-warning pj-btn btn-block" type="submit">
-                <span class="glyphicon glyphicon-floppy-disk"></span>
-                Add
+              <button ng-click="add()" class="btn btn-warning pj-btn btn-block" type="submit">
+                <span ng-if="!adding">
+                  <span class="glyphicon glyphicon-floppy-disk"></span>
+                  Add
+                  </span>
+                </span>
+                <span ng-if="adding">
+                  <span class="glyphicon pj-loader-min"></span>
+                   saving..
+                </span>
               </button>
             </div>
           </div>

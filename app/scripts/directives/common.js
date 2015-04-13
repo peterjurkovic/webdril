@@ -99,7 +99,7 @@ angular.module('webdrilApp')
 
         var debounce;
         scope.$watch('text', function(newValue, oldValue) {
-          if (newValue !== oldValue && !scope.updateModel.length){
+          if (newValue && newValue.length > 1 && newValue !== oldValue && !scope.updateModel.length){
             $timeout.cancel(debounce);
             scope.isTranslating = true;
             debounce = $timeout(function(){
@@ -112,7 +112,7 @@ angular.module('webdrilApp')
               }).finally(function(){
                 scope.isTranslating = false;
               });
-            }, 1500);
+            }, 800);
           }else{
             $timeout.cancel(debounce);
             hideBox();
