@@ -58,5 +58,12 @@ angular.module('webdrilApp')
         });
       };
 
+      $scope.removeWord = function ( word) {
+        BookService.removeWord( word.id ).then( function(){
+          $scope.book.lecture.words.splice( $scope.book.lecture.words.indexOf(word), 1 );
+          Toast.success("Deleted");
+        });
+      };
+
 
     }]);

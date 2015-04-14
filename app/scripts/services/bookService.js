@@ -16,7 +16,8 @@ angular.module('webdrilApp')
     createLecture : createLecture,
     updateWord : updateWord,
     translate : translate,
-    createWord : createWord
+    createWord : createWord,
+    removeWord : removeWord
   };
 
   ///////////////////////////////////////////////
@@ -72,6 +73,10 @@ angular.module('webdrilApp')
 
   function createWord(word){
     return $http.put(ENV.api+ '/user/words', word );
+  }
+
+  function removeWord( id ){
+    return $http.delete(ENV.api+ '/user/words/' + id );
   }
 
   function translate(text, from, to){

@@ -83,8 +83,14 @@
            inline-edit-validation="validate(newValue)"
            ></span>
       </td>
-      <td class="col-md-1">
-
+      <td class="col-md-1 pj-nav">
+        <drilWord word="word"></drilWord>
+        <button class="btn btn-danger btn-xs"
+                ng-really-message="Are you sure that you want remove this book?"
+                ng-really-click="removeWord(word)"
+          >
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
       </td>
     </tr>
     </tbody>

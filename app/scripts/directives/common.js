@@ -99,7 +99,7 @@ angular.module('webdrilApp')
 
         var debounce;
         scope.$watch('text', function(newValue, oldValue) {
-          if (newValue && newValue.length > 1 && newValue !== oldValue && !scope.updateModel.length){
+          if (newValue && newValue.length > 2 && newValue !== oldValue && !scope.updateModel.length){
             $timeout.cancel(debounce);
             scope.isTranslating = true;
             debounce = $timeout(function(){
@@ -129,4 +129,18 @@ angular.module('webdrilApp')
         hideBox();
         }
      };
+  }])
+  .directive('drilWord', [function(){
+    return {
+      restrict: 'E',
+      template : '<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus-sign"></span></button>',
+      scope : {
+        word : '='
+      },
+      link : function(scope, element, attrs) {
+          console.log(scope.word);
+      }
+
+    }
   }]);
+;
