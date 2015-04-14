@@ -110,12 +110,26 @@ angular.module('webdrilApp')
     }
 
 
+    function addWord( word ){
+      var list = loadWords();
+      list.push(word);
+      saveList(list);
+    }
+
+    function removeWord( wordId ){
+      var list =  _.remove(loadWords(), {'id' :wordId});
+      saveList(list);
+    }
+
+
     return {
       saveList : saveList,
       clearWords: clearWords,
       getNextWord : getNextWord,
       rateAndGetNext : rateAndGetNextWord,
       getCountOfWords : getCountOfWords,
-      getStatistics : getStatistics
+      getStatistics : getStatistics,
+      addWord : addWord,
+      removeWord : removeWord
     };
   }]);

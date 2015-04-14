@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('UserWordCtrl', ['$scope','BookService', '$location', '$routeParams', 'Toast', 'Translate',
-    function ($scope, BookService, $location, $routeParams, Toast, Translate) {
+  .controller('UserWordCtrl',
+  ['$scope','BookService', '$location', '$routeParams', 'Toast', 'DrilService',
+    function ($scope, BookService, $location, $routeParams, Toast, DrilService) {
 
       $scope.isLoading = true;
       $scope.book = null;
@@ -64,6 +65,17 @@ angular.module('webdrilApp')
           Toast.success("Deleted");
         });
       };
+
+      $scope.activateWord = function ( word) {
+        BookService.activateWord( word.id ).then( function(res){
+          var word = res.data;
+          console.log(word);
+          DrilService.addWord(word);
+          word.is_activated = true;
+        });
+      };
+
+
 
 
     }]);

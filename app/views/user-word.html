@@ -84,7 +84,15 @@
            ></span>
       </td>
       <td class="col-md-1 pj-nav">
-        <drilWord word="word"></drilWord>
+        <button
+          ng-click="activateWord(word)"
+          ng-if="!word.is_activated"
+          class="btn btn-success btn-xs">
+          <span class="glyphicon glyphicon-play"></span>
+        </button>
+        <button ng-if="word.is_activated" class="btn btn-warning btn-xs">
+          <span class="glyphicon glyphicon-minus-sign"></span>
+        </button>
         <button class="btn btn-danger btn-xs"
                 ng-really-message="Are you sure that you want remove this book?"
                 ng-really-click="removeWord(word)"

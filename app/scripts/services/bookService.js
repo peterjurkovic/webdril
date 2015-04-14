@@ -17,7 +17,8 @@ angular.module('webdrilApp')
     updateWord : updateWord,
     translate : translate,
     createWord : createWord,
-    removeWord : removeWord
+    removeWord : removeWord,
+    activateWord : activateWord
   };
 
   ///////////////////////////////////////////////
@@ -83,6 +84,10 @@ angular.module('webdrilApp')
     var params = '?text='+encodeURIComponent(text) +
       '&from='+from+'&to='+to;
     return $http.get(ENV.api+ '/translate' + params);
+  }
+
+  function activateWord( id ){
+    return $http.post(ENV.api+ '/user/words/' + id +'/activate'  );
   }
 
 }]);
