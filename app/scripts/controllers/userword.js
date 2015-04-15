@@ -66,16 +66,19 @@ angular.module('webdrilApp')
         });
       };
 
-      $scope.activateWord = function ( word) {
-        BookService.activateWord( word.id ).then( function(res){
-          var word = res.data;
-          console.log(word);
-          DrilService.addWord(word);
-          word.is_activated = true;
+      $scope.toggleActivity = function ( word ) {
+        word.isActivated = !word.isActivated;
+        BookService.updateWordActivity( word.id, word.isActivated ).then( function(res) {
+          if (word.isActivated){
+            var w = res.data;
+            console.log(w);
+            DrilService.addWord(w);
+          }else{
+            console.log('removing..');
+            DrilService.removeWord(word.id);
+          }
         });
       };
-
-
 
 
     }]);

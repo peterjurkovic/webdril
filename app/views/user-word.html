@@ -85,13 +85,12 @@
       </td>
       <td class="col-md-1 pj-nav">
         <button
-          ng-click="activateWord(word)"
-          ng-if="!word.is_activated"
-          class="btn btn-success btn-xs">
-          <span class="glyphicon glyphicon-play"></span>
-        </button>
-        <button ng-if="word.is_activated" class="btn btn-warning btn-xs">
-          <span class="glyphicon glyphicon-minus-sign"></span>
+          ng-click="toggleActivity(word)"
+          ng-class="{'btn-success' : !word.isActivated, 'btn-warning' : word.isActivated }"
+          class="btn btn-xs">
+          <span
+            ng-class="{'glyphicon-play' : !word.isActivated, 'glyphicon-minus-sign' : word.isActivated }"
+            class="glyphicon "></span>
         </button>
         <button class="btn btn-danger btn-xs"
                 ng-really-message="Are you sure that you want remove this book?"

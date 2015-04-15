@@ -114,11 +114,15 @@ angular.module('webdrilApp')
       var list = loadWords();
       list.push(word);
       saveList(list);
+      return countOfWords;
     }
 
     function removeWord( wordId ){
-      var list =  _.remove(loadWords(), {'id' :wordId});
+      var list = loadWords();
+      _.remove(list, {'id' :wordId});
+      console.log(list);
       saveList(list);
+      return countOfWords;
     }
 
 
