@@ -6,10 +6,11 @@ angular
     'ngAnimate',
     'ngRoute',
     'pjToast',
-    'angularInlineEdit'
+    'angularInlineEdit',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $httpProvider) {
-    $httpProvider.interceptors.push('AuthInterceptor');
+    $httpProvider.interceptors.push('HttpInterceptor');
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',

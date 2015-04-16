@@ -71,10 +71,13 @@ angular.module('webdrilApp')
         BookService.updateWordActivity( word.id, word.isActivated ).then( function(res) {
           if (word.isActivated){
             var w = res.data;
-            console.log(w);
-            DrilService.addWord(w);
+            var count = DrilService.addWord(w);
+            Toast.info({
+              content : 'You have activated ' + count + ' words',
+              dismissButton : false,
+              timeout: 3000
+            })
           }else{
-            console.log('removing..');
             DrilService.removeWord(word.id);
           }
         });

@@ -1,10 +1,9 @@
+'use strict';
 angular.module('webdrilApp')
-  .factory('AuthInterceptor', ['AuthTokenFactory',
-    function (AuthTokenFactory) {
-    'use strict';
-    return {
-      request: addToken
-    };
+  .factory('HttpInterceptor', ['AuthTokenFactory', 'Toast',
+    function (AuthTokenFactory, Toast) {
+
+
     function addToken(config) {
       var token = AuthTokenFactory.getToken();
       if (token) {
@@ -13,4 +12,17 @@ angular.module('webdrilApp')
       }
       return config;
     }
+
+     function handleError(rejection) {
+        console.log(rejection);
+        if (canRecover(rejection)) {
+          return responseOrNewPromise
+        }
+        return $q.reject(rejection);
+      }
+
+    return {
+      request: addToken,
+      responseError : handleError
+    };
   }]);

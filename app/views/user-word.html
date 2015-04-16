@@ -85,6 +85,7 @@
       </td>
       <td class="col-md-1 pj-nav">
         <button
+          tooltip="{'Active this word' : !word.isActivated, 'Deactive this word' : word.isActivated }"
           ng-click="toggleActivity(word)"
           ng-class="{'btn-success' : !word.isActivated, 'btn-warning' : word.isActivated }"
           class="btn btn-xs">

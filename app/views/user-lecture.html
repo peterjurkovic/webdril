@@ -10,9 +10,12 @@
     <a href="#/manage/books">
      {{book.name}}
     </a>
-    <button title="Edit this book" class="btn-warning pj-btn btn no-radius glyphicon glyphicon-pencil" ng-click="onEditBook()" ></button>
+    <button
+            tooltip="Edit this book"
+            class="btn-warning pj-btn btn no-radius glyphicon glyphicon-pencil"
+            ng-click="onEditBook()" ></button>
     <button ng-really-message="Are you sure that you want remove this book?"
-            title="Remove this book"
+            tooltip="Remove this book"
             class="btn-remove btn no-radius glyphicon glyphicon-remove"
             ng-really-click="onRemoveBook()" ></button>
   </h2>

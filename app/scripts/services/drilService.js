@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .factory('DrilService', ['DrilStorage', '$filter', '$log',
-      function (DrilStorage, $filter, $log) {
+  .factory('DrilService', ['DrilStorage', '$filter', '$log', 'ENV', 'UserFactory', '$http',
+      function (DrilStorage, $filter, $log, ENV, UserFactory, $http) {
 
 
     var storageKey = "activatedWords",
@@ -14,11 +14,9 @@ angular.module('webdrilApp')
               var now = _.now(),
                   index = -1;
               for(var i = 0; i < list.length; i++){
-                console.log(list[i]);
                 if(list[i].lastViewed === null){
                   return list[i]
                 }
-                console.log(list[i].lastViewed);
                 if(now > list[i].lastViewed ){
                   now = list[i].lastViewed;
                   index = i;
@@ -28,7 +26,10 @@ angular.module('webdrilApp')
                 return list[index];
               }
              $log.warn("Something is wrong..");
-          }
+            return null;
+          },
+
+
 
         }
 
@@ -53,11 +54,12 @@ angular.module('webdrilApp')
     function rateWord(list, word, rating){
       var index = _.findIndex(list, {'id' :word.id});
       if(index !== -1){
-        list[index].learned = list[index].lastRating === 1 && rating === 1;
+        list[index].isLearned = list[index].lastRating === 1 && rating === 1;
         list[index].viewed++;
         list[index].lastViewed = _.now();
         list[index].lastRating = rating;
-        if(list[index].learned){
+        updateWord(list[index]);
+        if(list[index].isLearned){
           removeLearnedWords( list );
         }
         $log.info('Updating word: ');
@@ -95,9 +97,9 @@ angular.module('webdrilApp')
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
         list = [
-          { id : 1, question: 'question', answer : ' answer', viewed : 0, lastViewed : 1424210734010, lastRating : null, langQuestion: 'en', langAnswer: 'sk', learned : false },
-          { id : 2, question: 'question 2', answer : ' answer 3', viewed : 0, lastViewed : 1424210734012, lastRating : null, langQuestion: 'en', langAnswer: 'sk', learned : false },
-          { id : 12, question: 'question12', answer : ' answer12', viewed : 5, lastViewed : 1424210734960, lastRating : null, learned : false }
+          { id : 1, question: 'question', answer : ' answer', viewed : 0, lastViewed : 1424210734010, lastRating : null, langQuestion: 'en', langAnswer: 'sk', isLearned : false },
+          { id : 2, question: 'question 2', answer : ' answer 3', viewed : 0, lastViewed : 1424210734012, lastRating : null, langQuestion: 'en', langAnswer: 'sk', isLearned : false },
+          { id : 12, question: 'question12', answer : ' answer12', viewed : 5, lastViewed : 1424210734960, lastRating : null, isLearned : false }
         ]
       }
       countOfWords = list.length;
@@ -125,6 +127,16 @@ angular.module('webdrilApp')
       return countOfWords;
     }
 
+    function updateWord(word){
+      var user = UserFactory.getUser();
+      if(user !== null){
+          $http.post(ENV.api+ '/user/rateWord',{
+            id : word.id,
+            lastRating : word.lastRating,
+            isLearned : word.isLearned
+          });
+      }
+    }
 
     return {
       saveList : saveList,
