@@ -63,7 +63,6 @@ angular.module('webdrilApp')
         if(list[index].isLearned){
           removeLearnedWords( list );
         }
-        $log.info('Updating word: ');
         $log.info(list[index]);
         saveList( list );
       }else{

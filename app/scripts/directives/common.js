@@ -145,5 +145,24 @@ angular.module('webdrilApp')
       }
 
     }
-  }]);
+  }])
+.directive('pjUnique', ['ENV', '$http', '$q', function(ENV, $http, $q) {
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attrs, ngModel) {
+        ngModel.$asyncValidators.username = function(modelValue, viewValue) {
+          return $http.post(ENV.api + '/check', {
+            field: attrs.pjUnique,
+            value: viewValue
+          }).then(function(response) {
+              if (!response.data.isUnique) {
+                return $q.reject(response.data.errorMessage);
+              }
+              return true;
+            }
+          );
+        };
+      }
+    };
+}]);;
 ;

@@ -48,6 +48,10 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/singup', {
+        templateUrl: 'views/singup.html',
+        controller: 'SingupCtrl'
+      })
 
       // auth
       .when('/manage/books', {

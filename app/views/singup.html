@@ -1,0 +1,51 @@
+<h1 class="text-center">Sign Up</h1>
+<h6 class="text-center">Enter your details to create your account.</h6>
+
+<form  class="pj-login" name="form" ng-submit="singup(form.$valid , credentials)" novalidate>
+
+  <div class="form-group">
+
+    <label for="username">Login:</label>
+    <input class="form-control"
+           type="text"
+           ng-model="credentials.login"
+           ng-minlength="5"
+           required
+           pj-unique="login"
+           ng-trim="true">
+  </div>
+
+  <div class="form-group">
+
+    <label for="username">E-mail:</label>
+    <input class="form-control"
+           type="email"
+           id="username"
+           ng-model="credentials.username"
+           ng-minlength="5"
+           required
+           ng-trim="true">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input class="form-control"
+           type="password"
+           id="password"
+           ng-model="credentials.password"
+           ng-minlength="5"
+           required
+           ng-trim="true">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Register</button>
+    <span class="pj-loader" ng-if="isLoading">Please wait...</span>
+  </div>
+  <div class="form-group">
+
+    <strong><a href="#/login">Sing in</a></strong>
+    &nbsp;
+    <a href="#/resetpass">Forgot your password?</a>
+
+  </div>
+</form>
