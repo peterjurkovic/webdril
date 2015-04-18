@@ -5,8 +5,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('UserBookCtrl', ['$scope','BookService', '$location',
-    function ($scope, BookService, $location) {
+  .controller('UserBookCtrl', ['$scope','DrilAPI', '$location',
+    function ($scope, DrilAPI, $location) {
 
       $scope.isLoading = false;
       $scope.totalItems = 0;
@@ -20,7 +20,7 @@ angular.module('webdrilApp')
 
       var renderBooks = function () {
         $scope.isLoading = true;
-        BookService.getUserBookPage($scope.state).then(function (res) {
+        DrilAPI.getUserBookPage($scope.state).then(function (res) {
           $scope.items = res.data.books;
           $scope.totalItems = res.data.count;
           $scope.isLoading = false;
@@ -45,7 +45,7 @@ angular.module('webdrilApp')
       $scope.toggleActivation = function( book ){
         var bookToUpdate = angular.copy( book );
             bookToUpdate.is_shared =  !book.is_shared;
-        BookService.updateBook(bookToUpdate).then(function(){
+        DrilAPI.updateBook(bookToUpdate).then(function(){
             book.is_shared = bookToUpdate.is_shared;
         });
       };

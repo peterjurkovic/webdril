@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('WordCtrl', ['$scope','BookService', '$location', '$routeParams',
-    function ($scope, BookService, $location, $routeParams) {
+  .controller('WordCtrl', ['$scope','DrilAPI', '$location', '$routeParams',
+    function ($scope, DrilAPI, $location, $routeParams) {
 
       $scope.isLoading = true;
       $scope.book = null;
-      BookService.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
+      DrilAPI.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
         $scope.book = res.data;
         $scope.isLoading = false;
       });

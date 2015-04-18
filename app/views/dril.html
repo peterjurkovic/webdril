@@ -51,19 +51,19 @@
 
         <div class="row button-group dril-buttons" ng-show="isAnswerShown">
           <div class="col-xs-4">
-              <button  class="btn btn-success" ng-click="rateWord(currentWord, 1)" >
+              <button  class="btn btn-success" ng-click="rateWord(RATING.KNOW)" >
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                 I knew it!
               </button>
           </div>
           <div class="col-xs-4">
-            <button class="btn btn-warning" ng-click="rateWord(currentWord, 3)">
+            <button class="btn btn-warning" ng-click="rateWord(RATING.NOT_YET)">
               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
               Not yet
             </button>
           </div>
           <div class="col-xs-4">
-            <button class="btn btn-danger" ng-click="rateWord(currentWord, 5)">
+            <button class="btn btn-danger" ng-click="rateWord(RATING.DO_NOT_KNOW)">
               <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
               Never seen it
             </button>

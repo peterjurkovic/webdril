@@ -9,6 +9,18 @@ angular
     'angularInlineEdit',
     'ui.bootstrap'
   ])
+  .constant('RATING', {
+    "KNOW": 1,
+    "NOT_YET": 3,
+    "DO_NOT_KNOW": 5
+  })
+  .value('User', {
+    info : false,
+    settings : {
+      locale : "en",
+      drilStrategy : 1
+    }
+  })
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
     $routeProvider
@@ -56,7 +68,7 @@ angular
   });
 
 
-(function(window, angular, undefined) {
+(function(window, angular) {
   'use strict';
 
   angular

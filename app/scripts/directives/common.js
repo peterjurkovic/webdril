@@ -74,7 +74,7 @@ angular.module('webdrilApp')
       }
     }
   }])
-  .directive('translate', ['BookService', '$timeout', function( BookService , $timeout ){
+  .directive('translate', ['DrilAPI', '$timeout', function( DrilAPI , $timeout ){
     return {
       restrict: 'E',
       template :  '<div class="pj-translate" ng-if="showBox()">' +
@@ -103,7 +103,7 @@ angular.module('webdrilApp')
             $timeout.cancel(debounce);
             scope.isTranslating = true;
             debounce = $timeout(function(){
-              BookService.translate( scope.text, scope.from, scope.to).then(function(res){
+              DrilAPI.translate( scope.text, scope.from, scope.to).then(function(res){
                 if(res.data.result){
                     scope.translation = res.data.result;
                   }else{

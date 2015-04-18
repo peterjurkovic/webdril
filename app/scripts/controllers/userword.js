@@ -2,13 +2,13 @@
 
 angular.module('webdrilApp')
   .controller('UserWordCtrl',
-  ['$scope','BookService', '$location', '$routeParams', 'Toast', 'DrilService',
-    function ($scope, BookService, $location, $routeParams, Toast, DrilService) {
+  ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', 'DrilService',
+    function ($scope, DrilAPI, $location, $routeParams, Toast, DrilService) {
 
       $scope.isLoading = true;
       $scope.book = null;
       initWord();
-      BookService.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
+      DrilAPI.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
         $scope.book = res.data;
         $scope.isLoading = false;
       });
@@ -29,7 +29,7 @@ angular.module('webdrilApp')
         }else{
           word.answer = newValue;
         }
-        BookService.updateWord( word ).then( function(){
+        DrilAPI.updateWord( word ).then( function(){
           Toast.success("Saved");
         });
       };
@@ -49,7 +49,7 @@ angular.module('webdrilApp')
           return;
         }
         $scope.adding = true;
-        BookService.createWord( $scope.word ).then( function( res ){
+        DrilAPI.createWord( $scope.word ).then( function( res ){
           $scope.book.lecture.words.push(res.data);
           Toast.success("Added");
           initWord();
@@ -60,7 +60,7 @@ angular.module('webdrilApp')
       };
 
       $scope.removeWord = function ( word) {
-        BookService.removeWord( word.id ).then( function(){
+        DrilAPI.removeWord( word.id ).then( function(){
           $scope.book.lecture.words.splice( $scope.book.lecture.words.indexOf(word), 1 );
           Toast.success("Deleted");
         });
@@ -68,7 +68,7 @@ angular.module('webdrilApp')
 
       $scope.toggleActivity = function ( word ) {
         word.isActivated = !word.isActivated;
-        BookService.updateWordActivity( word.id, word.isActivated ).then( function(res) {
+        DrilAPI.updateWordActivity( word.id, word.isActivated ).then( function(res) {
           if (word.isActivated){
             var w = res.data;
             var count = DrilService.addWord(w);

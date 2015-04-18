@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('UserLectureCtrl', ['$scope','BookService', '$location', '$routeParams', 'Toast',
-    function ($scope, BookService, $location, $routeParams, Toast) {
+  .controller('UserLectureCtrl', ['$scope','DrilAPI', '$location', '$routeParams', 'Toast',
+    function ($scope, DrilAPI, $location, $routeParams, Toast) {
 
       $scope.isLoading = true;
       $scope.book = false;
@@ -23,7 +23,7 @@ angular.module('webdrilApp')
       // ---------------------------------------------------------
 
       function onRemoveBook(){
-          BookService.removeBook($scope.book).then(
+          DrilAPI.removeBook($scope.book).then(
             function(res){
               Toast.success('Successfully removed.');
               $location.path('/manage/books');
@@ -41,7 +41,7 @@ angular.module('webdrilApp')
       }
 
       function onEditBook(){
-        BookService.loadFilterOptions().then(function (res) {
+        DrilAPI.loadFilterOptions().then(function (res) {
           $scope.levels = res.data.levels;
           $scope.languages = res.data.languages;
           $scope.categories = res.data.categories;
@@ -55,7 +55,7 @@ angular.module('webdrilApp')
       }
 
       function saveBook(){
-        BookService.updateBook($scope.editBook).then(
+        DrilAPI.updateBook($scope.editBook).then(
           function(response){
             $scope.book = response.data;
             $scope.editBook = false;
@@ -70,7 +70,7 @@ angular.module('webdrilApp')
       }
 
       function loadLectures(){
-        BookService.getBookLectures($routeParams.bookId).then(function (res) {
+        DrilAPI.getBookLectures($routeParams.bookId).then(function (res) {
           $scope.isLoading = false;
           $scope.book = res.data;
         });
@@ -89,7 +89,7 @@ angular.module('webdrilApp')
       }
 
       function saveLecture(lecture){
-        BookService.createLecture(lecture).then(
+        DrilAPI.createLecture(lecture).then(
           function(res){
             $scope.book.lectures.push(res.data);
             $scope.lecture = null;

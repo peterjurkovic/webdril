@@ -2,7 +2,7 @@
 
 
 angular.module('webdrilApp')
-.factory('BookService', ['$http', 'ENV', function ($http, ENV) {
+.factory('DrilAPI', ['$http', 'ENV', function ($http, ENV) {
 
   return {
     getPage: getPage,
@@ -18,7 +18,8 @@ angular.module('webdrilApp')
     translate : translate,
     createWord : createWord,
     removeWord : removeWord,
-    updateWordActivity : updateWordActivity
+    updateWordActivity : updateWordActivity,
+    rateWord : rateWord
 
   };
 
@@ -89,6 +90,16 @@ angular.module('webdrilApp')
 
   function updateWordActivity( id , acitivy){
     return $http.post(ENV.api+ '/user/words/' + id +'/activate' , {activate : acitivy} );
+  }
+
+  function rateWord(word){
+    $http.post(ENV.api+ '/user/rateWord',{
+      id : word.id,
+      lastRating : word.lastRating,
+      isLearned : word.isLearned
+    }).success(function(res){
+      console.log(res);
+    });
   }
 
 }]);

@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .factory('DrilService', ['DrilStorage', '$filter', '$log', 'ENV', 'UserFactory', '$http',
-      function (DrilStorage, $filter, $log, ENV, UserFactory, $http) {
+  .factory('DrilService', ['DrilStorage', '$filter', '$log',  'AuthTokenFactory', 'RATING', 'DrilAPI',
+      function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI) {
 
 
     var storageKey = "activatedWords",
@@ -27,11 +27,9 @@ angular.module('webdrilApp')
               }
              $log.warn("Something is wrong..");
             return null;
-          },
+          }
 
-
-
-        }
+        };
 
 
     function getNextWord( list ){
@@ -44,21 +42,24 @@ angular.module('webdrilApp')
         return nextWord;
       }
       return null;
-    };
+    }
 
     function getCountOfWords(){
       return countOfWords;
     }
 
 
-    function rateWord(list, word, rating){
+    function rateWord(list, word, userRating){
+      console.log(userRating);
       var index = _.findIndex(list, {'id' :word.id});
       if(index !== -1){
-        list[index].isLearned = list[index].lastRating === 1 && rating === 1;
+        list[index].isLearned = isLearned(list[index]);
         list[index].viewed++;
         list[index].lastViewed = _.now();
-        list[index].lastRating = rating;
-        updateWord(list[index]);
+        list[index].lastRating = userRating;
+        if(AuthTokenFactory.getToken() !== null){
+          DrilAPI.rateWord(list[index]);
+        }
         if(list[index].isLearned){
           removeLearnedWords( list );
         }
@@ -67,6 +68,10 @@ angular.module('webdrilApp')
         saveList( list );
       }else{
         $log.error('Can not update rating. Word ['+word.id+'] was not found');
+      }
+
+      function isLearned(word){
+        return word.lastRating === RATING.KNOW && userRating === RATING.KNOW;
       }
     };
 
@@ -80,7 +85,7 @@ angular.module('webdrilApp')
       var list = loadWords();
       rateWord(list, word, rating);
       return getNextWord( list );
-    };
+    }
 
     function clearWords(){
       DrilStorage.removeItem(storageKey);
@@ -97,9 +102,7 @@ angular.module('webdrilApp')
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
         list = [
-          { id : 1, question: 'question', answer : ' answer', viewed : 0, lastViewed : 1424210734010, lastRating : null, langQuestion: 'en', langAnswer: 'sk', isLearned : false },
-          { id : 2, question: 'question 2', answer : ' answer 3', viewed : 0, lastViewed : 1424210734012, lastRating : null, langQuestion: 'en', langAnswer: 'sk', isLearned : false },
-          { id : 12, question: 'question12', answer : ' answer12', viewed : 5, lastViewed : 1424210734960, lastRating : null, isLearned : false }
+
         ]
       }
       countOfWords = list.length;
@@ -125,17 +128,6 @@ angular.module('webdrilApp')
       console.log(list);
       saveList(list);
       return countOfWords;
-    }
-
-    function updateWord(word){
-      var user = UserFactory.getUser();
-      if(user !== null){
-          $http.post(ENV.api+ '/user/rateWord',{
-            id : word.id,
-            lastRating : word.lastRating,
-            isLearned : word.isLearned
-          });
-      }
     }
 
     return {

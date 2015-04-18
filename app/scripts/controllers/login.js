@@ -8,9 +8,10 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast',
-    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast) {
-    $scope.user = null;
+  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast', 'User',
+    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast, User) {
+    $scope.user = User.info;
+
     $scope.credentials = {
       username: '',
       password: ''
@@ -24,10 +25,10 @@ angular.module('webdrilApp')
       showLoader();
 
       UserFactory.login(credentials).then(handleSuccess, handleError);
-      function handleSuccess(res){
-        $scope.user = res.data.user;
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+
+      function handleSuccess(){
         Toast.success('You have been successfully logged in');
+        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
         $location.path('/manage/books');
       }
 
@@ -45,11 +46,5 @@ angular.module('webdrilApp')
         $scope.isLoading = false;
       }
 
-      //AuthService.login(credentials).then(function (user) {
-      //  $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-      //  $scope.setCurrentUser(user);
-      //}, function () {
-      //  $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-      //});
     };
   }]);

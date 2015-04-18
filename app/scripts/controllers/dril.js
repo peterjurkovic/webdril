@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('DrilCtrl', ['$scope', 'DrilService',
-    function ($scope, DrilService) {
+  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING',
+    function ($scope, DrilService, RATING) {
 
       $scope.currentWord = DrilService.getNextWord();
       $scope.isAnswerShown = false;
@@ -12,7 +12,7 @@ angular.module('webdrilApp')
       $scope.isNotFinished = isNotFinished;
       $scope.getCountOfActivated = getCountOfActivated;
       $scope.getStatistics =  getStatistics;
-
+      $scope.RATING = RATING;
       ///////////////////////////////
 
       function getStatistics(){
