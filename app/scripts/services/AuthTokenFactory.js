@@ -2,9 +2,9 @@
 
 
 angular.module('webdrilApp')
-  .factory('AuthTokenFactory', ['DrilStorage', '$log',
-    function (DrilStorage, $log) {
-    var key = "token-key";
+  .factory('AuthTokenFactory', ['DrilStorage',
+    function (DrilStorage) {
+    var key = 'token-key';
 
     function getToken() {
       return DrilStorage.getItemFromSession(key);
@@ -12,10 +12,8 @@ angular.module('webdrilApp')
 
     function setToken(token) {
       if (token) {
-        $log.info("Saving token into session storage: ");
         DrilStorage.setItemInSession(key, token);
       } else {
-        $log.info("Removing token from session storage");
         DrilStorage.removeItemFromSession(key);
       }
     }

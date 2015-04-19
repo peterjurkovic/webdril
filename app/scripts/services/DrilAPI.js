@@ -4,25 +4,7 @@
 angular.module('webdrilApp')
 .factory('DrilAPI', ['$http', 'ENV', function ($http, ENV) {
 
-  return {
-    getPage: getPage,
-    loadFilterOptions :  loadFilterOptions,
-    getBookLectures : getBookLectures,
-    getLecture : getLecture,
-    getUserBookPage : getUserBookPage,
-    updateBook : updateBook,
-    removeBook : removeBook,
-    updateLecture : updateLecture,
-    createLecture : createLecture,
-    updateWord : updateWord,
-    translate : translate,
-    createWord : createWord,
-    removeWord : removeWord,
-    updateWordActivity : updateWordActivity,
-    rateWord : rateWord,
-    getAllLanguages : getAllLanguages
 
-  };
 
   ///////////////////////////////////////////////
 
@@ -31,19 +13,11 @@ angular.module('webdrilApp')
   }
 
   function getUserBookPage(params) {
-      return $http({
-        url: ENV.api+ '/user/books',
-        method: "GET",
-        params : params
-      });
+      return $http.get(ENV.api+ '/user/books', params);
   }
 
   function getPage(params) {
-    return $http({
-      url: ENV.api+ '/books',
-      method: "GET",
-      params : params
-    });
+    return $http.get(ENV.api+ '/books', params);
   }
 
   function loadFilterOptions(){
@@ -106,5 +80,25 @@ angular.module('webdrilApp')
       console.log(res);
     });
   }
+
+  return {
+    getPage: getPage,
+    loadFilterOptions :  loadFilterOptions,
+    getBookLectures : getBookLectures,
+    getLecture : getLecture,
+    getUserBookPage : getUserBookPage,
+    updateBook : updateBook,
+    removeBook : removeBook,
+    updateLecture : updateLecture,
+    createLecture : createLecture,
+    updateWord : updateWord,
+    translate : translate,
+    createWord : createWord,
+    removeWord : removeWord,
+    updateWordActivity : updateWordActivity,
+    rateWord : rateWord,
+    getAllLanguages : getAllLanguages
+
+  };
 
 }]);

@@ -6,7 +6,7 @@ angular.module('webdrilApp')
   .directive('slideAnimation', function ($timeout) {
     return {
       restrict : 'A',
-      link : function (scope, element, attrs){
+      link : function (scope, element){
         var cls = 'animated bounceInLeft';
         element.on('click', '.dril-buttons .btn', function () {
           element.removeClass(cls);
@@ -14,7 +14,7 @@ angular.module('webdrilApp')
             element.addClass(cls);
             scope.$broadcast('answer-hidden');
           }, 100);
-        })
+        });
       }
-    }
+    };
   });

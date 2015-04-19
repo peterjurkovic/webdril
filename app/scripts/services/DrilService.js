@@ -15,7 +15,7 @@ angular.module('webdrilApp')
                   index = -1;
               for(var i = 0; i < list.length; i++){
                 if(list[i].lastViewed === null){
-                  return list[i]
+                  return list[i];
                 }
                 if(now > list[i].lastViewed ){
                   now = list[i].lastViewed;
@@ -72,7 +72,7 @@ angular.module('webdrilApp')
       function isLearned(word){
         return word.lastRating === RATING.KNOW && userRating === RATING.KNOW;
       }
-    };
+    }
 
 
     function removeLearnedWords(list , index ){
@@ -102,7 +102,7 @@ angular.module('webdrilApp')
       if(list === null){
         list = [
 
-        ]
+        ];
       }
       countOfWords = list.length;
       $log.info('Loaded activated words: ' + countOfWords);

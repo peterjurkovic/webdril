@@ -72,7 +72,7 @@ angular.module('webdrilApp')
           }
         });
       }
-    }
+    };
   }])
   .directive('translate', ['DrilAPI', '$timeout', function( DrilAPI , $timeout ){
     return {
@@ -124,7 +124,7 @@ angular.module('webdrilApp')
             scope.updateModel = scope.translation;
           }
           hideBox();
-        }
+        };
 
         hideBox();
         }
@@ -138,13 +138,13 @@ angular.module('webdrilApp')
         word : '='
       },
       controller: function(){
-        console.log('controller')
+        console.log('controller');
       },
       link : function(scope, element, attrs) {
           console.log(scope.word);
       }
 
-    }
+    };
   }])
 .directive('pjUnique', ['ENV', '$http', '$q', function(ENV, $http, $q) {
     return {
@@ -166,7 +166,7 @@ angular.module('webdrilApp')
       }
     };
 }])
-.directive("pjMatch", function($parse){
+.directive('pjMatch', function($parse){
   return {
     restrict: 'A',
     require: 'ngModel',
@@ -176,7 +176,7 @@ angular.module('webdrilApp')
         var matches = value === getPass(scope);
         ctrl.$setValidity('match', matches);
         return matches ? value : undefined;
-      }
+      };
       ctrl.$parsers.unshift(validator);
       ctrl.$formatters.unshift(validator);
 
@@ -184,5 +184,5 @@ angular.module('webdrilApp')
         ctrl.$$parseAndValidate();
       });
     }
-  }
+  };
 });

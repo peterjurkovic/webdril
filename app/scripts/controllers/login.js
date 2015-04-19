@@ -18,13 +18,23 @@ angular.module('webdrilApp')
     };
 
     $scope.login = function (isValid, credentials) {
+
       $scope.badCredentials = false;
+
+      function showLoader(){
+        $scope.isLoading = true;
+      }
+
+      function hideLoader(){
+        $scope.isLoading = false;
+      }
+
       if(!isValid || $scope.isLoading){
         return false;
       }
       showLoader();
 
-      UserFactory.login(credentials).then(handleSuccess, handleError);
+
 
       function handleSuccess(){
         Toast.success('You have been successfully logged in');
@@ -38,13 +48,6 @@ angular.module('webdrilApp')
         hideLoader();
       }
 
-      function showLoader(){
-        $scope.isLoading = true;
-      }
-
-      function hideLoader(){
-        $scope.isLoading = false;
-      }
-
+      UserFactory.login(credentials).then(handleSuccess, handleError);
     };
   }]);

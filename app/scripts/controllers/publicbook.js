@@ -8,7 +8,7 @@ angular.module('webdrilApp')
       $scope.isLoading = false;
       $scope.totalItems = 0;
       $scope.state = {
-        orderBy : "date",
+        orderBy : 'date',
         orderType : 1,
         currentPage : 1
       };

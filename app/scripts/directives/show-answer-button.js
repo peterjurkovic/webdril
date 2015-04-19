@@ -10,9 +10,9 @@ angular.module('webdrilApp')
       link: function postLink(scope, element, attrs) {
         var cls = 'animated fadeOutDown';
 
-        element.bind("click", function () {
+        element.bind('click', function () {
           element.addClass(cls);
-        })
+        });
 
         scope.$on('answer-hidden', function (){
           element.removeClass(cls);

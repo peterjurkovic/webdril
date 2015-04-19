@@ -5,7 +5,7 @@ angular.module('webdrilApp')
   .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilService', 'DrilStorage', 'User',
     function ($http, ENV, AuthTokenFactory, DrilService, DrilStorage, User) {
 
-    var userSessionKey = "loggedUser";
+    var userSessionKey = 'loggedUser';
 
     function login(credentials) {
       return $http.post(ENV.api + '/user/login', credentials ).then(
@@ -33,6 +33,6 @@ angular.module('webdrilApp')
       login: login,
       logout: logout,
       getUser: getUser
-    }
+    };
 
   }]);

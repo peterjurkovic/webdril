@@ -1,7 +1,7 @@
 'use strict';
 angular.module('webdrilApp')
-  .factory('HttpInterceptor', ['AuthTokenFactory', 'Toast', '$q',
-    function (AuthTokenFactory, Toast, $q) {
+  .factory('HttpInterceptor', ['AuthTokenFactory',
+    function (AuthTokenFactory) {
 
 
     function addToken(config) {

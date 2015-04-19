@@ -20,13 +20,6 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
           SESSION_STORAGE = 2;
 
       /**
-       * Boolean flag indicating client support for local storage.
-       * @private
-       */
-      var isLocalStorageSupported = isLocalStorageSupported();
-
-
-      /**
        * Test the client's support for storing values in the local store.
        *
        * @return {boolean} True if the client has support for the local store, else false.
@@ -126,14 +119,14 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
       function remove(storageType, key) {
         if (isLocalStorageSupported) {
           try {
-            if(storageType == LOCAL_STORAGE){
+            if(storageType === LOCAL_STORAGE){
               $window.localStorage.removeItem(getKey(key));
             }else{
               $window.sessionStorage.removeItem(getKey(key));
             }
             return true;
           } catch (e) {
-            croak(e);
+            triggerError(e);
           }
         }
         return false;
@@ -159,10 +152,11 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
       function getItemFrom(storageType, key){
         if (isLocalStorageSupported) {
           try {
+            var value;
             if(storageType === LOCAL_STORAGE){
-              var value = $window.localStorage.getItem( getKey(key) );
+              value = $window.localStorage.getItem( getKey(key) );
             }else{
-              var value = $window.sessionStorage.getItem( getKey(key) );
+              value = $window.sessionStorage.getItem( getKey(key) );
             }
             return value && JSON.parse(value);
           } catch (e) {
@@ -192,5 +186,5 @@ app.factory('DrilStorage', [ '$rootScope', 'storageSettings', '$window',
         removeItemFromSession : removeItemFromSession,
 
         clear : clear
-      }
+      };
 }]);

@@ -10,14 +10,14 @@ angular
     'ui.bootstrap'
   ])
   .constant('RATING', {
-    "KNOW": 1,
-    "NOT_YET": 3,
-    "DO_NOT_KNOW": 5
+    'KNOW': 1,
+    'NOT_YET': 3,
+    'DO_NOT_KNOW': 5
   })
   .value('User', {
     info : false,
     settings : {
-      locale : "en",
+      locale : 'en',
       drilStrategy : 1
     }
   })
