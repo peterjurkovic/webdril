@@ -150,7 +150,8 @@ angular.module('webdrilApp')
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, ngModel) {
-        ngModel.$asyncValidators.username = function(modelValue, viewValue) {
+        console.log(ngModel);
+        ngModel.$asyncValidators.unique = function(modelValue, viewValue) {
           return $http.post(ENV.api + '/check', {
             field: attrs.pjUnique,
             value: viewValue
@@ -164,5 +165,24 @@ angular.module('webdrilApp')
         };
       }
     };
-}]);;
-;
+}])
+.directive("pjMatch", function($parse){
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function(scope, ele, attrs, ctrl){
+      var getPass = $parse(attrs.pjMatch),
+          validator = function (value) {
+        var matches = value === getPass(scope);
+        ctrl.$setValidity('match', matches);
+        return matches ? value : undefined;
+      }
+      ctrl.$parsers.unshift(validator);
+      ctrl.$formatters.unshift(validator);
+
+      scope.$watch(getPass, function(){
+        ctrl.$$parseAndValidate();
+      });
+    }
+  }
+});

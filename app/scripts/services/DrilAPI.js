@@ -19,11 +19,16 @@ angular.module('webdrilApp')
     createWord : createWord,
     removeWord : removeWord,
     updateWordActivity : updateWordActivity,
-    rateWord : rateWord
+    rateWord : rateWord,
+    getAllLanguages : getAllLanguages
 
   };
 
   ///////////////////////////////////////////////
+
+  function getAllLanguages(){
+    return $http.get(ENV.api+ '/languages');
+  }
 
   function getUserBookPage(params) {
       return $http({

@@ -1,50 +1,143 @@
 <h1 class="text-center">Sign Up</h1>
 <h6 class="text-center">Enter your details to create your account.</h6>
 
-<form  class="pj-login" name="form" ng-submit="singup(form.$valid , credentials)" novalidate>
+<form  class="pj-login" name="singup" ng-submit="createAccount(singup.$valid , user)" novalidate>
 
-  <div class="form-group">
-
-    <label for="username">Login:</label>
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.login.$touched) && singup.login.$invalid }">
+    <label for="login">Login:</label>
     <input class="form-control"
            type="text"
-           ng-model="credentials.login"
+           ng-model="user.login"
            ng-minlength="5"
+           ng-maxlength="30"
            required
+           ng-model-options="{ debounce: 300 }"
+           name="login"
+           id="login"
            pj-unique="login"
            ng-trim="true">
+
+    <p class="pj-loader-16"  ng-if="singup.login.$pending">
+      Checking availability...
+    </p>
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.login.$touched) && singup.login.$invalid">
+      <div ng-if="singup.login.$error.unique">Given login has already been taken</div>
+      <div ng-if="singup.login.$error.required">This is required field</div>
+      <div ng-if="singup.login.$error.minlength || singup.login.$error.maxlength">The length has to be between 5 and 30 characters</div>
+    </div>
+
+
   </div>
 
-  <div class="form-group">
-
-    <label for="username">E-mail:</label>
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.email.$touched) && singup.email.$invalid }">
+    <label for="email">E-mail:</label>
     <input class="form-control"
            type="email"
-           id="username"
-           ng-model="credentials.username"
-           ng-minlength="5"
+           id="email"
+           ng-model="user.email"
            required
+           name="email"
+           ng-model-options="{ debounce: 300 }"
+           pj-unique="email"
+           tooltip="Will be not published"
            ng-trim="true">
+    <p class="pj-loader-16"  ng-if="singup.email.$pending">
+      Checking availability...
+    </p>
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.email.$touched) && singup.email.$invalid">
+      <div ng-if="singup.email.$error.unique">Given e-mail has already been used</div>
+      <div ng-if="singup.email.$error.required">This is required field</div>
+      <div ng-if="singup.email.$error.email">Invalid e-mail address</div>
+    </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.password.$touched) && singup.password.$invalid }">
     <label for="password">Password:</label>
     <input class="form-control"
            type="password"
            id="password"
-           ng-model="credentials.password"
-           ng-minlength="5"
+           ng-model="user.password"
+           ng-minlength="6"
+           required
+           name="password"
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.password.$touched) && singup.password.$invalid">
+      <div ng-if="singup.password.$error.required">This is required field</div>
+      <div ng-if="singup.password.$error.minlength">At least 6 characters</div>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.password2.$touched) && singup.password2.$invalid }">
+    match {{singup.password2.$error.match}}
+    <label for="password2">Password confirmation:</label>
+    <input class="form-control"
+           type="password"
+           id="password2"
+           ng-model="user.password2"
+           required
+           name="password2"
+           tooltip="At least 6 characters"
+           pj-match="user.password"
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.password2.$touched) && singup.password2.$invalid">
+      <div ng-if="singup.password2.$error.required">This is required field</div>
+      <div ng-if="singup.password2.$error.match">Password does not match the confirm password</div>
+    </div>
+  </div>
+
+  <div class="form-group chosen-white" ng-class="{'has-error' : (singup.$submitted || singup.lang.$touched) && singup.lang.$invalid }">
+    <label for="language">Your language:</label>
+    <select chosen
+            id="language"
+            ng-model="user.lang"
+            required
+            name="lang"
+            ng-options="lang.id as lang.name for lang in languages">
+      <option value="">Choose your language</option>
+    </select>
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">
+      <div ng-if="singup.lang.$error.required">This is required field</div>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid }">
+    <label for="firstName">Your first name:</label>
+    <input class="form-control"
+           type="text"
+           id="firstName"
+           name="firstName"
+           ng-model="user.fistName"
+           ng-minlength="3"
            required
            ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid">
+      <div ng-if="singup.firstName.$error.required">This is required field</div>
+      <div ng-if="singup.firstName.$error.minlength">Invalid value</div>
+    </div>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary">Register</button>
+    <label for="lastName">Your last name:</label>
+    <input class="form-control"
+           type="text"
+           id="lastName"
+           ng-model="user.lastName"
+           ng-minlength="3"
+           required
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lastName.$touched) && singup.lastName.$invalid">
+      <div ng-if="singup.lastName.$error.required">This is required field</div>
+      <div ng-if="singup.lastName.$error.minlength">Invalid value</div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-block btn-primary">Register</button>
     <span class="pj-loader" ng-if="isLoading">Please wait...</span>
   </div>
-  <div class="form-group">
+  <div class="form-group pj-border text-center">
 
     <strong><a href="#/login">Sing in</a></strong>
-    &nbsp;
+    &nbsp; | &nbsp;
     <a href="#/resetpass">Forgot your password?</a>
 
   </div>
