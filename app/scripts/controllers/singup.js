@@ -15,7 +15,7 @@ angular.module('webdrilApp')
       $scope.user = {
         login: '',
         email: '',
-        lang : '',
+        locale : '',
         fistName : 'a',
         lastName : 'b',
         password: '1',
@@ -30,6 +30,10 @@ angular.module('webdrilApp')
       },10);
 
       $scope.createAccount = function(isValid, user){
-        console.log(user);
+        if(isValid){
+
+        }else{
+          Toast.danger('The registration form contains errors.');
+        }
       };
     }]);
