@@ -1,7 +1,7 @@
 'use strict';
 angular.module('webdrilApp')
-  .factory('HttpInterceptor', ['AuthTokenFactory',
-    function (AuthTokenFactory) {
+  .factory('HttpInterceptor', ['AuthTokenFactory', '$q',
+    function (AuthTokenFactory, $q) {
 
 
     function addToken(config) {
@@ -13,9 +13,8 @@ angular.module('webdrilApp')
       return config;
     }
 
-     function handleError(res) {
-        console.log(res);
-
+     function handleError(rejection) {
+       return $q.reject(rejection);
       }
 
     return {

@@ -150,7 +150,6 @@ angular.module('webdrilApp')
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, ngModel) {
-        console.log(ngModel);
         ngModel.$asyncValidators.unique = function(modelValue, viewValue) {
           return $http.post(ENV.api + '/check', {
             field: attrs.pjUnique,

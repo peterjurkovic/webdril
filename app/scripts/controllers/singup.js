@@ -10,30 +10,47 @@
 angular.module('webdrilApp')
   .controller('SingupCtrl', [ '$scope', 'UserFactory', '$location', 'Toast', 'User', 'DrilAPI', '$timeout',
     function ($scope, UserFactory, $location, Toast, User, DrilApi, $timeout) {
-      $scope.user = User.info;
 
-      $scope.user = {
-        login: '',
-        email: '',
-        locale : '',
-        fistName : 'a',
-        lastName : 'b',
-        password: '1',
-        password2: ''
-      };
+      function init(){
+        $scope.user = {
+          login: '',
+          email: '',
+          locale : '',
+          firstName : '',
+          lastName : '',
+          password: '',
+          password2: ''
+        };
+      }
 
-
-      $timeout(function(){
-        DrilApi.getAllLanguages().then(function(res){
-          $scope.languages = res.data;
-        })
-      },10);
+      DrilApi.getAllLanguages().then(function(res){
+        $scope.languages = res.data;
+      })
 
       $scope.createAccount = function(isValid, user){
-        if(isValid){
+        if(isValid && !$scope.pending){
+          $scope.pending = true;
+          DrilApi.createAccount(user)
+            .then(function (res){
+              $scope.created = true;
 
+            }, function (res){
+              console.log(res.status === 400);
+              if(res.status === 400 ){
+                Toast.danger(res.data.error.message);
+              }
+            })
+            .finally(function(){
+              $scope.pending = false;
+            });
         }else{
           Toast.danger('The registration form contains errors.');
         }
+
+
+
+
       };
+
+      init();
     }]);

@@ -5,8 +5,8 @@
  */
 (function (angular) {
   'use strict';
-  var AngularChosen = angular.module('webdrilApp');
-  AngularChosen.directive('chosen', ['$timeout', function ($timeout) {
+  angular.module('webdrilApp')
+  .directive('chosen', ['$timeout', function ($timeout) {
     var EVENTS, scope, linker, watchCollection;
     /*
      * List of events and the alias used for binding with angularJS

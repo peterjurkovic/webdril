@@ -71,6 +71,10 @@ angular.module('webdrilApp')
     return $http.post(ENV.api+ '/user/words/' + id +'/activate' , {activate : acitivy} );
   }
 
+  function createAccount(user){
+    return $http.post(ENV.api+ '/users' , user );
+  }
+
   function rateWord(word){
     $http.post(ENV.api+ '/user/rateWord',{
       id : word.id,
@@ -97,7 +101,8 @@ angular.module('webdrilApp')
     removeWord : removeWord,
     updateWordActivity : updateWordActivity,
     rateWord : rateWord,
-    getAllLanguages : getAllLanguages
+    getAllLanguages : getAllLanguages,
+    createAccount : createAccount
 
   };
 
