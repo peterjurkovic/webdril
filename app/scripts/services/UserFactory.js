@@ -19,6 +19,10 @@ angular.module('webdrilApp')
       );
     }
 
+    function activateAccount(token){
+      return $http.post(ENV.api+ '/users/activate',{token: token});
+    }
+
     function logout() {
       DrilStorage.clear();
       User.info = false;
@@ -32,7 +36,8 @@ angular.module('webdrilApp')
     return {
       login: login,
       logout: logout,
-      getUser: getUser
+      getUser: getUser,
+      activateAccount : activateAccount
     };
 
   }]);

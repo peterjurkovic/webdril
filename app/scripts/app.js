@@ -21,8 +21,9 @@ angular
       drilStrategy : 1
     }
   })
-  .config(function ($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $httpProvider, $locationProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
+    //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',

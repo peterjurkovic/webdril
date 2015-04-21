@@ -33,7 +33,6 @@ angular.module('webdrilApp')
           DrilApi.createAccount(user)
             .then(function (res){
               $scope.created = true;
-
             }, function (res){
               console.log(res.status === 400);
               if(res.status === 400 ){

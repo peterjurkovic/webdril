@@ -17,6 +17,17 @@ angular.module('webdrilApp')
       password: ''
     };
 
+    var token = $location.hash();
+      if(token){
+        UserFactory.activateAccount(token).then(
+          function(res){
+            if(res.data.success){
+              $scope.activated = true;
+            }
+          }
+        )
+      }
+
     $scope.login = function (isValid, credentials) {
 
       $scope.badCredentials = false;
@@ -42,9 +53,13 @@ angular.module('webdrilApp')
         $location.path('/manage/books');
       }
 
-      function handleError(){
-          $scope.badCredentials = true;
-          $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+      function handleError(res){
+          if(res.status === 400 && res.data.error){
+            Toast.info(res.data.error.message);
+          }else{
+            $scope.badCredentials = true;
+            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+          }
         hideLoader();
       }
 

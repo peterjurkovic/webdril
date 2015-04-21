@@ -2,7 +2,10 @@
 <h6 class="text-center">Enter your login details</h6>
 
 <form class="pj-login" name="loginForm" ng-submit="login(loginForm.$valid , credentials)" novalidate>
-
+  <div ng-if="activated" class="alert alert-success">
+    <span class="glyphicon glyphicon-ok"></span>
+    Your account has been activated.
+  </div>
   <div ng-show="(loginForm.$submitted && !loginForm.$valid) || badCredentials"  class="alert alert-danger">
     <span class="glyphicon glyphicon-remove"></span>
     <span ng-if="badCredentials">Bad username or password.</span>
