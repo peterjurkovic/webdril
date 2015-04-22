@@ -1,7 +1,7 @@
 <h2>Create new textbook</h2>
 
 
-<form class="pj-form-big"  name="b" ng-submit="createAccount(singup.$valid , user)" novalidate>
+<form class="pj-form-big"  name="b" ng-submit="create(b.$valid , book)" novalidate>
   <div class="form-group" ng-class="{'has-error' : (b.$submitted || b.login.$touched) && b.name.$invalid }">
     <label for="name">Title of textbook:</label>
     <input class="form-control"
@@ -24,7 +24,7 @@
         <label for="lang1">Language of question:</label>
         <select chosen
                 id="lang1"
-                ng-model="book.langQuestion"
+                ng-model="book.question_lang_id"
                 required
                 name="lang1"
                 ng-options="lang.id as lang.name for lang in languages">
@@ -41,7 +41,7 @@
         <label for="lang1">Language of answer:</label>
         <select chosen
                 id="lang2"
-                ng-model="book.langAnswer"
+                ng-model="book.answer_lang_id"
                 required
                 name="lang2"
                 ng-options="lang.id as lang.name for lang in languages">
@@ -62,7 +62,7 @@
         <label for="level">Choose level:</label>
         <select chosen
                 id="level"
-                ng-model="book.level"
+                ng-model="book.level_id"
                 required
                 name="level"
                 ng-options="level.id as level.name for level in levels">
@@ -78,7 +78,7 @@
         <label for="category">Choose category:</label>
         <select chosen
                 id="category"
-                ng-model="book.category"
+                ng-model="book.category_id"
                 required
                 name="category"
                 ng-options="category.id as category.name for category in categories">
@@ -89,19 +89,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <pj-tags input="book.tagsStr" tags="book.tags"></pj-tags>
-  </div>
-
-  <div class="form-group">
-    <label for="tags">Tags textbook:</label>
-    <input class="form-control"
-           type="text"
-           ng-model="book.tagsStr"
-           name="tags"
-           id="tags"
-           ng-trim="true">
   </div>
 
   <div class="form-group">

@@ -33,6 +33,10 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/book/' + bookId +'/lecture/' + lectureId);
   }
 
+  function createBook(book){
+    return $http.post(ENV.api+ '/books', book);
+  }
+
   function updateBook(book){
     return $http.put(ENV.api+ '/book/' + book.id  , book);
   }
@@ -91,6 +95,7 @@ angular.module('webdrilApp')
     getBookLectures : getBookLectures,
     getLecture : getLecture,
     getUserBookPage : getUserBookPage,
+    createBook : createBook,
     updateBook : updateBook,
     removeBook : removeBook,
     updateLecture : updateLecture,
