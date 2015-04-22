@@ -1,0 +1,120 @@
+<h2>Create new textbook</h2>
+
+
+<form class="pj-form-big"  name="b" ng-submit="createAccount(singup.$valid , user)" novalidate>
+  <div class="form-group" ng-class="{'has-error' : (b.$submitted || b.login.$touched) && b.name.$invalid }">
+    <label for="name">Title of textbook:</label>
+    <input class="form-control"
+           type="text"
+           ng-model="book.name"
+           ng-minlength="8"
+           ng-maxlength="20"
+           name="name"
+           id="name"
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.name.$touched) && b.name.$invalid">
+      <div ng-if="b.name.$error.maxlength">Title of the book has to have max. 200 characters</div>
+      <div ng-if="b.name.$error.minlength">Title of the book has to have at least 8 characters</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
+        <label for="lang1">Language of question:</label>
+        <select chosen
+                id="lang1"
+                ng-model="book.langQuestion"
+                required
+                name="lang1"
+                ng-options="lang.id as lang.name for lang in languages">
+          <option value="">Choose language</option>
+        </select>
+        <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.lang1.$touched) && b.lang1.$invalid">
+          <div ng-if="b.lang1.$error.required">This is required field</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6  col-sm-6">
+      <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang2.$touched) && b.lang2.$invalid }">
+        <label for="lang1">Language of answer:</label>
+        <select chosen
+                id="lang2"
+                ng-model="book.langAnswer"
+                required
+                name="lang2"
+                ng-options="lang.id as lang.name for lang in languages">
+          <option value="">Choose language</option>
+        </select>
+        <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.lang2.$touched) && b.lang2.$invalid">
+          <div ng-if="b.lang2.$error.required">This is required field</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
+        <label for="level">Choose level:</label>
+        <select chosen
+                id="level"
+                ng-model="book.level"
+                required
+                name="level"
+                ng-options="level.id as level.name for level in levels">
+          <option value="">Choose level</option>
+        </select>
+        <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.level.$touched) && b.level.$invalid">
+          <div ng-if="b.level.$error.required">This is required field</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.category.$touched) && b.category.$invalid }">
+        <label for="category">Choose category:</label>
+        <select chosen
+                id="category"
+                ng-model="book.category"
+                required
+                name="category"
+                ng-options="category.id as category.name for category in categories">
+          <option value="">Choose category</option>
+        </select>
+        <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.category.$touched) && b.category.$invalid">
+          <div ng-if="b.category.$error.required">This is required field</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <pj-tags input="book.tagsStr" tags="book.tags"></pj-tags>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags textbook:</label>
+    <input class="form-control"
+           type="text"
+           ng-model="book.tagsStr"
+           name="tags"
+           id="tags"
+           ng-trim="true">
+  </div>
+
+  <div class="form-group">
+      <label for="isShared">
+         Share this textbook:
+        <input id="isShared" type="checkbox" ng-model="book.isShared"  />
+      </label>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-block btn-primary btn-lg">
+      <span class="glyphicon glyphicon-floppy-disk"></span>
+      Save</button>
+    <span class="pj-loader" ng-if="isLoading">Please wait...</span>
+  </div>
+
+</form>

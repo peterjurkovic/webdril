@@ -59,6 +59,10 @@ angular
         templateUrl: 'views/user-books.html',
         controller: 'UserBookCtrl'
       })
+      .when('/manage/book/create', {
+        templateUrl: 'views/user-create-book.html',
+        controller: 'CreateBookCtrl'
+      })
       .when('/manage/book/:bookId', {
         templateUrl: 'views/user-lecture.html',
         controller: 'UserLectureCtrl'
