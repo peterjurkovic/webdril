@@ -14,14 +14,15 @@ angular.module('webdrilApp')
         answer_lang_id : 2,
         category_id : 10,
         level_id : 3,
-        isShared : true
+        isShared : true,
+        description : ""
       };
 
 
       DrilAPI.loadFilterOptions().then(function (res) {
         $scope.levels = res.data.levels;
         $scope.languages = res.data.languages;
-        $scope.categories = res.data.categories;
+        $scope.categoryList = res.data.categories;
       });
 
       $scope.create = function(isValid, book) {
