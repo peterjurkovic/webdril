@@ -85,7 +85,7 @@
       </td>
       <td class="col-md-1 pj-nav">
         <button
-          tooltip="{'Active this word' : !word.isActivated, 'Deactive this word' : word.isActivated }"
+          tooltip="Activate/deactivate"
           ng-click="toggleActivity(word)"
           ng-class="{'btn-success' : !word.isActivated, 'btn-warning' : word.isActivated }"
           class="btn btn-xs">
@@ -93,9 +93,11 @@
             ng-class="{'glyphicon-play' : !word.isActivated, 'glyphicon-minus-sign' : word.isActivated }"
             class="glyphicon "></span>
         </button>
-        <button class="btn btn-danger btn-xs"
-                ng-really-message="Are you sure that you want remove this book?"
-                ng-really-click="removeWord(word)"
+        <button
+          tooltip="Remove"
+          class="btn btn-danger btn-xs"
+          ng-really-message="Are you sure that you want remove this book?"
+          ng-really-click="removeWord(word)"
           >
           <span class="glyphicon glyphicon-remove"></span>
         </button>

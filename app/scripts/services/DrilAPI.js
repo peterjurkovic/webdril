@@ -17,7 +17,7 @@ angular.module('webdrilApp')
   }
 
   function getPage(params) {
-    return $http.get(ENV.api+ '/books', params);
+    return $http.get(ENV.api+ '/books', {params : params });
   }
 
   function loadFilterOptions(){

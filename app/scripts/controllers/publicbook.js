@@ -10,15 +10,24 @@ angular.module('webdrilApp')
       $scope.state = {
         orderBy : 'date',
         orderType : 1,
-        currentPage : 1
+        currentPage : 1,
+        level : "",
+        langQuestion : "",
+        langAnswer : "",
+        category : ""
       };
 
       $scope.items = [];
 
-
+      DrilAPI.loadFilterOptions().then(function (res) {
+        $scope.levels = res.data.levels;
+        $scope.languages = res.data.languages;
+        $scope.categoryList = res.data.categories;
+      });
 
       var renderBooks = function () {
         $scope.isLoading = true;
+        console.log($scope.state);
         DrilAPI.getPage($scope.state).then(function (res) {
           $scope.items = res.data.books;
           $scope.totalItems = res.data.count;

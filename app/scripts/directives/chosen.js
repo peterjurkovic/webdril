@@ -43,6 +43,7 @@
           stopLoading = function() {
             return element.removeClass('loading').attr('disabled', false).trigger('chosen:updated');
           };
+
           chosen = null;
           defaultText = null;
           empty = false;
@@ -80,7 +81,7 @@
           attr.$observe('disabled', function() {
             return element.trigger('chosen:updated');
           });
-          if (attr.ngOptions && ngModel) {
+          if (attr.ngOptions &&ngModel) {
             match = attr.ngOptions.match(NG_OPTIONS_REGEXP);
             valuesExpr = match[7];
             scope.$watchCollection(valuesExpr, function(newVal, oldVal) {

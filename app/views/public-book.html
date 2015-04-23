@@ -30,12 +30,10 @@
 
       <div class="col-md-3 col-sm-6">
         <select chosen
+                ng-options="cat.id as cat.name group by cat.catName for cat in categoryList"
                 ng-model="state.category"
                 ng-change="changeFilter()">
           <option value="">Choose a category</option>
-          <optgroup ng-repeat="category in categories" label="{{category.name}}">
-            <option ng-repeat='subCategory in category.subCategories' value="{{subCategory.id}}">{{subCategory.name}}</option>
-          </optgroup>
         </select>
       </div>
     </div>
@@ -52,7 +50,6 @@
 
   </div>
 </form>
-
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
   <span class="pj-loader">Loading...</span>
