@@ -67,16 +67,20 @@
   <table class="table table-striped pj-words">
     <thead>
       <tr>
+        <th class="hidden-sm hidden-xs" >&nbsp;</th>
         <th>Question in {{book.question_lang_name}}</th>
         <th>Anser in {{book.answer_lang_name}}</th>
       </tr>
     </thead>
     <tbody>
     <tr ng-repeat="word in book.lecture.words">
-      <td>
+      <td class="pj-border-r text-center hidden-sm hidden-xs">
+        {{$index + 1}}
+      </td>
+      <td class="col-md-6">
         {{word.question}}
       </td>
-      <td>
+      <td class="col-md-6">
         {{word.answer}}
       </td>
     </tr>

@@ -8,14 +8,14 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('SingupCtrl', [ '$scope', 'UserFactory', '$location', 'Toast', 'User', 'DrilAPI', '$timeout',
-    function ($scope, UserFactory, $location, Toast, User, DrilApi, $timeout) {
+  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI',
+    function ($scope, $location, Toast, DrilApi) {
 
       function init(){
         $scope.user = {
           login: '',
           email: '',
-          locale : '',
+          locale_id : '',
           firstName : '',
           lastName : '',
           password: '',

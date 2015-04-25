@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('BookCtrl', ['$scope','DrilAPI', '$location', '$timeout',
-    function ($scope, DrilAPI, $location, $timeout) {
+  .controller('BookCtrl', ['$scope','DrilAPI', '$location','UserFactory',
+    function ($scope, DrilAPI, $location, UserFactory) {
 
       $scope.isLoading = false;
       $scope.totalItems = 0;
@@ -17,6 +17,13 @@ angular.module('webdrilApp')
         category : ""
       };
 
+      var user = UserFactory.getUser();
+      if(user){
+        $scope.state.langQuestion = user.settings.locale_id;
+      }
+
+       console.log($scope.state);
+
       $scope.items = [];
 
       DrilAPI.loadFilterOptions().then(function (res) {
@@ -27,7 +34,6 @@ angular.module('webdrilApp')
 
       var renderBooks = function () {
         $scope.isLoading = true;
-        console.log($scope.state);
         DrilAPI.getPage($scope.state).then(function (res) {
           $scope.items = res.data.books;
           $scope.totalItems = res.data.count;

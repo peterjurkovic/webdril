@@ -97,10 +97,10 @@
       <label for="language">Your language:</label>
       <select chosen
               id="language"
-              ng-model="user.locale"
+              ng-model="user.locale_id"
               required
               name="lang"
-              ng-options="lang.code as lang.name for lang in languages">
+              ng-options="lang.id as lang.name for lang in languages">
         <option value="">Choose your language</option>
       </select>
       <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">

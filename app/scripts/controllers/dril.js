@@ -13,6 +13,7 @@ angular.module('webdrilApp')
       $scope.getCountOfActivated = getCountOfActivated;
       $scope.getStatistics =  getStatistics;
       $scope.RATING = RATING;
+
       ///////////////////////////////
 
       function getStatistics(){

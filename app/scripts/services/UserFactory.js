@@ -2,15 +2,14 @@
 
 
 angular.module('webdrilApp')
-  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilService', 'DrilStorage', 'User',
-    function ($http, ENV, AuthTokenFactory, DrilService, DrilStorage, User) {
+  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilService', 'DrilStorage',
+    function ($http, ENV, AuthTokenFactory, DrilService, DrilStorage) {
 
     var userSessionKey = 'loggedUser';
 
     function login(credentials) {
       return $http.post(ENV.api + '/user/login', credentials ).then(
         function success(response) {
-          User.info = response.data.user;
           AuthTokenFactory.setToken(response.data.token);
           DrilService.saveList(response.data.actiavtedWords);
           DrilStorage.setItemInSession(userSessionKey, response.data.user);
@@ -25,7 +24,6 @@ angular.module('webdrilApp')
 
     function logout() {
       DrilStorage.clear();
-      User.info = false;
     }
 
 

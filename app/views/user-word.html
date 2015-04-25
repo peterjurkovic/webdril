@@ -54,10 +54,11 @@
 
 
   </div>
-
+  <div class="table-responsive">
   <table class="table table-striped pj-words">
     <thead>
     <tr>
+      <th class="pj-no hidden-sm hidden-xs" >&nbsp;</th>
       <th>Question in {{book.question_lang_name}}</th>
       <th>Answer in {{book.answer_lang_name}}</th>
       <th class="pj-action"></th>
@@ -65,7 +66,10 @@
     </thead>
     <tbody>
     <tr ng-repeat="word in book.lecture.words">
-      <td class="col-md-5">
+      <td class="pj-no pj-border-r text-center hidden-sm hidden-xs">
+        {{$index + 1}}
+      </td>
+      <td class="col-md-6 col-sm-5 ">
         <span
           inline-edit="word.question"
           inline-edit-callback="saveWord(newValue, word, 'q')"
@@ -74,7 +78,7 @@
           inline-edit-validation="validate(newValue)"
           ></span>
       </td>
-      <td class="col-md-5">
+      <td class="col-md-5 col-sm-5">
          <span
            inline-edit="word.answer"
            inline-edit-callback="saveWord(newValue, word, 'a')"
@@ -83,7 +87,7 @@
            inline-edit-validation="validate(newValue)"
            ></span>
       </td>
-      <td class="col-md-1 pj-nav">
+      <td class="col-md-1 pj-nav col-sm-2">
         <button
           tooltip="Activate/deactivate"
           ng-click="toggleActivity(word)"
@@ -105,7 +109,7 @@
     </tr>
     </tbody>
   </table>
-
+  </div>
   <div ng-if="!book.lecture.words.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
     The lecture does not contain any word.

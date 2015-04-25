@@ -19,6 +19,4 @@ angular.module('webdrilApp')
     $scope.$on(AUTH_EVENTS.loginSuccess, function(){
       $rootScope.user = UserFactory.getUser();
     });
-
-
   }]);

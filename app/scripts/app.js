@@ -14,13 +14,6 @@ angular
     'NOT_YET': 3,
     'DO_NOT_KNOW': 5
   })
-  .value('User', {
-    info : false,
-    settings : {
-      locale : 'en',
-      drilStrategy : 1
-    }
-  })
   .config(function ($routeProvider, $httpProvider, $locationProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
     //$locationProvider.html5Mode(true);
@@ -39,10 +32,6 @@ angular
       })
       .when('/book/:bookId/lecture/:lectureId', {
         templateUrl: 'views/public-word.html',
-        controller: 'WordCtrl'
-      })
-      .when('/words', {
-        templateUrl: 'views/word.html',
         controller: 'WordCtrl'
       })
       .when('/login', {
