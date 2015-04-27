@@ -100,9 +100,7 @@ angular.module('webdrilApp')
       $log.info('Loading activated words from storage.');
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
-        list = [
-
-        ];
+        list = [];
       }
       countOfWords = list.length;
       $log.info('Loaded activated words: ' + countOfWords);

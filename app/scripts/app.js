@@ -6,6 +6,7 @@ angular
     'ngAnimate',
     'ngRoute',
     'pjToast',
+    'pjTts',
     'angularInlineEdit',
     'ui.bootstrap'
   ])

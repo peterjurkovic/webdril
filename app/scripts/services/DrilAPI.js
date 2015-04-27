@@ -89,6 +89,10 @@ angular.module('webdrilApp')
     });
   }
 
+  function getRandWords(){
+    return $http.get(ENV.api+ '/words');
+  }
+
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -107,7 +111,8 @@ angular.module('webdrilApp')
     updateWordActivity : updateWordActivity,
     rateWord : rateWord,
     getAllLanguages : getAllLanguages,
-    createAccount : createAccount
+    createAccount : createAccount,
+    getRandWords : getRandWords
 
   };
 
