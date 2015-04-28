@@ -27,7 +27,7 @@
 
       <div class="question-wrapp box">
           <div class="well">
-            <tts tts-text="{{currentWord.question}}" tts-lang="en"></tts>
+            <tts tts-text="{{currentWord.question}}" tts-lang="{{currentWord.langQuestion}}"></tts>
             {{currentWord.question}}
           </div>
       </div>
@@ -44,6 +44,7 @@
         <div class="answer-wrapp box" ng-show="isAnswerShown">
           <div class="well">
             {{currentWord.answer}}
+            <tts tts-text="{{currentWord.answer}}" tts-lang="{{currentWord.langAnswer}}"></tts>
           </div>
         </div>
 
