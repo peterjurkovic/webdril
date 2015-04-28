@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .factory('DrilService', ['DrilStorage', '$filter', '$log',  'AuthTokenFactory', 'RATING', 'DrilAPI',
-      function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI) {
+  .factory('DrilService', ['DrilStorage', '$filter', '$log',  'AuthTokenFactory', 'RATING', 'DrilAPI', '$q',
+      function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI, $q) {
 
 
     var storageKey = "activatedWords",
@@ -34,7 +34,7 @@ angular.module('webdrilApp')
 
     function getNextWord( list ){
       if(!list) {
-        list = loadWords();
+        list = loadFromStorage();
       }
       if(list.length){
         var nextWord =  strategy.selectLatest( list );
@@ -81,7 +81,7 @@ angular.module('webdrilApp')
 
 
     function rateAndGetNextWord(word, rating){
-      var list = loadWords();
+      var list = loadFromStorage();
       rateWord(list, word, rating);
       return getNextWord( list );
     }
@@ -96,7 +96,7 @@ angular.module('webdrilApp')
       DrilStorage.setItem(storageKey, list );
     }
 
-    function loadWords(){
+    function loadFromStorage(){
       $log.info('Loading activated words from storage.');
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
@@ -113,19 +113,32 @@ angular.module('webdrilApp')
 
 
     function addWord( word ){
-      var list = loadWords();
+      var list = loadFromStorage();
       list.push(word);
       saveList(list);
       return countOfWords;
     }
 
     function removeWord( wordId ){
-      var list = loadWords();
+      var list = loadFromStorage();
       _.remove(list, {'id' :wordId});
       console.log(list);
       saveList(list);
       return countOfWords;
     }
+
+    function loadFromServer(){
+      var deferred = $q.defer();
+      DrilAPI.loadWords().then(function(res){
+        saveList(res.data);
+        deferred.resolve(res.data);
+      }, function(){
+        deferred.reject();
+      });
+      return deferred.promise;
+    }
+
+
 
     return {
       saveList : saveList,
@@ -135,6 +148,7 @@ angular.module('webdrilApp')
       getCountOfWords : getCountOfWords,
       getStatistics : getStatistics,
       addWord : addWord,
-      removeWord : removeWord
+      removeWord : removeWord,
+      loadFromServer : loadFromServer
     };
   }]);

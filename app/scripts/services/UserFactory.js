@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilService', 'DrilStorage',
-    function ($http, ENV, AuthTokenFactory, DrilService, DrilStorage) {
+  .factory('UserFactory', ['$http', 'ENV', 'AuthTokenFactory', 'DrilStorage',
+    function ($http, ENV, AuthTokenFactory, DrilStorage) {
 
     var userSessionKey = 'loggedUser';
 
@@ -11,7 +11,6 @@ angular.module('webdrilApp')
       return $http.post(ENV.api + '/user/login', credentials ).then(
         function success(response) {
           AuthTokenFactory.setToken(response.data.token);
-          DrilService.saveList(response.data.actiavtedWords);
           DrilStorage.setItemInSession(userSessionKey, response.data.user);
           return response;
         }

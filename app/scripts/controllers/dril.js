@@ -5,8 +5,12 @@ angular.module('webdrilApp')
   .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING',
     function ($scope, DrilService, RATING) {
 
-      $scope.currentWord = DrilService.getNextWord();
-      $scope.isAnswerShown = false;
+      DrilService.loadFromServer().then(function(){
+        console.log('loaded');
+        $scope.currentWord = DrilService.getNextWord();
+        $scope.isAnswerShown = false;
+      })
+
       $scope.showAnswer = showAnswer;
       $scope.rateWord = rateWord;
       $scope.isNotFinished = isNotFinished;
