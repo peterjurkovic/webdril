@@ -220,3 +220,10 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
   }
   .pj-filter .col-md-3{margin:5px 0}
 }
+.pj-tts,
+.pj-tts:hover{background-color:transparent !important;color:#000;font-size:2em;padding:0;margin:0 !important;line-height:30px;border:none;}
+.pj-tts span,
+.pj-tts:hover span{margin:0 !important;padding:0 !important}
+
+.box{position:relative;}
+.box .pj-tts{position:absolute;right:5px;top:10px}
