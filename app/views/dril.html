@@ -35,7 +35,13 @@
       <div class="input-wrapp">
         <div class="input-group input-group-lg">
           <span class="input-group-addon" id="sizing-addon1">Answer:</span>
-          <input type="text" class="form-control" placeholder="Write answer..." aria-describedby="sizing-addon1">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Write answer..."
+                 ng-model="user.answer"
+                 ng-change="compare(user.answer)"
+                 ng-model-options="{debounce : 500}"
+                 aria-describedby="sizing-addon1">
         </div>
       </div>
 

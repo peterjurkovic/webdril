@@ -16,7 +16,11 @@ angular.module('webdrilApp')
       $location.path('/login');
     };
 
-    $scope.$on(AUTH_EVENTS.loginSuccess, function(){
-      $rootScope.user = UserFactory.getUser();
-    });
+      $scope.$on(AUTH_EVENTS.loginSuccess, function(){
+        $rootScope.user = UserFactory.getUser();
+      });
+
+      $scope.$on(AUTH_EVENTS.sessionTimeout, function(){
+        $scope.logout();
+      });
   }]);

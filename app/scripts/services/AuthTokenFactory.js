@@ -19,7 +19,7 @@ angular.module('webdrilApp')
     }
 
     return {
-       getToken: getToken,
-      setToken: setToken
+        getToken: getToken,
+        setToken: setToken
     };
 }]);
