@@ -1,6 +1,6 @@
 'use strict';
 
-
+/*
 angular.module('webdrilApp')
   .directive('showAnswerButton', ['$timeout', function ($timeout) {
     return {
@@ -21,3 +21,4 @@ angular.module('webdrilApp')
       }
     };
   }]);
+*/

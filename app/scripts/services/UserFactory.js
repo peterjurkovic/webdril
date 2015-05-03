@@ -8,7 +8,7 @@ angular.module('webdrilApp')
     var userSessionKey = 'loggedUser';
 
     function login(credentials) {
-      return $http.post(ENV.api + '/user/login', credentials ).then(
+      return $http.put(ENV.api + '/user/login', credentials ).then(
         function success(response) {
           AuthTokenFactory.setToken(response.data.token);
           DrilStorage.setItemInSession(userSessionKey, response.data.user);

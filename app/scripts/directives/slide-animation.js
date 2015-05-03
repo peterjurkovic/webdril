@@ -12,8 +12,7 @@ angular.module('webdrilApp')
           element.removeClass(cls);
           $timeout(function () {
             element.addClass(cls);
-            scope.$broadcast('answer-hidden');
-          }, 100);
+          }, 0);
         });
       }
     };
