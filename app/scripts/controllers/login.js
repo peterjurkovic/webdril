@@ -27,7 +27,6 @@ angular.module('webdrilApp')
           }
         )
       }
-
     $scope.login = function (isValid, credentials) {
 
       $scope.badCredentials = false;
@@ -48,9 +47,7 @@ angular.module('webdrilApp')
 
 
       function handleSuccess(res){
-        //$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
         $rootScope.user = res.data.user;
-        console.log($rootScope.user);
         Toast.success('You have been successfully logged in');
         $location.path('/manage/books');
       }

@@ -78,9 +78,9 @@ angular.module('webdrilApp')
     return {
       restrict: 'E',
       template :  '<div class="pj-translate" ng-if="showBox()">' +
-                  '<div class="pj-loader-min" ng-if="isTranslating">Translating...</div>' +
-                  '<div ng-if="!isTranslating && translation" ng-click="useTranslation()">{{translation}}</div>' +
-                  '</div>',
+      '<div class="pj-loader-min" ng-if="isTranslating">Translating...</div>' +
+      '<div ng-if="!isTranslating && translation" ng-click="useTranslation()">{{translation}}</div>' +
+      '</div>',
       scope : {
         from : '@translateFrom',
         to : '@translateTo',
@@ -96,7 +96,6 @@ angular.module('webdrilApp')
           scope.isTranslating = false;
           scope.translation = false;
         }
-
         var debounce;
         scope.$watch('text', function(newValue, oldValue) {
           if (newValue && newValue.length > 2 && newValue !== oldValue && !scope.updateModel.length){
@@ -105,10 +104,10 @@ angular.module('webdrilApp')
             debounce = $timeout(function(){
               DrilAPI.translate( scope.text, scope.from, scope.to).then(function(res){
                 if(res.data.result){
-                    scope.translation = res.data.result;
-                  }else{
-                    hideBox();
-                 }
+                  scope.translation = res.data.result;
+                }else{
+                  hideBox();
+                }
               }).finally(function(){
                 scope.isTranslating = false;
               });
@@ -127,8 +126,8 @@ angular.module('webdrilApp')
         };
 
         hideBox();
-        }
-     };
+      }
+    };
   }])
   .directive('drilNav', [function(){
     return {
@@ -209,4 +208,16 @@ angular.module('webdrilApp')
         });
       }
     }
-  }]);
+  }])
+  .directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+      element.bind("keydown keypress", function (event) {
+        if(event.which === 13) {
+          scope.$apply(function (){
+            scope.$eval(attrs.ngEnter);
+          });
+          event.preventDefault();
+        }
+      });
+    };
+  });

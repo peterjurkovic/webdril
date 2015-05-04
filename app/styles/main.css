@@ -6,6 +6,12 @@ body{
 .pj-border-r{border-right:1px solid #ddd;}
 .pj-no{width:20px;}
 
+.btn-field .col-md-11{padding-right:0}
+.btn-field .col-md-1{padding-left:5px;}
+.btn-field .btn{line-height:55px;}
+.btn-field  .pj-loader-16{width:100%;background-position:center;height:20px;}
+
+
 .pj-filter{background:#fff;padding:10px;margin-bottom: 10px;}
 .pj-filter-head{padding-top:2px;padding-bottom:2px;font-size:.85em;background:#f4f4f4;margin:0}
 .pj-filter .pj-text-input{border-radius:0;background:#f4f4f4;border:1px solid #f4f4f4;border-bottom:1px solid #ddd;}
@@ -145,6 +151,8 @@ h4{background:#202829 !important;color:#eee;}
 
 .btn-warning.pj-btn,
 .pj-translate{background-color: #353E45;border-color:#353E45 }
+.pj-translate-wrapp{text-align:center;}
+.pj-translate-wrapp .pj-translate{position:relative;width:auto;bottom:-10px;}
 
 .pj-words th{padding:8px !important;}
 
@@ -211,8 +219,10 @@ table .ng-inline-edit .ng-inline-save__button{z-index: 99; box-shadow: 0 0 8px #
 .ng-inline-edit--error textarea{border-color:#B1000D;}
 
 td.pj-nav{border-left:1px solid #ddd;text-align:right;}
+
 .pj-border{border-top:1px solid #ddd;margin:10px 0 -10px 0;padding-top:10px;}
 form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
+
 
 @media (max-width: 992px) {
   .pj-content th {
@@ -221,9 +231,46 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
   .pj-filter .col-md-3{margin:5px 0}
 }
 
+.pj-tts{opacity:.7;font-size:1.5em;}
 .pj-tts,
-.pj-tts:hover{color:#000;font-size:1.8em;padding:2px;margin:0 !important;line-height:30px;border:none;background-color:transparent}
+.pj-tts:hover{color:#000;padding:2px;margin:0 !important;line-height:30px;border:none;background-color:transparent}
 .pj-tts .pj-loader-16{padding:5px;width:30px;height:30px;background-position:center;}
 
 .box{position:relative;}
-.box .pj-tts{position:absolute;right:5px;top:10px}
+.box .pj-tts{position:absolute;right:0px;top:5px}
+.box .btn-default{position:absolute;right:2px;bottom:2px;border:none;opacity:.5}
+
+.pj-tts:hover,
+.box .btn-default:hover{opacity:1}
+
+
+
+/* Custom, iPhone Retina */
+@media (min-width : 320px) and (max-width : 480px) {
+  .pj-nav{text-align:center;}
+  .pj-nav .btn{margin:5px 10px;}
+}
+
+/* Extra Small Devices, Phones */
+@media (min-width : 480px) {
+  .pj-nav{min-width:100px;}
+}
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) {
+  .pj-nav{width:13%}
+}
+
+/* Medium Devices, Desktops */
+@media  (min-width : 992px) {
+  .pj-nav{width:11%}
+  .pj-content th {
+    text-align:left;padding-left:10px !important;
+  }
+  .pj-filter .col-md-3{margin:5px 0}
+}
+
+/* Large Devices, Wide Screens */
+@media (min-width : 1200px) {
+  .pj-nav{width:11%}
+}

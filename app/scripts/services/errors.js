@@ -6,7 +6,8 @@ angular.module('webdrilApp')
       return( errorLogService );
     }
   }
-).factory("errorLogService", function( $log, $window, ENV) {
+)
+  .factory("errorLogService", function( $log, $window, ENV) {
 
     function log( exception, cause ) {
       $log.error.apply( $log, arguments );

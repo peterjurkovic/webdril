@@ -5,7 +5,7 @@
 </div>
 <div ng-if="book" class="pj-word-detail">
   <h2>
-    <a ng-href="#/book/{{book.id}}" >
+    <a ng-href="#/manage/book/{{book.id}}" >
       <span class="glyphicon glyphicon-book"></span>
       &nbsp; {{book.name}}
     </a>
@@ -54,7 +54,7 @@
 
 
   </div>
-  <div class="table-responsive">
+
   <table class="table table-striped pj-words">
     <thead>
     <tr>
@@ -69,25 +69,13 @@
       <td class="pj-no pj-border-r text-center hidden-sm hidden-xs">
         {{$index + 1}}
       </td>
-      <td class="col-md-6 col-sm-5 ">
-        <span
-          inline-edit="word.question"
-          inline-edit-callback="saveWord(newValue, word, 'q')"
-          inline-edit-btn-edit="Edit"
-          inline-edit-btn-save="Save"
-          inline-edit-validation="validate(newValue)"
-          ></span>
+      <td class="col-md-5 col-sm-5 col-xs-5">
+        {{word.question}}
       </td>
-      <td class="col-md-5 col-sm-5">
-         <span
-           inline-edit="word.answer"
-           inline-edit-callback="saveWord(newValue, word, 'a')"
-           inline-edit-btn-edit="Edit"
-           inline-edit-btn-save="Save"
-           inline-edit-validation="validate(newValue)"
-           ></span>
+      <td class="col-md-5 col-sm-5 col-xs-5">
+        {{word.answer}}
       </td>
-      <td class="col-md-1 pj-nav col-sm-2">
+      <td class="pj-nav col-md-2 col-sm-2 col-xs-2">
         <button
           tooltip="Activate/deactivate"
           ng-click="toggleActivity(word)"
@@ -96,6 +84,12 @@
           <span
             ng-class="{'glyphicon-play' : !word.isActivated, 'glyphicon-minus-sign' : word.isActivated }"
             class="glyphicon "></span>
+        </button>
+        <button
+          tooltip="Edit"
+          ng-click="edit(word)"
+          class="btn btn-xs btn-primary">
+          <span class="glyphicon glyphicon-pencil"></span>
         </button>
         <button
           tooltip="Remove"
@@ -109,7 +103,7 @@
     </tr>
     </tbody>
   </table>
-  </div>
+
   <div ng-if="!book.lecture.words.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
     The lecture does not contain any word.

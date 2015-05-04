@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV',
-    function ($scope, DrilService, RATING, TTSConfig, ENV) {
+  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal',
+    function ($scope, DrilService, RATING, TTSConfig, ENV, $modal) {
       TTSConfig.url = ENV.api + '/tts';
 
       DrilService.loadFromServer().then(function(){
@@ -12,6 +12,25 @@ angular.module('webdrilApp')
       })
 
       ///////////////////////////////
+
+
+      $scope.edit = function () {
+        var modalBox = $modal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'views/edit-word.html',
+          controller: 'EditWordCtrl',
+          resolve: {
+            word: function () {
+              return $scope.currentWord;
+            }
+          }
+        });
+        modalBox.result.then(function (word) {
+          $scope.currentWord.question = word.question;
+          $scope.currentWord.answer = word.answer;
+        });
+      };
+
 
       function getStatistics(){
         return DrilService.getStatistics();
@@ -30,8 +49,7 @@ angular.module('webdrilApp')
       }
 
       function rateWord(rating){
-        //$scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
-        $scope.currentWord = DrilService.rateAGetNext($scope.currentWord, rating);
+        $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
         $scope.isAnswerShown = false;
         $scope.user.answer = '';
       }

@@ -29,8 +29,8 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/book/' + bookId);
   }
 
-  function getLecture(bookId, lectureId){
-    return $http.get(ENV.api+ '/book/' + bookId +'/lecture/' + lectureId);
+  function getLecture(bookId, lectureId, auth){
+    return $http.get(ENV.api+ (auth ? '/user' : '')+ '/book/' + bookId +'/lecture/' + lectureId);
   }
 
   function createBook(book){

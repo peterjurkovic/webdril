@@ -50,7 +50,6 @@ angular.module('webdrilApp')
 
 
     function rateWord(list, word, userRating){
-      console.log(userRating);
       var index = _.findIndex(list, {'id' :word.id});
       if(index !== -1){
         list[index].isLearned = isLearned(list[index]);
@@ -92,18 +91,15 @@ angular.module('webdrilApp')
 
 
     function saveList(list){
-      $log.info('Saving list: ' + list.length);
       DrilStorage.setItem(storageKey, list );
     }
 
     function loadFromStorage(){
-      $log.info('Loading activated words from storage.');
       var list = DrilStorage.getItem(storageKey);
       if(list === null){
         list = [];
       }
       countOfWords = list.length;
-      $log.info('Loaded activated words: ' + countOfWords);
       return list;
     }
 
@@ -122,7 +118,6 @@ angular.module('webdrilApp')
     function removeWord( wordId ){
       var list = loadFromStorage();
       _.remove(list, {'id' :wordId});
-      console.log(list);
       saveList(list);
       return countOfWords;
     }

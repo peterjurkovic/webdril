@@ -29,6 +29,9 @@
           <div class="well">
             <tts tts-text="{{currentWord.question}}" tts-lang="{{currentWord.langQuestion}}"></tts>
             {{currentWord.question}}
+            <button class="btn btn-default" ng-click="edit()">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
           </div>
       </div>
 
@@ -40,6 +43,8 @@
                  placeholder="Write answer..."
                  ng-model="user.answer"
                  ng-change="compare(user.answer)"
+                 ng-enter="showAnswer()"
+                 focus="true"
                  ng-model-options="{debounce : 500}"
                  aria-describedby="sizing-addon1">
         </div>

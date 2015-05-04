@@ -2,13 +2,13 @@
 
 angular.module('webdrilApp')
   .controller('UserWordCtrl',
-  ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', 'DrilService',
-    function ($scope, DrilAPI, $location, $routeParams, Toast, DrilService) {
+  ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', 'DrilService', '$modal',
+    function ($scope, DrilAPI, $location, $routeParams, Toast, DrilService, $modal) {
 
       $scope.isLoading = true;
       $scope.book = null;
       initWord();
-      DrilAPI.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
+      DrilAPI.getLecture($routeParams.bookId, $routeParams.lectureId, true).then(function (res) {
         $scope.book = res.data;
         $scope.isLoading = false;
       });
@@ -20,6 +20,23 @@ angular.module('webdrilApp')
           dril_lecture_id : $routeParams.lectureId
         };
       }
+
+      $scope.edit = function (word) {
+        var modalBox = $modal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'views/edit-word.html',
+          controller: 'EditWordCtrl',
+          resolve: {
+            word: function () {
+              return word;
+            }
+          }
+        });
+        modalBox.result.then(function (eWord) {
+          $scope.word.question = eWord.question;
+          $scope.word.answer = eWord.answer;
+        });
+      };
 
 
       $scope.saveWord = function ( newValue, word, type ){
