@@ -7,7 +7,6 @@ angular
     'ngRoute',
     'pjToast',
     'pjTts',
-    'angularInlineEdit',
     'ui.bootstrap'
   ])
   .constant('RATING', {

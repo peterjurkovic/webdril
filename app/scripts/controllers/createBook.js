@@ -47,6 +47,6 @@ angular.module('webdrilApp')
         } else {
           Toast.danger('The form contains errors.');
         }
-      }
+      };
 
     }]);

@@ -6,7 +6,7 @@ angular.module('webdrilApp')
       function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI, $q) {
 
 
-    var storageKey = "activatedWords",
+    var storageKey = 'activatedWords',
         countOfWords = 0,
         strategy = {
 
@@ -25,7 +25,7 @@ angular.module('webdrilApp')
               if(index !== -1){
                 return list[index];
               }
-             $log.warn("Something is wrong..");
+             $log.warn('Something is wrong..');
             return null;
           }
 

@@ -25,7 +25,7 @@ angular.module('webdrilApp')
               $scope.activated = true;
             }
           }
-        )
+        );
       }
     $scope.login = function (isValid, credentials) {
 

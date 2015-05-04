@@ -11,7 +11,7 @@ angular.module('webdrilApp')
         if(isValid && !$scope.pending){
           $scope.pending = true;
           DrilAPI.updateWord( $scope.word ).then( function(){
-            Toast.success("Saved");
+            Toast.success('Saved');
             $modalInstance.close($scope.word);
           });
         }

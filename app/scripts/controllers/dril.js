@@ -9,7 +9,11 @@ angular.module('webdrilApp')
       DrilService.loadFromServer().then(function(){
         $scope.currentWord = DrilService.getNextWord();
         $scope.isAnswerShown = false;
-      })
+      });
+
+      $scope.userAnswer = {
+        value : ''
+      };
 
       ///////////////////////////////
 
@@ -51,7 +55,7 @@ angular.module('webdrilApp')
       function rateWord(rating){
         $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
         $scope.isAnswerShown = false;
-        $scope.user.answer = '';
+        $scope.userAnswer.value = '';
       }
 
       function compare(text){

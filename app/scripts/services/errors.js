@@ -1,13 +1,15 @@
-'use strict';
+
+(function(window, angular, jQuery) {
+  'use strict';
 
 angular.module('webdrilApp')
-.provider( "$exceptionHandler",{
+.provider( '$exceptionHandler',{
     $get: function( errorLogService ) {
       return( errorLogService );
     }
   }
 )
-  .factory("errorLogService", function( $log, $window, ENV) {
+  .factory('errorLogService', function( $log, $window, ENV) {
 
     function log( exception, cause ) {
       $log.error.apply( $log, arguments );
@@ -18,22 +20,22 @@ angular.module('webdrilApp')
         if(user){
           user= JSON.parse(user);
         }
-        $.ajax({
-          type: "POST",
+        jQuery.ajax({
+          type: 'POST',
           url: ENV.api + '/errors',
-          contentType: "application/json",
+          contentType: 'application/json',
           data: angular.toJson({
             errorUrl: $window.location.href,
             errorMessage: exception.toString(),
             stackTrace: trace.join('\n'),
-            cause: ( cause || "" ),
+            cause: ( cause || '' ),
             version : ENV.version,
             userId : user ? user.id : null
           })
         });
 
       } catch ( loggingError ) {
-        $log.warn( "Error logging failed" );
+        $log.warn( 'Error logging failed' );
         $log.log( loggingError );
 
       }
@@ -43,3 +45,4 @@ angular.module('webdrilApp')
 
   }
 );
+})(window, window.angular, jQuery);

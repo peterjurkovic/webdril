@@ -36,9 +36,6 @@ angular.module('pjTts.directives', ['pjTts.factories'])
     }
   ]);
 
-
-'use strict';
-
 angular.module('pjTts.factories', [])
   .factory('TTSAudio' , ['$log', '$timeout', '$interval', '$window', 'AudioLoaderService', '$rootScope', 'TTS_EVENTS',
     function($log, $timeout, $interval, $window, AudioLoaderService, $rootScope, TTS_EVENTS) {
@@ -97,7 +94,7 @@ angular.module('pjTts.factories', [])
             self.$hasError = false;
           }
 
-          function handleError(res){
+          function handleError(){
             self.$hasError = true;
             $rootScope.$broadcast(TTS_EVENTS.FAILED);
           }
@@ -153,7 +150,6 @@ angular.module('pjTts.factories', [])
     };
 
   }]);
-'use strict';
 
 angular.module('pjTts', [
     'pjTts.directives',
