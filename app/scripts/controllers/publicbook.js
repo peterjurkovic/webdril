@@ -21,9 +21,6 @@ angular.module('webdrilApp')
       if(user){
         $scope.state.langQuestion = user.settings.locale_id;
       }
-
-       console.log($scope.state);
-
       $scope.items = [];
 
       DrilAPI.loadFilterOptions().then(function (res) {

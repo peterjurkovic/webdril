@@ -60,6 +60,10 @@ angular
         templateUrl: 'views/user-word.html',
         controller: 'UserWordCtrl'
       })
+      .when('/manage/settings', {
+        templateUrl: 'views/settings.html',
+        controller: 'SettingsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

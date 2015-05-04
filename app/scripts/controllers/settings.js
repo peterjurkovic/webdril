@@ -1,36 +1,26 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name webdrilApp.controller:LoginctrlCtrl
- * @description
- * # LoginctrlCtrl
- * Controller of the webdrilApp
- */
 angular.module('webdrilApp')
-  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI',
-    function ($scope, $location, Toast, DrilAPI) {
+  .controller('SettingsCtrl', ['$scope','Toast', 'DrilAPI',
+    function ($scope, Toast, DrilAPI) {
 
       function init(){
         $scope.user = {
-          login: '',
-          email: '',
           locale_id : '',
           firstName : '',
-          lastName : '',
-          password: '',
-          password2: ''
+          lastName : ''
         };
       }
+
 
       DrilAPI.getAllLanguages().then(function(res){
         $scope.languages = res.data;
       })
 
-      $scope.createAccount = function(isValid, user){
+      $scope.updateAccount = function(isValid, user){
         if(isValid && !$scope.pending){
           $scope.pending = true;
-          DrilAPI.createAccount(user)
+          DrilApi.createAccount(user)
             .then(function (res){
               $scope.created = true;
             }, function (res){
@@ -42,13 +32,11 @@ angular.module('webdrilApp')
               $scope.pending = false;
             });
         }else{
-          Toast.danger('The registration form contains errors.');
+          Toast.danger('The form contains errors.');
         }
-
-
-
 
       };
 
       init();
+
     }]);

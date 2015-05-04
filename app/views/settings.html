@@ -1,0 +1,53 @@
+<h2>Settings</h2>
+
+
+<form class="pj-login" name="settings" ng-submit="update(settings.$valid, user)" novalidate>
+  <div class="form-group chosen-white" ng-class="{'has-error' : (singup.$submitted || singup.lang.$touched) && singup.lang.$invalid }">
+    <label for="language">Your language:</label>
+    <select chosen
+            id="language"
+            ng-model="user.locale_id"
+            required
+            name="lang"
+            ng-options="lang.id as lang.name for lang in languages">
+      <option value="">Choose your language</option>
+    </select>
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">
+      <div ng-if="singup.lang.$error.required">This is required field</div>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid }">
+    <label for="firstName">Your first name:</label>
+    <input class="form-control"
+           type="text"
+           id="firstName"
+           name="firstName"
+           ng-model="user.firstName"
+           ng-minlength="3"
+           required
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid">
+      <div ng-if="singup.firstName.$error.required">This is required field</div>
+      <div ng-if="singup.firstName.$error.minlength">Invalid value</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Your last name:</label>
+    <input class="form-control"
+           type="text"
+           id="lastName"
+           ng-model="user.lastName"
+           ng-minlength="3"
+           required
+           ng-trim="true">
+    <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lastName.$touched) && singup.lastName.$invalid">
+      <div ng-if="singup.lastName.$error.required">This is required field</div>
+      <div ng-if="singup.lastName.$error.minlength">Invalid value</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" ng-class="{'disabled' : pending}" class="btn btn-block btn-primary">Save</button>
+    <div class="pj-loader" ng-if="pending">Please wait...</div>
+  </div>
+</form>
