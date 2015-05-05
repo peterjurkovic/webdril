@@ -19,7 +19,10 @@ angular.module('webdrilApp')
 
       var user = UserFactory.getUser();
       if(user){
-        $scope.state.langQuestion = user.settings.locale_id;
+        $scope.state.langQuestion = user.localeId;
+        if(user.targetLocaleId){
+          $scope.state.langAnswer = user.targetLocaleId;
+        }
       }
       $scope.items = [];
 

@@ -11,17 +11,7 @@ angular.module('webdrilApp')
   .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI',
     function ($scope, $location, Toast, DrilAPI) {
 
-      function init(){
-        $scope.user = {
-          login: '',
-          email: '',
-          locale_id : '',
-          firstName : '',
-          lastName : '',
-          password: '',
-          password2: ''
-        };
-      }
+
 
       DrilAPI.getAllLanguages().then(function(res){
         $scope.languages = res.data;
@@ -44,11 +34,6 @@ angular.module('webdrilApp')
         }else{
           Toast.danger('The registration form contains errors.');
         }
-
-
-
-
       };
 
-      init();
     }]);
