@@ -117,8 +117,8 @@
               ng-options="lang.id as lang.name for lang in languages">
         <option value="">Choose target language</option>
       </select>
-      <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">
-        <div ng-if="singup.lang.$error.required">This is required field</div>
+      <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.targetLang.$touched) && singup.targetLang.$invalid">
+        <div ng-if="singup.targetLang.$error.required">This is required field</div>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid }">

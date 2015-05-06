@@ -79,6 +79,10 @@ angular.module('webdrilApp')
     return $http.post(ENV.api+ '/users' , user );
   }
 
+  function updateAccount(user){
+    return $http.put(ENV.api+ '/users' , user );
+  }
+
   function rateWord(word){
     $http.post(ENV.api+ '/user/rateWord',{
       id : word.id,
@@ -112,6 +116,7 @@ angular.module('webdrilApp')
     rateWord : rateWord,
     getAllLanguages : getAllLanguages,
     createAccount : createAccount,
+    updateAccount : updateAccount,
     loadWords : loadWords
 
   };

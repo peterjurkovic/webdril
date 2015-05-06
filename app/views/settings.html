@@ -3,36 +3,36 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form class="pj-login" name="settings" ng-submit="update(settings.$valid, user)" novalidate>
-      <div class="form-group chosen-white" ng-class="{'has-error' : (singup.$submitted || singup.lang.$touched) && singup.lang.$invalid }">
-        <label for="language">Your language:</label>
+    <form class="pj-login" name="profileForm" ng-submit="update(profileForm.$valid, user)" novalidate>
+      <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid }">
+        <label tooltip="Your native language" for="language">Your language:</label>
         <select chosen
                 id="language"
-                ng-model="userObj.settings.locale_id"
+                ng-model="user.localeId"
                 required
                 name="lang"
                 ng-options="lang.id as lang.name for lang in languages">
           <option value="">Choose your language</option>
         </select>
-        <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">
-          <div ng-if="singup.lang.$error.required">This is required field</div>
+        <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid">
+          <div ng-if="profileForm.lang.$error.required">This is required field</div>
         </div>
       </div>
-      <div class="form-group chosen-white" ng-class="{'has-error' : (singup.$submitted || singup.targetLang.$touched) && singup.targetLang.$invalid }">
+      <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.targetLang.$touched) && profileForm.targetLang.$invalid }">
         <label tooltip="What would you like to learn" for="targetLang">Target language:</label>
         <select chosen
                 id="targetLang"
-                ng-model="user.settings.target_lang_id"
+                ng-model="user.targetLocaleId"
                 required
                 name="targetLang"
                 ng-options="lang.id as lang.name for lang in languages">
           <option value="">Choose target language</option>
         </select>
-        <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lang.$touched) && singup.lang.$invalid">
-          <div ng-if="singup.lang.$error.required">This is required field</div>
+        <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.targetLang.$touched) && profileForm.targetLang.$invalid">
+          <div ng-if="profileForm.targetLang.$error.required">This is required field</div>
         </div>
       </div>
-      <div class="form-group" ng-class="{'has-error' : (singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid }">
+      <div class="form-group" ng-class="{'has-error' : (profileForm.$submitted || profileForm.firstName.$touched) && profileForm.firstName.$invalid }">
         <label for="firstName">Your first name:</label>
         <input class="form-control"
                type="text"
@@ -42,9 +42,9 @@
                ng-minlength="3"
                required
                ng-trim="true">
-        <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.firstName.$touched) && singup.firstName.$invalid">
-          <div ng-if="singup.firstName.$error.required">This is required field</div>
-          <div ng-if="singup.firstName.$error.minlength">Invalid value</div>
+        <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.firstName.$touched) && profileForm.firstName.$invalid">
+          <div ng-if="profileForm.firstName.$error.required">This is required field</div>
+          <div ng-if="profileForm.firstName.$error.minlength">Invalid value</div>
         </div>
       </div>
       <div class="form-group">
@@ -56,9 +56,9 @@
                ng-minlength="3"
                required
                ng-trim="true">
-        <div class="text-danger bg-danger"  ng-if="(singup.$submitted || singup.lastName.$touched) && singup.lastName.$invalid">
-          <div ng-if="singup.lastName.$error.required">This is required field</div>
-          <div ng-if="singup.lastName.$error.minlength">Invalid value</div>
+        <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.lastName.$touched) && profileForm.lastName.$invalid">
+          <div ng-if="profileForm.lastName.$error.required">This is required field</div>
+          <div ng-if="profileForm.lastName.$error.minlength">Invalid value</div>
         </div>
       </div>
 
@@ -70,6 +70,19 @@
 
   </div>
   <div class="col-md-6">
-
+    <table class="table">
+      <tr>
+        <td>No. of books</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>No. of lectures</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>No. of words / (activated)</td>
+        <td>1 / 25</td>
+      </tr>
+    </table>
   </div>
 </div>
