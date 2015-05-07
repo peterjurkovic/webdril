@@ -3,8 +3,7 @@
 
 angular.module('webdrilApp')
   .controller('EditWordCtrl', ['$scope', '$modalInstance', 'word', 'DrilAPI', 'Toast',
-      function ($scope, $modalInstance, word, DrilAPI, Toast) {
-      console.log(word);
+    function ($scope, $modalInstance, word, DrilAPI, Toast) {
       $scope.word = angular.copy(word);
 
       $scope.save = function (isValid) {
@@ -40,4 +39,27 @@ angular.module('webdrilApp')
       function stopTranslating(){
         $scope.isTranslating = false;
       }
+    }])
+  .controller('ImportCtrl', ['$scope', '$modalInstance', 'DrilAPI', 'Toast', 'Upload',
+    function ($scope, $modalInstance, DrilAPI, Toast, Upload) {
+
+
+      $scope.save = function (myFiles) {
+        console.log(myFiles, $scope.files);
+        if (myFiles && myFiles.length) {
+
+            var file = myFiles[0];
+            Upload.upload({
+              url: 'upload/url',
+              fields: {'username': $scope.username},
+              file: file
+            }).progress(function (evt) {
+              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+            }).success(function (data, status, headers, config) {
+              console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+            });
+
+        }
+      };
   }]);

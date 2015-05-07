@@ -7,7 +7,8 @@ angular
     'ngRoute',
     'pjToast',
     'pjTts',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngFileUpload'
   ])
   .constant('RATING', {
     'KNOW': 1,

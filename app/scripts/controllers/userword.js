@@ -90,9 +90,9 @@ angular.module('webdrilApp')
             var w = res.data;
             var count = DrilService.addWord(w);
             Toast.info({
-              content : 'You have activated ' + count + ' words',
+              content : 'You have activated ' + count + ' word(s)',
               dismissButton : false,
-              timeout: 3000
+              timeout: 2500
             })
           }else{
             DrilService.removeWord(word.id);
@@ -100,5 +100,20 @@ angular.module('webdrilApp')
         });
       };
 
+      $scope.importFile = function(){
+        var modalBox = $modal.open({
+          templateUrl: 'views/import.html',
+          controller: 'ImportCtrl',
+          resolve: {
+            book: function () {
+              return $scope.book;
+            }
+          }
+        });
+        modalBox.result.then(function (eWord) {
+          $scope.word.question = eWord.question;
+          $scope.word.answer = eWord.answer;
+        });
+      }
 
     }]);
