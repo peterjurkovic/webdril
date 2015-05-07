@@ -3,7 +3,8 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form class="pj-login" name="profileForm" ng-submit="update(profileForm.$valid, user)" novalidate>
+    <h4 class="no-margin">Profile</h4>
+    <form name="profileForm" ng-submit="update(profileForm.$valid, user)" novalidate>
       <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid }">
         <label tooltip="Your native language" for="language">Your language:</label>
         <select chosen
@@ -69,20 +70,37 @@
     </form>
 
   </div>
-  <div class="col-md-6">
-    <table class="table">
+  <div class="col-md-6 pj-stats">
+    <h4 class="no-margin">Statistics</h4>
+    <div class="pj-loader pj-center" ng-if="!stats"></div>
+    <table class="table pj-stats" ng-if="stats">
       <tr>
         <td>No. of books</td>
-        <td>1</td>
+        <td>{{stats.statistics.bookCount}}</td>
       </tr>
       <tr>
         <td>No. of lectures</td>
-        <td>1</td>
+        <td>{{stats.statistics.lectureCount}}</td>
       </tr>
       <tr>
         <td>No. of words / (activated)</td>
-        <td>1 / 25</td>
+        <td>{{stats.statistics.wordCount}} / <strong>{{stats.statistics.activatedWordCount}}</strong></td>
       </tr>
     </table>
+    <h4>Sessions</h4>
+    <div class="pj-loader pj-center" ng-if="!stats"></div>
+    <table class="table table-striped pj-stats" ng-if="stats">
+      <tr>
+        <th>Date</th>
+        <th>Learned cards</th>
+        <th>Hits</th>
+      </tr>
+      <tr ng-repeat="row in stats.sessions">
+        <td>{{row.date}}</td>
+        <td>{{row.learndedCards}}</td>
+        <td>{{row.hits}}</td>
+      </tr>
+    </table>
+
   </div>
 </div>

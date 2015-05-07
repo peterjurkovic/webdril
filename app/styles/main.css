@@ -2,6 +2,7 @@ body{
   background: url(../images/bg.png);
 }
 
+.no-margin{margin: 0 !important;}
 .margin-20{margin: 20px 0 !important; }
 .pj-border-r{border-right:1px solid #ddd;}
 .pj-no{width:20px;}
@@ -51,7 +52,7 @@ pj-pagination{text-align:center;}
 .header li.active > a{color:#fff !important;background: url(../images/nav-hover.png)}
 
 .dril-border{ height: 5px;  background: #D5D7D8;}
-
+form[name=profileForm]{background: #fff;padding: 20px; margin-bottom: 20px;}
 .content-box{padding: 0 10px 20px 10px;}
 .well{
   margin: 0;
@@ -132,6 +133,8 @@ pj-pagination{text-align:center;}
 .pj-coll-bottom{display:block;text-align:center;font-size:.9em;}
 .pj-level{text-align: center}
 
+.pj-center{background-position: center !important;}
+.pj-loader.pj-center{min-height: 40px;margin: 15px 0;}
 .pj-loader-wrapp{text-align:center;min-height:500px;padding:40px}
 .pj-loader{background:url(../images/loader.gif) no-repeat left center;padding:15px 10px 10px 45px;font-weight:bold;}
 
@@ -155,6 +158,9 @@ h4{background:#202829 !important;color:#eee;}
 .pj-translate-wrapp .pj-translate{position:relative;width:auto;bottom:-10px;}
 
 .pj-words th{padding:8px !important;}
+.pj-stats table{background: #fff}
+.pj-stats table th{padding: 3px 8px !important;}
+.pj-stats h4{margin-bottom: 0 }
 
 h3.pj-lecture-name,
 h2 .glyphicon-remove{background:#37943D;color: #fff}

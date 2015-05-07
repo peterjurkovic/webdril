@@ -97,6 +97,10 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/words');
   }
 
+  function getStats(withSessions){
+    return $http.get(ENV.api+ '/stats', {withSession : withSessions });
+  }
+
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -117,8 +121,8 @@ angular.module('webdrilApp')
     getAllLanguages : getAllLanguages,
     createAccount : createAccount,
     updateAccount : updateAccount,
-    loadWords : loadWords
-
+    loadWords : loadWords,
+    getStats : getStats
   };
 
 }]);
