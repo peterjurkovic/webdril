@@ -40,24 +40,28 @@ angular.module('webdrilApp')
         $scope.isTranslating = false;
       }
     }])
-  .controller('ImportCtrl', ['$scope', '$modalInstance', 'DrilAPI', 'Toast', 'Upload',
-    function ($scope, $modalInstance, DrilAPI, Toast, Upload) {
+  .controller('ImportCtrl', ['$scope', '$modalInstance', 'lecture', 'ENV', 'Toast', 'Upload',
+    function ($scope, $modalInstance, lecture, ENV, Toast, Upload) {
 
+      $scope.progress = false;
 
       $scope.save = function (myFiles) {
-        console.log(myFiles, $scope.files);
-        if (myFiles && myFiles.length) {
 
+        if (myFiles && myFiles.length) {
             var file = myFiles[0];
+            $scope.progress = 6;
             Upload.upload({
-              url: 'upload/url',
-              fields: {'username': $scope.username},
+              url: ENV.api + '/user/words/import',
+              fields: {'lectureId': lecture.id},
               file: file
             }).progress(function (evt) {
-              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-              console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+              $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
             }).success(function (data, status, headers, config) {
-              console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+              console.log(data);
+              //console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+            }).error(function(data, status){
+              console.log(data.message);
+
             });
 
         }

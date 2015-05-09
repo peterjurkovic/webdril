@@ -105,8 +105,8 @@ angular.module('webdrilApp')
           templateUrl: 'views/import.html',
           controller: 'ImportCtrl',
           resolve: {
-            book: function () {
-              return $scope.book;
+            lecture: function () {
+              return $scope.book.lecture;
             }
           }
         });
