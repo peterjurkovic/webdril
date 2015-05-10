@@ -75,7 +75,8 @@
         </a>
       </li>
       <li role="presentation">
-        <a ng-click="importFile()" >
+        <a ng-really-message="Are you sure that you want remove all words in this lecture?"
+           ng-really-click="removeAllWords()" >
           <span class="glyphicon glyphicon-remove"></span>
           &nbsp; Remove all
         </a>

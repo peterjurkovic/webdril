@@ -63,8 +63,8 @@
     <tr>
       <th pj-sort="name">Name</th>
       <th pj-sort="lang">Languages</th>
-      <th pj-sort="level">Level</th>
-      <th pj-sort="date">Added</th>
+      <th class="hidden-xs hidden-sm" pj-sort="level">Level</th>
+      <th class="hidden-xs" pj-sort="date">Added</th>
       <th pj-sort="author">Content</th>
     </tr>
     </thead>
@@ -80,8 +80,15 @@
           {{row.answer_lang_name}}
         </span>
       </td>
-      <td class="pj-level col-md-2" >{{row.level_name}}</td>
-      <td class="col-md-2">{{row.created_timestamp | drilDate}} by {{row.login}}</td>
+      <td class="pj-level col-md-2 hidden-xs hidden-sm" >{{row.level_name}}</td>
+      <td class="col-md-2 hidden-xs">
+          <span class="pj-coll-top">
+          {{row.created_timestamp | drilDate}}
+          </span>
+        <span class="pj-coll-bottom">
+          by {{row.login}}
+        </span>
+      </td>
       <td class="col-md-2">
         <span class="pj-coll-top">
          {{row.no_of_words}} words

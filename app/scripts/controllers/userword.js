@@ -47,7 +47,7 @@ angular.module('webdrilApp')
           word.answer = newValue;
         }
         DrilAPI.updateWord( word ).then( function(){
-          Toast.success("Saved");
+          success();
         });
       };
 
@@ -68,7 +68,7 @@ angular.module('webdrilApp')
         $scope.adding = true;
         DrilAPI.createWord( $scope.word ).then( function( res ){
           $scope.book.lecture.words.push(res.data);
-          Toast.success("Added");
+          success();
           initWord();
 
         }).finally(function(){
@@ -83,13 +83,20 @@ angular.module('webdrilApp')
         });
       };
 
+      $scope.removeAllWords = function(){
+        DrilAPI.deleteLecture($routeParams.lectureId, true).then(function(){
+          success();
+          $scope.book.lecture.words = [];
+        });
+      }
+
       $scope.toggleLectureActivity = function( activate ){
         DrilAPI.toggleActivation({
           id: $routeParams.lectureId,
           activate : activate,
           type : 'lecture'
         }).then( function(){
-          Toast.success('Saved');
+          success();
           _.forEach($scope.book.lecture.words, function(word) {
             word.isActivated = activate;
           });
@@ -133,4 +140,7 @@ angular.module('webdrilApp')
         });
       }
 
+      function success(){
+        Toast.success("Saved");
+      }
     }]);

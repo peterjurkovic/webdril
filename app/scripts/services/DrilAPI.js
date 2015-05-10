@@ -101,7 +101,9 @@ angular.module('webdrilApp')
     return $http.post(ENV.api+ '/user/toggleActivation', params);
   }
 
-
+  function deleteLecture(id, wordsOnly){
+    return $http.delete(ENV.api+ '/user/lectures/'+id);
+  }
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -113,6 +115,7 @@ angular.module('webdrilApp')
     removeBook : removeBook,
     updateLecture : updateLecture,
     createLecture : createLecture,
+    deleteLecture : deleteLecture,
     updateWord : updateWord,
     translate : translate,
     createWord : createWord,

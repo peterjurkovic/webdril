@@ -69,10 +69,10 @@
             <span class="glyphicon glyphicon-menu-right"></span>
             {{lecture.name}}
           </td>
-          <td class="pj-count col-md-3" ng-click="goToLecture(lecture.id)" >
+          <td class="pj-count col-md-3 hidden-xs " ng-click="goToLecture(lecture.id)" >
             {{lecture.no_of_words}} words
           </td>
-          <td class="pj-added col-md-3" ng-click="goToLecture(lecture.id)">
+          <td class="pj-added col-md-3 hidden-xs hidden-sm" ng-click="goToLecture(lecture.id)">
             {{lecture.created_timestamp | drilDate}} added
           </td>
           <td class="col-md-2 pj-options">
