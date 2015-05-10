@@ -156,7 +156,7 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          map: true,
+          map: true
         },
         files: [{
           expand: true,
@@ -204,9 +204,9 @@ module.exports = function (grunt) {
       dist: {
         src: [
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
+          '<%= yeoman.dist %>/styles/{,*/}*.css'
+          //'<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          //'<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
     },
@@ -221,7 +221,10 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
+              js: [
+                //'concat',
+                'uglifyjs'
+              ],
               css: ['cssmin']
             },
             post: {}
@@ -267,7 +270,13 @@ module.exports = function (grunt) {
        }
      },
      concat: {
-       dist: {}
+       dist: {
+         src: [
+           '<%= yeoman.app %>/scripts/bootstrap/ui-bootstrap-custom-0.13.0.min.js',
+           '<%= yeoman.app %>/scripts/bootstrap/ui-bootstrap-custom-tpls.0.13.0.min.js'
+         ],
+         dest: '<%= yeoman.dist %>/scripts/vendor.js'
+       }
      },
 
     imagemin: {
@@ -353,9 +362,9 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
-          src: 'fonts/*',
-          dest: '<%= yeoman.dist %>'
+          cwd: '.tmp/images',
+          dest: '<%= yeoman.dist %>/images',
+          src: ['generated/*']
         }]
       },
       styles: {
@@ -386,6 +395,28 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      }
+    },
+
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: /\.tmp\//g ,
+              replacement: function () {
+                return '../'
+              }
+            }
+          ]
+        },
+        files: [
+          {expand: true,
+            flatten: true,
+            src: '<%= yeoman.dist %>/styles/main.css',
+            dest: '<%= yeoman.dist %>/styles/'
+          }
+        ]
       }
     },
 
@@ -477,6 +508,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
+    'replace',
     'filerev',
     'usemin',
     'htmlmin'
