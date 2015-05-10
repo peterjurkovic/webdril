@@ -83,9 +83,26 @@ angular.module('webdrilApp')
         });
       };
 
+      $scope.toggleLectureActivity = function( activate ){
+        DrilAPI.toggleActivation({
+          id: $routeParams.lectureId,
+          activate : activate,
+          type : 'lecture'
+        }).then( function(){
+          Toast.success('Saved');
+          _.forEach($scope.book.lecture.words, function(word) {
+            word.isActivated = activate;
+          });
+        });
+      }
+
       $scope.toggleActivity = function ( word ) {
         word.isActivated = !word.isActivated;
-        DrilAPI.updateWordActivity( word.id, word.isActivated ).then( function(res) {
+        DrilAPI.toggleActivation({
+          id: word.id,
+          activate :word.isActivated,
+          type : 'word'
+        }).then( function(res) {
           if (word.isActivated){
             var w = res.data;
             var count = DrilService.addWord(w);

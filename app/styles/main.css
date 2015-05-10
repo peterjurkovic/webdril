@@ -217,6 +217,11 @@ button .pj-loader-min{padding:7px 0 7px 20px;}
 .pj-import h3{margin-top: 0}
 .pj-import .col-md-12{border-bottom:1px solid #ddd !important;margin-bottom:15px;}
 
+.pj-word-nav{background:#fff;margin:0px;padding:5px ;}
+
+.pj-word-nav .nav a{color:#333;cursor: pointer}
+.pj-word-nav .nav a:hover{color:#fff;background:#333}
+
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}

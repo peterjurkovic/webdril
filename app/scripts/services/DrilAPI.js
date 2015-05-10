@@ -71,10 +71,6 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/translate' + params);
   }
 
-  function updateWordActivity( id , acitivy){
-    return $http.post(ENV.api+ '/user/words/' + id +'/activate' , {activate : acitivy} );
-  }
-
   function createAccount(user){
     return $http.post(ENV.api+ '/users' , user );
   }
@@ -101,6 +97,11 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/stats', {withSession : withSessions });
   }
 
+  function toggleActivation(params){
+    return $http.post(ENV.api+ '/user/toggleActivation', params);
+  }
+
+
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -116,13 +117,13 @@ angular.module('webdrilApp')
     translate : translate,
     createWord : createWord,
     removeWord : removeWord,
-    updateWordActivity : updateWordActivity,
     rateWord : rateWord,
     getAllLanguages : getAllLanguages,
     createAccount : createAccount,
     updateAccount : updateAccount,
     loadWords : loadWords,
-    getStats : getStats
+    getStats : getStats,
+    toggleActivation : toggleActivation
   };
 
 }]);

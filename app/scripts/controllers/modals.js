@@ -46,6 +46,9 @@ angular.module('webdrilApp')
       $scope.progress = false;
       $scope.lecture = lecture;
 
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
       $scope.save = function (myFiles) {
         $scope.error = false;
         if (myFiles && myFiles.length) {
@@ -66,6 +69,7 @@ angular.module('webdrilApp')
               }else{
                 $scope.error = 'An unexpected error has occurred.';
               }
+              $scope.progress = false;
             });
 
         }
