@@ -214,6 +214,9 @@ button .pj-loader-min{padding:7px 0 7px 20px;}
 .chosen-white .chosen-single{border:0px solid #ddd !important;border-radius:5px;}
 .chosen-white .chosen-single b{margin-top:4px;border:none !important;}
 
+.pj-import h3{margin-top: 0}
+.pj-import .col-md-12{border-bottom:1px solid #ddd !important;margin-bottom:15px;}
+
 /* FOOTER */
 .footer p,
 .footer a{color: #fff;font-size:.9em;}

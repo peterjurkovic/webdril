@@ -81,13 +81,14 @@ angular.module('webdrilApp')
       '<div class="pj-loader-min" ng-if="isTranslating">Translating...</div>' +
       '<div ng-if="!isTranslating && translation" ng-click="useTranslation()">{{translation}}</div>' +
       '</div>',
+      require : '^ngModel',
       scope : {
         from : '@translateFrom',
         to : '@translateTo',
         text : '@translateVal',
-        updateModel : '=updateModel'
+        ngModel : '=ngModel'
       },
-      link : function(scope){
+      link : function(scope, el, attrs, ngModel){
         scope.showBox = function () {
           return scope.isTranslating || scope.translation;
         };
@@ -96,9 +97,11 @@ angular.module('webdrilApp')
           scope.isTranslating = false;
           scope.translation = false;
         }
+
         var debounce;
         scope.$watch('text', function(newValue, oldValue) {
-          if (newValue && newValue.length > 2 && newValue !== oldValue && !scope.updateModel.length){
+          var modelVal = ngModel.$viewValue || '';
+          if (newValue && newValue.length > 2 && newValue !== oldValue && !modelVal.length){
             $timeout.cancel(debounce);
             scope.isTranslating = true;
             debounce = $timeout(function(){
@@ -119,8 +122,9 @@ angular.module('webdrilApp')
         });
 
         scope.useTranslation = function(){
-          if(!scope.updateModel.length){
-            scope.updateModel = scope.translation;
+          var modelVal = ngModel.$viewValue || '';
+          if(!modelVal.length){
+            ngModel.$setViewValue( scope.translation );
           }
           hideBox();
         };

@@ -48,7 +48,7 @@
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Number of words:</span>
-        <span class="pj-val">{{book.lecture.words.length}}</span>
+        <span class="pj-val">{{book.lecture.words.length}}/{{wordLimit}}</span>
       </div>
     </div>
 
@@ -109,11 +109,11 @@
     The lecture does not contain any word.
   </div>
 
-      <form ng-submit="saveLecture(lecture)" class="pj-word-form" ng-if="word" name="wordForm" novalidate>
+      <form ng-submit="saveLecture(lecture)" class="pj-word-form" ng-if="word && book.lecture.words.length <= wordLimit" name="wordForm" novalidate>
           <div class="row">
             <div class="col-md-5 col-sm-5 col-xs-12">
               <translate
-                update-model="word.question"
+                ng-model="word.question"
                 translate-val="{{word.answer}}"
                 translate-from="{{book.answer_lang_code}}"
                 translate-to="{{book.question_lang_code}}"></translate>
@@ -129,7 +129,7 @@
             <div class="col-md-5 col-sm-5 col-xs-12">
 
               <translate
-                update-model="word.answer"
+                ng-model="word.answer"
                 translate-val="{{word.question}}"
                 translate-from="{{book.question_lang_code}}"
                 translate-to="{{book.answer_lang_code}}"></translate>
@@ -155,9 +155,7 @@
                 </span>
               </button>
             </div>
-            <div class="row">
-              <button ng-click="importFile()">Import file</button>
-            </div>
+
           </div>
       </form>
 </div>

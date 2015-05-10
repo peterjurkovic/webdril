@@ -40,13 +40,14 @@ angular.module('webdrilApp')
         $scope.isTranslating = false;
       }
     }])
-  .controller('ImportCtrl', ['$scope', '$modalInstance', 'lecture', 'ENV', 'Toast', 'Upload',
-    function ($scope, $modalInstance, lecture, ENV, Toast, Upload) {
+  .controller('ImportCtrl', ['$scope', '$modalInstance', 'lecture', 'ENV', 'Upload', 'Toast',
+    function ($scope, $modalInstance, lecture, ENV, Upload, Toast) {
 
       $scope.progress = false;
+      $scope.lecture = lecture;
 
       $scope.save = function (myFiles) {
-
+        $scope.error = false;
         if (myFiles && myFiles.length) {
             var file = myFiles[0];
             $scope.progress = 6;
@@ -56,12 +57,15 @@ angular.module('webdrilApp')
               file: file
             }).progress(function (evt) {
               $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-            }).success(function (data, status, headers, config) {
-              console.log(data);
-              //console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+            }).success(function (data) {
+              Toast.success("Words were successfully saved");
+              $modalInstance.close(data);
             }).error(function(data, status){
-              console.log(data.message);
-
+              if(status === 400){
+                $scope.error = data.error.message;
+              }else{
+                $scope.error = 'An unexpected error has occurred.';
+              }
             });
 
         }

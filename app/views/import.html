@@ -1,13 +1,28 @@
 <div class="modal-header">
   <h4 class="modal-title">Import words</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body pj-import">
+   <div class="row">
+     <div class="col-md-12">
+        <h3>Notes</h3>
+        <ul>
+          <li>The lecture can contains max. {{wordLimit}} words <strong ng-show="lecture.words.length">(currently has {{lecture.words.length}})</strong>.</li>
+          <li>Words have to be on the first sheet</li>
+          <li>On the first column should be questions and on the second answers</li>
+        </ul>
+     </div>
+   </div>
+  <div ng-if="error" class="alert alert-danger">
+    {{error}}
+  </div>
   <div class="row">
     <div class="col-md-3 col-xm-4 col-xs-5">
-      <div class="btn btn-default"
+      <div class="btn btn-primary"
            ngf-select
            ngf-change="save($files)"
-        >Select File</div>
+        >
+        <span class="glyphicon glyphicon-hdd"></span>
+        Choose the file</div>
     </div>
     <div class="col-md-9 col-xm-8 col-xs-7">
       <div ng-if="progress" class="progress">

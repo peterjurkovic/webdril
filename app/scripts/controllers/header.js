@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('HeaderCtrl', ['$scope', '$location', 'AUTH_EVENTS', 'UserFactory', '$rootScope',
-    function ($scope, $location, AUTH_EVENTS, UserFactory, $rootScope) {
-
+  .controller('HeaderCtrl', ['$scope', '$location', 'WORD_LIMIT', 'AUTH_EVENTS', 'UserFactory', '$rootScope',
+    function ($scope, $location, WORD_LIMIT, AUTH_EVENTS, UserFactory, $rootScope) {
+    $rootScope.wordLimit = WORD_LIMIT;
     $rootScope.user = UserFactory.getUser();
 
     $scope.isActive = function (url) {

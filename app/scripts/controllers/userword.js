@@ -15,8 +15,8 @@ angular.module('webdrilApp')
 
       function initWord(){
         $scope.word = {
-          answer : "",
-          question : "",
+          answer : '',
+          question : '',
           dril_lecture_id : $routeParams.lectureId
         };
       }
@@ -33,8 +33,8 @@ angular.module('webdrilApp')
           }
         });
         modalBox.result.then(function (eWord) {
-          $scope.word.question = eWord.question;
-          $scope.word.answer = eWord.answer;
+          word.question = eWord.question;
+          word.answer = eWord.answer;
         });
       };
 
@@ -110,9 +110,9 @@ angular.module('webdrilApp')
             }
           }
         });
-        modalBox.result.then(function (eWord) {
-          $scope.word.question = eWord.question;
-          $scope.word.answer = eWord.answer;
+
+        modalBox.result.then(function (book) {
+          $scope.book = book;
         });
       }
 
