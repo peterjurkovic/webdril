@@ -9,10 +9,29 @@
       <span class="glyphicon glyphicon-book"></span>
       &nbsp; {{book.name}}
     </a>
+    <button
+      tooltip="Rename"
+      class="btn-warning pj-btn btn no-radius glyphicon glyphicon-pencil"
+      ng-click="onEditLecture()" ></button>
+    <button ng-really-message="Are you sure that you want remove this lecture?"
+            tooltip="Remove"
+            class="btn-remove btn no-radius glyphicon glyphicon-remove"
+            ng-really-click="remove(false)" ></button>
   </h2>
   <h3 class="pj-lecture-name">
-    <span class="glyphicon glyphicon-menu-right"></span>
-    &nbsp; {{book.lecture.name}}
+    <span ng-if="!editLecture">
+      <span class="glyphicon glyphicon-menu-right"></span>
+      &nbsp; {{book.lecture.name}}
+    </span>
+    <form class="form-inline"  ng-if="editLecture">
+      <input type="text" ng-model="book.lecture.name" class="form-control" />
+      <button title="Save"
+              ng-click="saveLecture()"
+              class="btn btn-warning pj-btn glyphicon glyphicon-floppy-disk">
+        Save
+      </button>
+      <button ng-click="onCancelEditLecture()" class="btn btn-default">Cancel</button>
+    </form>
   </h3>
 
   <div class="pj-meta">
@@ -76,7 +95,7 @@
       </li>
       <li role="presentation">
         <a ng-really-message="Are you sure that you want remove all words in this lecture?"
-           ng-really-click="removeAllWords()" >
+           ng-really-click="remove(true)" >
           <span class="glyphicon glyphicon-remove"></span>
           &nbsp; Remove all
         </a>

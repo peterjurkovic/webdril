@@ -83,10 +83,14 @@ angular.module('webdrilApp')
         });
       };
 
-      $scope.removeAllWords = function(){
-        DrilAPI.deleteLecture($routeParams.lectureId, true).then(function(){
+      $scope.remove = function(wordsOnly){
+        DrilAPI.deleteLecture($routeParams.lectureId, wordsOnly).then(function(){
           success();
-          $scope.book.lecture.words = [];
+          if(wordsOnly){
+            $scope.book.lecture.words = [];
+          }else{
+            $location.path('/manage/book/' + $scope.book.id);
+          }
         });
       }
 
@@ -138,6 +142,31 @@ angular.module('webdrilApp')
         modalBox.result.then(function (book) {
           $scope.book = book;
         });
+      }
+
+      $scope.saveLecture = function(){
+        var lec = angular.copy($scope.book.lecture);
+        delete lec.words;
+        if(lec.name.length){
+          DrilAPI.updateLecture(lec)
+            .then(function(){
+
+              success();
+              $scope.editLecture = false;
+            }, function(res){
+              if(res.status === 400){
+                Toast.danger(res.data.error.message);
+              }
+            });
+
+        }
+      }
+      $scope.onEditLecture = function(){
+        $scope.editLecture = true;
+      }
+
+      $scope.onCancelEditLecture = function(){
+        $scope.editLecture = false;
       }
 
       function success(){
