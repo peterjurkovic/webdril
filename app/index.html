@@ -85,12 +85,14 @@
       </div>
 
       <div class="footer">
-        <div class="container dril-wrapp ">
+        <div class="container dril-wrapp" ng-controller="FooterCtrl">
           <p>
               <a href="http://www.drilapp.com" target="_blank"><strong>WebDril</strong></a> by
               <a href="http://www.peterjurkovic.com" target="_blank">Peter Jurkovic</a>
               <img src="images/mob-opt.png" alt="" />
           </p>
+          <a ng-click="contact()">Suggest improvements/Report issue</a>
+
           <span class="pj-ver">Version: 1.0.0 beta</span>
           <ul class="pj-social">
             <li><a class="gplay" target="_blank" href="https://play.google.com/store/apps/details?id=sk.peterjurkovic.dril">EN</a></li>
@@ -130,6 +132,7 @@
     <script src="scripts/services/DrilStorage.js"></script>
     <script src="scripts/services/DrilService.js"></script>
     <script src="scripts/controllers/header.js"></script>
+    <script src="scripts/controllers/footer.js"></script>
     <script src="scripts/controllers/dril.js"></script>
     <script src="scripts/controllers/userlecture.js"></script>
     <script src="scripts/controllers/userword.js"></script>

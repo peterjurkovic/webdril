@@ -52,26 +52,47 @@ angular.module('webdrilApp')
       $scope.save = function (myFiles) {
         $scope.error = false;
         if (myFiles && myFiles.length) {
-            var file = myFiles[0];
-            $scope.progress = 6;
-            Upload.upload({
-              url: ENV.api + '/user/words/import',
-              fields: {'lectureId': lecture.id},
-              file: file
-            }).progress(function (evt) {
-              $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-            }).success(function (data) {
-              Toast.success("Words were successfully saved");
-              $modalInstance.close(data);
-            }).error(function(data, status){
-              if(status === 400){
-                $scope.error = data.error.message;
-              }else{
-                $scope.error = 'An unexpected error has occurred.';
-              }
-              $scope.progress = false;
-            });
+          var file = myFiles[0];
+          $scope.progress = 6;
+          Upload.upload({
+            url: ENV.api + '/user/words/import',
+            fields: {'lectureId': lecture.id},
+            file: file
+          }).progress(function (evt) {
+            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+          }).success(function (data) {
+            Toast.success("Words were successfully saved");
+            $modalInstance.close(data);
+          }).error(function(data, status){
+            if(status === 400){
+              $scope.error = data.error.message;
+            }else{
+              $scope.error = 'An unexpected error has occurred.';
+            }
+            $scope.progress = false;
+          });
 
         }
       };
-  }]);
+    }])
+  .controller('ContactCtrl', ['$scope', '$modalInstance', '$http', '$rootScope', 'ENV', 'Toast',
+    function ($scope, $modalInstance,$http, $rootScope, ENV, Toast) {
+      $scope.report = {
+        message : '',
+        name : '',
+        email : ''
+      };
+
+      $scope.save = function(isValid){
+        if(isValid){
+          $http.post(ENV.api + '/contact', $scope.message).then(function(){
+            Toast.success('Thank you. Your message has been sent successfully.');
+            $scope.cancel();
+          })
+        }
+      }
+
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
+    }]);

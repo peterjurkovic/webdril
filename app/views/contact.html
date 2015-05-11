@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">Suggest improvement/report an issue</h4>
+</div>
+<div class="modal-body">
+  <form name="contact" novalidate>
+
+
+
+    <div ng-if="!user" class="form-group" ng-class="{'has-error' : contact.name.$touched && contact.name.$invalid }">
+      <label>Your name:</label>
+      <input
+        class="form-control"
+        name="name"
+        id="name"
+        ng-minlength="3"
+        required
+        type="text"
+        ng-model="report.name" />
+    </div>
+
+    <div ng-if="!user" class="form-group" ng-class="{'has-error' : contact.name.$touched && contact.name.$invalid }">
+      <label>Your e-mail:</label>
+      <input
+        class="form-control"
+        name="email"
+        id="email"
+        required
+        ng-model="report.email" />
+    </div>
+
+    <div class="form-group" ng-class="{'has-error' : contact.message.$touched && contact.message.$invalid }">
+      <label>Your message:</label>
+       <textarea
+         class="form-control"
+         name="message"
+         id="message"
+         ng-minlength="5"
+         required
+         ng-model="report.message"></textarea>
+    </div>
+    <div class="text-danger bg-danger"  ng-if="contact.message.$touched && contact.message.$invalid">
+      Please write informative message.
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <span ng-if="pending" class="pj-loader">Saving..</span>
+  <button class="btn btn-primary" ng-click="save(contact.$valid)">
+    Send</button>
+  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
