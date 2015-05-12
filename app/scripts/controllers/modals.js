@@ -85,7 +85,7 @@ angular.module('webdrilApp')
 
       $scope.save = function(isValid){
         if(isValid){
-          $http.post(ENV.api + '/contact', $scope.message).then(function(){
+          $http.post(ENV.api + '/contact', $scope.report).then(function(){
             Toast.success('Thank you. Your message has been sent successfully.');
             $scope.cancel();
           })
