@@ -4,28 +4,28 @@
 <div class="modal-body">
   <form name="contact" novalidate>
 
-
-
     <div ng-if="!user" class="form-group" ng-class="{'has-error' : contact.name.$touched && contact.name.$invalid }">
       <label>Your name:</label>
       <input
         class="form-control"
         name="name"
         id="name"
-        ng-minlength="3"
-        required
         type="text"
         ng-model="report.name" />
     </div>
 
-    <div ng-if="!user" class="form-group" ng-class="{'has-error' : contact.name.$touched && contact.name.$invalid }">
+    <div ng-if="!user" class="form-group" ng-class="{'has-error' : contact.email.$touched && contact.email.$invalid }">
       <label>Your e-mail:</label>
       <input
         class="form-control"
         name="email"
+        type="email"
         id="email"
         required
         ng-model="report.email" />
+      <div class="text-danger bg-danger"  ng-if="contact.email.$touched && contact.email.$invalid">
+        Invalid e-mail address
+      </div>
     </div>
 
     <div class="form-group" ng-class="{'has-error' : contact.message.$touched && contact.message.$invalid }">

@@ -84,14 +84,16 @@
       <div class="container dril-wrapp pj-content" ng-view>
       </div>
 
-      <div class="footer">
+      <footer class="footer">
         <div class="container dril-wrapp" ng-controller="FooterCtrl">
+
           <p>
               <a href="http://www.drilapp.com" target="_blank"><strong>WebDril</strong></a> by
-              <a href="http://www.peterjurkovic.com" target="_blank">Peter Jurkovic</a>
+              <a href="http://www.peterjurkovic.com" target="_blank">Peter Jurkovic</a> |
+              <a ng-click="contact()">Contact  | Report issue</a>
               <img src="images/mob-opt.png" alt="" />
           </p>
-          <a ng-click="contact()">Suggest improvements/Report issue</a>
+
 
           <span class="pj-ver">Version: 1.0.0 beta</span>
           <ul class="pj-social">
@@ -101,7 +103,7 @@
           </ul>
         </div>
 
-      </div>
+      </footer>
 
     <toast></toast>
 

@@ -227,16 +227,19 @@ button .pj-loader-min{padding:7px 0 7px 20px;}
 .footer .dril-wrapp{position:relative;min-height:100px}
 .footer p,
 .footer a{color: #fff;font-size:.9em;}
-.footer .pj-social{position:absolute;left:15px;bottom:8px;margin:0;padding:0;width:150px;opacity:.8}
+.footer .pj-social{position:absolute;left:15px;bottom:8px;margin:0;padding:0;width:150px;}
 .footer .pj-social li{display:inline;text-align:center;font-size:.8em;}
-.footer .pj-social a{margin:0 6px;display:inline-block;width:32px;padding-top:32px;height:20px;}
-.footer .pj-social a:hover{opacity:.7;text-decoration:none;}
+.footer .pj-social a{background-image:url(../images/social.png);background-repeat:none;margin:0 6px;display:inline-block;width:32px;padding-top:32px;height:20px;}
+.footer .pj-social a:hover{text-decoration:none;}
 .footer .pj-ver{position:absolute;bottom:70px;right:15px;font-size:.8em;}
-
+.footer a{cursor: pointer}
 .footer img{position:absolute;bottom:0;right:10px;opacity:.5}
 
-.gplay{background:url(../images/play.png);}
-.fb{background:url(../images/fb.png);}
+.gplay{background-position:0px -32px }
+.fb{background-position:-32px -32px }
+
+.gplay:hover{background-position:0px 0 }
+.fb:hover{background-position:-32px 0 }
 
 
 table .ng-inline-edit{position:relative;}
