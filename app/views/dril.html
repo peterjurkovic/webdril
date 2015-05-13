@@ -1,8 +1,9 @@
-<h3 class="hidden-xs">Dril</h3>
-<div class="row" ng-if="isNotFinished()">
+
+<div class="row" ng-if="!currentWord">
+  <h3 class="hidden-xs">Dril</h3>
   <div slide-animation class="span6 content-box animated bounceInLeft">
 
-    <div class="row span3 meta-info-box" ng-if="isNotFinished()">
+    <div class="row span3 meta-info-box">
       <div class="col-xs-3">
         <span class="hidden-sm hidden-xs">Activated cards:</span>
         <span class="visible-sm-inline visible-xs-inline">Activated:</span>
@@ -86,7 +87,29 @@
         </div>
       </div>
     </div>
-    <div ng-if="!isNotFinished()">
-        You just extended your vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
+</div>
+<div class="text-center"  ng-if="currentWord">
+  <h2>Great!</h2>
+  <div class="pj-dril-result">
+  <p>
+  You've just extended your vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
+  </p>
+
+  <div>
+    Share your results <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+  </div>
+
+    <div>
+      <p ng-if="user">Activate other words</p>
+      <p ng-if="!user">Sing up and manage you own vocabulary!</p>
     </div>
+  </div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1670552416508482";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 </div>

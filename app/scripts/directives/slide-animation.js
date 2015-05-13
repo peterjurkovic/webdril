@@ -12,7 +12,7 @@ angular.module('webdrilApp')
           element.removeClass(cls);
           $timeout(function () {
             element.addClass(cls);
-          }, 0);
+          }, 100);
         });
       }
     };

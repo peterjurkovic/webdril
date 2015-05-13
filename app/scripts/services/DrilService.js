@@ -41,7 +41,7 @@ angular.module('webdrilApp')
         $log.info('Next word is [id='+nextWord.id+']');
         return nextWord;
       }
-      return null;
+      return false;
     }
 
     function getCountOfWords(){

@@ -20,7 +20,6 @@ angular.module('webdrilApp')
 
       $scope.edit = function () {
         var modalBox = $modal.open({
-          animation: $scope.animationsEnabled,
           templateUrl: 'views/edit-word.html',
           controller: 'EditWordCtrl',
           resolve: {
@@ -44,19 +43,18 @@ angular.module('webdrilApp')
         return DrilService.getCountOfWords();
       }
 
-      function isNotFinished(){
-        return $scope.currentWord !== null;
-      }
-
       function showAnswer() {
         $scope.isAnswerShown = true;
       }
 
       function rateWord(rating){
         $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
+        console.log('current workd,', $scope.currentWord);
         $scope.isAnswerShown = false;
         $scope.userAnswer.value = '';
       }
+
+
 
       function compare(text){
         if(clean(text) === clean($scope.currentWord.answer)){
@@ -86,10 +84,22 @@ angular.module('webdrilApp')
           .replace(/[\-]{2,}/g, '-');
       }
 
+      $scope.share = function(){
+        console.log(FB);
+        FB.ui(
+          {
+            method: 'feed',
+            name: 'I\'ve just extended my vocabulary of 3 new words!',
+            link: 'http://web.drilapp.com',
+            picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
+            caption: '',
+            description: 'This is the content of the "description" field, below the caption.',
+            message: ''
+          });
+      }
 
       $scope.showAnswer = showAnswer;
       $scope.rateWord = rateWord;
-      $scope.isNotFinished = isNotFinished;
       $scope.getCountOfActivated = getCountOfActivated;
       $scope.getStatistics =  getStatistics;
       $scope.compare = compare;
