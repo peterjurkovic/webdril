@@ -17,7 +17,7 @@ angular
   })
   .config(function ($routeProvider, $httpProvider, $locationProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/dril.html',
@@ -69,15 +69,3 @@ angular
         redirectTo: '/'
       });
   });
-
-
-(function(window, angular) {
-  'use strict';
-
-  angular
-    .module('angularInlineEdit', [
-      'angularInlineEdit.controllers',
-      'angularInlineEdit.directives'
-    ]);
-
-})(window, window.angular);

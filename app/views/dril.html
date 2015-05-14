@@ -12,7 +12,7 @@
       <div class="col-xs-3">
         <span class="hidden-sm hidden-xs">Learned cards:</span>
         <span class="visible-sm-inline visible-xs-inline">Learned:</span>
-        <strong>{{getStatistics().count}}</strong>
+        <strong>{{getStatistics().learned}}</strong>
       </div>
       <div class="col-xs-3">
         <span class="hidden-sm hidden-xs">Card was shown:</span>
@@ -91,18 +91,21 @@
 <div class="text-center"  ng-if="currentWord">
   <h2>Great!</h2>
   <div class="pj-dril-result">
-  <p>
-  You've just extended your vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
-  </p>
+    <span class="glyphicon glyphicon-ok"></span>
+    <p class="pj-text">
+      You've just extended your vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
+    </p>
 
-  <div>
+  <div class="pj-singup">
+    <p ng-if="user">Activate other words</p>
+    <p ng-if="!user"><a ng-href="#/singup">Sing up</a> and manage you own vocabulary!</p>
+  </div>
+
+  <div class="pj-share">
     Share your results <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
   </div>
 
-    <div>
-      <p ng-if="user">Activate other words</p>
-      <p ng-if="!user">Sing up and manage you own vocabulary!</p>
-    </div>
+
   </div>
   <div id="fb-root"></div>
   <script>(function(d, s, id) {

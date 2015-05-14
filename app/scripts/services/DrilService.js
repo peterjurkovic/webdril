@@ -7,6 +7,7 @@ angular.module('webdrilApp')
 
 
     var storageKey = 'activatedWords',
+        statsKey = 'stats',
         countOfWords = 0,
         strategy = {
 
@@ -60,9 +61,9 @@ angular.module('webdrilApp')
           DrilAPI.rateWord(list[index]);
         }
         if(list[index].isLearned){
+          incrementLearned();
           removeLearnedWords( list );
         }
-        $log.info(list[index]);
         saveList( list );
       }else{
         $log.error('Can not update rating. Word ['+word.id+'] was not found');
@@ -103,8 +104,15 @@ angular.module('webdrilApp')
       return list;
     }
 
+    function incrementLearned(){
+      var stats = getStatistics();
+      stats.learned++;
+      DrilStorage.setItem(statsKey, stats);
+    }
+
     function getStatistics(){
-      return {};
+      var stats = DrilStorage.getItem(statsKey);
+      return stats || { learned : 0 };
     }
 
 
