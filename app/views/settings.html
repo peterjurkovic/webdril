@@ -83,8 +83,18 @@
         <td>{{stats.statistics.lectureCount}}</td>
       </tr>
       <tr>
-        <td>No. of words / (activated)</td>
-        <td>{{stats.statistics.wordCount}} / <strong>{{stats.statistics.activatedWordCount}}</strong></td>
+        <td>No. of saved words / limit</td>
+        <td>{{stats.statistics.wordCount}} / {{stats.statistics.wordLimit < 0 ? 'UNLIMITED' : stats.statistics.wordLimit}}</td>
+      </tr>
+      <tr>
+        <td>No. of activated words</td>
+        <td>{{stats.statistics.activatedWordCount}}
+          <button
+            ng-if="stats.statistics.activatedWordCount"
+            ng-really-message="Are you sure you want to deactiva all words?"
+            ng-really-click="deactivate()"
+            style="float: right" class="btn btn-xs btn-danger">Deactivate all</button>
+        </td>
       </tr>
     </table>
     <h4>Sessions</h4>

@@ -23,4 +23,13 @@ angular.module('webdrilApp')
       }
       return '';
     };
-  }]);
+  }]).filter('importId',  function() {
+    return function(id) {
+       var id = id.toString(),
+           limit = 7 - id.length;
+      for(var i=0; i < limit; i++){
+        id = "0"+id;
+      }
+      return id;
+    };
+  });

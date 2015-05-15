@@ -34,7 +34,13 @@ angular.module('webdrilApp')
         }else{
           Toast.danger('The form contains errors.');
         }
+      };
 
+      $scope.deactivate = function(){
+          DrilAPI.toggleActivation({ type : 'all' }).then(function(){
+            Toast.success('Deactivated');
+            $scope.stats.statistics.activatedWordCount = 0;
+          });
       };
 
     }]);

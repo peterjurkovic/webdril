@@ -42,9 +42,9 @@
         <span class="pj-key">Downloaded:</span>
         <span class="pj-val">{{book.downloaded}}x</span>
       </div>
-      <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Marked as favorited:</span>
-        <span class="pj-val">{{book.favorited}}x</span>
+      <div tooltip="Type this number into Android Dril app and download this vocabulary" class="col-md-3 col-sm-4 col-xs-6">
+        <span class="pj-key">Import ID:</span>
+        <span class="pj-val">{{book.lecture.id | importId}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
         <span class="pj-key">Number of words:</span>

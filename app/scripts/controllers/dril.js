@@ -6,7 +6,7 @@ angular.module('webdrilApp')
     function ($scope, DrilService, RATING, TTSConfig, ENV, $modal) {
       TTSConfig.url = ENV.api + '/tts';
 
-      if(!DrilService.loadFromStorage().length){
+      if($scope.user || !DrilService.loadFromStorage().length){
         DrilService.loadFromServer().then(init);
       }else{
         init();
