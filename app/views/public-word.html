@@ -70,6 +70,7 @@
         <th class="hidden-sm hidden-xs" >&nbsp;</th>
         <th>Question in {{book.question_lang_name}}</th>
         <th>Anser in {{book.answer_lang_name}}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -80,8 +81,19 @@
       <td class="col-md-6">
         {{word.question}}
       </td>
-      <td class="col-md-6">
+      <td class="col-md-6 pj-border-r">
         {{word.answer}}
+      </td>
+      <td>
+        <button
+          tooltip="Activate/deactivate"
+          ng-click="toggleActivity(word)"
+          ng-class="{'btn-success' : !word.isActivated, 'btn-warning' : word.isActivated }"
+          class="btn btn-xs">
+          <span
+            ng-class="{'glyphicon-play' : !word.isActivated, 'glyphicon-minus-sign' : word.isActivated }"
+            class="glyphicon "></span>
+        </button>
       </td>
     </tr>
     </tbody>

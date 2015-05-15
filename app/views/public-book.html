@@ -8,7 +8,7 @@
                 ng-model="state.langQuestion"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
-          <option value="">Choose a your language</option>
+          <option value="">Choose your language</option>
         </select>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -16,7 +16,7 @@
                 ng-model="state.langAnswer"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
-          <option value="">Choose a target language</option>
+          <option value="">Choose target language</option>
         </select>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -24,7 +24,7 @@
                 ng-model="state.level"
                 ng-change="changeFilter()"
                 ng-options="level.id as level.name for level in levels" >
-          <option value="">Choose a level</option>
+          <option value="">Choose level</option>
         </select>
       </div>
 
@@ -33,7 +33,7 @@
                 ng-options="cat.id as cat.name group by cat.catName for cat in categoryList"
                 ng-model="state.category"
                 ng-change="changeFilter()">
-          <option value="">Choose a category</option>
+          <option value="">Choose category</option>
         </select>
       </div>
     </div>

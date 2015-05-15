@@ -123,6 +123,7 @@ angular.module('webdrilApp')
       return countOfWords;
     }
 
+
     function removeWord( wordId ){
       var list = loadFromStorage();
       _.remove(list, {'id' :wordId});
@@ -152,6 +153,7 @@ angular.module('webdrilApp')
       getStatistics : getStatistics,
       addWord : addWord,
       removeWord : removeWord,
-      loadFromServer : loadFromServer
+      loadFromServer : loadFromServer,
+      loadFromStorage : loadFromStorage
     };
   }]);

@@ -6,10 +6,17 @@ angular.module('webdrilApp')
     function ($scope, DrilService, RATING, TTSConfig, ENV, $modal) {
       TTSConfig.url = ENV.api + '/tts';
 
-      DrilService.loadFromServer().then(function(){
+      if(!DrilService.loadFromStorage().length){
+        DrilService.loadFromServer().then(init);
+      }else{
+        init();
+      }
+
+      function init(){
         $scope.currentWord = DrilService.getNextWord();
         $scope.isAnswerShown = false;
-      });
+        updateStats();
+      }
 
       $scope.userAnswer = {
         value : ''
@@ -35,8 +42,8 @@ angular.module('webdrilApp')
       };
 
 
-      function getStatistics(){
-        return DrilService.getStatistics();
+      function updateStats(){
+        $scope.stats = DrilService.getStatistics();
       }
 
       function getCountOfActivated(){
@@ -49,9 +56,9 @@ angular.module('webdrilApp')
 
       function rateWord(rating){
         $scope.currentWord = DrilService.rateAndGetNext($scope.currentWord, rating);
-        console.log('current workd,', $scope.currentWord);
         $scope.isAnswerShown = false;
         $scope.userAnswer.value = '';
+        updateStats();
       }
 
 
@@ -84,24 +91,9 @@ angular.module('webdrilApp')
           .replace(/[\-]{2,}/g, '-');
       }
 
-      $scope.share = function(){
-        console.log(FB);
-        FB.ui(
-          {
-            method: 'feed',
-            name: 'I\'ve just extended my vocabulary of 3 new words!',
-            link: 'http://web.drilapp.com',
-            picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
-            caption: '',
-            description: 'This is the content of the "description" field, below the caption.',
-            message: ''
-          });
-      }
-
       $scope.showAnswer = showAnswer;
       $scope.rateWord = rateWord;
       $scope.getCountOfActivated = getCountOfActivated;
-      $scope.getStatistics =  getStatistics;
       $scope.compare = compare;
       $scope.RATING = RATING;
     }

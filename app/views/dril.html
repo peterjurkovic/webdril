@@ -1,5 +1,5 @@
 
-<div class="row" ng-if="!currentWord">
+<div class="row" ng-if="currentWord">
   <h3 class="hidden-xs">Dril</h3>
   <div slide-animation class="span6 content-box animated bounceInLeft">
 
@@ -12,7 +12,7 @@
       <div class="col-xs-3">
         <span class="hidden-sm hidden-xs">Learned cards:</span>
         <span class="visible-sm-inline visible-xs-inline">Learned:</span>
-        <strong>{{getStatistics().learned}}</strong>
+        <strong>{{stats.learned}}</strong>
       </div>
       <div class="col-xs-3">
         <span class="hidden-sm hidden-xs">Card was shown:</span>
@@ -88,12 +88,12 @@
       </div>
     </div>
 </div>
-<div class="text-center"  ng-if="currentWord">
+<div class="text-center"  ng-if="!currentWord">
   <h2>Great!</h2>
   <div class="pj-dril-result">
     <span class="glyphicon glyphicon-ok"></span>
     <p class="pj-text">
-      You've just extended your vocabulary of <strong>{{getStatistics().count}}</strong> words, keep going!
+      You've just extended your vocabulary of <strong>{{stats.learned}}</strong> words, keep going!
     </p>
 
   <div class="pj-singup">
