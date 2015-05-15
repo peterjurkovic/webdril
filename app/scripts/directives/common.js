@@ -224,4 +224,17 @@ angular.module('webdrilApp')
         }
       });
     };
-  });
+  })
+  .directive('pjContact', ['$modal', function($modal){
+    return {
+      restrict : 'C',
+      link : function(scope, element){
+        element.bind('click', function(){
+          $modal.open({
+            templateUrl: 'views/contact.html',
+            controller: 'ContactCtrl'
+          });
+        })
+      }
+    }
+  }]);

@@ -23,9 +23,9 @@
     <!-- endbuild -->
   </head>
   <body ng-app="webdrilApp">
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <!--[if lt IE 10]>
+      <p class="browsehappy text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
 
     <div class="header" ng-controller="HeaderCtrl">
@@ -86,12 +86,12 @@
       </div>
 
       <footer class="footer">
-        <div class="container dril-wrapp" ng-controller="FooterCtrl">
+        <div class="container dril-wrapp">
 
           <p>
               <a href="http://www.drilapp.com" target="_blank"><strong>WebDril</strong></a> by
               <a href="http://www.peterjurkovic.com" target="_blank">Peter Jurkovic</a> |
-              <a ng-click="contact()">Contact  | Report an issue</a>
+              <a class="pj-contact">Contact  | Report an issue</a>
               <img src="images/mob-opt.png" alt="" />
           </p>
 
@@ -135,7 +135,6 @@
     <script src="scripts/services/DrilStorage.js"></script>
     <script src="scripts/services/DrilService.js"></script>
     <script src="scripts/controllers/header.js"></script>
-    <script src="scripts/controllers/footer.js"></script>
     <script src="scripts/controllers/dril.js"></script>
     <script src="scripts/controllers/userlecture.js"></script>
     <script src="scripts/controllers/userword.js"></script>

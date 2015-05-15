@@ -1,7 +1,7 @@
 <h2>Create new textbook</h2>
 
 
-<form class="pj-form-big"  name="b" ng-submit="create(b.$valid , book)" novalidate>
+<form class="pj-form-big pj-add-book"  name="b" ng-submit="create(b.$valid , book)" novalidate>
   <div class="form-group" ng-class="{'has-error' : (b.$submitted || b.login.$touched) && b.name.$invalid }">
     <label for="name">Title of textbook:</label>
     <input class="form-control"
@@ -76,6 +76,7 @@
     <div class="col-md-6 col-sm-6">
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.category.$touched) && b.category.$invalid }">
         <label for="category">Choose category:</label>
+        <a href="#" class="pj-contact">suggest new</a>
         <select chosen
                 id="category"
                 ng-model="book.category_id"
