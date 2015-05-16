@@ -12,9 +12,9 @@ angular.module('webdrilApp')
         strategy = {
 
           selectLatest : function (list){
-              var now = _.now(),
+              var now = new Date().getTime(),
                   index = -1;
-              for(var i = 0; i < list.length; i++){
+              for(var i = 0, l = list.length; i < l; i++){
                 if(list[i].lastViewed === null){
                   return list[i];
                 }
@@ -51,18 +51,18 @@ angular.module('webdrilApp')
 
 
     function rateWord(list, word, userRating){
-      var index = _.findIndex(list, {'id' :word.id});
+      var index = findIndex(list, word.id);
       if(index !== -1){
         list[index].isLearned = isLearned(list[index]);
         list[index].viewed++;
-        list[index].lastViewed = _.now();
+        list[index].lastViewed = new Date().getTime();
         list[index].lastRating = userRating;
         if(AuthTokenFactory.getToken() !== null){
           DrilAPI.rateWord(list[index]);
         }
         if(list[index].isLearned){
           incrementLearned();
-          removeLearnedWords( list );
+          list.splice(index, 1);
         }
         saveList( list );
       }else{
@@ -72,11 +72,16 @@ angular.module('webdrilApp')
       function isLearned(word){
         return word.lastRating === RATING.KNOW && userRating === RATING.KNOW;
       }
+
     }
 
-
-    function removeLearnedWords(list , index ){
-        list.splice(index, 1);
+    function findIndex(list, id){
+      for(var i = 0, l = list.length; i < l; i++){
+        if(list[i].id === id){
+          return i;
+        }
+      }
+      return -1;
     }
 
 
@@ -126,9 +131,19 @@ angular.module('webdrilApp')
 
     function removeWord( wordId ){
       var list = loadFromStorage();
-      _.remove(list, {'id' :wordId});
+      remove(list, wordId);
       saveList(list);
       return countOfWords;
+
+      function remove(list, id){
+        var index = findIndex(id);
+        if(index > -1){
+          list.splice(index, 1);
+        }else{
+          $log.warn('Unexpected index for word: ' + id);
+        }
+
+      }
     }
 
     function loadFromServer(){
@@ -141,8 +156,6 @@ angular.module('webdrilApp')
       });
       return deferred.promise;
     }
-
-
 
     return {
       saveList : saveList,

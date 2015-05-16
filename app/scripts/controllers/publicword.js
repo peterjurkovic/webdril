@@ -2,7 +2,7 @@
 
 angular.module('webdrilApp')
   .controller('WordCtrl', ['$scope','DrilAPI', '$location', '$routeParams', 'DrilService',
-    function ($scope, DrilAPI, $location, $routeParams, DrilService, Toast) {
+    function ($scope, DrilAPI, $location, $routeParams, DrilService) {
 
       $scope.isLoading = true;
       $scope.book = null;
@@ -24,11 +24,11 @@ angular.module('webdrilApp')
       };
 
       function updateActivity(wordList){
-          var i, j, found,
+          var i, j, found, il, jl,
               activatedWord = DrilService.loadFromStorage();
-          for(i = 0; i < wordList.length; i++){
+          for(i = 0, il = wordList.length; i < il; i++){
               found = false;
-              for(j = 0; j < activatedWord.length; j++){
+              for(j = 0, jl = activatedWord.length; j < jl; j++){
                 if(wordList[i].id === activatedWord[j].id){
                   found = true;
                   break;

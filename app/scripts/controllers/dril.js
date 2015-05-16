@@ -5,6 +5,8 @@ angular.module('webdrilApp')
   .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal',
     function ($scope, DrilService, RATING, TTSConfig, ENV, $modal) {
       TTSConfig.url = ENV.api + '/tts';
+      $scope.currentWord = false;
+      $scope.isAnswerShown = false;
 
       if($scope.user || !DrilService.loadFromStorage().length){
         DrilService.loadFromServer().then(init);
@@ -14,7 +16,6 @@ angular.module('webdrilApp')
 
       function init(){
         $scope.currentWord = DrilService.getNextWord();
-        $scope.isAnswerShown = false;
         updateStats();
       }
 
