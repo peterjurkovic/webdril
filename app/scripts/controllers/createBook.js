@@ -9,11 +9,11 @@ angular.module('webdrilApp')
     function ($scope, DrilAPI, $location, Toast) {
 
       $scope.book = {
-        name : "test",
-        question_lang_id : 1,
-        answer_lang_id : 2,
-        category_id : 10,
-        level_id : 3,
+        name : "",
+        question_lang_id : 0,
+        answer_lang_id : 0,
+        category_id : 0,
+        level_id : 0,
         isShared : true,
         description : ""
       };
