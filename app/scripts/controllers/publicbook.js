@@ -2,19 +2,19 @@
 
 
 angular.module('webdrilApp')
-  .controller('BookCtrl', ['$scope','DrilAPI', '$location','UserFactory',
-    function ($scope, DrilAPI, $location, UserFactory) {
-
+  .controller('BookCtrl', ['$scope','DrilAPI', '$location','UserFactory', '$window',
+    function ($scope, DrilAPI, $location, UserFactory,$window) {
+      $window.ga('send', 'pageview', { page: $location.url() });
       $scope.isLoading = false;
       $scope.totalItems = 0;
       $scope.state = {
         orderBy : 'date',
         orderType : 1,
         currentPage : 1,
-        level : "",
-        langQuestion : "",
-        langAnswer : "",
-        category : ""
+        level : '',
+        langQuestion : '',
+        langAnswer : '',
+        category : ''
       };
 
       var user = UserFactory.getUser();
@@ -53,7 +53,6 @@ angular.module('webdrilApp')
       };
 
       $scope.goToBook = function(id) {
-        console.log(id);
         $location.path('/book/' + id);
       };
 

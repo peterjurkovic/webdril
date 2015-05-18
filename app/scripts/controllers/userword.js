@@ -19,7 +19,7 @@ angular.module('webdrilApp')
           question : '',
           dril_lecture_id : $routeParams.lectureId
         };
-      }
+      };
 
       $scope.edit = function (word) {
         var modalBox = $modal.open({
@@ -92,7 +92,7 @@ angular.module('webdrilApp')
             $location.path('/manage/book/' + $scope.book.id);
           }
         });
-      }
+      };
 
       $scope.toggleLectureActivity = function( activate ){
         DrilAPI.toggleActivation({
@@ -105,7 +105,7 @@ angular.module('webdrilApp')
             word.isActivated = activate;
           });
         });
-      }
+      };
 
       $scope.toggleActivity = function ( word ) {
         word.isActivated = !word.isActivated;
@@ -142,7 +142,7 @@ angular.module('webdrilApp')
         modalBox.result.then(function (book) {
           $scope.book = book;
         });
-      }
+      };
 
       $scope.saveLecture = function(){
         var lec = angular.copy($scope.book.lecture);
@@ -160,14 +160,14 @@ angular.module('webdrilApp')
             });
 
         }
-      }
+      };
       $scope.onEditLecture = function(){
         $scope.editLecture = true;
-      }
+      };
 
       $scope.onCancelEditLecture = function(){
         $scope.editLecture = false;
-      }
+      };
 
       function success(){
         Toast.success("Saved");

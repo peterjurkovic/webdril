@@ -5,9 +5,9 @@
 
 
 angular.module('webdrilApp')
-  .controller('CreateBookCtrl', ['$scope','DrilAPI', '$location', 'Toast',
-    function ($scope, DrilAPI, $location, Toast) {
-
+  .controller('CreateBookCtrl', ['$scope','DrilAPI', '$location', 'Toast', '$window',
+    function ($scope, DrilAPI, $location, Toast, $window) {
+      $window.ga('send', 'pageview', { page: $location.url() });
       $scope.book = {
         name : "",
         question_lang_id : 0,

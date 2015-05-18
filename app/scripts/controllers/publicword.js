@@ -8,7 +8,6 @@ angular.module('webdrilApp')
       $scope.book = null;
       DrilAPI.getLecture($routeParams.bookId, $routeParams.lectureId).then(function (res) {
         updateActivity(res.data.lecture.words);
-        console.log(res.data);
         $scope.book = res.data;
         $scope.isLoading = false;
       });

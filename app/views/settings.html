@@ -84,7 +84,7 @@
       </tr>
       <tr>
         <td>No. of saved words / limit</td>
-        <td>{{stats.statistics.wordCount}} / {{stats.statistics.wordLimit < 0 ? 'UNLIMITED' : stats.statistics.wordLimit}}</td>
+        <td>{{stats.statistics.wordCount}} / {{stats.statistics.wordLimit | pjWords}}</td>
       </tr>
       <tr>
         <td>No. of activated words</td>

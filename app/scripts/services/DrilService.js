@@ -39,7 +39,6 @@ angular.module('webdrilApp')
       }
       if(list.length){
         var nextWord =  strategy.selectLatest( list );
-        $log.info('Next word is [id='+nextWord.id+']');
         return nextWord;
       }
       return false;

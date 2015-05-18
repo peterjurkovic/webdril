@@ -133,6 +133,7 @@ angular.module('webdrilApp')
       }
     };
   }])
+  /*
   .directive('drilNav', [function(){
     return {
       restrict: 'E',
@@ -149,6 +150,7 @@ angular.module('webdrilApp')
 
     };
   }])
+ */
 .directive('pjUnique', ['ENV', '$http', '$q', function(ENV, $http, $q) {
     return {
       require: 'ngModel',
@@ -188,32 +190,8 @@ angular.module('webdrilApp')
     }
   };
 })
-.directive('pjTags', ['$log', '$parse', function($log, $parse){
-    return {
-      restrict: 'E',
-      template : '<ul class="pj-tags"><li ng-repeat="tag in tags">'+
-      '<span class="glyphicon glyphicon-tag"></span>{{tag}}'+
-      '</li></ul>',
-      link : function(scope, element, attrs){
-        scope.tags = []
 
-        var getTags = function(value){
-          var arr = _.uniq( value.replace(/^\s+|\s+$/g,"").split(/\s*,\s*/));
-          return arr;
-        };
-
-        scope.$watch(attrs.input, function(newVal, oldVal){
-          console.log(newVal, oldVal);
-          if(!newVal){
-            scope.tags = [];
-          }else if(newVal.slice(-1) === ','){
-            scope.tags =  getTags(newVal);
-          }
-        });
-      }
-    }
-  }])
-  .directive('ngEnter', function () {
+.directive('ngEnter', function () {
     return function (scope, element, attrs) {
       element.bind("keydown keypress", function (event) {
         if(event.which === 13) {
@@ -237,4 +215,5 @@ angular.module('webdrilApp')
         })
       }
     }
-  }]);
+  }])
+;

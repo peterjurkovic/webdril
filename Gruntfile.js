@@ -442,22 +442,22 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             itemsPeerPage : 15,
-            name: 'development',
+            name: 'dev',
             api: 'http://drilapp.dev/api/v1',
             gtKey : 'AIzaSyDNKMoJgZcVyMpg1tfdo4bpxuroPhakQ7I',
             version : '1.0.0'
           }
         }
       },
-      production: {
+      dist: {
         options: {
           dest: '<%= yeoman.dist %>/scripts/config.js'
         },
         constants: {
           ENV: {
             itemsPeerPage : 15,
-            name: 'production',
-            api: 'http://www.drilapp.com/api/v1',
+            name: 'prod',
+            api: 'http://api.drilapp.com/v1',
             gtKey : 'AIzaSyAk3DcvZT8DP36qLTn-mceFNkCJAYVaBSE',
             version : '1.0.0'
           }
@@ -466,21 +466,6 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
-
-    grunt.task.run([
-      'clean:server',
-      'ngconstant:development',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer:server',
-      'connect:livereload',
-      'watch'
-    ]);
-  });
 
   grunt.registerTask('dev', [
     'clean:server',
@@ -504,7 +489,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'ngconstant:production',
+    'ngconstant:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -521,9 +506,4 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
-    'build'
-  ]);
 };

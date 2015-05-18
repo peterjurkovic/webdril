@@ -2,8 +2,9 @@
 
 
 angular.module('webdrilApp')
-  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal',
-    function ($scope, DrilService, RATING, TTSConfig, ENV, $modal) {
+  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal','$window',
+    function ($scope, DrilService, RATING, TTSConfig, ENV, $modal, $window) {
+      $window.ga('send', 'pageview');
       TTSConfig.url = ENV.api + '/tts';
       $scope.currentWord = false;
       $scope.isAnswerShown = false;

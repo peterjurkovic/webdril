@@ -25,11 +25,16 @@ angular.module('webdrilApp')
     };
   }]).filter('importId',  function() {
     return function(id) {
-       var id = id.toString(),
-           limit = 7 - id.length;
-      for(var i=0; i < limit; i++){
+      id = id.toString();
+      var i, limit = 7 - id.length;
+      for(i=0; i < limit; i++){
         id = "0"+id;
       }
       return id;
+    };
+  })
+  .filter('pjWords',  function() {
+    return function(count) {
+      return (count === -1 ? 'UNLIMITED' : count) ;
     };
   });

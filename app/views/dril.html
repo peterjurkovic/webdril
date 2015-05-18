@@ -1,6 +1,6 @@
 
 <div class="row" ng-if="currentWord">
-  <h3 class="hidden-xs">Dril</h3>
+  <h3 class="dril hidden-xs">Dril</h3>
   <div slide-animation class="span6 content-box animated bounceInLeft">
 
     <div class="row span3 meta-info-box">
@@ -93,26 +93,19 @@
   <div class="pj-dril-result">
     <span class="glyphicon glyphicon-ok"></span>
     <p class="pj-text">
-      You've just extended your vocabulary of <strong>{{stats.learned}}</strong> words, keep going!
+      You've just extended your vocabulary of <strong>{{stats.learned}}</strong> words, keep learning!
     </p>
 
-  <div class="pj-singup">
-    <p ng-if="user"><a href="/manage/books">Activate other words</a></p>
-    <p ng-if="!user"><a ng-href="/singup">Sing up</a> and manage you own vocabulary!</p>
+    <div class="pj-singup">
+      <p ng-if="user"><a href="/manage/books">Activate other words</a></p>
+      <p ng-if="!user"><a ng-href="/singup">Sing up</a> and manage you own vocabulary!</p>
+    </div>
+  <!--
+    <div class="pj-share">
+      Share your results <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+    </div>
+   -->
+
   </div>
 
-  <div class="pj-share">
-    Share your results <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
-  </div>
-
-
-  </div>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1670552416508482";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
 </div>
