@@ -46,12 +46,13 @@
 
           <div class="collapse navbar-collapse" id="navi" >
             <ul class="nav navbar-nav navbar-right">
-              <li ng-class="{active : isActive('/')}">
-                <a href="/">
+              <li ng-class="{active : isActive('/dril')}">
+                <a href="/dril">
                   <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
                   Start
-              </a>
+                </a>
               </li>
+
               <li ng-class="{active : isActive('/books')}">
                 <a href="/books">
                   <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
@@ -82,7 +83,7 @@
       </nav>
     </div>
     <div class="dril-border"></div>
-      <div class="container dril-wrapp pj-content" ng-view>
+      <div ng-class="{'container dril-wrapp pj-content' : !homePage}"  ng-view>
       </div>
 
       <footer class="footer">
@@ -138,6 +139,7 @@
     <script src="scripts/controllers/userword.js"></script>
     <script src="scripts/controllers/createBook.js"></script>
     <script src="scripts/controllers/settings.js"></script>
+    <script src="scripts/controllers/home.js"></script>
     <script src="scripts/directives/chosen.js"></script>
     <script src="scripts/directives/show-answer-button.js"></script>
     <script src="scripts/directives/slide-animation.js"></script>

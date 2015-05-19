@@ -20,6 +20,10 @@ angular
     $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      })
+      .when('/dril', {
         templateUrl: 'views/dril.html',
         controller: 'DrilCtrl'
       })

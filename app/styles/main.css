@@ -1,6 +1,29 @@
 body{
   background: url(../images/bg.png);
 }
+.billboard--container{
+  background-image: url(../images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  margin:-30px 0;
+  min-height:400px;
+}
+.key-feature--wrapper .container-fluid,
+.billboard--container .container-fluid{
+  max-width: 1024px;
+}
+
+
+.key-feature--wrapper{
+  background:#6bba70;
+  margin-bottom:-40px;
+  padding:40px 0;
+  color:#fff;
+  text-align:center;
+  border-bottom:10px solid #202829;
+}
+
 .browsehappy{background:#FF7E90;margin:0;padding:5px;}
 .browsehappy a{color:#000;font-weight:bold;text-decoration:underline;}
 
@@ -49,7 +72,7 @@ pj-pagination{text-align:center;}
   margin: auto;
 }
 
-.header nav{border-top: 4px solid #6bba70;border-bottom: 4px solid #ccc;margin:0}
+.header nav{border-top: 4px solid #6bba70;margin:0;border-bottom:0;border-right:0;border-left:0;}
 .header li > a{color:#ddd !important;}
 .header li.active > a{color:#fff !important;background: url(../images/nav-hover.png)}
 
