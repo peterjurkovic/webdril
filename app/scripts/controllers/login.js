@@ -8,9 +8,9 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast',
-    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast) {
-
+  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast', '$window',
+    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast, $window) {
+      $window.ga('send', 'pageview', { page: $location.url() });
 
     $scope.credentials = {
       username: '',

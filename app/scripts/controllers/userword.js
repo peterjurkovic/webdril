@@ -101,10 +101,11 @@ angular.module('webdrilApp')
           type : 'lecture'
         }).then( function(){
           success();
-          _.forEach($scope.book.lecture.words, function(word) {
+          angular.forEach($scope.book.lecture.words,function(word){
             word.isActivated = activate;
-          });
+          })
         });
+
       };
 
       $scope.toggleActivity = function ( word ) {

@@ -8,9 +8,9 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI',
-    function ($scope, $location, Toast, DrilAPI) {
-
+  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI', '$window',
+    function ($scope, $location, Toast, DrilAPI, $window) {
+      $window.ga('send', 'pageview', { page: $location.url() });
 
 
       DrilAPI.getAllLanguages().then(function(res){

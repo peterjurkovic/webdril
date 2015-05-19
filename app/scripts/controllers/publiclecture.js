@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('LectureCtrl', ['$scope','DrilAPI', '$location', '$routeParams',
-  function ($scope, DrilAPI, $location, $routeParams) {
-
+  .controller('LectureCtrl', ['$scope','DrilAPI', '$location', '$routeParams', '$window',
+  function ($scope, DrilAPI, $location, $routeParams, $window) {
+    $window.ga('send', 'pageview', { page: $location.url() });
     $scope.isLoading = true;
     $scope.book = null;
     DrilAPI.getBookLectures($routeParams.bookId).then(function (res) {
