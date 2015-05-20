@@ -1,21 +1,35 @@
 body{
   background: url(../images/bg.png);
 }
-.billboard--container{
+.pj-header{
   background-image: url(../images/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+
   margin:-30px 0;
   min-height:400px;
+  padding-top:100px;
+
 }
-.key-feature--wrapper .container-fluid,
-.billboard--container .container-fluid{
+.pj-header span{color:#fff;margin:20px 20px 0 20px;display:inline-block;padding:0 8px;max-width:500px;}
+
+.pj-header .bigger{font-size:2em;display:inline-block;padding:0px 20px;opacity:.8;margin:0 0 5px 15px}
+.pj-header strong{font-size:1.2em;background:#222;font-weight:normal;padding:5px 10px;line-height:1.8em;display:block;margin-right:15px;}
+
+.pj-devices{
+  position: absolute;width:300px;height:300px;
+  background: url(../images/app2.png) no-repeat right bottom;
+  bottom:0;right:70px;
+}
+
+.pj-header .container-fluid{position: relative;min-height:270px;}
+.pj-feature .container-fluid,
+.pj-header .container-fluid{
   max-width: 1024px;
 }
 
 
-.key-feature--wrapper{
+.pj-feature{
   background:#6bba70;
   margin-bottom:-40px;
   padding:40px 0;
@@ -23,6 +37,18 @@ body{
   text-align:center;
   border-bottom:10px solid #202829;
 }
+
+.pj-feature .container-fluid{
+  border-top:1px solid #fff;border-bottom:1px solid #fff;padding:40px 0;
+}
+.pj-feature .ico{width: 32px;height: 32px;background-color: red;display:block;margin:auto}
+.pj-feature .cloud{background:url(../images/cloud-32.png)}
+.pj-feature .fast{background:url(../images/fast-32.png)}
+.pj-feature .ok{background:url(../images/ok-32.png)}
+
+
+.pj-feature .btn{background:#fff;margin:0 0 30px 0;text-transform:uppercase;padding:15px 25px;border-radius:25px;color:#333}
+.pj-feature .btn:hover{background:#333;color:#fff}
 
 .browsehappy{background:#FF7E90;margin:0;padding:5px;}
 .browsehappy a{color:#000;font-weight:bold;text-decoration:underline;}
