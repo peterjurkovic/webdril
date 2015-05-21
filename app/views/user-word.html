@@ -163,11 +163,11 @@
       <form ng-submit="saveLecture(lecture)" class="pj-word-form" ng-if="word && book.lecture.words.length < wordLimit" name="wordForm" novalidate>
           <div class="row">
             <div class="col-md-5 col-sm-5 col-xs-12">
-              <translate
+              <pj-translate
                 ng-model="word.question"
                 translate-val="{{word.answer}}"
                 translate-from="{{book.answer_lang_code}}"
-                translate-to="{{book.question_lang_code}}"></translate>
+                translate-to="{{book.question_lang_code}}"></pj-translate>
               <input
                 type="text"
                 ng-model="word.question"
@@ -179,11 +179,11 @@
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12">
 
-              <translate
+              <pj-translate
                 ng-model="word.answer"
                 translate-val="{{word.question}}"
                 translate-from="{{book.question_lang_code}}"
-                translate-to="{{book.answer_lang_code}}"></translate>
+                translate-to="{{book.answer_lang_code}}"></pj-translate>
               <input
                 type="text"
                 ng-model="word.answer"

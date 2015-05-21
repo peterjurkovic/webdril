@@ -74,7 +74,7 @@ angular.module('webdrilApp')
       }
     };
   }])
-  .directive('translate', ['DrilAPI', '$timeout', function( DrilAPI , $timeout ){
+  .directive('pjTranslate', ['DrilAPI', '$timeout', function( DrilAPI , $timeout ){
     return {
       restrict: 'E',
       template :  '<div class="pj-translate" ng-if="showBox()">' +

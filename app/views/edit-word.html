@@ -1,11 +1,11 @@
 <div class="modal-header">
-  <h4 class="modal-title">Edit word</h4>
+  <h4 class="modal-title">{{'EDIT_WORD' | translate}}</h4>
 </div>
 <div class="modal-body">
    <form name="wordForm" novalidate>
 
      <div class="text-danger bg-danger"  ng-if="!wordForm.$valid">
-        All fields are required
+        {{'ERR_ALL_REQUIRED' | translate}}
      </div>
 
      <div class="form-group" ng-class="{'has-error' : wordForm.question.$touched && wordForm.question.$invalid }">
@@ -61,6 +61,6 @@
   <span ng-if="pending" class="pj-loader">Saving..</span>
   <button class="btn btn-primary" ng-click="save(wordForm.$valid)">
     <span class="glyphicon glyphicon-floppy-disk"></span>
-    Save</button>
-  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    {{'SAVE' | translate}}</button>
+  <button class="btn btn-default" ng-click="cancel()">{{'CANCEL' | translate}}</button>
 </div>

@@ -1,4 +1,4 @@
-<h2>Shared textbooks</h2>
+<h2 translate="ST"></h2>
 <div class="row text-center hidden-xs hidden-ms pj-filter-head"><span class="col-md-12">Filter</span></div>
 <form class="pj-filter">
   <div class="form-group">
@@ -8,7 +8,7 @@
                 ng-model="state.langQuestion"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
-          <option value="">Choose your language</option>
+          <option value="" translate="CHOSE_LANG1"></option>
         </select>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -16,7 +16,7 @@
                 ng-model="state.langAnswer"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
-          <option value="">Choose target language</option>
+          <option value="" translate="CHOSE_LANG2"></option>
         </select>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -24,7 +24,7 @@
                 ng-model="state.level"
                 ng-change="changeFilter()"
                 ng-options="level.id as level.name for level in levels" >
-          <option value="">Choose level</option>
+          <option value="" translate="CHOSE_LEVEL"></option>
         </select>
       </div>
 
@@ -33,7 +33,7 @@
                 ng-options="cat.id as cat.name group by cat.catName for cat in categoryList"
                 ng-model="state.category"
                 ng-change="changeFilter()">
-          <option value="">Choose category</option>
+          <option value="" translate="CHOSE_CATEG"></option>
         </select>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <div class="col-md-6">
       <input type="text"
              class="form-control pj-text-input"
-             placeholder="Search something..."
+             placeholder="{{'SEARCH' | translate}}"
              ng-model="state.query"
              ng-change="changeFilter()"
              ng-model-options="{debounce: 800}" />
@@ -52,7 +52,7 @@
 </form>
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">Loading...</span>
+  <span class="pj-loader" translate="WAIT"></span>
 </div>
 
 <div ng-hide="isLoading">
@@ -61,11 +61,11 @@
   <table class="table table-striped pj-books" ng-if="items.length">
     <thead>
     <tr>
-      <th pj-sort="name">Name</th>
-      <th pj-sort="lang">Languages</th>
-      <th class="hidden-xs hidden-sm" pj-sort="level">Level</th>
-      <th class="hidden-xs" pj-sort="date">Added</th>
-      <th pj-sort="author">Content</th>
+      <th pj-sort="name">{{'SB_NAME' | translate}}</th>
+      <th pj-sort="lang">{{'LANGS' | translate}}</th>
+      <th class="hidden-xs hidden-sm" pj-sort="level">{{'LEVEL' | translate}}</th>
+      <th class="hidden-xs" pj-sort="date">{{'ADDED' | translate}}</th>
+      <th pj-sort="author">{{'CONTENT' | translate}}</th>
     </tr>
     </thead>
     <tbody ng-show="!isLoading">
@@ -86,15 +86,15 @@
           {{row.created_timestamp | drilDate}}
           </span>
         <span class="pj-coll-bottom">
-          by {{row.login}}
+          {{row.login}}
         </span>
       </td>
       <td class="col-md-2">
         <span class="pj-coll-top">
-         {{row.no_of_words}} words
+         {{row.no_of_words}} {{'WORDS' | translate}}
         </span>
         <span class="pj-coll-bottom">
-          {{row.no_of_lectures}} lecture
+          {{row.no_of_lectures}} {{'LECTURES' | translate}}
         </span>
       </td>
     </tr>
@@ -104,6 +104,6 @@
 
   <div ng-if="!items.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
-    No book found
+    {{'NO_BOOKS' | translate}}
   </div>
 </div>

@@ -1,7 +1,7 @@
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">Loading...</span>
+  <span class="pj-loader" translate="WAIT"></span>
 </div>
 <div ng-if="book" class="pj-book-detail">
   <h2>
@@ -14,42 +14,42 @@
     <div class="pj-meta">
         <div class="row">
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Language:</span>
+            <span class="pj-key">{{'LANGS' | translate}}:</span>
             <span class="pj-val">{{book.question_lang_name}} / {{book.answer_lang_name}}</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Level:</span>
+            <span class="pj-key">{{'LEVEL' | translate}}:</span>
             <span class="pj-val">{{book.level_name}}</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Category:</span>
+            <span class="pj-key">{{'CATEGORY' | translate}}:</span>
             <span class="pj-val">{{book.category_name || 'Not categorized'}}</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Author:</span>
+            <span class="pj-key">{{'AUTHOR' | translate}}:</span>
             <span class="pj-val">{{book.login}}</span>
           </div>
 
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Added:</span>
+            <span class="pj-key">{{'ADDED' | translate}}:</span>
             <span class="pj-val">{{book.created_timestamp | drilDate}}</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Downloaded:</span>
+            <span class="pj-key">{{'DOWNLOADED' | translate}}:</span>
             <span class="pj-val">{{book.downloaded}}x</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Marked as favorited:</span>
+            <span class="pj-key">{{'FAVORITED' | translate}}:</span>
             <span class="pj-val">{{book.favorited}}x</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <span class="pj-key">Number of words:</span>
+            <span class="pj-key">{{'NO_WORDS' | translate}}:</span>
             <span class="pj-val">{{book.no_of_words}}</span>
           </div>
         </div>
 
         <div class="row " ng-if="book.tags.length">
-          <h3>Tags</h3>
+          <h3>{{'TAGS' | translate}}</h3>
           <ul class="col-md-12 pj-tags">
             <li ng-repeat="tag in book.tags">
               <span class="glyphicon glyphicon-tag"></span>
@@ -60,7 +60,7 @@
 
     </div>
 
-    <h4>Lecutres ({{book.lectures.length}})</h4>
+    <h4>{{'LECTURES' | translate}} ({{book.lectures.length}})</h4>
 
     <table class="table table-striped pj-lectures">
       <tbody>
@@ -70,14 +70,14 @@
             {{lecture.name}}
           </td>
           <td class="pj-count col-md-3 hidden-xs " ng-click="goToLecture(lecture.id)" >
-            {{lecture.no_of_words}} words
+            {{lecture.no_of_words}} {{'WORDS' | translate}}
           </td>
           <td class="pj-added col-md-3 hidden-xs hidden-sm" ng-click="goToLecture(lecture.id)">
-            {{lecture.created_timestamp | drilDate}} added
+            {{lecture.created_timestamp | drilDate}}
           </td>
-          <td class="col-md-2 pj-options">
+          <td class="col-md-2 pj-options" ng-click="goToLecture(lecture.id)">
             <span class="pj-coll-top">
-              Activate lecture
+              {{'SHOW' | translate}}
             </span>
           </td>
         </tr>
@@ -86,7 +86,7 @@
 
     <div ng-if="!book.lectures.length" class="alert alert-warning" role="alert">
       <span class="glyphicon glyphicon-alert"></span>
-      The textbook does not contain any lecture.
+      {{'NO_LECTURE' | translate}}
     </div>
 
 </div>

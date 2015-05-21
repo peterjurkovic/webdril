@@ -1,15 +1,15 @@
 <div class="modal-header">
-  <h4 class="modal-title">Import words</h4>
+  <h4 class="modal-title">{{'M1_IMPORT' | translate}}</h4>
 </div>
 <div class="modal-body pj-import">
    <div class="row">
      <div class="col-md-12">
-        <h3>Notes</h3>
+        <h3>{{'M1_NOTES' | translate}}</h3>
         <ul>
-          <li>The lecture can contains max. {{wordLimit}} words <strong ng-show="lecture.words.length">(currently has {{lecture.words.length}})</strong>.</li>
-          <li>Words have to be on the first sheet</li>
-          <li>On the first column should be questions and on the second answers</li>
-          <li>In case any issues don't hesitate and <a class="pj-contact">contact me</a></li>
+          <li translate="M1_NOTE1" translate-value-wordLimit="{{wordLimit}}" translate-value-count="{{lecture.words.length}}"></li>
+          <li translate="M1_NOTE2"></li>
+          <li translate="M1_NOTE3"></li>
+          <li>{{'M1_NOTE4' | translate}}<a class="pj-contact">{{'M1_CONTACT' | translate}}</a></li>
         </ul>
      </div>
    </div>
@@ -23,7 +23,8 @@
            ngf-change="save($files)"
         >
         <span class="glyphicon glyphicon-hdd"></span>
-        Choose the file</div>
+        {{'M1_CHOSE' | translate}}
+        </div>
     </div>
     <div class="col-md-9 col-xm-8 col-xs-7">
       <div ng-if="progress" class="progress">
@@ -40,5 +41,5 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-default" ng-click="cancel()">{{'CANCEL' | translate}}</button>
 </div>

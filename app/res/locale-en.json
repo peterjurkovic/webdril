@@ -5,6 +5,60 @@
   "MY_DRIL" : "My dril",
   "LOGIN" : "Login",
   "LOGOUT" : "Logout",
+  "SINGUP" : "Sing up",
+  "SINGIN" : "Sing in",
+
+  "LOGIN_DSCR" : "Enter your login details",
+  "ACCOUNT_ACTIVE" : "Your account has been activated.",
+  "USERNAME" : "Username",
+  "PASSWORD" : "Password",
+  "CREATE_ACCOUNT" : "Create an account",
+  "CREATE_ACCOUNT_DESC" : "and manage your custom vocabulary!",
+
+  "HOME_H1" : "Web and mobile application",
+  "HOME_H2" : "intended for learning not only English words and phrases",
+  "FEATURE1" : "Lear from everywhere",
+  "FEATURE1_DESC" : "Put off your pen and note and make your vocabulary available from every place from your laptop or mobile device.",
+  "FEATURE2" : "Learn fast",
+  "FEATURE2_DESC" : "Do not waste your time when you travel or just wait and improve your foreign language skills instead.",
+  "FEATURE3" : "Learn effectively",
+  "FEATURE3_DESC" : "The application is based on well-established method of repeating which is effective way how to extend your vocabulary.",
+
+  "CHOSE_LANG1" : "Choose your language",
+  "CHOSE_LANG2" : "Choose target language",
+  "CHOSE_LEVEL" : "Choose level",
+  "CHOSE_CATEG" : "Choose category",
+  "SEARCH" : "Search something...",
+  "SB_NAME" : "Name",
+  "LANGS" : "Languages",
+  "LEVEL" : "Level",
+  "ADDED" : "Added",
+  "CONTENT" : "Content",
+  "CATEGORY" : "Category",
+  "WORDS" : "words",
+  "AUTHOR" : "Author",
+  "LECTURES" : "lectures",
+  "DOWNLOADED" : "Downloaded",
+  "FAVORITED" : "Marked as favorited",
+  "NO_WORDS" : "Number of words",
+  "NO_BOOKS" : "No book found",
+  "TAGS" : "Tags",
+  "SHOW" : "Show",
+  "NO_LECTURE" : "The textbook does not contain any lecture.",
+
+  "M1_IMPORT" : "Import words",
+  "M1_NOTES" : "Notes",
+  "M1_NOTE1" : "The lecture can contains max. {{wordLimit}} words <strong>(currently has {{count}})</strong>.",
+  "M1_NOTE2" : "Words have to be on the first sheet",
+  "M1_NOTE3" : "On the first column should be questions and on the second answers",
+  "M1_NOTE4" : "In case any issues don't hesitate and",
+  "M1_CONTACT" : "contact me",
+  "M1_CHOSE" : "Choose the file",
+
+  "M2_CONTACT" : "Suggest improvement/report an issue",
+  "EMAIL" : "Your e-mail",
+  "NAME" : "Your name",
+  "SEND" : "Send",
 
   "ACTIVATED_WORDS" : "Activated cards",
   "ACTIVATED" : "Activated",
@@ -13,11 +67,24 @@
   "CARD_SHOWN" : "Card was shown",
   "SHOWN" : "Shown",
   "HITS" : "Hits",
-
   "ANSWER" : "Answer",
   "WRITE_ANSWER" : "Write answer...",
+  "FINISH" : "You've just extended your vocabulary of <strong>{{count}}</strong> words, keep learning!",
+  "ACTIVATE_OTHER" : "Activate other words",
+  "MANAGE_VOCABULARY" : "and manage you own vocabulary!",
+
+  "EDIT_WORD" : "Edit word",
 
 
+
+  "SAVE" : "Save",
+  "CANCEL" : "Cancel",
   "CONTACT" : "Contact",
-  "REPORT_ISSUE" : "Report an issue"
+  "REPORT_ISSUE" : "Report an issue",
+  "WAIT" : "Please wait...",
+
+  "ERR_EMAIL" : "Invalid e-mail address",
+  "ERR_MSG" : "Please write informative message.",
+  "ERR_CREDENTIALS" : "Bad username or password.",
+  "ERR_ALL_REQUIRED" : "All fields are required."
 }

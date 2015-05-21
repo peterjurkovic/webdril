@@ -1,18 +1,18 @@
-<h1 class="text-center">Sign In</h1>
-<h6 class="text-center">Enter your login details</h6>
+<h1 class="text-center" translate="SINGIN"></h1>
+<h6 class="text-center" translate="LOGIN_DSCR"></h6>
 
 <form class="pj-login " name="loginForm" ng-submit="login(loginForm.$valid , credentials)" novalidate>
   <div ng-if="activated && !badCredentials" class="alert alert-success">
     <span class="glyphicon glyphicon-ok"></span>
-    Your account has been activated.
+    {{'ACCOUNT_ACTIVE' | translate}}
   </div>
   <div ng-show="(loginForm.$submitted && !loginForm.$valid) || badCredentials"  class="alert alert-danger">
     <span class="glyphicon glyphicon-remove"></span>
-    <span ng-if="badCredentials">Bad username or password.</span>
-    <span ng-if="!badCredentials">All fields are required.</span>
+    <span ng-if="badCredentials">{{'ERR_CREDENTIALS' | translate}}</span>
+    <span ng-if="!badCredentials">{{'ERR_ALL_REQUIRED' | translate}}</span>
   </div>
   <div class="form-group">
-    <label for="username">Username:</label>
+    <label for="username">{{'USERNAME' | translate}}:</label>
     <input class="form-control"
            type="text"
            id="username"
@@ -23,7 +23,7 @@
   </div>
 
   <div class="form-group">
-    <label for="password">Password:</label>
+    <label for="password">{{'PASSWORD' | translate}}:</label>
     <input class="form-control"
            type="password"
            id="password"
@@ -33,13 +33,13 @@
            ng-trim="true">
   </div>
   <div class="form-group">
-  <button type="submit" class="btn btn-block btn-primary">Login</button>
-  <div class="pj-loader" ng-if="isLoading">Please wait...</div>
+  <button type="submit" class="btn btn-block btn-primary" translate="LOGIN"></button>
+  <div class="pj-loader" ng-if="isLoading" translate="WAIT"></div>
   </div>
   <div class="form-group pj-border">
     <strong>
-      <a href="/singup">Create an account</a>
-    </strong>and manage your custom vocabulary!
+      <a href="/singup" translate="CREATE_ACCOUNT"></a>
+    </strong>{{'CREATE_ACCOUNT_DESC' | translate}}
   </div>
 
 </form>

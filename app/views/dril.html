@@ -91,13 +91,11 @@
   <h2>Great!</h2>
   <div class="pj-dril-result">
     <span class="glyphicon glyphicon-ok"></span>
-    <p class="pj-text">
-      You've just extended your vocabulary of <strong>{{stats.learned}}</strong> words, keep learning!
-    </p>
+    <p class="pj-text" translate="FINISH" translate-value-name="{{stats.learned}}"></p>
 
     <div class="pj-singup">
-      <p ng-if="user"><a href="/manage/books">Activate other words</a></p>
-      <p ng-if="!user"><a ng-href="/singup">Sing up</a> and manage you own vocabulary!</p>
+      <p ng-if="user"><a href="/manage/books">{{'ACTIVATE_OTHER' | translate}}</a></p>
+      <p ng-if="!user"><a ng-href="/singup">{{'SINGUP' | translate}}</a> {{'MANAGE_VOCABULARY' | translate}}</p>
     </div>
   <!--
     <div class="pj-share">
