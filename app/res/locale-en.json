@@ -2,7 +2,11 @@
 
   "START" : "Start",
   "ST" : "Shared textbooks",
+  "MY_BOOKS" : "My textbooks",
   "MY_DRIL" : "My dril",
+  "SETTINGS" : "Settings",
+  "PROFILE" : "Profile",
+  "STATISTICS" : "Statistics",
   "LOGIN" : "Login",
   "LOGOUT" : "Logout",
   "SINGUP" : "Sing up",
@@ -10,10 +14,11 @@
 
   "LOGIN_DSCR" : "Enter your login details",
   "ACCOUNT_ACTIVE" : "Your account has been activated.",
-  "USERNAME" : "Username",
   "PASSWORD" : "Password",
+  "PASSWORD_CONFIRM" : "Password confirmation",
   "CREATE_ACCOUNT" : "Create an account",
   "CREATE_ACCOUNT_DESC" : "and manage your custom vocabulary!",
+  "WILL_BE_NOT_PUBLISHED" : "Will be not published",
 
   "HOME_H1" : "Web and mobile application",
   "HOME_H2" : "intended for learning not only English words and phrases",
@@ -39,12 +44,37 @@
   "AUTHOR" : "Author",
   "LECTURES" : "lectures",
   "DOWNLOADED" : "Downloaded",
+  "SHARED" : "SHARED",
+  "MANAGE" : "Manage",
   "FAVORITED" : "Marked as favorited",
   "NO_WORDS" : "Number of words",
   "NO_BOOKS" : "No book found",
   "TAGS" : "Tags",
   "SHOW" : "Show",
   "NO_LECTURE" : "The textbook does not contain any lecture.",
+  "NO_WORD" : "The lecture does not contain any word.",
+  "YOUR_LANG" : "Your language",
+  "TARGET_LANG" : "Target language",
+  "YOUR_FIRST_NAME" : "Your first name",
+  "YOUR_LAST_NAME" : "Your last name",
+  "YOUR_NATIVE_LANG" : "Your native language",
+  "WHAT_LEARN" : "What would you like to learn",
+  "BOOKS_COUNT" : "No. of books",
+  "LECTURE_COUNT" : "No. of lectures",
+  "WORD_COUNT" : "No. of saved words / limit",
+  "ACTIVATED_WORD_COUNT" : "No. of activated words",
+  "DEACTIVATE_ALL" : "Deactivate all",
+  "DEACTIVATE_ALL_ALERT" : "Are you sure you want to deactivate all words?",
+  "SESSIONS" : "Sessions",
+  "LEARNED_WORDS" : "Learned words",
+  "DATE" : "Date",
+  "USER_BOOKS" : "{{firstname}} {{lastname}}'s textbooks",
+
+  "ACTIVATE_ACCOUNT" : "Activate your account",
+  "ACCOUNT_CREATED" : "Your account has been created",
+  "ACCOUNT_CREATED_DESC" : "Your account has been successfully created. Please see your inbox ({{email}}) and activate your account.",
+  "ENTER_DETAILS" : "Enter your details to create your account.",
+  "CHECKING" : " Checking availability...",
 
   "M1_IMPORT" : "Import words",
   "M1_NOTES" : "Notes",
@@ -54,11 +84,15 @@
   "M1_NOTE4" : "In case any issues don't hesitate and",
   "M1_CONTACT" : "contact me",
   "M1_CHOSE" : "Choose the file",
+  "CREATE_TEXTBOOK" : "Create textbook",
 
   "M2_CONTACT" : "Suggest improvement/report an issue",
   "EMAIL" : "Your e-mail",
   "NAME" : "Your name",
   "SEND" : "Send",
+
+  "QUESTION_IN" : "Question in {{lang}}",
+  "ANSWER_IN" : "Answer in {{lang}}",
 
   "ACTIVATED_WORDS" : "Activated cards",
   "ACTIVATED" : "Activated",
@@ -72,7 +106,7 @@
   "FINISH" : "You've just extended your vocabulary of <strong>{{count}}</strong> words, keep learning!",
   "ACTIVATE_OTHER" : "Activate other words",
   "MANAGE_VOCABULARY" : "and manage you own vocabulary!",
-
+  "GET_ANSWER" : "Get an answer",
   "EDIT_WORD" : "Edit word",
 
 
@@ -81,10 +115,18 @@
   "CANCEL" : "Cancel",
   "CONTACT" : "Contact",
   "REPORT_ISSUE" : "Report an issue",
-  "WAIT" : "Please wait...",
+  "WAIT" : "Loading...",
+  "CREATING" : "Please wait, creating your account ...",
 
+  "ERR_INVALID_VAL" : "Invalid value",
   "ERR_EMAIL" : "Invalid e-mail address",
   "ERR_MSG" : "Please write informative message.",
   "ERR_CREDENTIALS" : "Bad username or password.",
-  "ERR_ALL_REQUIRED" : "All fields are required."
+  "ERR_ALL_REQUIRED" : "All fields are required.",
+  "ERR_REQUIRED" : "This is required field",
+  "ERR_LOGIN_SIZE" : "The length has to be between 5 and 30 characters",
+  "ERR_LOGIN_TAKEN" : "Given login has already been taken",
+  "ERR_EMAIL_TAKEN" : "Given e-mail has already been used",
+  "ERR_PASS_SIZE" : "At least 6 characters",
+  "ERR_PASS_CONFIRM" : "Password does not match the confirm password"
 }

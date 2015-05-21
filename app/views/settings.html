@@ -1,40 +1,40 @@
-<h2>Settings</h2>
+<h2 translate="SETTINGS"></h2>
 
 
 <div class="row">
   <div class="col-md-6">
-    <h4 class="no-margin">Profile</h4>
+    <h4 class="no-margin">{{'PROFILE' | translate}}</h4>
     <form name="profileForm" ng-submit="update(profileForm.$valid, user)" novalidate>
       <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid }">
-        <label tooltip="Your native language" for="language">Your language:</label>
+        <label tooltip="{{'YOUR_NATIVE_LANG' | translate}}" for="language">{{'YOUR_LANG' | translate}}:</label>
         <select chosen
                 id="language"
                 ng-model="user.localeId"
                 required
                 name="lang"
                 ng-options="lang.id as lang.name for lang in languages">
-          <option value="">Choose your language</option>
+          <option value="">{{'CHOSE_LANG1' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid">
-          <div ng-if="profileForm.lang.$error.required">This is required field</div>
+          <div ng-if="profileForm.lang.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
       <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.targetLang.$touched) && profileForm.targetLang.$invalid }">
-        <label tooltip="What would you like to learn" for="targetLang">Target language:</label>
+        <label tooltip="{{'WHAT_LEARN' | translate}}" for="targetLang">{{'TARGET_LANG' | translate}}:</label>
         <select chosen
                 id="targetLang"
                 ng-model="user.targetLocaleId"
                 required
                 name="targetLang"
                 ng-options="lang.id as lang.name for lang in languages">
-          <option value="">Choose target language</option>
+          <option value="">{{'CHOSE_LANG2' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.targetLang.$touched) && profileForm.targetLang.$invalid">
-          <div ng-if="profileForm.targetLang.$error.required">This is required field</div>
+          <div ng-if="profileForm.targetLang.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
       <div class="form-group" ng-class="{'has-error' : (profileForm.$submitted || profileForm.firstName.$touched) && profileForm.firstName.$invalid }">
-        <label for="firstName">Your first name:</label>
+        <label for="firstName">{{'YOUR_FIRST_NAME' | translate}}:</label>
         <input class="form-control"
                type="text"
                id="firstName"
@@ -44,12 +44,12 @@
                required
                ng-trim="true">
         <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.firstName.$touched) && profileForm.firstName.$invalid">
-          <div ng-if="profileForm.firstName.$error.required">This is required field</div>
-          <div ng-if="profileForm.firstName.$error.minlength">Invalid value</div>
+          <div ng-if="profileForm.firstName.$error.required">{{'ERR_REQUIRED' | translate}}</div>
+          <div ng-if="profileForm.firstName.$error.minlength">{{'ERR_INVALID_VAL' | translate}}</div>
         </div>
       </div>
       <div class="form-group">
-        <label for="lastName">Your last name:</label>
+        <label for="lastName">{{'YOUR_LAST_NAME' | translate}}:</label>
         <input class="form-control"
                type="text"
                id="lastName"
@@ -58,52 +58,52 @@
                required
                ng-trim="true">
         <div class="text-danger bg-danger"  ng-if="(profileForm.$submitted || profileForm.lastName.$touched) && profileForm.lastName.$invalid">
-          <div ng-if="profileForm.lastName.$error.required">This is required field</div>
-          <div ng-if="profileForm.lastName.$error.minlength">Invalid value</div>
+          <div ng-if="profileForm.lastName.$error.required">{{'ERR_REQUIRED' | translate}}</div>
+          <div ng-if="profileForm.lastName.$error.minlength">{{'ERR_INVALID_VAL' | translate}}</div>
         </div>
       </div>
 
       <div class="form-group">
         <button type="submit" ng-class="{'disabled' : pending}" class="btn btn-block btn-primary">Save</button>
-        <div class="pj-loader" ng-if="pending">Please wait...</div>
+        <div class="pj-loader" ng-if="pending" translate="WAIT"></div>
       </div>
     </form>
 
   </div>
   <div class="col-md-6 pj-stats">
-    <h4 class="no-margin">Statistics</h4>
+    <h4 class="no-margin">{{'STATISTICS' | translate}}</h4>
     <div class="pj-loader pj-center" ng-if="!stats"></div>
     <table class="table pj-stats" ng-if="stats">
       <tr>
-        <td>No. of books</td>
+        <td>{{'BOOKS_COUNT' | translate}}</td>
         <td>{{stats.statistics.bookCount}}</td>
       </tr>
       <tr>
-        <td>No. of lectures</td>
+        <td>{{'LECTURE_COUNT' | translate}}</td>
         <td>{{stats.statistics.lectureCount}}</td>
       </tr>
       <tr>
-        <td>No. of saved words / limit</td>
+        <td>{{'WORD_COUNT' | translate}}</td>
         <td>{{stats.statistics.wordCount}} / {{stats.statistics.wordLimit | pjWords}}</td>
       </tr>
       <tr>
-        <td>No. of activated words</td>
+        <td>{{'ACTIVATED_WORD_COUNT' | translate}}</td>
         <td>{{stats.statistics.activatedWordCount}}
           <button
             ng-if="stats.statistics.activatedWordCount"
-            ng-really-message="Are you sure you want to deactiva all words?"
+            ng-really-message="{{'DEACTIVATE_ALL_ALERT' | translate}}"
             ng-really-click="deactivate()"
-            style="float: right" class="btn btn-xs btn-danger">Deactivate all</button>
+            style="float: right" class="btn btn-xs btn-danger">{{'DEACTIVATE_ALL' | translate}}</button>
         </td>
       </tr>
     </table>
-    <h4>Sessions</h4>
+    <h4>{{'SESSIONS' | translate}}</h4>
     <div class="pj-loader pj-center" ng-if="!stats"></div>
     <table class="table table-striped pj-stats" ng-if="stats">
       <tr>
-        <th>Date</th>
-        <th>Learned cards</th>
-        <th>Hits</th>
+        <th>{{'DATE' | translate}}</th>
+        <th>{{'LEARNED_WORDS' | translate}}</th>
+        <th>{{'HITS' | translate}}</th>
       </tr>
       <tr ng-repeat="row in stats.sessions">
         <td>{{row.date}}</td>

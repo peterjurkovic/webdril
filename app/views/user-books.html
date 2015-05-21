@@ -1,4 +1,6 @@
-<h2>{{user.firstName}} {{user.lastName}}'s textbooks</h2>
+<h2 translate="USER_BOOKS"
+    translate-value-firstname="{{user.firstName}}"
+    translate-value-lastname="{{user.lastName}}"></h2>
 
 
 <nav class="navbar navbar-default">
@@ -11,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">My Dril</a>
+      <a class="navbar-brand" href="#">{{'MY_DRIL' | translate}}</a>
     </div>
 
 
@@ -19,12 +21,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="#">My textbooks</a>
+          <a href="#">{{'MY_BOOKS' | translate}}</a>
         </li>
         <li>
-          <a href="/manage/book/create">Create textbook</a>
+          <a href="/manage/book/create">{{'CREATE_TEXTBOOK' | translate}}</a>
         </li>
-        <li><a href="/manage/settings">Settings</a></li>
+        <li><a href="/manage/settings">{{'SETTINGS' | translate}}</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -42,7 +44,7 @@
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">Loading...</span>
+  <span class="pj-loader">{{'WAIT' | translate}}</span>
 </div>
 
 <div ng-hide="isLoading">
@@ -51,13 +53,13 @@
   <table class="table table-striped pj-books" ng-if="items.length">
     <thead>
     <tr>
-      <th pj-sort="name">Name</th>
-      <th pj-sort="lang">Languages</th>
-      <th class="hidden-xs hidden-sm" pj-sort="level">Level</th>
-      <th class="hidden-xs" pj-sort="date">Added</th>
-      <th pj-sort="author">Content</th>
-      <th class="text-center">Shared</th>
-      <th class="hidden-xs text-center">Manage</th>
+      <th pj-sort="name">{{'SB_NAME' | translate}}</th>
+      <th pj-sort="lang">{{'LANGS' | translate}}</th>
+      <th class="hidden-xs hidden-sm" pj-sort="level">{{'LEVEL' | translate}}</th>
+      <th class="hidden-xs" pj-sort="date">{{'ADDED' | translate}}</th>
+      <th pj-sort="author">{{'CONTENT' | translate}}</th>
+      <th class="text-center">{{'SHARED' | translate}}</th>
+      <th class="hidden-xs text-center">{{'MANAGE' | translate}}</th>
     </tr>
     </thead>
     <tbody ng-show="!isLoading">
@@ -76,10 +78,10 @@
       <td class="col-md-2 hidden-xs text-center">{{book.created_timestamp | drilDate}}</td>
       <td class="col-md-2 " ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
-         {{book.no_of_words}} words
+         {{book.no_of_words}} {{'WORDS' | translate}}
         </span>
         <span class="pj-coll-bottom">
-          {{book.no_of_lectures}} lecture
+          {{book.no_of_lectures}} {{'LECTURES' | translate}}
         </span>
       </td>
       <td class="pj-is-shared text-center" ng-click="toggleActivation( book )">
@@ -98,6 +100,6 @@
 
   <div ng-if="!items.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
-    No book found
+    {{'NO_BOOKS' | translate}}
   </div>
 </div>

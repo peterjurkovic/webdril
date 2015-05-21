@@ -23,6 +23,7 @@ angular.module('webdrilApp')
           DrilAPI.createAccount(user)
             .then(function (res){
               $scope.created = true;
+              $scope.email = user.email;
             }, function (res){
               if(res.status === 400 ){
                 Toast.danger(res.data.error.message);
