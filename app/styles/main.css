@@ -18,7 +18,7 @@ body{
 
 .pj-devices{
   position: absolute;width:300px;height:300px;
-  background: url(../images/app2.png) no-repeat right bottom;
+  background: url(../images/app.png) no-repeat right bottom;
   bottom:0;right:70px;
 }
 

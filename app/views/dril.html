@@ -5,24 +5,23 @@
 
     <div class="row span3 meta-info-box">
       <div class="col-xs-3">
-        <span class="hidden-sm hidden-xs">Activated cards:</span>
-        <span class="visible-sm-inline visible-xs-inline">Activated:</span>
+        <span class="hidden-sm hidden-xs">{{'ACTIVATED_WORDS'| translate}}:</span>
+        <span class="visible-sm-inline visible-xs-inline">{{'ACTIVATED' | translate}}:</span>
         <strong>{{getCountOfActivated()}}</strong>
       </div>
       <div class="col-xs-3">
-        <span class="hidden-sm hidden-xs">Learned cards:</span>
-        <span class="visible-sm-inline visible-xs-inline">Learned:</span>
+        <span class="hidden-sm hidden-xs">{{'LEARNED_CARDS'| translate}}:</span>
+        <span class="visible-sm-inline visible-xs-inline">{{'LEARNED'| translate}}:</span>
         <strong>{{stats.learned}}</strong>
       </div>
       <div class="col-xs-3">
-        <span class="hidden-sm hidden-xs">Card was shown:</span>
-        <span class="visible-sm-inline visible-xs-inline">Shown:</span>
+        <span class="hidden-sm hidden-xs">{{'CARD_SHOWN'| translate}}:</span>
+        <span class="visible-sm-inline visible-xs-inline">{{'SHOWN'| translate}}:</span>
         <strong>{{currentWord.viewed}}x</strong>
       </div>
       <div class="col-xs-3">
-        <span class="hidden-sm hidden-xs">Card was shown:</span>
-        <span class="visible-sm-inline visible-xs-inline">Shown:</span>
-        <strong>{{currentWord.viewed}}x</strong>
+        <span>{{'HITS' | translate}}:</span>
+        <strong>{{currentWord.hits}}x</strong>
       </div>
     </div>
 
@@ -38,10 +37,10 @@
 
       <div class="input-wrapp">
         <div class="input-group input-group-lg">
-          <span class="input-group-addon" id="sizing-addon1">Answer:</span>
+          <span class="input-group-addon" id="sizing-addon1">{{'ANSWER' | translate}}:</span>
           <input type="text"
                  class="form-control"
-                 placeholder="Write answer..."
+                 placeholder="{{'WRITE_ANSWER' | translate}}"
                  ng-model="userAnswer.value"
                  ng-change="compare(userAnswer.value)"
                  ng-enter="showAnswer()"

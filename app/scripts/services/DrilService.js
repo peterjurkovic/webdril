@@ -111,12 +111,13 @@ angular.module('webdrilApp')
     function incrementLearned(){
       var stats = getStatistics();
       stats.learned++;
+      stats.hits++;
       DrilStorage.setItem(statsKey, stats);
     }
 
     function getStatistics(){
       var stats = DrilStorage.getItem(statsKey);
-      return stats || { learned : 0 };
+      return stats || { learned : 0, hits : 0 };
     }
 
 

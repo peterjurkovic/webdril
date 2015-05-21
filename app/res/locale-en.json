@@ -1,0 +1,23 @@
+{
+
+  "START" : "Start",
+  "ST" : "Shared textbooks",
+  "MY_DRIL" : "My dril",
+  "LOGIN" : "Login",
+  "LOGOUT" : "Logout",
+
+  "ACTIVATED_WORDS" : "Activated cards",
+  "ACTIVATED" : "Activated",
+  "LEARNED_CARDS" : "Learned cards",
+  "LEARNED" : "Learned",
+  "CARD_SHOWN" : "Card was shown",
+  "SHOWN" : "Shown",
+  "HITS" : "Hits",
+
+  "ANSWER" : "Answer",
+  "WRITE_ANSWER" : "Write answer...",
+
+
+  "CONTACT" : "Contact",
+  "REPORT_ISSUE" : "Report an issue"
+}

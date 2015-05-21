@@ -8,14 +8,22 @@ angular
     'pjToast',
     'pjTts',
     'ui.bootstrap',
-    'ngFileUpload'
+    'ngFileUpload',
+    'pascalprecht.translate'
   ])
   .constant('RATING', {
     'KNOW': 1,
     'NOT_YET': 3,
     'DO_NOT_KNOW': 5
   })
-  .config(function ($routeProvider, $httpProvider, $locationProvider) {
+  .constant('LOCALES', {
+    'locales': {
+      'sk_SK': 'Slovenčina',
+      'en_US': 'English'
+    },
+    'preferredLocale': 'en_US'
+  })
+  .config(function ($routeProvider, $httpProvider, $locationProvider, $translateProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
     $locationProvider.html5Mode(true);
     $routeProvider
@@ -72,4 +80,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      $translateProvider.useStaticFilesLoader({
+        prefix: 'res/locale-',// path to translations files
+        suffix: '.json'// suffix, currently- extension of the translations
+      });
+      $translateProvider.preferredLanguage('en');// is applied on first load
+      $translateProvider.useSanitizeValueStrategy(null);
   });
