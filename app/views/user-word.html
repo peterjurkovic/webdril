@@ -1,7 +1,7 @@
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">Loading...</span>
+  <span class="pj-loader">{{'WAIT' | translate}}</span>
 </div>
 <div ng-if="book" class="pj-word-detail">
   <h2>
@@ -13,7 +13,7 @@
       tooltip="Rename"
       class="btn-warning pj-btn btn no-radius glyphicon glyphicon-pencil"
       ng-click="onEditLecture()" ></button>
-    <button ng-really-message="Are you sure that you want remove this lecture?"
+    <button ng-really-message="{{'ALERT_REMOVE_LECTURE' | translate}}"
             tooltip="Remove"
             class="btn-remove btn no-radius glyphicon glyphicon-remove"
             ng-really-click="remove(false)" ></button>
@@ -28,37 +28,37 @@
       <button title="Save"
               ng-click="saveLecture()"
               class="btn btn-warning pj-btn glyphicon glyphicon-floppy-disk">
-        Save
+        {{'SAVE' | translate}}
       </button>
-      <button ng-click="onCancelEditLecture()" class="btn btn-default">Cancel</button>
+      <button ng-click="onCancelEditLecture()" class="btn btn-default">{{'CANCEL' | translate}}</button>
     </form>
   </h3>
 
   <div class="pj-meta">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Language:</span>
+        <span class="pj-key">{{'LANGS' | translate}}:</span>
         <span class="pj-val">{{book.question_lang_name}} / {{book.answer_lang_name}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Level:</span>
+        <span class="pj-key">{{'LEVEL' | translate}}:</span>
         <span class="pj-val">{{book.level_name}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Category:</span>
+        <span class="pj-key">{{'CATEGORY' | translate}}:</span>
         <span class="pj-val">{{book.category_name || 'Not categorized'}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Author:</span>
+        <span class="pj-key">{{'AUTHOR' | translate}}:</span>
         <span class="pj-val">{{book.login}}</span>
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Added:</span>
+        <span class="pj-key">{{'ADDED' | translate}}:</span>
         <span class="pj-val">{{book.lecture.created_timestamp | drilDate}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Downloaded:</span>
+        <span class="pj-key">{{'DOWNLOADED' | translate}}:</span>
         <span class="pj-val">{{book.downloaded}}x</span>
       </div>
       <div tooltip="Type this number into Android Dril app and download this vocabulary" class="col-md-3 col-sm-4 col-xs-6">
@@ -66,7 +66,7 @@
         <span class="pj-val">{{book.lecture.id | importId}}</span>
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6">
-        <span class="pj-key">Number of words:</span>
+        <span class="pj-key">{{'NO_WORDS' | translate}}:</span>
         <span class="pj-val">{{book.lecture.words.length}}/{{wordLimit}}</span>
       </div>
     </div>
@@ -78,26 +78,26 @@
       <li role="presentation">
         <a ng-click="importFile()" >
           <span class="glyphicon glyphicon-folder-open"></span>
-          &nbsp; Excel import
+          &nbsp; {{'EXCEL_IMPORT' | translate}}
         </a>
       </li>
       <li role="presentation">
         <a ng-click="toggleLectureActivity(true)" >
           <span class="glyphicon glyphicon-play"></span>
-          &nbsp; Activate all
+          &nbsp; {{'Activate all' | translate}}
         </a>
       </li>
       <li role="presentation">
         <a ng-click="toggleLectureActivity(false)" >
           <span class="glyphicon glyphicon-stop"></span>
-          &nbsp; Deactivate all
+          &nbsp; {{'DEACTIVATE_ALL' | translate}}
         </a>
       </li>
       <li role="presentation">
         <a ng-really-message="Are you sure that you want remove all words in this lecture?"
            ng-really-click="remove(true)" >
           <span class="glyphicon glyphicon-remove"></span>
-          &nbsp; Remove all
+          &nbsp; {{'REMOVE_ALL' | translate}}
         </a>
 
 
@@ -145,7 +145,7 @@
         <button
           tooltip="Remove"
           class="btn btn-danger btn-xs"
-          ng-really-message="Are you sure that you want remove this book?"
+          ng-really-message="{{'ALERT_REMOVE_BOOK' | translate}}"
           ng-really-click="removeWord(word)"
           >
           <span class="glyphicon glyphicon-remove"></span>
@@ -157,7 +157,7 @@
 
   <div ng-if="!book.lecture.words.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
-    The lecture does not contain any word.
+    {{'NO_WORD' | translate}}
   </div>
 
       <form ng-submit="saveLecture(lecture)" class="pj-word-form" ng-if="word && book.lecture.words.length < wordLimit" name="wordForm" novalidate>
@@ -197,12 +197,12 @@
               <button ng-click="add()" class="btn btn-warning pj-btn btn-block" type="submit">
                 <span ng-if="!adding">
                   <span class="glyphicon glyphicon-floppy-disk"></span>
-                  Add
+                  {{'ADD' | translate}}
                   </span>
                 </span>
                 <span ng-if="adding">
                   <span class="glyphicon pj-loader-min"></span>
-                   saving..
+                   {{'WAIT' | translate}}
                 </span>
               </button>
             </div>

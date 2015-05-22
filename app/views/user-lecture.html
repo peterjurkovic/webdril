@@ -1,7 +1,7 @@
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">Loading...</span>
+  <span class="pj-loader">{{'WAIT' | translate}}</span>
 </div>
 <div ng-if="book" class="pj-book-detail">
   <h2 ng-if="!editBook" >
@@ -169,7 +169,7 @@
 
   <div ng-if="!book.lectures.length" class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-alert"></span>
-    The textbook does not contain any lecture.
+    {{'NO_LECTURE' | translate}}
   </div>
 
       <div class="row margin-20" >

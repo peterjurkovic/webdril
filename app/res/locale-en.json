@@ -64,6 +64,9 @@
   "WORD_COUNT" : "No. of saved words / limit",
   "ACTIVATED_WORD_COUNT" : "No. of activated words",
   "DEACTIVATE_ALL" : "Deactivate all",
+  "ACTIVATE_ALL" : "Activate all",
+  "REMOVE_ALL" : "Remove all",
+  "EXCEL_IMPORT" : "Excel import",
   "DEACTIVATE_ALL_ALERT" : "Are you sure you want to deactivate all words?",
   "SESSIONS" : "Sessions",
   "LEARNED_WORDS" : "Learned words",
@@ -112,11 +115,15 @@
 
 
   "SAVE" : "Save",
+  "ADD" : "Add",
   "CANCEL" : "Cancel",
   "CONTACT" : "Contact",
   "REPORT_ISSUE" : "Report an issue",
   "WAIT" : "Loading...",
   "CREATING" : "Please wait, creating your account ...",
+
+  "ALERT_REMOVE_BOOK" : "Are you sure that you want remove this book?",
+  "ALERT_REMOVE_LECTURE" : "Are you sure that you want remove this lecture?",
 
   "ERR_INVALID_VAL" : "Invalid value",
   "ERR_EMAIL" : "Invalid e-mail address",
