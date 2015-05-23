@@ -334,6 +334,8 @@ module.exports = function (grunt) {
         dist : {
           files : [
             {src: '<%= yeoman.dist %>/res/locale-en.json', dest: '<%= yeoman.dist %>/res/locale-en.json'},
+            {src: '<%= yeoman.dist %>/res/locale-cs.json', dest: '<%= yeoman.dist %>/res/locale-cs.json'},
+            {src: '<%= yeoman.dist %>/res/locale-sk.json', dest: '<%= yeoman.dist %>/res/locale-sk.json'}
           ]
         }
     },
