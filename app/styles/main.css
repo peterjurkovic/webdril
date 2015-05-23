@@ -11,6 +11,12 @@ body{
   padding-top:100px;
 
 }
+
+
+.locale span{padding:0 0 0 5px;margin:8px 0 !important;display:inline-block;border-left:1px solid #555}
+.locale select{cursor:pointer;background:transparent;border-color:#202829; -moz-appearance: none;-webkit-appearance: none;appearance: none;padding:4px !important;font-size:.9em;color:#fff;}
+.locale select option{text-align:center;}
+
 .pj-header span{color:#fff;margin:20px 20px 0 20px;display:inline-block;padding:0 8px;max-width:500px;}
 
 .pj-header .bigger{font-size:2em;display:inline-block;padding:0px 20px;opacity:.8;margin:0 0 5px 15px}

@@ -10,17 +10,12 @@ angular.module('webdrilApp')
 
       $scope.isLoading = false;
       $scope.totalItems = 0;
-      $scope.state = {
-        orderBy : "date",
-        orderType : 1,
-        currentPage : 1
-      };
-
+      $scope.state = {};
       $scope.items = [];
 
       var renderBooks = function () {
         $scope.isLoading = true;
-        DrilAPI.getUserBookPage($scope.state).then(function (res) {
+        DrilAPI.getPage($scope.state, true).then(function (res) {
           $scope.items = res.data.books;
           $scope.totalItems = res.data.count;
           $scope.isLoading = false;

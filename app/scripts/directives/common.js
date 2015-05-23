@@ -216,4 +216,23 @@ angular.module('webdrilApp')
       }
     }
   }])
-;
+  .directive('pjLocale', ['LocaleService', function (LocaleService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      template:
+      '<span clsss="pj-locale"><select class="form-control" ng-model="locale" '+
+      'ng-options="l.code as l.label for l in locales" '+
+      'ng-change="setLocale()">'+
+      '</select></span>'
+      ,
+      link: function (scope) {
+        scope.locale = LocaleService.getLocale();
+        scope.locales = LocaleService.getLocales();
+        scope.setLocale = function () {
+          LocaleService.setLocale(scope.locale);
+        };
+      }
+    };
+  }
+]);

@@ -32,7 +32,7 @@
         <div class="form-group">
           <input type="text"
                  class="form-control"
-                 placeholder="Search..."
+                 placeholder="{{'SEARCH' | translate}}"
                  ng-model="state.query"
                  ng-change="changeFilter()"
                  ng-model-options="{debounce: 500}" />
@@ -44,7 +44,7 @@
 
 
 <div ng-if="isLoading" class="pj-loader-wrapp">
-  <span class="pj-loader">{{'WAIT' | translate}}</span>
+  <span class="pj-loader">{{'LOADING' | translate}}</span>
 </div>
 
 <div ng-hide="isLoading">

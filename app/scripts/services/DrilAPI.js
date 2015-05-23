@@ -12,12 +12,8 @@ angular.module('webdrilApp')
     return $http.get(ENV.api+ '/languages');
   }
 
-  function getUserBookPage(params) {
-      return $http.get(ENV.api+ '/user/books', params);
-  }
-
-  function getPage(params) {
-    return $http.get(ENV.api+ '/books', {params : params });
+  function getPage(params, user) {
+    return $http.get(ENV.api+ (user ? '/user' : '') + '/books', {params : params });
   }
 
   function loadFilterOptions(){
@@ -109,7 +105,6 @@ angular.module('webdrilApp')
     loadFilterOptions :  loadFilterOptions,
     getBookLectures : getBookLectures,
     getLecture : getLecture,
-    getUserBookPage : getUserBookPage,
     createBook : createBook,
     updateBook : updateBook,
     removeBook : removeBook,

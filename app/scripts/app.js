@@ -16,13 +16,11 @@ angular
     'NOT_YET': 3,
     'DO_NOT_KNOW': 5
   })
-  .constant('LOCALES', {
-    'locales': {
-      'sk_SK': 'Slovenčina',
-      'en_US': 'English'
-    },
-    'preferredLocale': 'en_US'
-  })
+  .constant('LOCALES', [
+    {code: 'en', label : 'EN'},
+    {code: 'sk', label : 'SK'},
+    {code: 'cs', label : 'CZ'}
+  ])
   .config(function ($routeProvider, $httpProvider, $locationProvider, $translateProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
     $locationProvider.html5Mode(true);
