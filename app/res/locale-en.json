@@ -29,6 +29,7 @@
   "FEATURE3" : "Learn effectively",
   "FEATURE3_DESC" : "The application is based on well-established method of repeating which is effective way how to extend your vocabulary.",
 
+  "CHOSE_LANG" : "Choose language",
   "CHOSE_LANG1" : "Choose your language",
   "CHOSE_LANG2" : "Choose target language",
   "CHOSE_LEVEL" : "Choose level",
@@ -48,7 +49,7 @@
   "MANAGE" : "Manage",
   "FAVORITED" : "Marked as favorited",
   "NO_WORDS" : "Number of words",
-  "NO_BOOKS" : "No book found",
+  "NO_BOOKS" : "No textbook found",
   "TAGS" : "Tags",
   "SHOW" : "Show",
   "NO_LECTURE" : "The textbook does not contain any lecture.",
@@ -72,6 +73,17 @@
   "LEARNED_WORDS" : "Learned words",
   "DATE" : "Date",
   "USER_BOOKS" : "{{firstname}} {{lastname}}'s textbooks",
+  "ADD_LECTURE" : "Add lecture",
+  "REMOVE_BOOK" : "Remove this textbook",
+  "BOOK_CREATE" : "Create new textbook",
+  "SHARE_BOOK" : "Share this textbook",
+  "SUGGEST_NEW" : "suggest new",
+  "BOOK_TITLE" : "Title of textbook",
+
+  "LANG_QUESTION" : "Language of question",
+  "LANG_ANSWER" : "Language of answer",
+  "WRITE_DESCR" : "Write description...",
+  "DESCR" : "Description",
 
   "ACTIVATE_ACCOUNT" : "Activate your account",
   "ACCOUNT_CREATED" : "Your account has been created",
@@ -119,10 +131,11 @@
   "CANCEL" : "Cancel",
   "CONTACT" : "Contact",
   "REPORT_ISSUE" : "Report an issue",
-  "WAIT" : "Loading...",
+  "WAIT" : "Please wait...",
+  "LOADING" : "Loading...",
   "CREATING" : "Please wait, creating your account ...",
 
-  "ALERT_REMOVE_BOOK" : "Are you sure that you want remove this book?",
+  "ALERT_REMOVE_BOOK" : "Are you sure that you want remove this textbook?",
   "ALERT_REMOVE_LECTURE" : "Are you sure that you want remove this lecture?",
 
   "ERR_INVALID_VAL" : "Invalid value",
@@ -135,5 +148,8 @@
   "ERR_LOGIN_TAKEN" : "Given login has already been taken",
   "ERR_EMAIL_TAKEN" : "Given e-mail has already been used",
   "ERR_PASS_SIZE" : "At least 6 characters",
-  "ERR_PASS_CONFIRM" : "Password does not match the confirm password"
+  "ERR_PASS_CONFIRM" : "Password does not match the confirm password",
+  "ERR_LECTURE_NAME" : "Name of the lecture is required",
+  "ERR_BOOK_SIZE_MIN" : "Title of the book has to have max. 200 characters",
+  "ERR_BOOK_SIZE_MAX" : "Title of the book has to have at least 8 characters"
 }

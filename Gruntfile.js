@@ -330,6 +330,13 @@ module.exports = function (grunt) {
         }]
       }
     },
+    jsonmin: {
+        dist : {
+          files : [
+            {src: '<%= yeoman.dist %>/res/locale-en.json', dest: '<%= yeoman.dist %>/res/locale-en.json'},
+          ]
+        }
+    },
 
     // ng-annotate tries to make the code safe for minification automatically
     // by using the Angular long form for dependency injection.
@@ -509,7 +516,8 @@ module.exports = function (grunt) {
     'replace',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'jsonmin'
   ]);
 
 };

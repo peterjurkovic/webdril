@@ -1,9 +1,9 @@
-<h2>Create new textbook</h2>
+<h2>{{'BOOK_CREATE' | translate}}</h2>
 
 
 <form class="pj-form-big pj-add-book"  name="b" ng-submit="create(b.$valid , book)" novalidate>
   <div class="form-group" ng-class="{'has-error' : (b.$submitted || b.login.$touched) && b.name.$invalid }">
-    <label for="name">Title of textbook:</label>
+    <label for="name">{{'BOOK_TITLE' | translate}}:</label>
     <input class="form-control"
            type="text"
            ng-model="book.name"
@@ -13,42 +13,42 @@
            id="name"
            ng-trim="true">
     <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.name.$touched) && b.name.$invalid">
-      <div ng-if="b.name.$error.maxlength">Title of the book has to have max. 200 characters</div>
-      <div ng-if="b.name.$error.minlength">Title of the book has to have at least 8 characters</div>
+      <div ng-if="b.name.$error.maxlength">{{'ERR_BOOK_SIZE_MAX' | translate}}</div>
+      <div ng-if="b.name.$error.minlength">{{'ERR_BOOK_SIZE_MIN' | translate}}</div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 col-sm-6">
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
-        <label for="lang1">Language of question:</label>
+        <label for="lang1">{{'LANG_QUESTION' | translate}}:</label>
         <select chosen
                 id="lang1"
                 ng-model="book.question_lang_id"
                 required
                 name="lang1"
                 ng-options="lang.id as lang.name for lang in languages">
-          <option value="">Choose language</option>
+          <option value="">{{'CHOSE_LANG' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.lang1.$touched) && b.lang1.$invalid">
-          <div ng-if="b.lang1.$error.required">This is required field</div>
+          <div ng-if="b.lang1.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
     </div>
 
     <div class="col-md-6  col-sm-6">
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang2.$touched) && b.lang2.$invalid }">
-        <label for="lang1">Language of answer:</label>
+        <label for="lang1">{{'LANG_ANSWER' | translate}}:</label>
         <select chosen
                 id="lang2"
                 ng-model="book.answer_lang_id"
                 required
                 name="lang2"
                 ng-options="lang.id as lang.name for lang in languages">
-          <option value="">Choose language</option>
+          <option value="">{{'CHOSE_LANG' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.lang2.$touched) && b.lang2.$invalid">
-          <div ng-if="b.lang2.$error.required">This is required field</div>
+          <div ng-if="b.lang2.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
     </div>
@@ -59,34 +59,34 @@
   <div class="row">
     <div class="col-md-6 col-sm-6">
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
-        <label for="level">Choose level:</label>
+        <label for="level">{{'CHOSE_LEVEL' | translate}}:</label>
         <select chosen
                 id="level"
                 ng-model="book.level_id"
                 required
                 name="level"
                 ng-options="level.id as level.name for level in levels">
-          <option value="">Choose level</option>
+          <option value="">{{'CHOSE_LEVEL' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.level.$touched) && b.level.$invalid">
-          <div ng-if="b.level.$error.required">This is required field</div>
+          <div ng-if="b.level.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
     </div>
     <div class="col-md-6 col-sm-6">
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.category.$touched) && b.category.$invalid }">
-        <label for="category">Choose category:</label>
-        <a href="#" class="pj-contact">suggest new</a>
+        <label for="category">{{'CHOSE_CATEG' | translate}}:</label>
+        <a href="#" class="pj-contact">{{'SUGGEST_NEW' | translate}}</a>
         <select chosen
                 id="category"
                 ng-model="book.category_id"
                 required
                 name="category"
                 ng-options="cat.id as cat.name group by cat.catName for cat in categoryList">
-          <option value="">Choose category</option>
+          <option value="">{{'CHOSE_CATEG' | translate}}</option>
         </select>
         <div class="text-danger bg-danger"  ng-if="(b.$submitted || b.category.$touched) && b.category.$invalid">
-          <div ng-if="b.category.$error.required">This is required field</div>
+          <div ng-if="b.category.$error.required">{{'ERR_REQUIRED' | translate}}</div>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
   <div class="form-group">
     <textarea
       ng-model="book.description"
-      placeholder="Write some description..."
+      placeholder="{{'WRITE_DESCR' | translate}}"
       ng-maxlength="250"
       name="description"
       class="form-control"
@@ -103,15 +103,15 @@
   </div>
   <div class="form-group">
       <label for="isShared">
-         Share this textbook:
+         {{'SHARE_BOOK' | translate}}:
         <input id="isShared" type="checkbox" ng-model="book.isShared"  />
       </label>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-block btn-primary btn-lg">
       <span class="glyphicon glyphicon-floppy-disk"></span>
-      Save</button>
-    <span class="pj-loader" ng-if="isLoading">Please wait...</span>
+      {{'SAVE' | translate}}</button>
+    <span class="pj-loader" ng-if="isLoading">{{'WAIT' | translate}}</span>
   </div>
 
 </form>
