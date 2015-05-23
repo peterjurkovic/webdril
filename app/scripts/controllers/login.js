@@ -8,8 +8,9 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('LoginCtrl', [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast', '$window',
-    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast, $window) {
+  .controller('LoginCtrl',
+  [ '$scope', 'UserFactory', 'AUTH_EVENTS', '$rootScope', '$location', 'Toast', '$window', '$translate',
+    function ($scope, UserFactory, AUTH_EVENTS, $rootScope, $location, Toast, $window, $translate) {
       $window.ga('send', 'pageview', { page: $location.url() });
 
     $scope.credentials = {
@@ -48,8 +49,8 @@ angular.module('webdrilApp')
 
       function handleSuccess(res){
         $rootScope.user = res.data.user;
-        Toast.success('You have been successfully logged in');
-        $location.path('/manage/books');
+          Toast.success($translate.instant('LOGGED_SUCCESS'));
+          $location.path('/manage/books');
       }
 
       function handleError(res){

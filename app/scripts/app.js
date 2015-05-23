@@ -81,10 +81,15 @@ angular
         redirectTo: '/'
       });
 
-      $translateProvider.useStaticFilesLoader({
-        prefix: 'res/locale-',// path to translations files
-        suffix: '.json'// suffix, currently- extension of the translations
-      });
-      $translateProvider.preferredLanguage('en');// is applied on first load
-      $translateProvider.useSanitizeValueStrategy(null);
+      $translateProvider
+        .useStaticFilesLoader({prefix: 'res/locale-', suffix: '.json'})
+        .preferredLanguage('en')
+        .registerAvailableLanguageKeys(['en', 'sk', 'cs'], {
+          'en_US': 'en',
+          'en_UK': 'en',
+          'sk_SK': 'sk',
+          'cs_CZ': 'cs'
+        })
+        .fallbackLanguage('en')
+        .useSanitizeValueStrategy(null);
   });

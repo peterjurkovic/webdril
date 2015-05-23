@@ -15,9 +15,9 @@ angular.module('webdrilApp')
         var date = new Date(timestamp * 1000);
 
         if(equals(date, today)){
-          return 'today';
+          return $filter('translate')('TODAY');
         } else if(equals(date, yesterday)){
-          return 'yesterday';
+          return $filter('translate')('YESTERDAY');
         }
         return $filter('date')(date, 'dd.MM.yyyy');
       }

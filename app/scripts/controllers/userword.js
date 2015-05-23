@@ -2,8 +2,8 @@
 
 angular.module('webdrilApp')
   .controller('UserWordCtrl',
-  ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', 'DrilService', '$modal',
-    function ($scope, DrilAPI, $location, $routeParams, Toast, DrilService, $modal) {
+  ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', 'DrilService', '$modal', '$translate',
+    function ($scope, DrilAPI, $location, $routeParams, Toast, DrilService, $modal, $translate) {
 
       $scope.isLoading = true;
       $scope.book = null;
@@ -55,14 +55,14 @@ angular.module('webdrilApp')
         if(newValue.trim().length){
           return true;
         }
-        Toast.danger('The word can not be empty.');
+        Toast.danger($translate.instant('ERR_WORD'));
         return false;
       };
 
       $scope.add = function ( ){
         if(!$scope.word.answer.trim().length ||
            !$scope.word.question.trim().length){
-          Toast.danger('All field are required.');
+            Toast.danger($translate.instant('ERR_ALL_REQUIRED'));
           return;
         }
         $scope.adding = true;
@@ -79,7 +79,7 @@ angular.module('webdrilApp')
       $scope.removeWord = function ( word) {
         DrilAPI.removeWord( word.id ).then( function(){
           $scope.book.lecture.words.splice( $scope.book.lecture.words.indexOf(word), 1 );
-          Toast.success("Deleted");
+          Toast.success($translate.instant('REMOVED'));
         });
       };
 
@@ -116,13 +116,7 @@ angular.module('webdrilApp')
           type : 'word'
         }).then( function(res) {
           if (word.isActivated){
-            var w = res.data;
-            var count = DrilService.addWord(w);
-            Toast.info({
-              content : 'You have activated ' + count + ' word(s)',
-              dismissButton : false,
-              timeout: 2500
-            })
+            DrilService.addWord(res.data);
           }else{
             DrilService.removeWord(word.id);
           }
@@ -171,6 +165,6 @@ angular.module('webdrilApp')
       };
 
       function success(){
-        Toast.success("Saved");
+          Toast.success($translate.instant('SAVED'));
       }
     }]);

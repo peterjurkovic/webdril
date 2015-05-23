@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('SettingsCtrl', ['$scope','Toast', 'DrilAPI', 'UserFactory', 'DrilStorage',
-    function ($scope, Toast, DrilAPI, UserFactory, DrilStorage) {
+  .controller('SettingsCtrl', ['$scope','Toast', 'DrilAPI', 'UserFactory', 'DrilStorage', '$translate',
+    function ($scope, Toast, DrilAPI, UserFactory, DrilStorage, $translate) {
 
       $scope.stats = false;
       $scope.userObj = UserFactory.getUser();
@@ -22,7 +22,7 @@ angular.module('webdrilApp')
           DrilAPI.updateAccount(userObj)
             .then(function (){
               DrilStorage.setItemInSession('loggedUser', userObj);
-              Toast.success('Saved');
+              Toast.success($translate.instant('SAVED'));
             }, function (res){
               if(res.status === 400 ){
                 Toast.danger(res.data.error.message);
@@ -32,14 +32,14 @@ angular.module('webdrilApp')
               $scope.pending = false;
             });
         }else{
-          Toast.danger('The form contains errors.');
+            Toast.danger($translate.instant('ERR_FORM'));
         }
       };
 
       $scope.deactivate = function(){
           DrilAPI.toggleActivation({ type : 'all' }).then(function(){
-            Toast.success('Deactivated');
-            $scope.stats.statistics.activatedWordCount = 0;
+              $scope.stats.statistics.activatedWordCount = 0;
+              Toast.success($translate.instant('DEACTIVATED'));
           });
       };
 

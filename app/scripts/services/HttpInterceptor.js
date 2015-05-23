@@ -1,7 +1,7 @@
 'use strict';
 angular.module('webdrilApp')
-  .factory('HttpInterceptor', ['AuthTokenFactory', '$q', 'Toast', '$rootScope', 'AUTH_EVENTS', '$location',
-    function (AuthTokenFactory, $q, Toast, $rootScope, AUTH_EVENTS, $location) {
+  .factory('HttpInterceptor', ['AuthTokenFactory', '$q', 'Toast', '$rootScope', 'AUTH_EVENTS', '$location', '$filter',
+    function (AuthTokenFactory, $q, Toast, $rootScope, AUTH_EVENTS, $location, $filter) {
 
 
     function addToken(config) {
@@ -15,10 +15,10 @@ angular.module('webdrilApp')
 
      function handleError(res) {
        if(res.status === 401 &&  $location.path() !== '/login'){
-         Toast.warning('You have been logged out.');
+           Toast.warning($filter('translate')('LOGOUT_SUCCESS'));
          $rootScope.$broadcast(AUTH_EVENTS.sessionTimeout);
        }else if(res.status > 500){
-         Toast.danger('An unexpected error has occurred.');
+           Toast.danger($filter('translate')('ERR'));
        }
        return $q.reject(res);
       }

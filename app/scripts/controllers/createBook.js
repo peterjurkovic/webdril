@@ -5,8 +5,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('CreateBookCtrl', ['$scope','DrilAPI', '$location', 'Toast', '$window',
-    function ($scope, DrilAPI, $location, Toast, $window) {
+  .controller('CreateBookCtrl', ['$scope','DrilAPI', '$location', 'Toast', '$window', '$translate',
+    function ($scope, DrilAPI, $location, Toast, $window, $translate) {
       $window.ga('send', 'pageview', { page: $location.url() });
       $scope.book = {
         name : "",
@@ -32,8 +32,8 @@ angular.module('webdrilApp')
           DrilAPI.createBook(book)
             .then(function (res) {
               if(res.data.id){
-                Toast.success('The book has been successfully created');
-                $location.path('/manage/book/' + res.data.id);
+                  Toast.success($translate.instant('SAVED'));
+                  $location.path('/manage/book/' + res.data.id);
               }
             }, function (res) {
               console.log(res.status === 400);
@@ -45,7 +45,10 @@ angular.module('webdrilApp')
               $scope.pending = false;
             });
         } else {
-          Toast.danger('The form contains errors.');
+          $translate('ERR_FORM').then(function(val){
+            Toast.danger(val);
+          });
+
         }
       };
 

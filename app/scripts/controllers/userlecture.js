@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('webdrilApp')
-  .controller('UserLectureCtrl', ['$scope','DrilAPI', '$location', '$routeParams', 'Toast',
-    function ($scope, DrilAPI, $location, $routeParams, Toast) {
+  .controller('UserLectureCtrl', ['$scope','DrilAPI', '$location', '$routeParams', 'Toast', '$translate',
+    function ($scope, DrilAPI, $location, $routeParams, Toast, $translate) {
 
       $scope.isLoading = true;
       $scope.book = false;
@@ -24,8 +24,8 @@ angular.module('webdrilApp')
 
       function onRemoveBook(){
           DrilAPI.removeBook($scope.book).then(
-            function(res){
-              Toast.success('Successfully removed.');
+            function(){
+              Toast.success($translate.instant('REMOVED'));
               $location.path('/manage/books');
             },
             function(res){
@@ -60,7 +60,7 @@ angular.module('webdrilApp')
             $scope.book = response.data;
             $scope.editBook = false;
             $scope.errors = false;
-            Toast.success('Saved');
+            Toast.success($translate.instant('SAVED'));
         }, function(response){
             if(response.status === 400){
               $scope.errors = response.data.error.message;
@@ -93,7 +93,7 @@ angular.module('webdrilApp')
           function(res){
             $scope.book.lectures.push(res.data);
             $scope.lecture = null;
-            Toast.success('Successfully added');
+            Toast.success($translate.instant('SAVED'));
           },
           function(res){
             $scope.lectureErrors = res.data.error.message;

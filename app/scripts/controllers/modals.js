@@ -2,16 +2,16 @@
 
 
 angular.module('webdrilApp')
-  .controller('EditWordCtrl', ['$scope', '$modalInstance', 'word', 'DrilAPI', 'Toast',
-    function ($scope, $modalInstance, word, DrilAPI, Toast) {
+  .controller('EditWordCtrl', ['$scope', '$modalInstance', 'word', 'DrilAPI', 'Toast', '$translate',
+    function ($scope, $modalInstance, word, DrilAPI, Toast, $translate) {
       $scope.word = angular.copy(word);
 
       $scope.save = function (isValid) {
         if(isValid && !$scope.pending){
           $scope.pending = true;
           DrilAPI.updateWord( $scope.word ).then( function(){
-            Toast.success('Saved');
-            $modalInstance.close($scope.word);
+              Toast.success($translate.instant('SAVED'));
+              $modalInstance.close($scope.word);
           });
         }
       };
@@ -61,13 +61,13 @@ angular.module('webdrilApp')
           }).progress(function (evt) {
             $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
           }).success(function (data) {
-            Toast.success("Words were successfully saved");
-            $modalInstance.close(data);
+              Toast.success($translate.instant('WORDS_SAVED'));
+              $modalInstance.close(data);
           }).error(function(data, status){
             if(status === 400){
               $scope.error = data.error.message;
             }else{
-              $scope.error = 'An unexpected error has occurred.';
+                $scope.error = $translate.instant('ERR');
             }
             $scope.progress = false;
           });
@@ -86,8 +86,8 @@ angular.module('webdrilApp')
       $scope.save = function(isValid){
         if(isValid){
           $http.post(ENV.api + '/contact', $scope.report).then(function(){
-            Toast.success('Thank you. Your message has been sent successfully.');
-            $scope.cancel();
+              Toast.success($translate.instant('MSG_SENT'));
+              $scope.cancel();
           })
         }
       }

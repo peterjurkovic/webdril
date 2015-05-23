@@ -8,8 +8,8 @@
  * Controller of the webdrilApp
  */
 angular.module('webdrilApp')
-  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI', '$window',
-    function ($scope, $location, Toast, DrilAPI, $window) {
+  .controller('SingupCtrl', [ '$scope', '$location', 'Toast', 'DrilAPI', '$window', '$translate',
+    function ($scope, $location, Toast, DrilAPI, $window, $translate) {
       $window.ga('send', 'pageview', { page: $location.url() });
 
 
@@ -21,7 +21,7 @@ angular.module('webdrilApp')
         if(isValid && !$scope.pending){
           $scope.pending = true;
           DrilAPI.createAccount(user)
-            .then(function (res){
+            .then(function (){
               $scope.created = true;
               $scope.email = user.email;
             }, function (res){
@@ -33,7 +33,7 @@ angular.module('webdrilApp')
               $scope.pending = false;
             });
         }else{
-          Toast.danger('The registration form contains errors.');
+            Toast.danger($translate.instant('ERR_FORM'));
         }
       };
 
