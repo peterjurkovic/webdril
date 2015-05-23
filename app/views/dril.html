@@ -1,7 +1,7 @@
 
 <div class="row" ng-if="currentWord">
   <h3 class="dril hidden-xs">Dril</h3>
-  <div slide-animation class="span6 content-box animated bounceInLeft">
+  <div slide-animation class="ng-cloak span6 content-box animated bounceInLeft">
 
     <div class="row span3 meta-info-box">
       <div class="col-xs-3">
@@ -21,7 +21,7 @@
       </div>
       <div class="col-xs-3">
         <span>{{'HITS' | translate}}:</span>
-        <strong>{{currentWord.hits}}x</strong>
+        <strong>{{stats.hits}}x</strong>
       </div>
     </div>
 
@@ -61,33 +61,33 @@
 
         <button  class="btn get-answer-btn btn-primary" ng-hide="isAnswerShown" ng-click="showAnswer()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          Get an answer
+          {{'GET_ANSWER' | translate}}
         </button>
 
         <div class="row button-group dril-buttons" ng-show="isAnswerShown">
           <div class="col-xs-4">
               <button  class="btn btn-success" ng-click="rateWord(RATING.KNOW)" >
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                <span class="hidden-xs">I knew it!</span>
+                <span class="hidden-xs">{{'KNOW' | translate}}</span>
               </button>
           </div>
           <div class="col-xs-4">
             <button class="btn btn-warning" ng-click="rateWord(RATING.NOT_YET)">
               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-              <span class="hidden-xs">Not yet</span>
+              <span class="hidden-xs">{{'NOT_YET' | translate}}</span>
             </button>
           </div>
           <div class="col-xs-4">
             <button class="btn btn-danger" ng-click="rateWord(RATING.DO_NOT_KNOW)">
               <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-              <span class="hidden-xs">Never seen it</span>
+              <span class="hidden-xs">{{'DO_NOT_KNOW' | translate}}</span>
             </button>
           </div>
         </div>
       </div>
     </div>
 </div>
-<div class="text-center"  ng-if="!currentWord">
+<div class="text-center ng-cloak"  ng-if="isFinshed()">
   <h2>Great!</h2>
   <div class="pj-dril-result">
     <span class="glyphicon glyphicon-ok"></span>
@@ -97,12 +97,6 @@
       <p ng-if="user"><a href="/manage/books">{{'ACTIVATE_OTHER' | translate}}</a></p>
       <p ng-if="!user"><a ng-href="/singup">{{'SINGUP' | translate}}</a> {{'MANAGE_VOCABULARY' | translate}}</p>
     </div>
-  <!--
-    <div class="pj-share">
-      Share your results <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
-    </div>
-   -->
-
   </div>
 
 </div>

@@ -1,15 +1,14 @@
 body{
   background: url(../images/bg.png);
 }
+
 .pj-header{
   background-image: url(../images/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
-  margin:-30px 0;
-  min-height:400px;
-  padding-top:100px;
-
+  margin:-50px 0;
+  padding-top:70px;
+  color:#fff
 }
 
 
@@ -17,18 +16,21 @@ body{
 .locale select{cursor:pointer;background:transparent;border-color:#202829; -moz-appearance: none;-webkit-appearance: none;appearance: none;padding:4px !important;font-size:.9em;color:#fff;}
 .locale select option{text-align:center;}
 
-.pj-header span{color:#fff;margin:20px 20px 0 20px;display:inline-block;padding:0 8px;max-width:500px;}
+.pj-header .pj-head span{color:#fff;margin:20px 20px 0 20px;display:inline-block;padding:0 8px;}
 
-.pj-header .bigger{font-size:2em;display:inline-block;padding:0px 20px;opacity:.8;margin:0 0 5px 15px}
-.pj-header strong{font-size:1.2em;background:#222;font-weight:normal;padding:5px 10px;line-height:1.8em;display:block;margin-right:15px;}
+.pj-header .bigger{font-size:2em;padding:0px 20px;opacity:.8;margin:0 0 5px 10px}
+.pj-header strong{font-size:1.2em;background:#222;font-weight:normal;padding:0 15px;line-height:1.8em;display:inline-block;margin-right:15px;}
+.pj-header ul{list-style:none;margin-top:15px;font-size:1.5em}
+.pj-header ul span{font-size:.6em}
+.pj-header ul li{margin:10px;}
 
 .pj-devices{
-  position: absolute;width:300px;height:300px;
+  position: absolute;width:300px;height:220px;
   background: url(../images/app.png) no-repeat right bottom;
-  bottom:0;right:70px;
+  bottom:50px;right:70px;
 }
 
-.pj-header .container-fluid{position: relative;min-height:270px;}
+.pj-header .container-fluid{position: relative;min-height:350px;}
 .pj-feature .container-fluid,
 .pj-header .container-fluid{
   max-width: 1024px;
@@ -48,7 +50,7 @@ body{
   border-top:1px solid #fff;border-bottom:1px solid #fff;padding:40px 0;
 }
 .pj-feature .ico{width: 32px;height: 32px;background-color: red;display:block;margin:auto}
-.pj-feature .cloud{background:url(../images/cloud-32.png)}
+.pj-feature .euro{background:url(../images/euro-32.png)}
 .pj-feature .fast{background:url(../images/fast-32.png)}
 .pj-feature .ok{background:url(../images/ok-32.png)}
 
@@ -367,3 +369,5 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
 @media (min-width : 1200px) {
   .pj-nav{width:11%}
 }
+
+

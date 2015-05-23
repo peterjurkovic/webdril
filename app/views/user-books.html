@@ -54,10 +54,10 @@
     <thead>
     <tr>
       <th pj-sort="name">{{'SB_NAME' | translate}}</th>
-      <th pj-sort="lang">{{'LANGS' | translate}}</th>
+      <th class="hidden-xs" pj-sort="lang">{{'LANGS' | translate}}</th>
       <th class="hidden-xs hidden-sm" pj-sort="level">{{'LEVEL' | translate}}</th>
       <th class="hidden-xs" pj-sort="date">{{'ADDED' | translate}}</th>
-      <th pj-sort="author">{{'CONTENT' | translate}}</th>
+      <th class="hidden-xs" pj-sort="author">{{'CONTENT' | translate}}</th>
       <th class="text-center">{{'SHARED' | translate}}</th>
       <th class="hidden-xs text-center">{{'MANAGE' | translate}}</th>
     </tr>
@@ -66,7 +66,7 @@
     <tr ng-repeat="book in items">
       <td class="pj-book-name col-md-5" ng-click="goToBook(book.id)">
         {{book.name}}</td>
-      <td class="col-md-1" ng-click="goToBook(book.id)">
+      <td class="col-md-1 hidden-xs " ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
           {{book.question_lang_name}}
         </span>
@@ -76,7 +76,7 @@
       </td>
       <td class="pj-level hidden-xs hidden-sm col-md-2" ng-click="goToBook(book.id)" >{{book.level_name}}</td>
       <td class="col-md-2 hidden-xs text-center">{{book.created_timestamp | drilDate}}</td>
-      <td class="col-md-2 " ng-click="goToBook(book.id)">
+      <td class="col-md-2 hidden-xs " ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
          {{book.no_of_words}} {{'WORDS' | translate}}
         </span>

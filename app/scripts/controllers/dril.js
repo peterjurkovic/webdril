@@ -4,11 +4,7 @@
 angular.module('webdrilApp')
   .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal','$location', '$window',
     function ($scope, DrilService, RATING, TTSConfig, ENV, $modal,$location, $window) {
-      $window.ga('send', 'pageview', { page: $location.url() });
       TTSConfig.url = ENV.api + '/tts';
-      $scope.currentWord = false;
-      $scope.isAnswerShown = false;
-
 
       function init(){
         $scope.currentWord = DrilService.getNextWord();
@@ -23,9 +19,7 @@ angular.module('webdrilApp')
 
 
 
-      $scope.userAnswer = {
-        value : ''
-      };
+      $scope.userAnswer = { value : '' };
 
       ///////////////////////////////
 
@@ -74,6 +68,10 @@ angular.module('webdrilApp')
         }
       }
 
+      function isFinished(){
+        return $scope.currentWord === null;
+      }
+
       function clean(text){
         var from = 'àôďḟëšơßăřțňāķŝỳņĺħṗóúěéçẁċõṡøģŧșėĉśîűćęŵṫūčöèŷąłųůşğļƒžẃḃåìïḋťŗäíŕêüòēñńĥĝđĵÿũŭưţýőâľẅżīãġṁōĩùįźáûþðæµĕı',
             to =   'aodfesosartnaksynlhpoueecwcosogtsecsiucewtucoeyaluusglfzwbaiidtraireuoennhgdjyuuutyoalwziagmoiuizautdauei',
@@ -100,6 +98,8 @@ angular.module('webdrilApp')
       $scope.rateWord = rateWord;
       $scope.getCountOfActivated = getCountOfActivated;
       $scope.compare = compare;
+      $scope.isFinished = isFinished;
       $scope.RATING = RATING;
+      $window.ga('send', 'pageview', { page: $location.url() });
     }
   ]);

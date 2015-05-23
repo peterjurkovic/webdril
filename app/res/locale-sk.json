@@ -12,6 +12,10 @@
   "SINGUP" : "Registrovať",
   "SINGIN" : "Prihlásiť sa",
 
+  "KNOW" : "Viem to!",
+  "NOT_YET" : "Ešte nie",
+  "DO_NOT_KNOW" : "Netuším",
+
   "LOGIN_DSCR" : "Zadajte Vaše prihlasovacie údaje",
   "ACCOUNT_ACTIVE" : "Váš účet bol aktivovaný",
   "PASSWORD" : "Prihlasovacie heslo",

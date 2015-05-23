@@ -80,9 +80,7 @@ angular.module('webdrilApp')
       id : word.id,
       lastRating : word.lastRating,
       isLearned : word.isLearned
-    }).success(function(res){
-      console.log(res);
-    });
+    })
   }
 
   function loadWords(){

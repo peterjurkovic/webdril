@@ -1,7 +1,4 @@
 'use strict';
-
-
-
 angular.module('webdrilApp')
   .directive('slideAnimation', function ($timeout) {
     return {
