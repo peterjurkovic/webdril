@@ -15,7 +15,7 @@ angular.module('webdrilApp')
 
       DrilAPI.getAllLanguages().then(function(res){
         $scope.languages = res.data;
-      })
+      });
 
       $scope.createAccount = function(isValid, user){
         if(isValid && !$scope.pending){

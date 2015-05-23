@@ -88,9 +88,9 @@ angular.module('webdrilApp')
           $http.post(ENV.api + '/contact', $scope.report).then(function(){
               Toast.success($translate.instant('MSG_SENT'));
               $scope.cancel();
-          })
+          });
         }
-      }
+      };
 
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

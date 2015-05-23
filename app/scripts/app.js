@@ -79,15 +79,21 @@ angular
         redirectTo: '/'
       });
 
+      var locale = localStorage.getItem('locale');
       $translateProvider
         .useStaticFilesLoader({prefix: 'res/locale-', suffix: '.json'})
-        .preferredLanguage('en')
         .registerAvailableLanguageKeys(['en', 'sk', 'cs'], {
           'en_US': 'en',
           'en_UK': 'en',
           'sk_SK': 'sk',
           'cs_CZ': 'cs'
         })
-        .fallbackLanguage('en')
         .useSanitizeValueStrategy(null);
+      if(locale === null){
+        $translateProvider
+          .determinePreferredLanguage()
+          .fallbackLanguage('en');
+      }else{
+        $translateProvider.preferredLanguage(locale.replace(/"/g, ''));
+      }
   });

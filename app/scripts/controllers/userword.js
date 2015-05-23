@@ -19,7 +19,7 @@ angular.module('webdrilApp')
           question : '',
           dril_lecture_id : $routeParams.lectureId
         };
-      };
+      }
 
       $scope.edit = function (word) {
         var modalBox = $modal.open({
@@ -103,7 +103,7 @@ angular.module('webdrilApp')
           success();
           angular.forEach($scope.book.lecture.words,function(word){
             word.isActivated = activate;
-          })
+          });
         });
 
       };

@@ -50,6 +50,10 @@ angular.module('webdrilApp')
 
 
     function rateWord(list, word, userRating){
+      function isLearned(word){
+        return word.lastRating === RATING.KNOW && userRating === RATING.KNOW;
+      }
+
       var index = findIndex(list, word.id);
       if(index !== -1){
         list[index].isLearned = isLearned(list[index]);
@@ -68,9 +72,7 @@ angular.module('webdrilApp')
         $log.error('Can not update rating. Word ['+word.id+'] was not found');
       }
 
-      function isLearned(word){
-        return word.lastRating === RATING.KNOW && userRating === RATING.KNOW;
-      }
+
 
     }
 
@@ -130,11 +132,6 @@ angular.module('webdrilApp')
 
 
     function removeWord( wordId ){
-      var list = loadFromStorage();
-      remove(list, wordId);
-      saveList(list);
-      return countOfWords;
-
       function remove(list, id){
         var index = findIndex(id);
         if(index > -1){
@@ -144,6 +141,11 @@ angular.module('webdrilApp')
         }
 
       }
+
+      var list = loadFromStorage();
+      remove(list, wordId);
+      saveList(list);
+      return countOfWords;
     }
 
     function loadFromServer(){

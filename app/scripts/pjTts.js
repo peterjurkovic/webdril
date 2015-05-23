@@ -100,7 +100,7 @@ angular.module('pjTts.factories', [])
           }
 
           function getCurrentVal(){
-            return params.text +"#"+ params.lang;
+            return params.text +'#'+ params.lang;
           }
 
           if(!self.isAudioSupported()){

@@ -2,18 +2,18 @@
 
 
 angular.module('webdrilApp')
-  .service('LocaleService', ['$translate', 'LOCALES', '$rootScope',
-    function ($translate, LOCALES, $rootScope) {
+  .service('LocaleService', ['$translate', 'LOCALES', 'UserFactory',
+    function ($translate, LOCALES, UserFactory) {
 
-      var currentLocale = $translate.use(),
-
-      setLocale = function (code) {
-        currentLocale = code;
+      var setLocale = function (code) {
         $translate.use(code);
+        UserFactory.setUserLocale( code );
       },
 
       getLocale = function () {
-        return currentLocale;
+        var locale = UserFactory.getUserLocale();
+
+        return locale;
       },
 
       getLocales = function () {
@@ -23,5 +23,5 @@ angular.module('webdrilApp')
         setLocale : setLocale,
         getLocale : getLocale,
         getLocales : getLocales
-      }
+      };
     }]);

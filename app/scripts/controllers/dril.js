@@ -9,16 +9,19 @@ angular.module('webdrilApp')
       $scope.currentWord = false;
       $scope.isAnswerShown = false;
 
+
+      function init(){
+        $scope.currentWord = DrilService.getNextWord();
+        updateStats();
+      }
+
       if($scope.user || !DrilService.loadFromStorage().length){
         DrilService.loadFromServer().then(init);
       }else{
         init();
       }
 
-      function init(){
-        $scope.currentWord = DrilService.getNextWord();
-        updateStats();
-      }
+
 
       $scope.userAnswer = {
         value : ''

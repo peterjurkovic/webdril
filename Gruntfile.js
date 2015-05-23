@@ -425,7 +425,7 @@ module.exports = function (grunt) {
             {
               match: /\.tmp\//g ,
               replacement: function () {
-                return '../'
+                return '../';
               }
             }
           ]

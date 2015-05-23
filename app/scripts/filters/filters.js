@@ -28,7 +28,7 @@ angular.module('webdrilApp')
       id = id.toString();
       var i, limit = 7 - id.length;
       for(i=0; i < limit; i++){
-        id = "0"+id;
+        id = '0'+id;
       }
       return id;
     };

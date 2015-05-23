@@ -9,13 +9,13 @@ angular.module('webdrilApp')
     function ($scope, DrilAPI, $location, Toast, $window, $translate) {
       $window.ga('send', 'pageview', { page: $location.url() });
       $scope.book = {
-        name : "",
+        name : '',
         question_lang_id : 0,
         answer_lang_id : 0,
         category_id : 0,
         level_id : 0,
         isShared : true,
-        description : ""
+        description : ''
       };
 
 
