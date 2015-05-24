@@ -20,9 +20,13 @@ body{
 
 .pj-header .bigger{font-size:2em;padding:0px 20px;opacity:.8;margin:0 0 5px 10px}
 .pj-header strong{font-size:1.2em;background:#222;font-weight:normal;padding:0 15px;line-height:1.8em;display:inline-block;margin-right:15px;}
-.pj-header ul{list-style:none;margin-top:15px;font-size:1.5em}
+.pj-header ul{list-style:none;margin-top:25px;font-size:1.5em;margin-left:10px;}
 .pj-header ul span{font-size:.6em}
-.pj-header ul li{margin:10px;}
+.pj-header ul li{margin:10px;position:relative;}
+.pj-header ul li img{display:none;box-shadow: 0 0 5px 1px #C4C4C4;}
+.pj-header ul li:hover img{display:block;position:absolute;z-index:9}
+.pj-header ul li.pj-0:hover img{top:-70px;left:20px;}
+.pj-header ul li.pj-1:hover img{top:-60px;left:320px;}
 
 .pj-devices{
   position: absolute;width:300px;height:220px;
@@ -369,5 +373,3 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
 @media (min-width : 1200px) {
   .pj-nav{width:11%}
 }
-
-
