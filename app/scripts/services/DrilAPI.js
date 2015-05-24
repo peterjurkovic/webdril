@@ -80,7 +80,7 @@ angular.module('webdrilApp')
       id : word.id,
       lastRating : word.lastRating,
       isLearned : word.isLearned
-    })
+    });
   }
 
   function loadWords(){

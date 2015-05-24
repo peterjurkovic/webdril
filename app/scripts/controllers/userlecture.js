@@ -27,12 +27,7 @@ angular.module('webdrilApp')
             function(){
               Toast.success($translate.instant('REMOVED'));
               $location.path('/manage/books');
-            },
-            function(res){
-
-            }
-          )
-
+            });
       }
 
 
@@ -78,7 +73,7 @@ angular.module('webdrilApp')
 
       function showLectureForm(){
         $scope.lecture = {
-          name : "",
+          name : '',
           dril_book_id : $scope.book.id
         };
         $scope.lectureErrors = false;

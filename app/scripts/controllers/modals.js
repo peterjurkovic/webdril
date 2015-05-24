@@ -40,8 +40,8 @@ angular.module('webdrilApp')
         $scope.isTranslating = false;
       }
     }])
-  .controller('ImportCtrl', ['$scope', '$modalInstance', 'lecture', 'ENV', 'Upload', 'Toast',
-    function ($scope, $modalInstance, lecture, ENV, Upload, Toast) {
+  .controller('ImportCtrl', ['$scope', '$modalInstance', 'lecture', 'ENV', 'Upload', 'Toast', '$translate',
+    function ($scope, $modalInstance, lecture, ENV, Upload, Toast, $translate) {
 
       $scope.progress = false;
       $scope.lecture = lecture;
@@ -75,8 +75,8 @@ angular.module('webdrilApp')
         }
       };
     }])
-  .controller('ContactCtrl', ['$scope', '$modalInstance', '$http', '$rootScope', 'ENV', 'Toast',
-    function ($scope, $modalInstance,$http, $rootScope, ENV, Toast) {
+  .controller('ContactCtrl', ['$scope', '$modalInstance', '$http', '$rootScope', 'ENV', 'Toast', '$translate',
+    function ($scope, $modalInstance,$http, $rootScope, ENV, Toast, $translate) {
       $scope.report = {
         message : '',
         name : '',
