@@ -14,7 +14,7 @@ angular.module('webdrilApp')
           selectLatest : function (list){
               var now = new Date().getTime(),
                   index = -1;
-              for(var i = 0, l = list.length; i < l; i++){
+              for(var i = 0, max = list.length; i < max; i++){
                 if(list[i].lastViewed === null){
                   return list[i];
                 }
@@ -28,6 +28,13 @@ angular.module('webdrilApp')
               }
              $log.warn('Something is wrong..');
             return null;
+          },
+
+          selectProblematic : function ( list ){
+            if(list.length < 8){
+              return selectLatest( list );
+            }
+
           }
 
         };

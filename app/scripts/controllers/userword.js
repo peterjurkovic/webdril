@@ -68,9 +68,7 @@ angular.module('webdrilApp')
         $scope.adding = true;
         DrilAPI.createWord( $scope.word ).then( function( res ){
           $scope.book.lecture.words.push(res.data);
-          success();
           initWord();
-
         }).finally(function(){
           $scope.adding = false;
         });
