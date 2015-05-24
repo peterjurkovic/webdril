@@ -23,6 +23,7 @@
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
         <label for="lang1">{{'LANG_QUESTION' | translate}}:</label>
         <select chosen
+                class="form-control"
                 id="lang1"
                 ng-model="book.question_lang_id"
                 required
@@ -40,6 +41,7 @@
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang2.$touched) && b.lang2.$invalid }">
         <label for="lang1">{{'LANG_ANSWER' | translate}}:</label>
         <select chosen
+                class="form-control"
                 id="lang2"
                 ng-model="book.answer_lang_id"
                 required
@@ -61,6 +63,7 @@
       <div class="form-group chosen-white" ng-class="{'has-error' : (b.$submitted || b.lang1.$touched) && b.lang1.$invalid }">
         <label for="level">{{'CHOSE_LEVEL' | translate}}:</label>
         <select chosen
+                class="form-control"
                 id="level"
                 ng-model="book.level_id"
                 required
@@ -78,6 +81,7 @@
         <label for="category">{{'CHOSE_CATEG' | translate}}:</label>
         <a href="#" class="pj-contact">{{'SUGGEST_NEW' | translate}}</a>
         <select chosen
+                class="form-control"
                 id="category"
                 ng-model="book.category_id"
                 required

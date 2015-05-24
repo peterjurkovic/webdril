@@ -133,24 +133,6 @@ angular.module('webdrilApp')
       }
     };
   }])
-  /*
-  .directive('drilNav', [function(){
-    return {
-      restrict: 'E',
-      template : '<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus-sign"></span></button>',
-      scope : {
-        word : '='
-      },
-      controller: function(){
-        console.log('controller');
-      },
-      link : function(scope, element, attrs) {
-          console.log(scope.word);
-      }
-
-    };
-  }])
- */
 .directive('pjUnique', ['ENV', '$http', '$q', function(ENV, $http, $q) {
     return {
       require: 'ngModel',
@@ -233,4 +215,12 @@ angular.module('webdrilApp')
       }
     };
   }
-  ]);
+  ])
+  .directive('pjFocus', function () {
+    return {
+      restrict: 'CA',
+      link: function (scope, element) {
+        element[0].focus();
+        }
+      };
+  });

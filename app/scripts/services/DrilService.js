@@ -2,42 +2,13 @@
 
 
 angular.module('webdrilApp')
-  .factory('DrilService', ['DrilStorage', '$filter', '$log',  'AuthTokenFactory', 'RATING', 'DrilAPI', '$q',
-      function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI, $q) {
+  .factory('DrilService', ['DrilStorage', '$filter', '$log',  'AuthTokenFactory', 'RATING', 'DrilAPI', '$q', 'DrilStrategy',
+      function (DrilStorage, $filter, $log, AuthTokenFactory, RATING, DrilAPI, $q, DrilStrategy) {
 
 
     var storageKey = 'activatedWords',
         statsKey = 'stats',
-        countOfWords = 0,
-        strategy = {
-
-          selectLatest : function (list){
-              var now = new Date().getTime(),
-                  index = -1;
-              for(var i = 0, max = list.length; i < max; i++){
-                if(list[i].lastViewed === null){
-                  return list[i];
-                }
-                if(now > list[i].lastViewed ){
-                  now = list[i].lastViewed;
-                  index = i;
-                }
-              }
-              if(index !== -1){
-                return list[index];
-              }
-             $log.warn('Something is wrong..');
-            return null;
-          },
-
-          selectProblematic : function ( list ){
-            if(list.length < 8){
-              return selectLatest( list );
-            }
-
-          }
-
-        };
+        countOfWords = 0;
 
 
     function getNextWord( list ){
@@ -45,8 +16,17 @@ angular.module('webdrilApp')
         list = loadFromStorage();
       }
       if(list.length){
-        var nextWord =  strategy.selectLatest( list );
-        return nextWord;
+        var stats = getStatistics();
+        if(stats.hits > 10){
+          if(stats.hits % 7 === 0){
+            return DrilStrategy.selectWorstRated(list);
+          }
+          if(stats.hits % 11 === 0){
+            return DrilStrategy.selectMostProblematic(list);
+          }
+
+        }
+        return DrilStrategy.selectLatest(list);
       }
       return false;
     }

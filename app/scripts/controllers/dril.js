@@ -40,6 +40,15 @@ angular.module('webdrilApp')
         });
       };
 
+      $scope.key = function($event){
+        if($event.keyCode === 39){
+          rateWord(RATING.DO_NOT_KNOW);
+        }else if($event.keyCode === 40){
+          rateWord(RATING.NOT_YET);
+        }else if($event.keyCode === 37){
+          rateWord(RATING.KNOW);
+        }
+      };
 
       function updateStats(){
         $scope.stats = DrilService.getStatistics();

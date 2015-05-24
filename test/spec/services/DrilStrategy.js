@@ -102,12 +102,12 @@ describe('DrilStrategy', function () {
     }
 
     it('should select ', function(){
-      //expectedWordId( 10 );
+      expectedWordId( 10 );
     });
 
     it('should select ', function(){
       list[3].viewed = 2;
-      //expectedWordId( 4 );
+      expectedWordId( 4 );
     });
 
     it('should select ', function(){

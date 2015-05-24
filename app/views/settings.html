@@ -8,6 +8,7 @@
       <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.lang.$touched) && profileForm.lang.$invalid }">
         <label tooltip="{{'YOUR_NATIVE_LANG' | translate}}" for="language">{{'YOUR_LANG' | translate}}:</label>
         <select chosen
+                class="form-control"
                 id="language"
                 ng-model="user.localeId"
                 required
@@ -22,6 +23,7 @@
       <div class="form-group chosen-white" ng-class="{'has-error' : (profileForm.$submitted || profileForm.targetLang.$touched) && profileForm.targetLang.$invalid }">
         <label tooltip="{{'WHAT_LEARN' | translate}}" for="targetLang">{{'TARGET_LANG' | translate}}:</label>
         <select chosen
+                class="form-control"
                 id="targetLang"
                 ng-model="user.targetLocaleId"
                 required

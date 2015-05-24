@@ -52,7 +52,10 @@
               return element.trigger('chosen:updated');
             } else {
               chosen = element.chosen(options).data('chosen');
-              return defaultText = chosen.default_text;
+              if(angular.isDefined(chosen)){
+                return defaultText = chosen.default_text;
+              }
+              return 'Choose';
             }
           };
           removeEmptyMessage = function() {

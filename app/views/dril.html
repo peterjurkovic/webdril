@@ -39,12 +39,11 @@
         <div class="input-group input-group-lg">
           <span class="input-group-addon" id="sizing-addon1">{{'ANSWER' | translate}}:</span>
           <input type="text"
-                 class="form-control"
+                 class="form-control pj-focus"
                  placeholder="{{'WRITE_ANSWER' | translate}}"
                  ng-model="userAnswer.value"
                  ng-change="compare(userAnswer.value)"
                  ng-enter="showAnswer()"
-                 focus="true"
                  ng-model-options="{debounce : 500}"
                  aria-describedby="sizing-addon1">
         </div>
@@ -64,7 +63,10 @@
           {{'GET_ANSWER' | translate}}
         </button>
 
-        <div class="row button-group dril-buttons" ng-show="isAnswerShown">
+        <div
+          ng-keydown="key($event)"
+          class="row button-group dril-buttons"
+          ng-show="isAnswerShown">
           <div class="col-xs-4">
               <button  class="btn btn-success" ng-click="rateWord(RATING.KNOW)" >
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -86,6 +88,7 @@
         </div>
       </div>
     </div>
+
 </div>
 <div class="text-center ng-cloak"  ng-if="isFinshed()">
   <h2>Great!</h2>

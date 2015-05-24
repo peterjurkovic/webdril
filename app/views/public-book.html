@@ -5,6 +5,7 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <select chosen
+                class="form-control"
                 ng-model="state.langQuestion"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
@@ -13,6 +14,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <select chosen
+                class="form-control"
                 ng-model="state.langAnswer"
                 ng-change="changeFilter()"
                 ng-options="language.id as language.name for language in languages">
@@ -21,6 +23,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <select chosen
+                class="form-control"
                 ng-model="state.level"
                 ng-change="changeFilter()"
                 ng-options="level.id as level.name for level in levels" >
@@ -30,6 +33,7 @@
 
       <div class="col-md-3 col-sm-6">
         <select chosen
+                class="form-control"
                 ng-options="cat.id as cat.name group by cat.catName for cat in categoryList"
                 ng-model="state.category"
                 ng-change="changeFilter()">
