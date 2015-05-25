@@ -9,7 +9,7 @@ angular.module('webdrilApp')
     return {
       templateUrl: 'views/pagination.html',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
         var totalPages = Math.ceil(scope.totalItems / ENV.itemsPeerPage),
           maxNeighbor= 5;
 
@@ -175,7 +175,7 @@ angular.module('webdrilApp')
 
 .directive('ngEnter', function () {
     return function (scope, element, attrs) {
-      element.bind("keydown keypress", function (event) {
+      element.bind('keydown keypress', function (event) {
         if(event.which === 13) {
           scope.$apply(function (){
             scope.$eval(attrs.ngEnter);
@@ -245,7 +245,6 @@ angular.module('webdrilApp')
             }
 
         });
-        console.log(scope.currentWord);
       }
     };
   }]);

@@ -36,7 +36,6 @@ angular.module('webdrilApp')
                   $location.path('/manage/book/' + res.data.id);
               }
             }, function (res) {
-              console.log(res.status === 400);
               if (res.status === 400) {
                 Toast.danger(res.data.error.message);
               }

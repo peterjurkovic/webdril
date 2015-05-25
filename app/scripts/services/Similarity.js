@@ -31,13 +31,17 @@ angular.module('webdrilApp')
         .replace(/ +?/g, '-')
         .replace(/[^\w\s]|(.)\1/gi, '-')
         .replace(/[\-]{2,}/g, '-');
-    }
+    };
 
     var compare = function (a , b) {
 
       function mnmt(x, y, z) {
-        if (x < y && x < z) return x;
-        if (y < x && y < z) return y;
+        if (x < y && x < z) {
+          return x
+        }
+        if (y < x && y < z) {
+          return y
+        }
         return z;
       }
       if (a === b) {
@@ -55,7 +59,7 @@ angular.module('webdrilApp')
       }
 
       var r = []; r[0] = [];
-      for (var c = 0; c < n + 1; ++c) {
+      for (c = 0; c < n + 1; ++c) {
         r[0][c] = c;
       }
 
