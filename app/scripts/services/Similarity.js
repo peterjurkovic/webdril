@@ -7,6 +7,9 @@ angular.module('webdrilApp')
     var cached = null;
 
     var cleanUp = function ( text ){
+      if(typeof text !== 'string' ){
+        return '';
+      }
       text = text.speechEscape();
       var from = 'àôďḟëšơßăřțňāķŝỳņĺħṗóúěéçẁċõṡøģŧșėĉśîűćęŵṫūčöèŷąłųůşğļƒžẃḃåìïḋťŗäíŕêüòēñńĥĝđĵÿũŭưţýőâľẅżīãġṁōĩùįźáûþðæµĕı',
         to =   'aodfesosartnaksynlhpoueecwcosogtsecsiucewtucoeyaluusglfzwbaiidtraireuoennhgdjyuuutyoalwziagmoiuizautdauei',
@@ -32,7 +35,7 @@ angular.module('webdrilApp')
 
     var compare = function (a , b) {
 
-      function minimator(x, y, z) {
+      function mnmt(x, y, z) {
         if (x < y && x < z) return x;
         if (y < x && y < z) return y;
         return z;
@@ -60,7 +63,7 @@ angular.module('webdrilApp')
         r[i] = []; r[i][0] = i;
         for ( var j = 1; j < n + 1; ++j ) {
           cost = a.charAt( i - 1 ) === b.charAt( j - 1 ) ? 0 : 1;
-          r[i][j] = minimator( r[i-1][j] + 1, r[i][j-1] + 1, r[i-1][j-1] + cost );
+          r[i][j] = mnmt( r[i-1][j] + 1, r[i][j-1] + 1, r[i-1][j-1] + cost );
         }
       }
       var rl = r.length;

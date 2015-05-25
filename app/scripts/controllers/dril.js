@@ -71,45 +71,23 @@ angular.module('webdrilApp')
 
 
 
-      function compare(text){
-        if(clean(text) === clean($scope.currentWord.answer)){
-           $scope.isAnswerShown = true;
-        }
-      }
+      //function compare(text){
+      //  var distance = Similarity.getDistance($scope.currentWord.answer, text);
+      //  console.log(distance);
+      //  if(distance === 0){
+      //    $scope.isAnswerShown = true;
+      //  }
+      // }
 
       function isFinished(){
         return $scope.currentWord === null;
       }
 
-      function clean(text){
-        text = text.speechEscape();
-        console.log(text);
-        var from = 'àôďḟëšơßăřțňāķŝỳņĺħṗóúěéçẁċõṡøģŧșėĉśîűćęŵṫūčöèŷąłųůşğļƒžẃḃåìïḋťŗäíŕêüòēñńĥĝđĵÿũŭưţýőâľẅżīãġṁōĩùįźáûþðæµĕı',
-            to =   'aodfesosartnaksynlhpoueecwcosogtsecsiucewtucoeyaluusglfzwbaiidtraireuoennhgdjyuuutyoalwziagmoiuizautdauei',
-            length = text.length,
-            position,
-            result = '',
-            i;
-
-        text = text.toLowerCase();
-        for(i = 0; i < length; i++){
-          position = from.indexOf(text[i]);
-          if(position > -1){
-            result += to.charAt(position);
-          } else{
-            result += text[i];
-          }
-        }
-        return result
-          .replace(/ +?/g, '-')
-          .replace(/[^\w\s]|(.)\1/gi, '-')
-          .replace(/[\-]{2,}/g, '-');
-      }
 
       $scope.showAnswer = showAnswer;
       $scope.rateWord = rateWord;
       $scope.getCountOfActivated = getCountOfActivated;
-      $scope.compare = compare;
+      //$scope.compare = compare;
       $scope.isFinished = isFinished;
       $scope.RATING = RATING;
       $window.ga('send', 'pageview', { page: $location.url() });

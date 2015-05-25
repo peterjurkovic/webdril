@@ -223,4 +223,29 @@ angular.module('webdrilApp')
         element[0].focus();
         }
       };
-  });
+  })
+  .directive('pjSimilarity', ['Similarity',function(Similarity){
+    return {
+      require: 'ngModel',
+      link : function(scope, element, attrs, ngModel){
+        scope.level = false;
+        scope.$watch(function () {
+          return ngModel.$modelValue;
+        }, function(newValue) {
+            if(newValue){
+              var distance = Similarity.getDistance(scope.currentWord.answer, newValue);
+              if(distance > 10){
+                distance = 10;
+              }else if(distance === 0){
+                scope.showAnswer();
+              }
+              scope.level = distance;
+            }else{
+              scope.level = false;
+            }
+
+        });
+        console.log(scope.currentWord);
+      }
+    };
+  }]);

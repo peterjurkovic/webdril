@@ -42,10 +42,13 @@
                  class="form-control pj-focus"
                  placeholder="{{'WRITE_ANSWER' | translate}}"
                  ng-model="userAnswer.value"
-                 ng-change="compare(userAnswer.value)"
+                 pj-similarity
                  ng-enter="showAnswer()"
                  ng-model-options="{debounce : 500}"
                  aria-describedby="sizing-addon1">
+          <div class="pj-similarity level-{{level}}">
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-thumbs-up':(level < 2),'glyphicon-thumbs-down':(level > 7), 'glyphicon-minus':(level > 1 && level < 8)}"></span>          </div>
         </div>
       </div>
 

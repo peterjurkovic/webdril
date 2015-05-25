@@ -11,6 +11,21 @@ body{
   color:#fff
 }
 
+.pj-similarity{box-shadow: 0 0 4px 2px #DBDBDB;position:absolute;z-index:2;right:8px;border-radius:100%;top:10px;width:25px;height:25px;padding:4px 0;color: #fff;text-align:center;}
+.level-false{display: none}
+.level-10{background: #E50000;}
+.level-9{background: #BF3200;}
+.level-8{background: #BA6300;padding:3px 0;}
+.level-7{background: #B79900;padding:3px 0;}
+.level-6{background: #E5A800;padding:3px 0;}
+.level-5{background: #F2B900;padding:3px 0;}
+.level-4{background: #FCF400;color: #555;padding:3px 0;}
+.level-3{background: #CEF700;color: #73880a;padding:3px 0;}
+.level-2{background: #9DF200;padding:3px 0;}
+.level-1{background: #69EA00;padding:3px 0;}
+.level-0{background: #25E200;}
+
+
 
 .locale span{padding:0 0 0 5px;margin:8px 0 !important;display:inline-block;border-left:1px solid #555}
 .locale select{cursor:pointer;background:transparent;border-color:#202829; -moz-appearance: none;-webkit-appearance: none;appearance: none;padding:4px !important;font-size:.9em;color:#fff;}
@@ -298,7 +313,7 @@ button .pj-loader-min{padding:7px 0 7px 20px;}
 .footer a{color: #fff;font-size:.9em;}
 .footer .pj-social{position:absolute;right:0;bottom:8px;margin:0;padding:0;width:150px;}
 .footer .pj-social li{display:inline;text-align:center;font-size:.8em;}
-.footer .pj-social a{background-image:url(../images/social.png);background-repeat:none;margin:0 6px;display:inline-block;width:32px;padding-top:32px;height:20px;}
+.footer .pj-social a{border-radius: 5px; background-image:url(../images/social.png);background-repeat:none;margin:0 6px;display:inline-block;width:32px;padding-top:32px;height:22px;}
 .footer .pj-social a:hover{text-decoration:none;}
 .footer .pj-ver{position:absolute;bottom:65px;right:15px;font-size:.8em;}
 .footer a{cursor: pointer}
