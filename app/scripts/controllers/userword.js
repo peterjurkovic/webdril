@@ -40,7 +40,6 @@ angular.module('webdrilApp')
 
 
       $scope.saveWord = function ( newValue, word, type ){
-        console.log(arguments);
         if(type === 'q'){
           word.question = newValue;
         }else{

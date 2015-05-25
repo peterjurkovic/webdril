@@ -2,8 +2,8 @@
 
 
 angular.module('webdrilApp')
-  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal','$location', '$window',
-    function ($scope, DrilService, RATING, TTSConfig, ENV, $modal,$location, $window) {
+  .controller('DrilCtrl', ['$scope', 'DrilService', 'RATING', 'TTSConfig', 'ENV', '$modal','$location', '$window', 'Similarity',
+    function ($scope, DrilService, RATING, TTSConfig, ENV, $modal,$location, $window, Similarity) {
       TTSConfig.url = ENV.api + '/tts';
 
       function init(){
@@ -82,14 +82,17 @@ angular.module('webdrilApp')
       }
 
       function clean(text){
+        text = text.speechEscape();
+        console.log(text);
         var from = 'àôďḟëšơßăřțňāķŝỳņĺħṗóúěéçẁċõṡøģŧșėĉśîűćęŵṫūčöèŷąłųůşğļƒžẃḃåìïḋťŗäíŕêüòēñńĥĝđĵÿũŭưţýőâľẅżīãġṁōĩùįźáûþðæµĕı',
             to =   'aodfesosartnaksynlhpoueecwcosogtsecsiucewtucoeyaluusglfzwbaiidtraireuoennhgdjyuuutyoalwziagmoiuizautdauei',
             length = text.length,
             position,
-            result = '';
+            result = '',
+            i;
 
         text = text.toLowerCase();
-        for(var i = 0; i < length; i++){
+        for(i = 0; i < length; i++){
           position = from.indexOf(text[i]);
           if(position > -1){
             result += to.charAt(position);

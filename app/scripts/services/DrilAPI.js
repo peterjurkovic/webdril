@@ -62,7 +62,7 @@ angular.module('webdrilApp')
   }
 
   function translate(text, from, to){
-    var params = '?text='+encodeURIComponent(text) +
+    var params = '?text='+encodeURIComponent(text.speechEscape()) +
       '&from='+from+'&to='+to;
     return $http.get(ENV.api+ '/translate' + params);
   }

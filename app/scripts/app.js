@@ -97,3 +97,7 @@ angular
         $translateProvider.preferredLanguage(locale.replace(/"/g, ''));
       }
   });
+
+String.prototype.speechEscape = function () {
+  return this.replace(/(\[|\/)[^\]]*?(\]|\/)/g, '').trim();
+};
