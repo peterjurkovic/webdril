@@ -461,7 +461,7 @@ module.exports = function (grunt) {
             name: 'dev',
             api: 'http://drilapp.dev/api/v1',
             gtKey : 'AIzaSyDNKMoJgZcVyMpg1tfdo4bpxuroPhakQ7I',
-            version : '1.0.3'
+            version : '1.0.4'
           }
         }
       },
@@ -475,7 +475,7 @@ module.exports = function (grunt) {
             name: 'prod',
             api: 'http://api.drilapp.com/v1',
             gtKey : 'AIzaSyAk3DcvZT8DP36qLTn-mceFNkCJAYVaBSE',
-            version : '1.0.3'
+            version : '1.0.4'
           }
         }
       }
