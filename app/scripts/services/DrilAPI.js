@@ -96,7 +96,7 @@ angular.module('webdrilApp')
   }
 
   function deleteLecture(id, wordsOnly){
-    return $http.delete(ENV.api+ '/user/lectures/'+id);
+    return $http.delete(ENV.api+ '/user/lectures/'+id + (wordsOnly ? "/words" : ''));
   }
   return {
     getPage: getPage,
