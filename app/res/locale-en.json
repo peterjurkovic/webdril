@@ -55,7 +55,7 @@
   "DOWNLOADED" : "Downloaded",
   "SHARED" : "Shared",
   "MANAGE" : "Manage",
-  "FAVORITED" : "Marked as favorited",
+  "FAVORITED" : "Forked",
   "NO_WORDS" : "Number of words",
   "NO_BOOKS" : "No wordbook found",
   "TAGS" : "Tags",
@@ -131,7 +131,7 @@
   "MANAGE_VOCABULARY" : "and manage you own vocabulary!",
   "GET_ANSWER" : "Get an answer",
   "EDIT_WORD" : "Edit word",
-
+  "FORK" : "Fork this textbook",
 
 
   "SAVE" : "Save",

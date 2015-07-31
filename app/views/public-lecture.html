@@ -40,7 +40,7 @@
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
             <span class="pj-key">{{'FAVORITED' | translate}}:</span>
-            <span class="pj-val">{{book.favorited}}x</span>
+            <span class="pj-val">{{book.forked.length}}x</span>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-6">
             <span class="pj-key">{{'NO_WORDS' | translate}}:</span>
@@ -59,6 +59,19 @@
         </div>
 
     </div>
+
+  
+  <div class="row pj-word-nav ">
+    <ul class="nav nav-pills">
+      <li role="presentation">
+        <a ng-click="importFile()" >
+          <span class="glyphicon glyphicon-duplicate"></span>
+          &nbsp; {{'FORK' | translate}}
+        </a>
+      </li>
+    </ul>
+
+  </div>
 
     <h4>{{'LECTURES' | translate}} ({{book.lectures.length}})</h4>
 
