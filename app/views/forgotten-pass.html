@@ -49,7 +49,16 @@
 
 </form>
 
-<form ng-if="!showForm" class="pj-login " name="se" ng-submit="sendEmail(se.$valid, data.email)" novalidate>
+<div ng-if="sent" class="alert alert-success">
+  <span class="glyphicon glyphicon-ok"></span>
+  {{'SENT_SUCCESS' | translate}}
+</div>
+
+<!-- SEND EMAIL FORM  -->
+<form ng-if="!showForm && !sent" class="pj-login " name="se" ng-submit="sendEmail(se.$valid, data.email)" novalidate>
+
+
+
   <div ng-if="emailNotFound"  class="alert alert-danger">
     <span class="glyphicon glyphicon-remove"></span>
     <span>{{'ERR_EMAIL_NOTFOUND' | translate}}</span>

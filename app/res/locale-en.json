@@ -12,6 +12,7 @@
   "SINGUP" : "Sign up",
   "SINGIN" : "Sign In",
   "SEND_EMAIL" : "Send e-mail",
+  "SENT_SUCCESS" : "The reset password link was successfully sent",
   "ERR_EMAIL_NOTFOUND" : "Given e-mail address was not found",
   "ERR_RESET_PASS_TOKEN" : "The reset password token was not found or expired",
   "RESET" : "Reset password",

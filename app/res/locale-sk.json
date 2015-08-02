@@ -11,6 +11,12 @@
   "LOGOUT" : "Odhlásiť",
   "SINGUP" : "Registrovať",
   "SINGIN" : "Prihlásiť sa",
+  "SEND_EMAIL" : "Odoslať",
+  "SENT_SUCCESS" : "Na Vašu e-mailovú adresu bol odoslaný odkaz prostredníctvom ktorého si môžete resetovať heslo",
+  "ERR_EMAIL_NOTFOUND" : "E-mailová adresa sa nenašla",
+  "ERR_RESET_PASS_TOKEN" : "Neplatný nebo prošlý odkaz",
+  "RESET" : "Resetovať heslo",
+  "RESET_SUCCESS" : "Heslo bolo úspešne zmenené",
 
   "KNOW" : "Viem to!",
   "NOT_YET" : "Ešte nie",

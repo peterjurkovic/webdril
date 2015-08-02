@@ -23,7 +23,7 @@ angular.module('webdrilApp')
         DrilAPI.resetPass(data).then(function(){
           Toast.success($translate.instant('RESET_SUCCESS'));
           $location.path('/login');
-        }, function(res){
+        }, function(){
           $scope.tokenExpired = true;
         })
         .finally(hideLoader);
@@ -37,8 +37,8 @@ angular.module('webdrilApp')
         showLoader();
         $scope.emailNotFound = false;
         DrilAPI.sendResetPassEmail(email).then(function(){
-
-        }, function(res){
+          $scope.sent = true;
+        }, function(){
           $scope.emailNotFound = true;
         })
         .finally(hideLoader);
