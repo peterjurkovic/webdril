@@ -246,5 +246,12 @@ angular.module('webdrilApp')
 
         });
       }
+    }
+  }])
+  .directive('forkedBy',function(  ){
+    return {
+      restrict: 'E',
+      template :  '<div class="pj-forked">'+
+          '<span translate="FORK"></span>:<span ng-repeat="entry in book.forkedByUsers">test {{entry.login}}</span></div>'
     };
-  }]);
+  });
