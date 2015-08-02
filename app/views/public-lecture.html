@@ -61,7 +61,7 @@
     </div>
 
 
-  <div ng-if="user" class="row pj-word-nav ">
+  <div ng-if="user && !isAlreadyForked" class="row pj-word-nav ">
     <ul class="nav nav-pills">
       <li role="presentation">
         <a ng-click="forkBook()" >
@@ -70,7 +70,6 @@
         </a>
       </li>
     </ul>
-
   </div>
 
     <h4>{{'LECTURES' | translate}} ({{book.lectures.length}})</h4>
