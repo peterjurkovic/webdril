@@ -1,0 +1,87 @@
+<h1 class="text-center" translate="FORGOTTEN_PASS"></h1>
+<h6 class="text-center" translate="FORGOTTEN_PASS_LONG"></h6>
+
+
+<form ng-if="showForm" class="pj-login " name="rf" ng-submit="reset(rf.$valid, data)" novalidate>
+
+  <div ng-if="tokenExpired"  class="alert alert-danger">
+    <span class="glyphicon glyphicon-remove"></span>
+    <span>{{'ERR_RESET_PASS_TOKEN' | translate}}</span>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : (rf.$submitted || rf.password.$touched) && rf.password.$invalid }">
+      <label for="password">{{'PASSWORD' | translate}}:</label>
+      <input class="form-control"
+             type="password"
+             id="password"
+             ng-model="data.password"
+             ng-minlength="6"
+             required
+             name="password"
+             ng-trim="true">
+      <div class="text-danger bg-danger"  ng-if="(rf.$submitted || rf.password.$touched) && rf.password.$invalid">
+        <div ng-if="rf.password.$error.required">{{'ERR_REQUIRED' | translate}}</div>
+        <div ng-if="rf.password.$error.minlength">{{'ERR_PASS_SIZE' | translate}}</div>
+      </div>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : (rf.$submitted || rf.password2.$touched) && rf.password2.$invalid }">
+      <label for="password2">{{'PASSWORD_CONFIRM' | translate}}:</label>
+      <input class="form-control"
+             type="password"
+             id="password2"
+             ng-model="data.password2"
+             required
+             name="password2"
+             tooltip="At least 6 characters"
+             pj-match="data.password"
+             ng-trim="true">
+      <div class="text-danger bg-danger"  ng-if="(rf.$submitted || rf.password2.$touched) && rf.password2.$invalid">
+        <div ng-if="rf.password2.$error.required">{{'ERR_REQUIRED' | translate}}</div>
+        <div ng-if="rf.password2.$error.match">{{'ERR_PASS_CONFIRM' | translate}}</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-block btn-primary" translate="RESET"></button>
+    <div class="pj-loader" ng-if="isLoading" translate="WAIT"></div>
+  </div>
+
+</form>
+
+<form ng-if="!showForm" class="pj-login " name="se" ng-submit="sendEmail(se.$valid, data.email)" novalidate>
+  <div ng-if="emailNotFound"  class="alert alert-danger">
+    <span class="glyphicon glyphicon-remove"></span>
+    <span>{{'ERR_EMAIL_NOTFOUND' | translate}}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">{{'EMAIL' | translate}}:</label>
+    <input class="form-control"
+           type="email"
+           id="email"
+           ng-model="data.email"
+           required />
+           <div class="text-danger bg-danger"  ng-if="se.$submitted && se.$invalid">
+             <div>{{'ERR_INVALID_VAL' | translate}}</div>
+           </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-block btn-primary" translate="SEND_EMAIL"></button>
+    <div class="pj-loader" ng-if="isLoading" translate="WAIT"></div>
+  </div>
+
+  <p class="text-center">
+    {{'FORGOTTEN_PASS_DESC' | translate}}
+  </p>
+
+  <div class="form-group pj-border text-center">
+    <strong><a href="/login">{{'SINGIN' | translate}}</a></strong>
+    &nbsp; | &nbsp;
+    <strong><a href="/singup">{{'CREATE_ACCOUNT' | translate}}</a></strong>
+  </div>
+
+
+</form>
+<div class="margin-20"></div>

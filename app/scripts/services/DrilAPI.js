@@ -101,8 +101,16 @@ angular.module('webdrilApp')
 
   function forkBook(id){
     return $http.put(ENV.api+ '/books/'+id+'/fork');
-
   }
+
+  function sendResetPassEmail(username){
+    return $http.put(ENV.api+ '/user/sendResetPassEmail', {"username" : username});
+  }
+
+  function resetPass(data){
+    return $http.put(ENV.api+ '/user/resetPass', data);
+  }
+
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -125,7 +133,9 @@ angular.module('webdrilApp')
     loadWords : loadWords,
     getStats : getStats,
     toggleActivation : toggleActivation,
-    forkBook : forkBook
+    forkBook : forkBook,
+    sendResetPassEmail : sendResetPassEmail,
+    resetPass : resetPass
   };
 
 }]);

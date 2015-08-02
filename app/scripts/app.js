@@ -53,6 +53,10 @@ angular
         templateUrl: 'views/singup.html',
         controller: 'SingupCtrl'
       })
+      .when('/forgottenPass', {
+        templateUrl: 'views/forgotten-pass.html',
+        controller: 'ForgottenPassCtrl'
+      })
 
       // auth
       .when('/manage/books', {

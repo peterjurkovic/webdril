@@ -11,10 +11,19 @@
   "LOGOUT" : "Logout",
   "SINGUP" : "Sign up",
   "SINGIN" : "Sign In",
+  "SEND_EMAIL" : "Send e-mail",
+  "ERR_EMAIL_NOTFOUND" : "Given e-mail address was not found",
+  "ERR_RESET_PASS_TOKEN" : "The reset password token was not found or expired",
+  "RESET" : "Reset password",
+  "RESET_SUCCESS" : "The password was successfully changed",
 
   "KNOW" : "I knew it!",
   "NOT_YET" : "Not yet",
   "DO_NOT_KNOW" : "Never seen it",
+
+  "FORGOTTEN_PASS" : "Forgotten password",
+  "FORGOTTEN_PASS_LONG" : "Reset your password",
+  "FORGOTTEN_PASS_DESC" : "You will receive an email with a link using which you will able reset your current password",
 
   "LOGIN_DSCR" : "Enter your login details",
   "ACCOUNT_ACTIVE" : "Your account has been activated.",
