@@ -79,6 +79,8 @@ angular.module('webdrilApp')
         $scope.lectureErrors = false;
       }
 
+    
+
       function hideLectureForm(){
         $scope.lecture = null;
       }

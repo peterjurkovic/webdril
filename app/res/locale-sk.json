@@ -132,7 +132,7 @@
   "GET_ANSWER" : "Zobraziť odpoveď",
   "EDIT_WORD" : "Editovať slovíčko",
   "FORK" : "Pridať do vlastných učebnic",
-
+  "FORKED_SUCCESS" : "Učebnica bola úspešne pridaná.",
 
   "SAVE" : "Uložiť",
   "REMOVED" : "Úspešne odstránené",

@@ -60,11 +60,11 @@
 
     </div>
 
-  
-  <div class="row pj-word-nav ">
+
+  <div ng-if="user" class="row pj-word-nav ">
     <ul class="nav nav-pills">
       <li role="presentation">
-        <a ng-click="importFile()" >
+        <a ng-click="forkBook()" >
           <span class="glyphicon glyphicon-duplicate"></span>
           &nbsp; {{'FORK' | translate}}
         </a>
@@ -103,4 +103,3 @@
     </div>
 
 </div>
-

@@ -132,7 +132,7 @@
   "GET_ANSWER" : "Get an answer",
   "EDIT_WORD" : "Edit word",
   "FORK" : "Fork this textbook",
-
+  "FORKED_SUCCESS" : "The book has been forked Successfully",
 
   "SAVE" : "Save",
   "REMOVED" : "Successfully removed",

@@ -98,6 +98,11 @@ angular.module('webdrilApp')
   function deleteLecture(id, wordsOnly){
     return $http.delete(ENV.api+ '/user/lectures/'+id + (wordsOnly ? "/words" : ''));
   }
+
+  function forkBook(id){
+    return $http.put(ENV.api+ '/books/'+id+'/fork');
+
+  }
   return {
     getPage: getPage,
     loadFilterOptions :  loadFilterOptions,
@@ -119,7 +124,8 @@ angular.module('webdrilApp')
     updateAccount : updateAccount,
     loadWords : loadWords,
     getStats : getStats,
-    toggleActivation : toggleActivation
+    toggleActivation : toggleActivation,
+    forkBook : forkBook
   };
 
 }]);
