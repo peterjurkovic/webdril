@@ -16,7 +16,7 @@
   "ERR_EMAIL_NOTFOUND" : "E-mailová adresa se nenašla",
   "ERR_RESET_PASS_TOKEN" : "Neplatný alebo expirovaný odkaz",
   "RESET" : "Resetovat heslo",
-  "RESET_SUCCESS" : "The password was successfully changed",
+  "RESET_SUCCESS" : "Heslo bylo úspěšně změněno",
 
   "KNOW" : "Vím",
   "NOT_YET" : "Ešte ne",

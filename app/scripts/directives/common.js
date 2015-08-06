@@ -252,6 +252,6 @@ angular.module('webdrilApp')
     return {
       restrict: 'E',
       template :  '<div class="pj-forked">'+
-          '<span translate="FORK"></span>:<span ng-repeat="entry in book.forkedByUsers">test {{entry.login}}</span></div>'
+          '<span translate="FORK"></span>:<span ng-repeat="entry in book.forkedByUsers">{{entry.login}}</span></div>'
     };
   });
