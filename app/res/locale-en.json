@@ -179,7 +179,7 @@
   "ERR_PASS_SIZE" : "At least 6 characters",
   "ERR_PASS_CONFIRM" : "Password does not match the confirm password",
   "ERR_LECTURE_NAME" : "Name of the lecture is required",
-  "ERR_BOOK_SIZE_MIN" : "Title of the book has to have max. 200 characters",
-  "ERR_BOOK_SIZE_MAX" : "Title of the book has to have at least 8 characters",
+  "ERR_BOOK_SIZE_MAX" : "Title of the book has to have max. 200 characters",
+  "ERR_BOOK_SIZE_MIN" : "Title of the book has to have at least 8 characters",
   "ERR_WORD" : "The word can not be empty."
 }

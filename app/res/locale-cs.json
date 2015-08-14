@@ -176,7 +176,7 @@
   "ERR_PASS_SIZE" : "Nejméně 6 znaků",
   "ERR_PASS_CONFIRM" : "Zadané hesla se neshodují",
   "ERR_LECTURE_NAME" : "Zadejte název lekce",
-  "ERR_BOOK_SIZE_MIN" : "Název učebnice může mít maximálně 200 znaků",
-  "ERR_BOOK_SIZE_MAX" : "Název učebnice musí mít nejméně 8 znaků",
+  "ERR_BOOK_SIZE_MAX" : "Název učebnice může mít maximálně 200 znaků",
+  "ERR_BOOK_SIZE_MIN" : "Název učebnice musí mít nejméně 8 znaků",
   "ERR_WORD" : "V pište slovíčko"
 }

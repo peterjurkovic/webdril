@@ -175,7 +175,7 @@
   "ERR_PASS_SIZE" : "Najmenej 6 znakov",
   "ERR_PASS_CONFIRM" : "Zadané hesla sa nezhodujú",
   "ERR_LECTURE_NAME" : "Zadajte názov lekcie",
-  "ERR_BOOK_SIZE_MIN" : "Názov učebnice môže mať maximálne 200 znakov",
-  "ERR_BOOK_SIZE_MAX" : "Názov učebnice musí mať najmenej 8 znakov",
+  "ERR_BOOK_SIZE_MAX" : "Názov učebnice môže mať maximálne 200 znakov",
+  "ERR_BOOK_SIZE_MIN" : "Názov učebnice musí mať najmenej 8 znakov",
   "ERR_WORD" : "V pište slovíčko"
 }
