@@ -360,7 +360,9 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
 .pj-nav-footer li{display:inline;padding:0 10px;border-left:1px solid #eee;margin-left:8px;}
 .pj-nav-footer li:first-child{display:inline;padding:0;border:none;margin-left:0;}
 
-
+td.pj-book-name{position: relative;}
+.pj-forked{position: absolute;font-size: .65em;bottom: 0}
+.pj-forked a{color: #555}
 /* Custom, iPhone Retina */
 @media (min-width : 320px) and (max-width : 480px) {
   .pj-nav{text-align:center;}
