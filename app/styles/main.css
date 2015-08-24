@@ -307,6 +307,7 @@ button .pj-loader-min{padding:7px 0 7px 20px;}
 .pj-word-nav .nav a{color:#333;cursor: pointer}
 .pj-word-nav .nav a:hover{color:#fff;background:#333}
 .pj-add-book .pj-contact{position:absolute;right:20px;font-size:.9em;top:4px;color:#777}
+
 /* FOOTER */
 .footer .dril-wrapp{position:relative;min-height:100px}
 .footer p,
@@ -337,6 +338,19 @@ td.pj-nav{border-left:1px solid #ddd;text-align:right;}
 form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
 
 
+td span.pj-forked{display:block;font-size:.65em;position:absolute;margin-top:-2px;}
+td span.pj-forked a{color:#555}
+td span.pj-forked span{margin-right:1px;}
+
+h2 .pj-forked{
+	display:block;
+  font-size:.55em;
+  margin-top:5px;
+  margin-bottom:-2px;
+  margin-left:40px;
+
+}
+
 @media (max-width: 992px) {
   .pj-content th {
     text-align:left;padding-left:10px !important;
@@ -360,9 +374,7 @@ form div.text-danger{font-size:.9em;padding:5px;margin-top:5px;}
 .pj-nav-footer li{display:inline;padding:0 10px;border-left:1px solid #eee;margin-left:8px;}
 .pj-nav-footer li:first-child{display:inline;padding:0;border:none;margin-left:0;}
 
-td.pj-book-name{position: relative;}
-.pj-forked{position: absolute;font-size: .65em;bottom: 0}
-.pj-forked a{color: #555}
+
 /* Custom, iPhone Retina */
 @media (min-width : 320px) and (max-width : 480px) {
   .pj-nav{text-align:center;}

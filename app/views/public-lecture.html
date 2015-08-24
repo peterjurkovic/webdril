@@ -9,6 +9,16 @@
     <span class="glyphicon glyphicon-book"></span>
     &nbsp; {{book.name}}
     </a>
+    <forked book="book"></forked>
+    <!--
+    <span class="pj-forked" ng-if="book.forked_book_id">
+      <span>{{'FORKED' | translate}}: </span>
+
+      <a href="/book/{{book.forked_book_id}}">
+        {{book.forked_login}}/{{book.forked_name}}
+      </a>
+    </span>
+  -->
   </h2>
 
     <div class="pj-meta">

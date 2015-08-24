@@ -11,24 +11,25 @@ angular.module('webdrilApp')
       restrict: 'E',
       link: function postLink(scope) {
         var totalPages = Math.ceil(scope.totalItems / ENV.itemsPeerPage),
-          maxNeighbor= 5;
+          maxNeighbor= 5,
+          currentPage = scope.state.currentPage || 1;
 
         if(totalPages > 1){
           scope.pages = [];
           scope.pages.push(1);
           var start = 2;
-          if(scope.state.currentPage - maxNeighbor - 1 > 0){
-            start = scope.state.currentPage - maxNeighbor;
+          if(currentPage - maxNeighbor - 1 > 0){
+            start = currentPage - maxNeighbor;
           }
-          for(var pageNumber = start; pageNumber <= scope.state.currentPage; pageNumber++){
+          for(var pageNumber = start; pageNumber <= currentPage; pageNumber++){
             scope.pages.push(pageNumber);
           }
           var stop = totalPages;
-          if(scope.state.currentPage + maxNeighbor + 1 <= totalPages){
-            stop = scope.state.currentPage + maxNeighbor + 1;
+          if(currentPage + maxNeighbor + 1 <= totalPages){
+            stop = currentPage + maxNeighbor + 1;
           }
 
-          for(pageNumber = scope.state.currentPage +1; pageNumber < stop; pageNumber++  ){
+          for(pageNumber = currentPage +1; pageNumber < stop; pageNumber++  ){
             scope.pages.push(pageNumber);
           }
           if(scope.pages[scope.pages.length - 1] !== totalPages){
@@ -248,10 +249,14 @@ angular.module('webdrilApp')
       }
     }
   }])
-  .directive('forkedBy',function(  ){
+  .directive('forked',['$translate',function($translate){
     return {
       restrict: 'E',
-      template :  '<div class="pj-forked">'+
-          '<span translate="FORK"></span>:<span ng-repeat="entry in book.forkedByUsers">{{entry.login}}</span></div>'
+      scope : {
+        bk: '=book'
+      },
+      template :  '<span class="pj-forked" ng-if="bk.forked_book_id">'+
+            '<span translate="FORKED"></span> <a href="/book/{{bk.forked_book_id}}">{{bk.forked_login}}/{{bk.forked_name}}</a>'+
+            '</span>'
     };
-  });
+  }]);

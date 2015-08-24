@@ -76,9 +76,7 @@
     <tr ng-repeat="row in items" ng-click="goToBook(row.id)">
       <td class="pj-book-name col-md-5">
         {{row.name}}
-        <span class="pj-forked" ng-if="row.forked_book_id">
-            {{'FORKED' | translate}}<a href="/book/{{row.forked_book_id}}">{{row.forked_login}}/{{row.forked_name}}</a>
-        </span>
+      <forked book="row"></forked>
       </td>
       <td class="col-md-1">
         <span class="pj-coll-top">

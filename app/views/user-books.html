@@ -65,7 +65,9 @@
     <tbody ng-show="!isLoading">
     <tr ng-repeat="book in items">
       <td class="pj-book-name col-md-5" ng-click="goToBook(book.id)">
-        {{book.name}}</td>
+        {{book.name}}
+        <forked book="book"></forked>
+      </td>
       <td class="col-md-1 hidden-xs " ng-click="goToBook(book.id)">
         <span class="pj-coll-top">
           {{book.question_lang_name}}
