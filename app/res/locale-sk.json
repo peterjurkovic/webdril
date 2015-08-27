@@ -22,6 +22,10 @@
   "NOT_YET" : "Ešte nie",
   "DO_NOT_KNOW" : "Netuším",
 
+  "FORGOTTEN_PASS" : "Zabudnuté heslo",
+  "FORGOTTEN_PASS_LONG" : "Obnoviť heslo",
+  "FORGOTTEN_PASS_DESC" : "Bude Vám odoslaný e-mail s odkazom, pomocou ktorej budete môcť resetovať heslo",
+
   "LOGIN_DSCR" : "Zadajte Vaše prihlasovacie údaje",
   "ACCOUNT_ACTIVE" : "Váš účet bol aktivovaný",
   "PASSWORD" : "Prihlasovacie heslo",
