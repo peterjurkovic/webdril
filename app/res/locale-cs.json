@@ -22,6 +22,7 @@
   "NOT_YET" : "Ešte ne",
   "DO_NOT_KNOW" : "Netuším",
 
+  "NEW_PASSWORD" : "Nové heslo",
   "FORGOTTEN_PASS" : "Zapomenuté heslo",
   "FORGOTTEN_PASS_LONG" : "Obnovit heslo",
   "FORGOTTEN_PASS_DESC" : "Obdržíte e-mail s odkazem, pomocí které budete moci resetovat heslo",

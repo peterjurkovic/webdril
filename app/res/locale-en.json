@@ -22,6 +22,7 @@
   "NOT_YET" : "Not yet",
   "DO_NOT_KNOW" : "Never seen it",
 
+  "NEW_PASSWORD" : "New password",
   "FORGOTTEN_PASS" : "Forgotten password",
   "FORGOTTEN_PASS_LONG" : "Reset your password",
   "FORGOTTEN_PASS_DESC" : "You will receive an email with a link using which you will able reset your current password",
