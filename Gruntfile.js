@@ -286,7 +286,14 @@ module.exports = function (grunt) {
        dist: {
          src: [
            '<%= yeoman.app %>/scripts/bootstrap/ui-bootstrap-custom-0.13.0.min.js',
-           '<%= yeoman.app %>/scripts/bootstrap/ui-bootstrap-custom-tpls.0.13.0.min.js'
+           '<%= yeoman.app %>/scripts/bootstrap/ui-bootstrap-custom-tpls.0.13.0.min.js',
+         ],
+         dest: '<%= yeoman.dist %>/scripts/vendor.js'
+       },
+        fin: {
+         src: [
+           '<%= yeoman.dist %>/scripts/vendor.js',
+           '<%= yeoman.app %>/scripts/bootstrap/fm.js',
          ],
          dest: '<%= yeoman.dist %>/scripts/vendor.js'
        }
@@ -517,6 +524,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'replace',
+    'concat:fin',
     'filerev',
     'usemin',
     'htmlmin',
